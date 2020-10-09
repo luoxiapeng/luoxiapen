@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>button 组件 | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    <link rel="preload" href="/assets/css/0.styles.7d3483bf.css" as="style"><link rel="preload" href="/assets/js/app.aac755ea.js" as="script"><link rel="preload" href="/assets/js/2.70a8b724.js" as="script"><link rel="preload" href="/assets/js/13.00f0d14c.js" as="script"><link rel="prefetch" href="/assets/js/10.14dea22c.js"><link rel="prefetch" href="/assets/js/100.5fb8a529.js"><link rel="prefetch" href="/assets/js/101.de0cf355.js"><link rel="prefetch" href="/assets/js/102.0bf2c5a6.js"><link rel="prefetch" href="/assets/js/103.dd65e639.js"><link rel="prefetch" href="/assets/js/104.ed4d08cd.js"><link rel="prefetch" href="/assets/js/105.0f3e5bf0.js"><link rel="prefetch" href="/assets/js/106.f3d82546.js"><link rel="prefetch" href="/assets/js/107.ee549a9b.js"><link rel="prefetch" href="/assets/js/108.72646e1e.js"><link rel="prefetch" href="/assets/js/109.576c6927.js"><link rel="prefetch" href="/assets/js/11.14a91e00.js"><link rel="prefetch" href="/assets/js/110.5c3b2177.js"><link rel="prefetch" href="/assets/js/111.cb3e748a.js"><link rel="prefetch" href="/assets/js/112.3b1d0b5f.js"><link rel="prefetch" href="/assets/js/12.4b23c5cb.js"><link rel="prefetch" href="/assets/js/14.171fc803.js"><link rel="prefetch" href="/assets/js/15.4b5c4a4f.js"><link rel="prefetch" href="/assets/js/16.21febe9c.js"><link rel="prefetch" href="/assets/js/17.ecf58ec4.js"><link rel="prefetch" href="/assets/js/18.ef7278d5.js"><link rel="prefetch" href="/assets/js/19.858706c4.js"><link rel="prefetch" href="/assets/js/20.b74aae85.js"><link rel="prefetch" href="/assets/js/21.19cd8159.js"><link rel="prefetch" href="/assets/js/22.3dac37e4.js"><link rel="prefetch" href="/assets/js/23.d587a6a5.js"><link rel="prefetch" href="/assets/js/24.fb1d5dfc.js"><link rel="prefetch" href="/assets/js/25.631d25c2.js"><link rel="prefetch" href="/assets/js/26.dc3c3743.js"><link rel="prefetch" href="/assets/js/27.b41bfc51.js"><link rel="prefetch" href="/assets/js/28.4b04aff8.js"><link rel="prefetch" href="/assets/js/29.cdb8933e.js"><link rel="prefetch" href="/assets/js/3.17589d97.js"><link rel="prefetch" href="/assets/js/30.54d7cf1a.js"><link rel="prefetch" href="/assets/js/31.b100bcea.js"><link rel="prefetch" href="/assets/js/32.479072d4.js"><link rel="prefetch" href="/assets/js/33.8e9d4f00.js"><link rel="prefetch" href="/assets/js/34.5be43779.js"><link rel="prefetch" href="/assets/js/35.e4684590.js"><link rel="prefetch" href="/assets/js/36.4116d17b.js"><link rel="prefetch" href="/assets/js/37.38ec2010.js"><link rel="prefetch" href="/assets/js/38.c7a26c88.js"><link rel="prefetch" href="/assets/js/39.5d02c68c.js"><link rel="prefetch" href="/assets/js/4.25ffcc4b.js"><link rel="prefetch" href="/assets/js/40.3ea79885.js"><link rel="prefetch" href="/assets/js/41.b33347ac.js"><link rel="prefetch" href="/assets/js/42.a04a2c7a.js"><link rel="prefetch" href="/assets/js/43.0ad8e1aa.js"><link rel="prefetch" href="/assets/js/44.338ab642.js"><link rel="prefetch" href="/assets/js/45.476b85f6.js"><link rel="prefetch" href="/assets/js/46.318167be.js"><link rel="prefetch" href="/assets/js/47.ba26c260.js"><link rel="prefetch" href="/assets/js/48.c9de7cfb.js"><link rel="prefetch" href="/assets/js/49.b9cac923.js"><link rel="prefetch" href="/assets/js/5.06ccf107.js"><link rel="prefetch" href="/assets/js/50.d8e5c936.js"><link rel="prefetch" href="/assets/js/51.5f8cba17.js"><link rel="prefetch" href="/assets/js/52.7854f821.js"><link rel="prefetch" href="/assets/js/53.26d865c5.js"><link rel="prefetch" href="/assets/js/54.1797c6c1.js"><link rel="prefetch" href="/assets/js/55.16d67834.js"><link rel="prefetch" href="/assets/js/56.dbaeef26.js"><link rel="prefetch" href="/assets/js/57.1f1219b5.js"><link rel="prefetch" href="/assets/js/58.e8b8b710.js"><link rel="prefetch" href="/assets/js/59.1b7d8894.js"><link rel="prefetch" href="/assets/js/6.8522cad9.js"><link rel="prefetch" href="/assets/js/60.7a6f9b8d.js"><link rel="prefetch" href="/assets/js/61.4d422087.js"><link rel="prefetch" href="/assets/js/62.6f93a1fc.js"><link rel="prefetch" href="/assets/js/63.38e152a8.js"><link rel="prefetch" href="/assets/js/64.2b36650e.js"><link rel="prefetch" href="/assets/js/65.51d6da4e.js"><link rel="prefetch" href="/assets/js/66.26d460a4.js"><link rel="prefetch" href="/assets/js/67.1d092352.js"><link rel="prefetch" href="/assets/js/68.13706645.js"><link rel="prefetch" href="/assets/js/69.94673e08.js"><link rel="prefetch" href="/assets/js/7.0f111b5f.js"><link rel="prefetch" href="/assets/js/70.d87e97ac.js"><link rel="prefetch" href="/assets/js/71.23ada919.js"><link rel="prefetch" href="/assets/js/72.154dd3b0.js"><link rel="prefetch" href="/assets/js/73.80ee4009.js"><link rel="prefetch" href="/assets/js/74.70252e6c.js"><link rel="prefetch" href="/assets/js/75.ef57f27e.js"><link rel="prefetch" href="/assets/js/76.4cb8384c.js"><link rel="prefetch" href="/assets/js/77.4b2a9741.js"><link rel="prefetch" href="/assets/js/78.9bd79efc.js"><link rel="prefetch" href="/assets/js/79.43cdd73a.js"><link rel="prefetch" href="/assets/js/8.35e3f37d.js"><link rel="prefetch" href="/assets/js/80.f56340d8.js"><link rel="prefetch" href="/assets/js/81.32930d6b.js"><link rel="prefetch" href="/assets/js/82.890dcfc9.js"><link rel="prefetch" href="/assets/js/83.5310e7bb.js"><link rel="prefetch" href="/assets/js/84.54b301fc.js"><link rel="prefetch" href="/assets/js/85.a3dc1544.js"><link rel="prefetch" href="/assets/js/86.f3099e5c.js"><link rel="prefetch" href="/assets/js/87.ccd506b7.js"><link rel="prefetch" href="/assets/js/88.fe6f9b36.js"><link rel="prefetch" href="/assets/js/89.62f3bedb.js"><link rel="prefetch" href="/assets/js/9.91c4edc6.js"><link rel="prefetch" href="/assets/js/90.aa108f18.js"><link rel="prefetch" href="/assets/js/91.bbd0c8bc.js"><link rel="prefetch" href="/assets/js/92.e6895989.js"><link rel="prefetch" href="/assets/js/93.bdccbac7.js"><link rel="prefetch" href="/assets/js/94.58e91c5a.js"><link rel="prefetch" href="/assets/js/95.671479a6.js"><link rel="prefetch" href="/assets/js/96.5a610055.js"><link rel="prefetch" href="/assets/js/97.18e960a6.js"><link rel="prefetch" href="/assets/js/98.c60e297f.js"><link rel="prefetch" href="/assets/js/99.bc7926ed.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7d3483bf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link router-link-active">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link router-link-active">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Myview_Ui组件库封装</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/commponent/ui/start/start.html" class="sidebar-link">基本介绍</a></li><li><a href="/commponent/ui/start1/start.html" class="sidebar-link">常见组件封装</a></li><li><a href="/commponent/ui/button/start.html" aria-current="page" class="active sidebar-link">button 组件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#前置知识" class="sidebar-link">前置知识</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#参数支持" class="sidebar-link">参数支持</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#事件支持" class="sidebar-link">事件支持</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#基本结构" class="sidebar-link">基本结构</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#type-属性" class="sidebar-link">type 属性</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#plain-属性" class="sidebar-link">plain 属性</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#round-属性" class="sidebar-link">round 属性</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#circle-属性" class="sidebar-link">circle 属性</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#icon-的支持" class="sidebar-link">icon 的支持</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#禁用按钮" class="sidebar-link">禁用按钮</a></li><li class="sidebar-sub-header"><a href="/commponent/ui/button/start.html#click-事件支持" class="sidebar-link">click 事件支持</a></li></ul></li><li><a href="/commponent/ui/dialog/start.html" class="sidebar-link">dialog 组件</a></li><li><a href="/commponent/ui/input/start.html" class="sidebar-link">input 组件</a></li><li><a href="/commponent/ui/switch/start.html" class="sidebar-link">switch 组件</a></li><li><a href="/commponent/ui/radio/start.html" class="sidebar-link">radio 组件</a></li><li><a href="/commponent/ui/radio-group/start.html" class="sidebar-link">radio-group 组件</a></li><li><a href="/commponent/ui/checkbox/start.html" class="sidebar-link">checkbox 组件</a></li><li><a href="/commponent/ui/checkbox-group/start.html" class="sidebar-link">checkbox-group 组件</a></li><li><a href="/commponent/ui/from/start.html" class="sidebar-link">form 组件</a></li><li><a href="/commponent/ui/from-item/start.html" class="sidebar-link">form-item 组件</a></li><li><a href="/commponent/ui/catalog/start.html" class="sidebar-link">封装成 UI 组件库</a></li><li><a href="/commponent/ui/npm/start.html" class="sidebar-link">发布到 npm 与 github</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="button-组件"><a href="#button-组件" class="header-anchor">#</a> button 组件</h1> <h2 id="前置知识"><a href="#前置知识" class="header-anchor">#</a> 前置知识</h2> <div class="language-js extra-class"><pre class="language-js"><code>组件通讯
+组件插槽
+props校验
+</code></pre></div><h2 id="参数支持"><a href="#参数支持" class="header-anchor">#</a> 参数支持</h2> <table><thead><tr><th>参数名</th> <th>参数描述</th> <th>参数类型</th> <th>默认值</th></tr></thead> <tbody><tr><td>type</td> <td>按钮类型(primary / success / warning / danger / info)</td> <td>string</td> <td>default</td></tr> <tr><td>plain</td> <td>是否是朴素按钮</td> <td>boolean</td> <td>false</td></tr> <tr><td>round</td> <td>是否是圆角按钮</td> <td>boolean</td> <td>false</td></tr> <tr><td>circle</td> <td>是否是圆形按钮</td> <td>boolean</td> <td>false</td></tr> <tr><td>disabled</td> <td>是否禁用按钮</td> <td>boolean</td> <td>false</td></tr> <tr><td>icon</td> <td>图标类名</td> <td>string</td> <td>无</td></tr></tbody></table> <h2 id="事件支持"><a href="#事件支持" class="header-anchor">#</a> 事件支持</h2> <table><thead><tr><th>事件名</th> <th>事件描述</th></tr></thead> <tbody><tr><td>click</td> <td>点击事件</td></tr></tbody></table> <h2 id="基本结构"><a href="#基本结构" class="header-anchor">#</a> 基本结构</h2> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>mv-button<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slot</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>样式</p> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">.mv-button </span><span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> inline-block<span class="token punctuation">;</span>
+  <span class="token property">line-height</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> pointer<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 1px solid #dcdfe6<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #606266<span class="token punctuation">;</span>
+  <span class="token property">-webkit-appearance</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+  <span class="token property">outline</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> 0.1s<span class="token punctuation">;</span>
+  <span class="token property">font-weight</span><span class="token punctuation">:</span> 500<span class="token punctuation">;</span>
+  <span class="token comment">// 禁止元素的文字被选中</span>
+  <span class="token property">-moz-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">-webkit-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">-ms-user-select</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 12px 20px<span class="token punctuation">;</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 14px<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 4px<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #c6e2ff<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> #ecf5ff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="type-属性"><a href="#type-属性" class="header-anchor">#</a> type 属性</h2> <p>结构</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>mv-button<span class="token punctuation">&quot;</span></span> <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>[`mv-button--${type}`]<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>js</p> <div class="language-js extra-class"><pre class="language-js"><code>props<span class="token operator">:</span> <span class="token punctuation">{</span>
+  type<span class="token operator">:</span> <span class="token punctuation">{</span>
+    type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+    <span class="token keyword">default</span><span class="token operator">:</span> <span class="token string">'default'</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p>样式</p> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">.mv-button--primary </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #66b1ff<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #66b1ff<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--success </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #67c23a<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #67c23a<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #85ce61<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #85ce61<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--info </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #909399<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #909399<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #a6a9ad<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #a6a9ad<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--warning </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #e6a23c<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #e6a23c<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #ebb563<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #ebb563<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--danger </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f56c6c<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #f56c6c<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f78989<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #f78989<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="plain-属性"><a href="#plain-属性" class="header-anchor">#</a> plain 属性</h2> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// 朴素的按钮</span>
+<span class="token selector">.mv-button.is-plain </span><span class="token punctuation">{</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--primary.is-plain </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #ecf5ff<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #b3d8ff<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #409eff<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--success.is-plain </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #67c23a<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #f0f9eb<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #c2e7b0<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #67c23a<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #67c23a<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.mv-button--info.is-plain </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #909399<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #f4f4f5<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #d3d4d6<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #909399<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #909399<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--warning.is-plain </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #e6a23c<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #fdf6ec<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #f5dab1<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #e6a23c<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #e6a23c<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--danger.is-plain </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #f56c6c<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> #fef0f0<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #fbc4c4<span class="token punctuation">;</span>
+  <span class="token selector"><span class="token parent important">&amp;</span>:hover,
+  <span class="token parent important">&amp;</span>:focus </span><span class="token punctuation">{</span>
+    <span class="token property">background</span><span class="token punctuation">:</span> #f56c6c<span class="token punctuation">;</span>
+    <span class="token property">border-color</span><span class="token punctuation">:</span> #f56c6c<span class="token punctuation">;</span>
+    <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="round-属性"><a href="#round-属性" class="header-anchor">#</a> round 属性</h2> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token selector">.mv-button.is-round </span><span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 12px 23px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="circle-属性"><a href="#circle-属性" class="header-anchor">#</a> circle 属性</h2> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// 原形按钮</span>
+<span class="token selector">.mv-button.is-circle </span><span class="token punctuation">{</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 12px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="icon-的支持"><a href="#icon-的支持" class="header-anchor">#</a> icon 的支持</h2> <p>在 main.js 中引入字体图标文件</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token string">'./assets/fonts/font.scss'</span>
+</code></pre></div><p>结构</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>i</span> <span class="token attr-name">:class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>icon<span class="token punctuation">&quot;</span></span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>icon<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>i</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>slot</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><p>js</p> <div class="language-js extra-class"><pre class="language-js"><code>icon<span class="token operator">:</span> <span class="token punctuation">{</span>
+  type<span class="token operator">:</span> String<span class="token punctuation">,</span>
+  <span class="token keyword">default</span><span class="token operator">:</span> <span class="token string">''</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>样式</p> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// 按钮后的文本</span>
+<span class="token selector">.mv-button [class*='mv-icon-'] + span </span><span class="token punctuation">{</span>
+  <span class="token property">margin-left</span><span class="token punctuation">:</span> 5px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="禁用按钮"><a href="#禁用按钮" class="header-anchor">#</a> 禁用按钮</h2> <ul><li>props</li></ul> <div class="language-js extra-class"><pre class="language-js"><code>disabled<span class="token operator">:</span> Boolean
+</code></pre></div><ul><li>结构</li></ul> <div class="language-js extra-class"><pre class="language-js"><code>  <span class="token operator">&lt;</span>button <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;mv-button&quot;</span> <span class="token operator">:</span><span class="token keyword">class</span><span class="token operator">=</span>&quot;<span class="token punctuation">[</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">mv-button--</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>type<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token string">'is-plain'</span><span class="token operator">:</span> plain<span class="token punctuation">,</span>
+    <span class="token string">'is-round'</span><span class="token operator">:</span> round<span class="token punctuation">,</span>
+    <span class="token string">'is-circle'</span><span class="token operator">:</span> circle<span class="token punctuation">,</span>
+    <span class="token string">'is-disabled'</span><span class="token operator">:</span> disabled
+    <span class="token punctuation">}</span><span class="token punctuation">]</span>&quot;
+    <span class="token operator">:</span>disabled<span class="token operator">=</span><span class="token string">&quot;disabled&quot;</span>
+    @click<span class="token operator">=</span><span class="token string">&quot;handleClick&quot;</span>
+  <span class="token operator">&gt;</span>
+</code></pre></div><ul><li>样式</li></ul> <div class="language-scss extra-class"><pre class="language-scss"><code><span class="token comment">// 禁用</span>
+<span class="token selector">.mv-button.is-disabled,
+.mv-button.is-disabled:focus,
+.mv-button.is-disabled:hover </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #c0c4cc<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> not-allowed<span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #ebeef5<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button.is-disabled,
+.mv-button.is-disabled:focus,
+.mv-button.is-disabled:hover </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #c0c4cc<span class="token punctuation">;</span>
+  <span class="token property">cursor</span><span class="token punctuation">:</span> not-allowed<span class="token punctuation">;</span>
+  <span class="token property">background-image</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #ebeef5<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--primary.is-disabled,
+.mv-button--primary.is-disabled:active,
+.mv-button--primary.is-disabled:focus,
+.mv-button--primary.is-disabled:hover </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #a0cfff<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #a0cfff<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--success.is-disabled,
+.mv-button--success.is-disabled:active,
+.mv-button--success.is-disabled:focus,
+.mv-button--success.is-disabled:hover </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #b3e19d<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #b3e19d<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--info.is-disabled,
+.mv-button--info.is-disabled:active,
+.mv-button--info.is-disabled:focus,
+.mv-button--info.is-disabled:hover </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #c8c9cc<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #c8c9cc<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--warning.is-disabled,
+.mv-button--warning.is-disabled:active,
+.mv-button--warning.is-disabled:focus,
+.mv-button--warning.is-disabled:hover </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #f3d19e<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #f3d19e<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.mv-button--danger.is-disabled,
+.mv-button--danger.is-disabled:active,
+.mv-button--danger.is-disabled:focus,
+.mv-button--danger.is-disabled:hover </span><span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #fff<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #fab6b6<span class="token punctuation">;</span>
+  <span class="token property">border-color</span><span class="token punctuation">:</span> #fab6b6<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="click-事件支持"><a href="#click-事件支持" class="header-anchor">#</a> click 事件支持</h2> <p>结构</p> <div class="language-html extra-class"><pre class="language-html"><code>@click=&quot;handleClick&quot;
+</code></pre></div><p>js</p> <div class="language-js extra-class"><pre class="language-js"><code>methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token function">handleClick</span> <span class="token punctuation">(</span><span class="token parameter">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$emit</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/commponent/ui/start1/start.html" class="prev">
+        常见组件封装
+      </a></span> <span class="next"><a href="/commponent/ui/dialog/start.html">
+        dialog 组件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.aac755ea.js" defer></script><script src="/assets/js/2.70a8b724.js" defer></script><script src="/assets/js/13.00f0d14c.js" defer></script>
+  </body>
+</html>
