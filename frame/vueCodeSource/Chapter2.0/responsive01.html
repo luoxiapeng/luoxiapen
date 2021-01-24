@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>06 | 响应式：响应式内部的实现原理是怎样的？（下） | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    <link rel="preload" href="/assets/css/0.styles.7d3483bf.css" as="style"><link rel="preload" href="/assets/js/app.204520ae.js" as="script"><link rel="preload" href="/assets/js/2.70a8b724.js" as="script"><link rel="preload" href="/assets/js/35.32e0f288.js" as="script"><link rel="prefetch" href="/assets/js/10.86d38f27.js"><link rel="prefetch" href="/assets/js/100.e56c4d80.js"><link rel="prefetch" href="/assets/js/101.dc5d2fb6.js"><link rel="prefetch" href="/assets/js/102.5cb74def.js"><link rel="prefetch" href="/assets/js/103.acf0c4de.js"><link rel="prefetch" href="/assets/js/104.d9552fcb.js"><link rel="prefetch" href="/assets/js/105.b2d00a56.js"><link rel="prefetch" href="/assets/js/106.45b0e7a0.js"><link rel="prefetch" href="/assets/js/107.550d5afc.js"><link rel="prefetch" href="/assets/js/108.75b6724b.js"><link rel="prefetch" href="/assets/js/109.2965cb13.js"><link rel="prefetch" href="/assets/js/11.7f2637f1.js"><link rel="prefetch" href="/assets/js/110.edc6b2d6.js"><link rel="prefetch" href="/assets/js/111.bc709592.js"><link rel="prefetch" href="/assets/js/112.702f04e3.js"><link rel="prefetch" href="/assets/js/113.dceba997.js"><link rel="prefetch" href="/assets/js/114.8b5a858c.js"><link rel="prefetch" href="/assets/js/115.7af93d32.js"><link rel="prefetch" href="/assets/js/116.c4ee473f.js"><link rel="prefetch" href="/assets/js/117.e3cfccf7.js"><link rel="prefetch" href="/assets/js/118.91e337f7.js"><link rel="prefetch" href="/assets/js/119.4bf514f5.js"><link rel="prefetch" href="/assets/js/12.4b23c5cb.js"><link rel="prefetch" href="/assets/js/120.0ef1e047.js"><link rel="prefetch" href="/assets/js/121.4d27a08d.js"><link rel="prefetch" href="/assets/js/122.9e7333a0.js"><link rel="prefetch" href="/assets/js/123.d598504e.js"><link rel="prefetch" href="/assets/js/124.5cc25f47.js"><link rel="prefetch" href="/assets/js/125.ada005a6.js"><link rel="prefetch" href="/assets/js/126.ff51709b.js"><link rel="prefetch" href="/assets/js/127.7c2e25a0.js"><link rel="prefetch" href="/assets/js/128.32485d49.js"><link rel="prefetch" href="/assets/js/129.ea506573.js"><link rel="prefetch" href="/assets/js/13.00f0d14c.js"><link rel="prefetch" href="/assets/js/130.a22554fc.js"><link rel="prefetch" href="/assets/js/131.c6faf53c.js"><link rel="prefetch" href="/assets/js/132.6cdbab1e.js"><link rel="prefetch" href="/assets/js/133.07eda894.js"><link rel="prefetch" href="/assets/js/134.12788773.js"><link rel="prefetch" href="/assets/js/135.149b5149.js"><link rel="prefetch" href="/assets/js/136.0dd99a21.js"><link rel="prefetch" href="/assets/js/137.d2291112.js"><link rel="prefetch" href="/assets/js/138.f1e66543.js"><link rel="prefetch" href="/assets/js/139.45c10621.js"><link rel="prefetch" href="/assets/js/14.171fc803.js"><link rel="prefetch" href="/assets/js/140.5fff5f05.js"><link rel="prefetch" href="/assets/js/141.fbd142b7.js"><link rel="prefetch" href="/assets/js/142.6e43cff1.js"><link rel="prefetch" href="/assets/js/143.4ed8f809.js"><link rel="prefetch" href="/assets/js/144.9664abbf.js"><link rel="prefetch" href="/assets/js/145.f9552cd4.js"><link rel="prefetch" href="/assets/js/146.7099aa1b.js"><link rel="prefetch" href="/assets/js/147.0255414a.js"><link rel="prefetch" href="/assets/js/148.2a51f08c.js"><link rel="prefetch" href="/assets/js/149.ef11e63f.js"><link rel="prefetch" href="/assets/js/15.b2351ec5.js"><link rel="prefetch" href="/assets/js/150.a92b6df4.js"><link rel="prefetch" href="/assets/js/151.681c04fc.js"><link rel="prefetch" href="/assets/js/16.a5945ba7.js"><link rel="prefetch" href="/assets/js/17.0aa0fc57.js"><link rel="prefetch" href="/assets/js/18.ef7278d5.js"><link rel="prefetch" href="/assets/js/19.8a1ea212.js"><link rel="prefetch" href="/assets/js/20.08c0a26b.js"><link rel="prefetch" href="/assets/js/21.4a2c6e55.js"><link rel="prefetch" href="/assets/js/22.3dac37e4.js"><link rel="prefetch" href="/assets/js/23.d587a6a5.js"><link rel="prefetch" href="/assets/js/24.fb1d5dfc.js"><link rel="prefetch" href="/assets/js/25.631d25c2.js"><link rel="prefetch" href="/assets/js/26.b87c231f.js"><link rel="prefetch" href="/assets/js/27.26fb970d.js"><link rel="prefetch" href="/assets/js/28.a0443608.js"><link rel="prefetch" href="/assets/js/29.88efd805.js"><link rel="prefetch" href="/assets/js/3.5f108ab8.js"><link rel="prefetch" href="/assets/js/30.cd33a927.js"><link rel="prefetch" href="/assets/js/31.c4138c5f.js"><link rel="prefetch" href="/assets/js/32.8d4a2086.js"><link rel="prefetch" href="/assets/js/33.ac309d50.js"><link rel="prefetch" href="/assets/js/34.09fe0060.js"><link rel="prefetch" href="/assets/js/36.53311644.js"><link rel="prefetch" href="/assets/js/37.89fa8ee2.js"><link rel="prefetch" href="/assets/js/38.e2ae491f.js"><link rel="prefetch" href="/assets/js/39.2dce7472.js"><link rel="prefetch" href="/assets/js/4.25ffcc4b.js"><link rel="prefetch" href="/assets/js/40.5127bb61.js"><link rel="prefetch" href="/assets/js/41.f51a9312.js"><link rel="prefetch" href="/assets/js/42.e990d21a.js"><link rel="prefetch" href="/assets/js/43.16c8e362.js"><link rel="prefetch" href="/assets/js/44.8444f2f1.js"><link rel="prefetch" href="/assets/js/45.d5c73af2.js"><link rel="prefetch" href="/assets/js/46.4408f32e.js"><link rel="prefetch" href="/assets/js/47.c92f09d2.js"><link rel="prefetch" href="/assets/js/48.54fe246c.js"><link rel="prefetch" href="/assets/js/49.cfd9ecf0.js"><link rel="prefetch" href="/assets/js/5.06ccf107.js"><link rel="prefetch" href="/assets/js/50.91d288c1.js"><link rel="prefetch" href="/assets/js/51.12665eab.js"><link rel="prefetch" href="/assets/js/52.fa4f783e.js"><link rel="prefetch" href="/assets/js/53.15da401f.js"><link rel="prefetch" href="/assets/js/54.797a88f3.js"><link rel="prefetch" href="/assets/js/55.bfbd7fa0.js"><link rel="prefetch" href="/assets/js/56.73e5553b.js"><link rel="prefetch" href="/assets/js/57.45e23046.js"><link rel="prefetch" href="/assets/js/58.5e4a34b3.js"><link rel="prefetch" href="/assets/js/59.117734f0.js"><link rel="prefetch" href="/assets/js/6.af57e81a.js"><link rel="prefetch" href="/assets/js/60.8826bb57.js"><link rel="prefetch" href="/assets/js/61.1091dbfe.js"><link rel="prefetch" href="/assets/js/62.c31c3c12.js"><link rel="prefetch" href="/assets/js/63.47e3bb53.js"><link rel="prefetch" href="/assets/js/64.8c4589c3.js"><link rel="prefetch" href="/assets/js/65.9e4d740b.js"><link rel="prefetch" href="/assets/js/66.e98dce2e.js"><link rel="prefetch" href="/assets/js/67.a9d7e014.js"><link rel="prefetch" href="/assets/js/68.12cacdce.js"><link rel="prefetch" href="/assets/js/69.e9539f94.js"><link rel="prefetch" href="/assets/js/7.0f111b5f.js"><link rel="prefetch" href="/assets/js/70.4d70c219.js"><link rel="prefetch" href="/assets/js/71.d992837b.js"><link rel="prefetch" href="/assets/js/72.7c001e27.js"><link rel="prefetch" href="/assets/js/73.92b33165.js"><link rel="prefetch" href="/assets/js/74.482ce79d.js"><link rel="prefetch" href="/assets/js/75.92280a65.js"><link rel="prefetch" href="/assets/js/76.3970e579.js"><link rel="prefetch" href="/assets/js/77.60e67658.js"><link rel="prefetch" href="/assets/js/78.76dce3c3.js"><link rel="prefetch" href="/assets/js/79.7d44ded7.js"><link rel="prefetch" href="/assets/js/8.230382ce.js"><link rel="prefetch" href="/assets/js/80.f500693a.js"><link rel="prefetch" href="/assets/js/81.ae4c91a1.js"><link rel="prefetch" href="/assets/js/82.abc45a7b.js"><link rel="prefetch" href="/assets/js/83.090e9541.js"><link rel="prefetch" href="/assets/js/84.a9922008.js"><link rel="prefetch" href="/assets/js/85.cb89d24d.js"><link rel="prefetch" href="/assets/js/86.f836fcc0.js"><link rel="prefetch" href="/assets/js/87.2bc1d83c.js"><link rel="prefetch" href="/assets/js/88.8eda12dc.js"><link rel="prefetch" href="/assets/js/89.8cece596.js"><link rel="prefetch" href="/assets/js/9.bf661022.js"><link rel="prefetch" href="/assets/js/90.30e82fd4.js"><link rel="prefetch" href="/assets/js/91.fbba73e8.js"><link rel="prefetch" href="/assets/js/92.fd0c03a9.js"><link rel="prefetch" href="/assets/js/93.52a98fda.js"><link rel="prefetch" href="/assets/js/94.526a1a5b.js"><link rel="prefetch" href="/assets/js/95.1bff8841.js"><link rel="prefetch" href="/assets/js/96.4c870afc.js"><link rel="prefetch" href="/assets/js/97.59af5659.js"><link rel="prefetch" href="/assets/js/98.5146cbc7.js"><link rel="prefetch" href="/assets/js/99.a034c567.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7d3483bf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/vueCodeSource/" class="nav-link router-link-active">
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/vueCodeSource/" class="nav-link router-link-active">
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue3.0源码解读</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/frame/vueCodeSource/Chapter/start.html" class="sidebar-link">模块一导读 | 组件的实现：直击 Vue 核心的实现</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/start.html" class="sidebar-link">01 | 组件渲染：vnode 到真实 DOM 是如何转变的？</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/domDiff01.html" class="sidebar-link">02 | 组件更新：完整的 DOM diff 流程是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/domDiff02.html" class="sidebar-link">03 | 组件更新：完整的 DOM diff 流程是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/compositionApi.html" class="sidebar-link">模块二导读 | 逻辑复用最佳实践：Composition API</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/setup.html" class="sidebar-link">04 | Setup：组件渲染前的初始化过程是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive.html" class="sidebar-link">05 | 响应式：响应式内部的实现原理是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" aria-current="page" class="active sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#reactive-api" class="sidebar-link">reactive API</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#副作用函数" class="sidebar-link">副作用函数</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#readonly-api" class="sidebar-link">readonly API</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#ref-api" class="sidebar-link">ref API</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" aria-current="page" class="active sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#reactive-api" class="sidebar-link">reactive API</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#副作用函数" class="sidebar-link">副作用函数</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#readonly-api" class="sidebar-link">readonly API</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#ref-api" class="sidebar-link">ref API</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/frame/vueCodeSource/Chapter2.0/computed.html" class="sidebar-link">07 | 计算属性：计算属性比普通函数好在哪里？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/watch.html" class="sidebar-link">08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/watch01.html" class="sidebar-link">09 | 侦听器：侦听器的实现原理和使用场景是什么？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/lifeCycle.html" class="sidebar-link">10 | 生命周期：各个生命周期的执行时机和应用场景是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/provide.html" class="sidebar-link">11 | 依赖注入：子孙组件如何共享数据？</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/start.html" class="sidebar-link">模块三导读 | 编译和优化：了解编译过程和背后的优化思想</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast.html" class="sidebar-link">12 | 模板解析：构造 AST 的完整流程是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast1.0.html" class="sidebar-link">13 | 模板解析：构造 AST 的完整流程是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast2.0.html" class="sidebar-link">14 | AST 转换：AST 节点内部做了哪些转换？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast3.0.html" class="sidebar-link">15 | AST 转换：AST 节点内部做了哪些转换？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast4.0.html" class="sidebar-link">16 | 生成代码：AST 如何生成可运行的代码？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast5.0.html" class="sidebar-link">17 | 生成代码：AST 如何生成可运行的代码？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/start.html" class="sidebar-link">模块四导读 | 实用特性：探索更多实用特性背后的原理</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/props.html" class="sidebar-link">18 | Props：Props 的初始化和更新流程是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/slot.html" class="sidebar-link">19 | 插槽：如何实现内容分发？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/directives.html" class="sidebar-link">20 | 指令：指令完整的生命周期是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/v-model.html" class="sidebar-link">21 | v-model：双向绑定到底是怎么实现的？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/start.html" class="sidebar-link">模块五导读 | 内置组件：学习 Vue 内置组件的实现原理</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/teleport.html" class="sidebar-link">22 | Teleport 组件：如何脱离当前组件渲染子组件？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/keepAlive.html" class="sidebar-link">23 | KeepAlive 组件：如何让组件在内存中缓存和调度？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/transition.html" class="sidebar-link">24 | Transition 组件：过渡动画的实现原理是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/transition01.html" class="sidebar-link">25 | Transition 组件：过渡动画的实现原理是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/start.html" class="sidebar-link">特别放送导读 | 研究 Vue 官方生态的实现原理</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/router.html" class="sidebar-link">26 | Vue Router：如何实现一个前端路由？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/router1.0.html" class="sidebar-link">27 | Vue Router：如何实现一个前端路由？（下）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_06-响应式-响应式内部的实现原理是怎样的-下"><a href="#_06-响应式-响应式内部的实现原理是怎样的-下" class="header-anchor">#</a> 06 | 响应式：响应式内部的实现原理是怎样的？（下）</h1> <h2 id="reactive-api"><a href="#reactive-api" class="header-anchor">#</a> reactive API</h2> <p>派发通知：set 函数</p> <p>派发通知发生在数据更新的阶段 ，由于我们用 Proxy API 劫持了数据对象，所以当这个响应式对象属性更新的时候就会执行 set 函数。我们来看一下 set 函数的实现，它是执行 createSetter 函数的返回值：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">createSetter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">set</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> receiver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">const</span> oldValue <span class="token operator">=</span> target<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+
+    value <span class="token operator">=</span> <span class="token function">toRaw</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> hadKey <span class="token operator">=</span> <span class="token function">hasOwn</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> result <span class="token operator">=</span> Reflect<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> receiver<span class="token punctuation">)</span>
+
+    <span class="token comment">// 如果目标的原型链也是一个 proxy，通过 Reflect.set 修改原型链上的属性会再次触发 setter，这种情况下就没必要触发两次 trigger 了</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>target <span class="token operator">===</span> <span class="token function">toRaw</span><span class="token punctuation">(</span>receiver<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>hadKey<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token function">trigger</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token string">&quot;add&quot;</span> <span class="token comment">/* ADD */</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hasChanged</span><span class="token punctuation">(</span>value<span class="token punctuation">,</span> oldValue<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token function">trigger</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token string">&quot;set&quot;</span> <span class="token comment">/* SET */</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> value<span class="token punctuation">,</span> oldValue<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> result
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>结合上述代码来看，set 函数的实现逻辑很简单，主要就做两件事情， 首先通过 Reflect.set 求值 ， 然后通过 trigger 函数派发通知 ，并依据 key 是否存在于 target 上来确定通知类型，即新增还是修改。</p> <p>整个 set 函数最核心的部分就是 执行 trigger 函数派发通知 ，下面我们将重点分析这个过程。</p> <p>我们先来看一下 trigger 函数的实现，为了分析主要流程，这里省略了 trigger 函数中的一些分支逻辑：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 原始数据对象 map</span>
+
+<span class="token keyword">const</span> targetMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> <span class="token function">trigger</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> type<span class="token punctuation">,</span> key<span class="token punctuation">,</span> newValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token comment">// 通过 targetMap 拿到 target 对应的依赖集合</span>
+
+  <span class="token keyword">const</span> depsMap <span class="token operator">=</span> targetMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>depsMap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 没有依赖，直接返回</span>
+
+    <span class="token keyword">return</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 创建运行的 effects 集合</span>
+
+  <span class="token keyword">const</span> effects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token comment">// 添加 effects 的函数</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">effectsToAdd</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>effectsToAdd<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      effectsToAdd<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">effect</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        effects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// SET | ADD | DELETE 操作之一，添加对应的 effects</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">!==</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token function">add</span><span class="token punctuation">(</span>depsMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">run</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">effect</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 调度执行</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span>scheduler<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function">scheduler</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// 直接运行</span>
+
+      <span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 遍历执行 effects</span>
+
+  effects<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>run<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>所以每次 trigger 函数就是根据 target 和 key ，从 targetMap 中找到相关的所有副作用函数遍历执行一遍。</p> <p>在描述依赖收集和派发通知的过程中，我们都提到了一个词：副作用函数，依赖收集过程中我们把 activeEffect（当前激活副作用函数）作为依赖收集，它又是什么？接下来我们来看一下副作用函数的庐山真面目。</p> <h2 id="副作用函数"><a href="#副作用函数" class="header-anchor">#</a> 副作用函数</h2> <p>介绍副作用函数前，我们先回顾一下响应式的原始需求，即我们修改了数据就能自动执行某个函数，举个简单的例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> counter <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+  num<span class="token operator">:</span> <span class="token number">0</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> <span class="token function">logCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span>num<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  counter<span class="token punctuation">.</span>num<span class="token operator">++</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token function">logCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+
+</code></pre></div><p>可以看到，这里我们定义了响应式对象 counter，然后我们在 logCount 中访问了 counter.num，我们希望通过执行 count 函数修改 counter.num 值的时候，能自动执行 logCount 函数。</p> <p>按我们之前对依赖收集过程的分析，如果这个 logCount 就是 activeEffect 的话，那么就可以实现需求，但显然是做不到的，因为代码在执行到 console.log(counter.num)这一行 的时候，它对自己在 logCount 函数中的运行是一无所知的。</p> <p>那么该怎么办呢？其实只要我们运行 logCount 函数前，把 logCount 赋值给 activeEffect 就好了，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>activeEffect <span class="token operator">=</span> logCount 
+
+<span class="token function">logCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>顺着这个思路，我们可以利用高阶函数的思想，对 logCount 做一层封装，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">wrapper</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">wrapped</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    activeEffect <span class="token operator">=</span> fn
+
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> wrapped
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> wrappedLog <span class="token operator">=</span> <span class="token function">wrapper</span><span class="token punctuation">(</span>logCount<span class="token punctuation">)</span>
+
+<span class="token function">wrappedLog</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>这里，wrapper 本身也是一个函数，它接受 fn 作为参数，返回一个新的函数 wrapped，然后维护一个全局的 activeEffect，当 wrapped 执行的时候，把 activeEffect 设置为 fn，然后执行 fn 即可。</p> <p>这样当我们执行 wrappedLog 后，再去修改 counter.num，就会自动执行 logCount 函数了。</p> <p>实际上 Vue.js 3.0 就是采用类似的做法，在它内部就有一个 effect 副作用函数，我们来看一下它的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 全局 effect 栈</span>
+
+<span class="token keyword">const</span> effectStack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token comment">// 当前激活的 effect</span>
+
+<span class="token keyword">let</span> activeEffect
+
+<span class="token keyword">function</span> <span class="token function">effect</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> options <span class="token operator">=</span> <span class="token constant">EMPTY_OBJ</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isEffect</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 如果 fn 已经是一个 effect 函数了，则指向原始函数</span>
+
+    fn <span class="token operator">=</span> fn<span class="token punctuation">.</span>raw
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 创建一个 wrapper，它是一个响应式的副作用的函数</span>
+
+  <span class="token keyword">const</span> effect <span class="token operator">=</span> <span class="token function">createReactiveEffect</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> options<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>options<span class="token punctuation">.</span>lazy<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// lazy 配置，计算属性会用到，非 lazy 则直接执行一次</span>
+
+    <span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> effect
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">createReactiveEffect</span><span class="token punctuation">(</span><span class="token parameter">fn<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">effect</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token function">reactiveEffect</span><span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>effect<span class="token punctuation">.</span>active<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// 非激活状态，则判断如果非调度执行，则直接执行原始函数。</span>
+
+      <span class="token keyword">return</span> options<span class="token punctuation">.</span>scheduler <span class="token operator">?</span> <span class="token keyword">undefined</span> <span class="token operator">:</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>effectStack<span class="token punctuation">.</span><span class="token function">includes</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// 清空 effect 引用的依赖</span>
+
+      <span class="token function">cleanup</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span>
+
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 开启全局 shouldTrack，允许依赖收集</span>
+
+        <span class="token function">enableTracking</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment">// 压栈</span>
+
+        effectStack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span>
+
+        activeEffect <span class="token operator">=</span> effect
+
+        <span class="token comment">// 执行原始函数</span>
+
+        <span class="token keyword">return</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 出栈</span>
+
+        effectStack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment">// 恢复 shouldTrack 开启之前的状态</span>
+
+        <span class="token function">resetTracking</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token comment">// 指向栈最后一个 effect</span>
+
+        activeEffect <span class="token operator">=</span> effectStack<span class="token punctuation">[</span>effectStack<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  effect<span class="token punctuation">.</span>id <span class="token operator">=</span> uid<span class="token operator">++</span>
+
+  <span class="token comment">// 标识是一个 effect 函数</span>
+
+  effect<span class="token punctuation">.</span>_isEffect <span class="token operator">=</span> <span class="token boolean">true</span>
+
+  <span class="token comment">// effect 自身的状态</span>
+
+  effect<span class="token punctuation">.</span>active <span class="token operator">=</span> <span class="token boolean">true</span>
+
+  <span class="token comment">// 包装的原始函数</span>
+
+  effect<span class="token punctuation">.</span>raw <span class="token operator">=</span> fn
+
+  <span class="token comment">// effect 对应的依赖，双向指针，依赖包含对 effect 的引用，effect 也包含对依赖的引用</span>
+
+  effect<span class="token punctuation">.</span>deps <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+  <span class="token comment">// effect 的相关配置</span>
+
+  effect<span class="token punctuation">.</span>options <span class="token operator">=</span> options
+
+  <span class="token keyword">return</span> effect
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>结合上述代码来看，effect 内部通过执行 createReactiveEffect 函数去创建一个新的 effect 函数，为了和外部的 effect 函数区分，我们把它称作 reactiveEffect 函数，并且还给它添加了一些额外属性（我在注释中都有标明）。另外，effect 函数还支持传入一个配置参数以支持更多的 feature，我们这里就不展开了，在后续的章节会详细分析。</p> <p>接着说，这个 reactiveEffect 函数就是响应式的副作用函数，当执行 trigger 过程派发通知的时候，执行的 effect 就是它。</p> <p>按我们之前的分析，这个 reactiveEffect 函数只需要做两件事情： 把全局的 activeEffect 指向它 ， 然后执行被包装的原始函数 fn 即可 。</p> <p>但实际上它的实现要更复杂一些，首先它会判断 effect 的状态是否是 active，这其实是一种控制手段，允许在非 active 状态且非调度执行情况，则直接执行原始函数 fn 并返回，在后续学习完侦听器后你会对它的理解更加深刻。</p> <p>接着判断 effectStack 中是否包含 effect，如果没有就把 effect 压入栈内。之前我们提到，只要设置 activeEffect = effect 即可，那么这里为什么要设计一个栈的结构呢？</p> <p>其实是考虑到以下这样一个嵌套 effect 的场景：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span> 
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> effect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vue/reactivity'</span> 
+
+<span class="token keyword">const</span> counter <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+
+num<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> 
+
+num2<span class="token operator">:</span> <span class="token number">0</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">function</span> <span class="token function">logCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+<span class="token function">effect</span><span class="token punctuation">(</span>logCount2<span class="token punctuation">)</span> 
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'num:'</span><span class="token punctuation">,</span> counter<span class="token punctuation">.</span>num<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">function</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+counter<span class="token punctuation">.</span>num<span class="token operator">++</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">function</span> <span class="token function">logCount2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'num2:'</span><span class="token punctuation">,</span> counter<span class="token punctuation">.</span>num2<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token function">effect</span><span class="token punctuation">(</span>logCount<span class="token punctuation">)</span> 
+
+<span class="token function">count</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>我们每次执行 effect 函数时，如果仅仅把 reactiveEffect 函数赋值给 activeEffect，那么针对这种嵌套场景，执行完 effect(logCount2) 后，activeEffect 还是 effect(logCount2) 返回的 reactiveEffect 函数，这样后续访问 counter.num 的时候，依赖收集对应的 activeEffect 就不对了，此时我们外部执行 count 函数修改 counter.num 后执行的便不是 logCount 函数，而是 logCount2 函数，最终输出的结果如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>num2<span class="token operator">:</span> <span class="token number">0</span> 
+
+num<span class="token operator">:</span> <span class="token number">0</span> 
+
+num2<span class="token operator">:</span> <span class="token number">0</span>
+
+</code></pre></div><p>而我们期望的结果应该如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>num2<span class="token operator">:</span> <span class="token number">0</span> 
+
+num<span class="token operator">:</span> <span class="token number">0</span> 
+
+num2<span class="token operator">:</span> <span class="token number">0</span> 
+
+num<span class="token operator">:</span> <span class="token number">1</span>
+
+
+</code></pre></div><p>因此针对嵌套 effect 的场景，我们不能简单地赋值 activeEffect，应该考虑到函数的执行本身就是一种入栈出栈操作，因此我们也可以设计一个 effectStack，这样每次进入 reactiveEffect 函数就先把它入栈，然后 activeEffect 指向这个 reactiveEffect 函数，接着在 fn 执行完毕后出栈，再把 activeEffect 指向 effectStack 最后一个元素，也就是外层 effect 函数对应的 reactiveEffect。</p> <p>这里我们还注意到一个细节，在入栈前会执行 cleanup 函数清空 reactiveEffect 函数对应的依赖 。在执行 track 函数的时候，除了收集当前激活的 effect 作为依赖，还通过 activeEffect.deps.push(dep) 把 dep 作为 activeEffect 的依赖，这样在 cleanup 的时候我们就可以找到 effect 对应的 dep 了，然后把 effect 从这些 dep 中删除。cleanup 函数的代码如下所示：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">cleanup</span><span class="token punctuation">(</span><span class="token parameter">effect</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> deps <span class="token punctuation">}</span> <span class="token operator">=</span> effect
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>deps<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> deps<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      deps<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    deps<span class="token punctuation">.</span>length <span class="token operator">=</span> <span class="token number">0</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>为什么需要 cleanup 呢？如果遇到这种场景：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">&quot;state.showMsg&quot;</span><span class="token operator">&gt;</span>
+
+    <span class="token punctuation">{</span><span class="token punctuation">{</span> state<span class="token punctuation">.</span>msg <span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>div v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">&gt;</span>
+
+    <span class="token punctuation">{</span><span class="token punctuation">{</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">&quot;toggle&quot;</span><span class="token operator">&gt;</span>Toggle Msg<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">&quot;switchView&quot;</span><span class="token operator">&gt;</span>Switch View<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+
+    <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+        msg<span class="token operator">:</span> <span class="token string">'Hello World'</span><span class="token punctuation">,</span>
+
+        showMsg<span class="token operator">:</span> <span class="token boolean">true</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">function</span> <span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        state<span class="token punctuation">.</span>msg <span class="token operator">=</span> state<span class="token punctuation">.</span>msg <span class="token operator">===</span> <span class="token string">'Hello World'</span> <span class="token operator">?</span> <span class="token string">'Hello Vue'</span> <span class="token operator">:</span> <span class="token string">'Hello World'</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">function</span> <span class="token function">switchView</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        state<span class="token punctuation">.</span>showMsg <span class="token operator">=</span> <span class="token operator">!</span>state<span class="token punctuation">.</span>showMsg
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+
+        toggle<span class="token punctuation">,</span>
+
+        switchView<span class="token punctuation">,</span>
+
+        state
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+</code></pre></div><p>结合代码可以知道，这个组件的视图会根据 showMsg 变量的控制显示 msg 或者一个随机数，当我们点击 Switch View 的按钮时，就会修改这个变量值。</p> <p>假设没有 cleanup，在第一次渲染模板的时候，activeEffect 是组件的副作用渲染函数，因为模板 render 的时候访问了 state.msg，所以会执行依赖收集，把副作用渲染函数作为 state.msg 的依赖，我们把它称作 render effect。然后我们点击 Switch View 按钮，视图切换为显示随机数，此时我们再点击 Toggle Msg 按钮，由于修改了 state.msg 就会派发通知，找到了 render effect 并执行，就又触发了组件的重新渲染。</p> <p>但这个行为实际上并不符合预期，因为当我们点击 Switch View 按钮，视图切换为显示随机数的时候，也会触发组件的重新渲染，但这个时候视图并没有渲染 state.msg，所以对它的改动并不应该影响组件的重新渲染。</p> <p>因此在组件的 render effect 执行之前，如果通过 cleanup 清理依赖，我们就可以删除之前 state.msg 收集的 render effect 依赖。这样当我们修改 state.msg 时，由于已经没有依赖了就不会触发组件的重新渲染，符合预期。</p> <p>至此，我们从 reactive API 入手了解了整个响应式对象的实现原理。除了 reactive API，Vue.js 3.0 还提供了其他好用的响应式 API，接下来我们一起分析一些常用的。</p> <h2 id="readonly-api"><a href="#readonly-api" class="header-anchor">#</a> readonly API</h2> <p>如果用 const 声明一个对象变量，虽然不能直接对这个变量赋值，但我们可以修改它的属。如果我们希望创建只读对象，不能修改它的属性，也不能给这个对象添加和删除属性，让它变成一个真正意义上的只读对象。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> original <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+  foo<span class="token operator">:</span> <span class="token number">1</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> wrapped <span class="token operator">=</span> <span class="token function">readonly</span><span class="token punctuation">(</span>original<span class="token punctuation">)</span>
+
+wrapped<span class="token punctuation">.</span>foo <span class="token operator">=</span> <span class="token number">2</span>
+
+<span class="token comment">// warn: Set operation on key &quot;foo&quot; failed: target is readonly.</span>
+
+
+</code></pre></div><p>显然，想实现上述需求就需要劫持对象，于是 Vue.js 3.0 在 reactive API 的基础上，设计并实现了 readonly API。</p> <p>我们先来看一下 readonly 的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">readonly</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token function">createReactiveObject</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> readonlyHandlers<span class="token punctuation">,</span> readonlyCollectionHandlers<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">createReactiveObject</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> isReadonly<span class="token punctuation">,</span> baseHandlers<span class="token punctuation">,</span> collectionHandlers</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isObject</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 目标必须是对象或数组类型</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">value cannot be made reactive: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">String</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> target
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>target<span class="token punctuation">.</span>__v_raw <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token punctuation">(</span>isReadonly <span class="token operator">&amp;&amp;</span> target<span class="token punctuation">.</span>__v_isReactive<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// target 已经是 Proxy 对象，直接返回</span>
+
+    <span class="token comment">// 有个例外，如果是 readonly 作用于一个响应式对象，则继续</span>
+
+    <span class="token keyword">return</span> target
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hasOwn</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> isReadonly <span class="token operator">?</span> <span class="token string">&quot;__v_readonly&quot;</span> <span class="token comment">/* readonly */</span> <span class="token operator">:</span> <span class="token string">&quot;__v_reactive&quot;</span> <span class="token comment">/* reactive */</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// target 已经有对应的 Proxy 了</span>
+
+    <span class="token keyword">return</span> isReadonly <span class="token operator">?</span> target<span class="token punctuation">.</span>__v_readonly <span class="token operator">:</span> target<span class="token punctuation">.</span>__v_reactive
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 只有在白名单里的数据类型才能变成响应式</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">canObserve</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> target
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 利用 Proxy 创建响应式</span>
+
+  <span class="token keyword">const</span> observed <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> collectionTypes<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>target<span class="token punctuation">.</span>constructor<span class="token punctuation">)</span> <span class="token operator">?</span> collectionHandlers <span class="token operator">:</span> baseHandlers<span class="token punctuation">)</span>
+
+  <span class="token comment">// 给原始数据打个标识，说明它已经变成响应式，并且有对应的 Proxy 了</span>
+
+  <span class="token function">def</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> isReadonly <span class="token operator">?</span> <span class="token string">&quot;__v_readonly&quot;</span> <span class="token comment">/* readonly */</span> <span class="token operator">:</span> <span class="token string">&quot;__v_reactive&quot;</span> <span class="token comment">/* reactive */</span><span class="token punctuation">,</span> observed<span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> observed
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>其实 readonly 和 reactive 函数的主要区别，就是执行 createReactiveObject 函数时的参数 isReadonly 不同。</p> <p>我们来看这里的代码，首先 isReadonly 变量为 true，所以在创建过程中会给原始对象 target 打上一个 __v_readonly 的标识。另外还有一个特殊情况，如果 target 已经是一个 reactive 对象，就会把它继续变成一个 readonly 响应式对象。</p> <p>其次就是 baseHandlers 的 collectionHandlers 的区别，我们这里仍然只关心基本数据类型的 Proxy 处理器对象，readonly 函数传入的 baseHandlers 值是 readonlyHandlers。</p> <p>接下来，我们来看一下其中 readonlyHandlers 的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> readonlyHandlers <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+  get<span class="token operator">:</span> readonlyGet<span class="token punctuation">,</span>
+
+  has<span class="token punctuation">,</span>
+
+  ownKeys<span class="token punctuation">,</span>
+
+  <span class="token function">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Set operation on key &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">String</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot; failed: target is readonly.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> target<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token function">deleteProperty</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Delete operation on key &quot;</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">String</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">&quot; failed: target is readonly.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> target<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token boolean">true</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>readonlyHandlers 和 mutableHandlers 的区别主要在 get、set 和 deleteProperty 三个函数上。很显然，作为一个只读的响应式对象，是不允许修改属性以及删除属性的，所以在非生产环境下 set 和 deleteProperty 函数的实现都会报警告，提示用户 target 是 readonly 的。</p> <p>接下来我们来看一下其中 readonlyGet 的实现，它其实就是 createGetter(true) 的返回值：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">createGetter</span><span class="token punctuation">(</span><span class="token parameter">isReadonly <span class="token operator">=</span> <span class="token boolean">false</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> receiver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// ...</span>
+
+    <span class="token comment">// isReadonly 为 true 则不需要依赖收集</span>
+
+    <span class="token operator">!</span>isReadonly <span class="token operator">&amp;&amp;</span> <span class="token function">track</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token string">&quot;get&quot;</span> <span class="token comment">/* GET */</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token function">isObject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+
+      <span class="token operator">?</span> isReadonly
+
+        <span class="token operator">?</span>
+
+        <span class="token comment">// 如果 res 是个对象或者数组类型，则递归执行 readonly 函数把 res readonly</span>
+
+        <span class="token function">readonly</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+
+        <span class="token operator">:</span> <span class="token function">reactive</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+
+      <span class="token operator">:</span> res
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>可以看到，它和 reactive API 最大的区别就是不做依赖收集了，这一点也非常好理解，因为它的属性不会被修改，所以就不用跟踪它的变化了。</p> <p>到这里，readonly API 就介绍完了，接下来我们分析一下另一个常用的响应式 API：ref。</p> <h2 id="ref-api"><a href="#ref-api" class="header-anchor">#</a> ref API</h2> <p>通过前面的分析，我们知道 reactive API 对传入的 target 类型有限制，必须是对象或者数组类型，而对于一些基础类型（比如 String、Number、Boolean）是不支持的。</p> <p>但是有时候从需求上来说，可能我只希望把一个字符串变成响应式，却不得不封装成一个对象，这样使用上多少有一些不方便，于是 Vue.js 3.0 设计并实现了 ref API。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> msg <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span> 
+
+msg<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token string">'Hello Vue'</span>
+
+</code></pre></div><p>我们先来看一下 ref 的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token function">createRef</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">convert</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">isObject</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token function">reactive</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token operator">:</span> val
+
+<span class="token keyword">function</span> <span class="token function">createRef</span><span class="token punctuation">(</span><span class="token parameter">rawValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isRef</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 如果传入的就是一个 ref，那么返回自身即可，处理嵌套 ref 的情况。</span>
+
+    <span class="token keyword">return</span> rawValue
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 如果是对象或者数组类型，则转换一个 reactive 对象。</span>
+
+  <span class="token keyword">let</span> value <span class="token operator">=</span> <span class="token function">convert</span><span class="token punctuation">(</span>rawValue<span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> r <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+    __v_isRef<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+    <span class="token keyword">get</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// getter</span>
+
+      <span class="token comment">// 依赖收集，key 为固定的 value</span>
+
+      <span class="token function">track</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token string">&quot;get&quot;</span> <span class="token comment">/* GET */</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span> value
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token keyword">set</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token parameter">newVal</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// setter，只处理 value 属性的修改</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">hasChanged</span><span class="token punctuation">(</span><span class="token function">toRaw</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span><span class="token punctuation">,</span> rawValue<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token comment">// 判断有变化后更新值</span>
+
+        rawValue <span class="token operator">=</span> newVal
+
+        value <span class="token operator">=</span> <span class="token function">convert</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span>
+
+        <span class="token comment">// 派发通知</span>
+
+        <span class="token function">trigger</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span> <span class="token string">&quot;set&quot;</span> <span class="token comment">/* SET */</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">,</span> <span class="token keyword">void</span> <span class="token number">0</span><span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> r
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>可以看到，函数首先处理了嵌套 ref 的情况，如果传入的 rawValue 也是 ref，那么直接返回。</p> <p>接着对 rawValue 做了一层转换，如果 rawValue 是对象或者数组类型，那么把它转换成一个 reactive 对象。</p> <p>最后定义一个对 value 属性做 getter 和 setter 劫持的对象并返回，get 部分就是执行 track 函数做依赖收集然后返回它的值；set 部分就是设置新值并且执行 trigger 函数派发通知。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>好的，到这里我们这一节的学习也要结束啦，我希望通过这节课的学习，你能搞明白响应式 API 的实现原理，知道什么时候收集依赖，什么时候派发更新，以及副作用函数的作用和设计原理。我还希望你能知道 reactive、readonly、ref 三种 API 的区别和各自的使用场景，这样你就可以在今后的开发中对它们应用自如啦。</p> <p>最后我们通过一张图来看一下整个响应式 API 实现和组件更新的关系：</p> <img src="https://s0.lgstatic.com/i/image/M00/3A/99/CgqCHl8iOeqAJJlaAAHAhGDRoDQ714.png"> <p>这幅图是不是很眼熟？没错，它和前面 Vue.js 2.x 的响应式原理图很接近，其实 Vue.js 3.0 在响应式的实现思路和 Vue.js 2.x 差别并不大，主要就是 劫持数据的方式改成用 Proxy 实现 ， 以及收集的依赖由 watcher 实例变成了组件副作用渲染函数 。</p> <p>最后，给你留一道思考题目，为什么说 Vue.js 3 的响应式 API 实现和 Vue.js 2.x 相比性能要好，具体好在哪里呢？它又有哪些不足呢？欢迎你在留言区与我分享。</p> <blockquote><p>本节课的相关代码在源代码中的位置如下：
+packages/reactivity/src/baseHandlers.ts
+packages/reactivity/src/effect.ts
+packages/reactivity/src/reactive.ts
+packages/reactivity/src/ref.ts</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/frame/vueCodeSource/Chapter2.0/responsive.html" class="prev">
+        05 | 响应式：响应式内部的实现原理是怎样的？（上）
+      </a></span> <span class="next"><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" aria-current="page" class="router-link-exact-active router-link-active">
+        06 | 响应式：响应式内部的实现原理是怎样的？（下）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.204520ae.js" defer></script><script src="/assets/js/2.70a8b724.js" defer></script><script src="/assets/js/35.32e0f288.js" defer></script>
+  </body>
+</html>

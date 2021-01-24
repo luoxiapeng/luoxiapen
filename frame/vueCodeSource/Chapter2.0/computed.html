@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>07 | 计算属性：计算属性比普通函数好在哪里？ | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    <link rel="preload" href="/assets/css/0.styles.7d3483bf.css" as="style"><link rel="preload" href="/assets/js/app.204520ae.js" as="script"><link rel="preload" href="/assets/js/2.70a8b724.js" as="script"><link rel="preload" href="/assets/js/31.c4138c5f.js" as="script"><link rel="prefetch" href="/assets/js/10.86d38f27.js"><link rel="prefetch" href="/assets/js/100.e56c4d80.js"><link rel="prefetch" href="/assets/js/101.dc5d2fb6.js"><link rel="prefetch" href="/assets/js/102.5cb74def.js"><link rel="prefetch" href="/assets/js/103.acf0c4de.js"><link rel="prefetch" href="/assets/js/104.d9552fcb.js"><link rel="prefetch" href="/assets/js/105.b2d00a56.js"><link rel="prefetch" href="/assets/js/106.45b0e7a0.js"><link rel="prefetch" href="/assets/js/107.550d5afc.js"><link rel="prefetch" href="/assets/js/108.75b6724b.js"><link rel="prefetch" href="/assets/js/109.2965cb13.js"><link rel="prefetch" href="/assets/js/11.7f2637f1.js"><link rel="prefetch" href="/assets/js/110.edc6b2d6.js"><link rel="prefetch" href="/assets/js/111.bc709592.js"><link rel="prefetch" href="/assets/js/112.702f04e3.js"><link rel="prefetch" href="/assets/js/113.dceba997.js"><link rel="prefetch" href="/assets/js/114.8b5a858c.js"><link rel="prefetch" href="/assets/js/115.7af93d32.js"><link rel="prefetch" href="/assets/js/116.c4ee473f.js"><link rel="prefetch" href="/assets/js/117.e3cfccf7.js"><link rel="prefetch" href="/assets/js/118.91e337f7.js"><link rel="prefetch" href="/assets/js/119.4bf514f5.js"><link rel="prefetch" href="/assets/js/12.4b23c5cb.js"><link rel="prefetch" href="/assets/js/120.0ef1e047.js"><link rel="prefetch" href="/assets/js/121.4d27a08d.js"><link rel="prefetch" href="/assets/js/122.9e7333a0.js"><link rel="prefetch" href="/assets/js/123.d598504e.js"><link rel="prefetch" href="/assets/js/124.5cc25f47.js"><link rel="prefetch" href="/assets/js/125.ada005a6.js"><link rel="prefetch" href="/assets/js/126.ff51709b.js"><link rel="prefetch" href="/assets/js/127.7c2e25a0.js"><link rel="prefetch" href="/assets/js/128.32485d49.js"><link rel="prefetch" href="/assets/js/129.ea506573.js"><link rel="prefetch" href="/assets/js/13.00f0d14c.js"><link rel="prefetch" href="/assets/js/130.a22554fc.js"><link rel="prefetch" href="/assets/js/131.c6faf53c.js"><link rel="prefetch" href="/assets/js/132.6cdbab1e.js"><link rel="prefetch" href="/assets/js/133.07eda894.js"><link rel="prefetch" href="/assets/js/134.12788773.js"><link rel="prefetch" href="/assets/js/135.149b5149.js"><link rel="prefetch" href="/assets/js/136.0dd99a21.js"><link rel="prefetch" href="/assets/js/137.d2291112.js"><link rel="prefetch" href="/assets/js/138.f1e66543.js"><link rel="prefetch" href="/assets/js/139.45c10621.js"><link rel="prefetch" href="/assets/js/14.171fc803.js"><link rel="prefetch" href="/assets/js/140.5fff5f05.js"><link rel="prefetch" href="/assets/js/141.fbd142b7.js"><link rel="prefetch" href="/assets/js/142.6e43cff1.js"><link rel="prefetch" href="/assets/js/143.4ed8f809.js"><link rel="prefetch" href="/assets/js/144.9664abbf.js"><link rel="prefetch" href="/assets/js/145.f9552cd4.js"><link rel="prefetch" href="/assets/js/146.7099aa1b.js"><link rel="prefetch" href="/assets/js/147.0255414a.js"><link rel="prefetch" href="/assets/js/148.2a51f08c.js"><link rel="prefetch" href="/assets/js/149.ef11e63f.js"><link rel="prefetch" href="/assets/js/15.b2351ec5.js"><link rel="prefetch" href="/assets/js/150.a92b6df4.js"><link rel="prefetch" href="/assets/js/151.681c04fc.js"><link rel="prefetch" href="/assets/js/16.a5945ba7.js"><link rel="prefetch" href="/assets/js/17.0aa0fc57.js"><link rel="prefetch" href="/assets/js/18.ef7278d5.js"><link rel="prefetch" href="/assets/js/19.8a1ea212.js"><link rel="prefetch" href="/assets/js/20.08c0a26b.js"><link rel="prefetch" href="/assets/js/21.4a2c6e55.js"><link rel="prefetch" href="/assets/js/22.3dac37e4.js"><link rel="prefetch" href="/assets/js/23.d587a6a5.js"><link rel="prefetch" href="/assets/js/24.fb1d5dfc.js"><link rel="prefetch" href="/assets/js/25.631d25c2.js"><link rel="prefetch" href="/assets/js/26.b87c231f.js"><link rel="prefetch" href="/assets/js/27.26fb970d.js"><link rel="prefetch" href="/assets/js/28.a0443608.js"><link rel="prefetch" href="/assets/js/29.88efd805.js"><link rel="prefetch" href="/assets/js/3.5f108ab8.js"><link rel="prefetch" href="/assets/js/30.cd33a927.js"><link rel="prefetch" href="/assets/js/32.8d4a2086.js"><link rel="prefetch" href="/assets/js/33.ac309d50.js"><link rel="prefetch" href="/assets/js/34.09fe0060.js"><link rel="prefetch" href="/assets/js/35.32e0f288.js"><link rel="prefetch" href="/assets/js/36.53311644.js"><link rel="prefetch" href="/assets/js/37.89fa8ee2.js"><link rel="prefetch" href="/assets/js/38.e2ae491f.js"><link rel="prefetch" href="/assets/js/39.2dce7472.js"><link rel="prefetch" href="/assets/js/4.25ffcc4b.js"><link rel="prefetch" href="/assets/js/40.5127bb61.js"><link rel="prefetch" href="/assets/js/41.f51a9312.js"><link rel="prefetch" href="/assets/js/42.e990d21a.js"><link rel="prefetch" href="/assets/js/43.16c8e362.js"><link rel="prefetch" href="/assets/js/44.8444f2f1.js"><link rel="prefetch" href="/assets/js/45.d5c73af2.js"><link rel="prefetch" href="/assets/js/46.4408f32e.js"><link rel="prefetch" href="/assets/js/47.c92f09d2.js"><link rel="prefetch" href="/assets/js/48.54fe246c.js"><link rel="prefetch" href="/assets/js/49.cfd9ecf0.js"><link rel="prefetch" href="/assets/js/5.06ccf107.js"><link rel="prefetch" href="/assets/js/50.91d288c1.js"><link rel="prefetch" href="/assets/js/51.12665eab.js"><link rel="prefetch" href="/assets/js/52.fa4f783e.js"><link rel="prefetch" href="/assets/js/53.15da401f.js"><link rel="prefetch" href="/assets/js/54.797a88f3.js"><link rel="prefetch" href="/assets/js/55.bfbd7fa0.js"><link rel="prefetch" href="/assets/js/56.73e5553b.js"><link rel="prefetch" href="/assets/js/57.45e23046.js"><link rel="prefetch" href="/assets/js/58.5e4a34b3.js"><link rel="prefetch" href="/assets/js/59.117734f0.js"><link rel="prefetch" href="/assets/js/6.af57e81a.js"><link rel="prefetch" href="/assets/js/60.8826bb57.js"><link rel="prefetch" href="/assets/js/61.1091dbfe.js"><link rel="prefetch" href="/assets/js/62.c31c3c12.js"><link rel="prefetch" href="/assets/js/63.47e3bb53.js"><link rel="prefetch" href="/assets/js/64.8c4589c3.js"><link rel="prefetch" href="/assets/js/65.9e4d740b.js"><link rel="prefetch" href="/assets/js/66.e98dce2e.js"><link rel="prefetch" href="/assets/js/67.a9d7e014.js"><link rel="prefetch" href="/assets/js/68.12cacdce.js"><link rel="prefetch" href="/assets/js/69.e9539f94.js"><link rel="prefetch" href="/assets/js/7.0f111b5f.js"><link rel="prefetch" href="/assets/js/70.4d70c219.js"><link rel="prefetch" href="/assets/js/71.d992837b.js"><link rel="prefetch" href="/assets/js/72.7c001e27.js"><link rel="prefetch" href="/assets/js/73.92b33165.js"><link rel="prefetch" href="/assets/js/74.482ce79d.js"><link rel="prefetch" href="/assets/js/75.92280a65.js"><link rel="prefetch" href="/assets/js/76.3970e579.js"><link rel="prefetch" href="/assets/js/77.60e67658.js"><link rel="prefetch" href="/assets/js/78.76dce3c3.js"><link rel="prefetch" href="/assets/js/79.7d44ded7.js"><link rel="prefetch" href="/assets/js/8.230382ce.js"><link rel="prefetch" href="/assets/js/80.f500693a.js"><link rel="prefetch" href="/assets/js/81.ae4c91a1.js"><link rel="prefetch" href="/assets/js/82.abc45a7b.js"><link rel="prefetch" href="/assets/js/83.090e9541.js"><link rel="prefetch" href="/assets/js/84.a9922008.js"><link rel="prefetch" href="/assets/js/85.cb89d24d.js"><link rel="prefetch" href="/assets/js/86.f836fcc0.js"><link rel="prefetch" href="/assets/js/87.2bc1d83c.js"><link rel="prefetch" href="/assets/js/88.8eda12dc.js"><link rel="prefetch" href="/assets/js/89.8cece596.js"><link rel="prefetch" href="/assets/js/9.bf661022.js"><link rel="prefetch" href="/assets/js/90.30e82fd4.js"><link rel="prefetch" href="/assets/js/91.fbba73e8.js"><link rel="prefetch" href="/assets/js/92.fd0c03a9.js"><link rel="prefetch" href="/assets/js/93.52a98fda.js"><link rel="prefetch" href="/assets/js/94.526a1a5b.js"><link rel="prefetch" href="/assets/js/95.1bff8841.js"><link rel="prefetch" href="/assets/js/96.4c870afc.js"><link rel="prefetch" href="/assets/js/97.59af5659.js"><link rel="prefetch" href="/assets/js/98.5146cbc7.js"><link rel="prefetch" href="/assets/js/99.a034c567.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7d3483bf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/vueCodeSource/" class="nav-link router-link-active">
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/vueCodeSource/" class="nav-link router-link-active">
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue3.0源码解读</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/frame/vueCodeSource/Chapter/start.html" class="sidebar-link">模块一导读 | 组件的实现：直击 Vue 核心的实现</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/start.html" class="sidebar-link">01 | 组件渲染：vnode 到真实 DOM 是如何转变的？</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/domDiff01.html" class="sidebar-link">02 | 组件更新：完整的 DOM diff 流程是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/domDiff02.html" class="sidebar-link">03 | 组件更新：完整的 DOM diff 流程是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/compositionApi.html" class="sidebar-link">模块二导读 | 逻辑复用最佳实践：Composition API</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/setup.html" class="sidebar-link">04 | Setup：组件渲染前的初始化过程是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive.html" class="sidebar-link">05 | 响应式：响应式内部的实现原理是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" class="sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" class="sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/computed.html" aria-current="page" class="active sidebar-link">07 | 计算属性：计算属性比普通函数好在哪里？</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/computed.html#计算属性-api-computed" class="sidebar-link">计算属性 API： computed</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/computed.html#计算属性的运行机制" class="sidebar-link">计算属性的运行机制</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/computed.html#嵌套计算属性" class="sidebar-link">嵌套计算属性</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/computed.html#计算属性的执行顺序" class="sidebar-link">计算属性的执行顺序</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/computed.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/frame/vueCodeSource/Chapter2.0/watch.html" class="sidebar-link">08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/watch01.html" class="sidebar-link">09 | 侦听器：侦听器的实现原理和使用场景是什么？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/lifeCycle.html" class="sidebar-link">10 | 生命周期：各个生命周期的执行时机和应用场景是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/provide.html" class="sidebar-link">11 | 依赖注入：子孙组件如何共享数据？</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/start.html" class="sidebar-link">模块三导读 | 编译和优化：了解编译过程和背后的优化思想</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast.html" class="sidebar-link">12 | 模板解析：构造 AST 的完整流程是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast1.0.html" class="sidebar-link">13 | 模板解析：构造 AST 的完整流程是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast2.0.html" class="sidebar-link">14 | AST 转换：AST 节点内部做了哪些转换？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast3.0.html" class="sidebar-link">15 | AST 转换：AST 节点内部做了哪些转换？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast4.0.html" class="sidebar-link">16 | 生成代码：AST 如何生成可运行的代码？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast5.0.html" class="sidebar-link">17 | 生成代码：AST 如何生成可运行的代码？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/start.html" class="sidebar-link">模块四导读 | 实用特性：探索更多实用特性背后的原理</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/props.html" class="sidebar-link">18 | Props：Props 的初始化和更新流程是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/slot.html" class="sidebar-link">19 | 插槽：如何实现内容分发？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/directives.html" class="sidebar-link">20 | 指令：指令完整的生命周期是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/v-model.html" class="sidebar-link">21 | v-model：双向绑定到底是怎么实现的？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/start.html" class="sidebar-link">模块五导读 | 内置组件：学习 Vue 内置组件的实现原理</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/teleport.html" class="sidebar-link">22 | Teleport 组件：如何脱离当前组件渲染子组件？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/keepAlive.html" class="sidebar-link">23 | KeepAlive 组件：如何让组件在内存中缓存和调度？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/transition.html" class="sidebar-link">24 | Transition 组件：过渡动画的实现原理是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/transition01.html" class="sidebar-link">25 | Transition 组件：过渡动画的实现原理是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/start.html" class="sidebar-link">特别放送导读 | 研究 Vue 官方生态的实现原理</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/router.html" class="sidebar-link">26 | Vue Router：如何实现一个前端路由？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/router1.0.html" class="sidebar-link">27 | Vue Router：如何实现一个前端路由？（下）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_07-计算属性-计算属性比普通函数好在哪里"><a href="#_07-计算属性-计算属性比普通函数好在哪里" class="header-anchor">#</a> 07 | 计算属性：计算属性比普通函数好在哪里？</h1> <p>计算属性是 Vue.js 开发中一个非常实用的 API ，它允许用户定义一个计算方法，然后根据一些依赖的响应式数据计算出新值并返回。当依赖发生变化时，计算属性可以自动重新计算获取新值，所以使用起来非常方便。</p> <p>在 Vue.js 2.x 中，相信你对计算属性的应用已经如数家珍了，我们可以在组件对象中定义 computed 属性。到了 Vue.js 3.0 ，虽然也可以在组件中沿用 Vue.js 2.x 的使用方式，但是我们也可以单独使用计算属性 API。</p> <p>计算属性本质上还是对依赖的计算，那么为什么我们不直接用函数呢？在 Vue.js 3.0 中计算属性的 API 又是如何实现呢？接下来，就请你带着这些疑问，随我一起深入其实现原理的学习吧。</p> <h2 id="计算属性-api-computed"><a href="#计算属性-api-computed" class="header-anchor">#</a> 计算属性 API： computed</h2> <p>Vue.js 3.0 提供了一个 computed 函数作为计算属性 API，我们先来看看它是如何使用的。</p> <p>我们举个简单的例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">const</span> plusOne <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> count<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> 
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>plusOne<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token comment">// 2 </span>
+
+plusOne<span class="token punctuation">.</span>value<span class="token operator">++</span> <span class="token comment">// error </span>
+
+count<span class="token punctuation">.</span>value<span class="token operator">++</span> 
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>plusOne<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token comment">// 3</span>
+
+</code></pre></div><p>从代码中可以看到，我们先使用 ref API 创建了一个响应式对象 count，然后使用 computed API 创建了另一个响应式对象 plusOne，它的值是 count.value + 1，当我们修改 count.value 的时候， plusOne.value 就会自动发生变化。</p> <p>注意，这里我们直接修改 plusOne.value 会报一个错误，这是因为如果我们传递给 computed 的是一个函数，那么这就是一个 getter 函数，我们只能获取它的值，而不能直接修改它。</p> <p>在 getter 函数中，我们会根据响应式对象重新计算出新的值，这也就是它被叫做计算属性的原因，而这个响应式对象，就是计算属性的依赖。</p> <p>当然，有时候我们也希望能够直接修改 computed 的返回值，那么我们可以给 computed 传入一个对象：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">const</span> plusOne <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+
+  <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> count<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> 
+
+  <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token parameter">val</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+    count<span class="token punctuation">.</span>value <span class="token operator">=</span> val <span class="token operator">-</span> <span class="token number">1</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+plusOne<span class="token punctuation">.</span>value <span class="token operator">=</span> <span class="token number">1</span> 
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">.</span>value<span class="token punctuation">)</span> <span class="token comment">// 0</span>
+
+</code></pre></div><p>在这个例子中，结合上述代码可以看到，我们给 computed 函数传入了一个拥有 getter 函数和 setter 函数的对象，getter 函数和之前一样，还是返回 count.value + 1；而 setter 函数，请注意，这里我们修改 plusOne.value 的值就会触发 setter 函数，其实 setter 函数内部实际上会根据传入的参数修改计算属性的依赖值 count.value，因为一旦依赖的值被修改了，我们再去获取计算属性就会重新执行一遍 getter，所以这样获取的值也就发生了变化。</p> <p>好了，我们现在已经知道了 computed API 的两种使用方式了，接下来就看看它是怎样实现的：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token parameter">getterOrOptions</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// getter 函数 </span>
+
+  <span class="token keyword">let</span> getter 
+
+  <span class="token comment">// setter 函数 </span>
+
+  <span class="token keyword">let</span> setter 
+
+  <span class="token comment">// 标准化参数 </span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isFunction</span><span class="token punctuation">(</span>getterOrOptions<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// 表面传入的是 getter 函数，不能修改计算属性的值 </span>
+
+    getter <span class="token operator">=</span> getterOrOptions 
+
+    setter <span class="token operator">=</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> 
+
+      <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+        console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">'Write operation failed: computed value is readonly'</span><span class="token punctuation">)</span> 
+
+      <span class="token punctuation">}</span> 
+
+      <span class="token operator">:</span> <span class="token constant">NOOP</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+    getter <span class="token operator">=</span> getterOrOptions<span class="token punctuation">.</span>get 
+
+    setter <span class="token operator">=</span> getterOrOptions<span class="token punctuation">.</span>set 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token comment">// 数据是否脏的 </span>
+
+  <span class="token keyword">let</span> dirty <span class="token operator">=</span> <span class="token boolean">true</span> 
+
+  <span class="token comment">// 计算结果 </span>
+
+  <span class="token keyword">let</span> value 
+
+  <span class="token keyword">let</span> computed 
+
+  <span class="token comment">// 创建副作用函数 </span>
+
+  <span class="token keyword">const</span> runner <span class="token operator">=</span> <span class="token function">effect</span><span class="token punctuation">(</span>getter<span class="token punctuation">,</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// 延时执行 </span>
+
+    lazy<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> 
+
+    <span class="token comment">// 标记这是一个 computed effect 用于在 trigger 阶段的优先级排序 </span>
+
+    computed<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> 
+
+    <span class="token comment">// 调度执行的实现 </span>
+
+    <span class="token function-variable function">scheduler</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dirty<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+        dirty <span class="token operator">=</span> <span class="token boolean">true</span> 
+
+        <span class="token comment">// 派发通知，通知运行访问该计算属性的 activeEffect </span>
+
+        <span class="token function">trigger</span><span class="token punctuation">(</span>computed<span class="token punctuation">,</span> <span class="token string">&quot;set&quot;</span> <span class="token comment">/* SET */</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">)</span> 
+
+      <span class="token punctuation">}</span> 
+
+    <span class="token punctuation">}</span> 
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+  <span class="token comment">// 创建 computed 对象 </span>
+
+  computed <span class="token operator">=</span> <span class="token punctuation">{</span> 
+
+    __v_isRef<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> 
+
+    <span class="token comment">// 暴露 effect 对象以便计算属性可以停止计算 </span>
+
+    effect<span class="token operator">:</span> runner<span class="token punctuation">,</span> 
+
+    <span class="token keyword">get</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token comment">// 计算属性的 getter </span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>dirty<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+        <span class="token comment">// 只有数据为脏的时候才会重新计算 </span>
+
+        value <span class="token operator">=</span> <span class="token function">runner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+        dirty <span class="token operator">=</span> <span class="token boolean">false</span> 
+
+      <span class="token punctuation">}</span> 
+
+      <span class="token comment">// 依赖收集，收集运行访问该计算属性的 activeEffect </span>
+
+      <span class="token function">track</span><span class="token punctuation">(</span>computed<span class="token punctuation">,</span> <span class="token string">&quot;get&quot;</span> <span class="token comment">/* GET */</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">)</span> 
+
+      <span class="token keyword">return</span> value 
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+
+    <span class="token keyword">set</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token parameter">newValue</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token comment">// 计算属性的 setter </span>
+
+      <span class="token function">setter</span><span class="token punctuation">(</span>newValue<span class="token punctuation">)</span> 
+
+    <span class="token punctuation">}</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token keyword">return</span> computed 
+
+<span class="token punctuation">}</span>
+</code></pre></div><p>从代码中可以看到，computed 函数的流程主要做了三件事情：标准化参数，创建副作用函数和创建 computed 对象。我们来详细分析一下这几个步骤。</p> <p>首先是标准化参数。computed 函数接受两种类型的参数，一个是 getter 函数，一个是拥有 getter 和 setter 函数的对象，通过判断参数的类型，我们初始化了函数内部定义的 getter 和 setter 函数。</p> <p>接着是创建副作用函数 runner。computed 内部通过 effect 创建了一个副作用函数，它是对 getter 函数做的一层封装，另外我们这里要注意第二个参数，也就是 effect 函数的配置对象。其中 lazy 为 true 表示 effect 函数返回的 runner 并不会立即执行；computed 为 true 用于表示这是一个 computed effect，用于 trigger 阶段的优先级排序，我们稍后会分析；scheduler 表示它的调度运行的方式，我们也稍后分析。</p> <p>最后是创建 computed 对象并返回，这个对象也拥有 getter 和 setter 函数。当 computed 对象被访问的时候会触发 getter，然后会判断是否 dirty，如果是就执行 runner，然后做依赖收集；当我们直接设置 computed 对象时会触发 setter，即执行 computed 函数内部定义的 setter 函数。</p> <h2 id="计算属性的运行机制"><a href="#计算属性的运行机制" class="header-anchor">#</a> 计算属性的运行机制</h2> <p>computed 函数的逻辑会有一点绕，不过不要紧，我们可以结合一个应用 computed 计算属性的例子，来理解整个计算属性的运行机制。分析之前我们需要记住 computed 内部两个重要的变量，第一个 dirty 表示一个计算属性的值是否是“脏的”，用来判断需不需要重新计算，第二个 value 表示计算属性每次计算后的结果。</p> <p>现在，我们来看这个示例：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span> 
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span> 
+
+    {{ plusOne }} 
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> 
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>plus<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>plus<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span> 
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span> 
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript"> 
+
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span> 
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> 
+
+      <span class="token keyword">const</span> plusOne <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+        <span class="token keyword">return</span> count<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token number">1</span> 
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+      <span class="token keyword">function</span> <span class="token function">plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+        count<span class="token punctuation">.</span>value<span class="token operator">++</span> 
+
+      <span class="token punctuation">}</span> 
+
+      <span class="token keyword">return</span> <span class="token punctuation">{</span> 
+
+        plusOne<span class="token punctuation">,</span> 
+
+        plus 
+
+      <span class="token punctuation">}</span> 
+
+    <span class="token punctuation">}</span> 
+
+  <span class="token punctuation">}</span> 
+
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div><p>可以看到，在这个例子中我们利用 computed API 创建了计算属性对象 plusOne，它传入的是一个 getter 函数，为了和后面计算属性对象的 getter 函数区分，我们把它称作 computed getter。另外，组件模板中引用了 plusOne 变量和 plus 函数。</p> <p>组件渲染阶段会访问 plusOne，也就触发了 plusOne 对象的 getter 函数：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">get</span> <span class="token function">value</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 计算属性的 getter </span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>dirty<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// 只有数据为脏的时候才会重新计算 </span>
+
+    value <span class="token operator">=</span> <span class="token function">runner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+    dirty <span class="token operator">=</span> <span class="token boolean">false</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token comment">// 依赖收集，收集运行访问该计算属性的 activeEffect </span>
+
+  <span class="token function">track</span><span class="token punctuation">(</span>computed<span class="token punctuation">,</span> <span class="token string">&quot;get&quot;</span> <span class="token comment">/* GET */</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">)</span> 
+
+  <span class="token keyword">return</span> value 
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>由于默认 dirty 是 true，所以这个时候会执行 runner 函数，并进一步执行 computed getter，也就是 count.value + 1，因为访问了 count 的值，并且由于 count 也是一个响应式对象，所以就会触发 count 对象的依赖收集过程。</p> <p>请注意，由于是在 runner 执行的时候访问 count，所以这个时候的 activeEffect 是 runner 函数。runner 函数执行完毕，会把 dirty 设置为 false，并进一步执行 track（computed,&quot;get&quot;,'value') 函数做依赖收集，这个时候 runner 已经执行完了，所以 activeEffect 是组件副作用渲染函数。</p> <p>所以你要特别注意这是两个依赖收集过程：对于 plusOne 来说，它收集的依赖是组件副作用渲染函数；对于 count 来说，它收集的依赖是 plusOne 内部的 runner 函数。</p> <p>然后当我们点击按钮的时候，会执行 plus 函数，函数内部通过 count.value++ 修改 count 的值，并派发通知。请注意，这里不是直接调用 runner 函数，而是把 runner 作为参数去执行 scheduler 函数。我们来回顾一下 trigger 函数内部对于 effect 函数的执行方式:</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">run</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">effect</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 调度执行 </span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span>scheduler<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function">scheduler</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// 直接运行 </span>
+
+    <span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>computed API 内部创建副作用函数时，已经配置了 scheduler 函数，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function-variable function">scheduler</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dirty<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    dirty <span class="token operator">=</span> <span class="token boolean">true</span> 
+
+    <span class="token comment">// 派发通知，通知运行访问该计算属性的 activeEffect </span>
+
+    <span class="token function">trigger</span><span class="token punctuation">(</span>computed<span class="token punctuation">,</span> <span class="token string">&quot;set&quot;</span> <span class="token comment">/* SET */</span><span class="token punctuation">,</span> <span class="token string">'value'</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>它并没有对计算属性求新值，而仅仅是把 dirty 设置为 true，再执行 trigger(computed, &quot;set&quot; , 'value')，去通知执行 plusOne 依赖的组件渲染副作用函数，即触发组件的重新渲染。</p> <p>在组件重新渲染的时候，会再次访问 plusOne，我们发现这个时候 dirty 为 true，然后会再次执行 computed getter，此时才会执行 count.value + 1 求得新值。这就是虽然组件没有直接访问 count，但是当我们修改 count 的值的时候，组件仍然会重新渲染的原因。</p> <p>为了更加直观展示上述过程，我画了一张图：</p> <img src="https://s0.lgstatic.com/i/image/M00/3C/6A/Ciqc1F8nv6SAMiYhAAJ4vcrA7pg591.png"> <p>通过以上分析，我们可以看出 computed 计算属性有两个特点：</p> <ul><li><p>延时计算，只有当我们访问计算属性的时候，它才会真正运行 computed getter 函数计算</p></li> <li><p>缓存，它的内部会缓存上次的计算结果 value，而且只有 dirty 为 true 时才会重新计算。如果访问计算属性时 dirty 为 false，那么直接返回这个 value。</p></li></ul> <p>现在，我们就可以回答开头提的问题了。和单纯使用普通函数相比，计算属性的优势是：只要依赖不变化，就可以使用缓存的 value 而不用每次在渲染组件的时候都执行函数去计算，这是典型的空间换时间的优化思想。</p> <h2 id="嵌套计算属性"><a href="#嵌套计算属性" class="header-anchor">#</a> 嵌套计算属性</h2> <p>计算属性也支持嵌套，我们可以针对上述例子做个小修改，即不在渲染函数中访问 plusOne，而在另一个计算属性中访问：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">const</span> plusOne <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">return</span> count<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token number">1</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">const</span> plusTwo <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">return</span> plusOne<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token number">1</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>plusTwo<span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+
+</code></pre></div><p>从代码中可以看到，当我们访问 plusTwo 的时候，过程和前面都差不多，同样也是两个依赖收集的过程。对于 plusOne 来说，它收集的依赖是 plusTwo 内部的 runner 函数；对于 count 来说，它收集的依赖是 plusOne 内部的 runner 函数。</p> <p>接着当我们修改 count 的值时，它会派发通知，先运行 plusOne 内部的 scheduler 函数，把 plusOne 内部的 dirty 变为 true，然后执行 trigger 函数再次派发通知，接着运行 plusTwo 内部的 scheduler 函数，把 plusTwo 内部的 dirty 设置为 true。</p> <p>然后当我们再次访问 plusTwo 的值时，发现 dirty 为 true，就会执行 plusTwo 的 computed getter 函数去执行 plusOne.value + 1，进而执行 plusOne 的 computed gette 即 count.value + 1 + 1，求得最终新值 2。</p> <p>得益于 computed 这种巧妙的设计，无论嵌套多少层计算属性都可以正常工作。</p> <h2 id="计算属性的执行顺序"><a href="#计算属性的执行顺序" class="header-anchor">#</a> 计算属性的执行顺序</h2> <p>我们曾提到计算属性内部创建副作用函数的时候会配置 computed 为 true，标识这是一个 computed effect，用于在 trigger 阶段的优先级排序。我们来回顾一下 trigger 函数执行 effects 的过程：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">add</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">effectsToAdd</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>effectsToAdd<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    effectsToAdd<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">effect</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>effect <span class="token operator">!==</span> activeEffect <span class="token operator">||</span> <span class="token operator">!</span>shouldTrack<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span>computed<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+          computedRunners<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span> 
+
+        <span class="token punctuation">}</span> 
+
+        <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+          effects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span> 
+
+        <span class="token punctuation">}</span> 
+
+      <span class="token punctuation">}</span> 
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">const</span> <span class="token function-variable function">run</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">effect</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span>scheduler<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function">scheduler</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+computedRunners<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>run<span class="token punctuation">)</span> 
+
+effects<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>run<span class="token punctuation">)</span>
+
+</code></pre></div><p>在上一节课分析 trigger 函数的时候，为了方便你理解主干逻辑，我省略了 computedRunners 的分支逻辑。实际上，在添加待运行的 effects 的时候，我们会判断每一个 effect 是不是一个 computed effect，如果是的话会添加到 computedRunners 中，在后面运行的时候会优先执行 computedRunners，然后再执行普通的 effects。</p> <p>那么为什么要这么设计呢？其实是考虑到了一些特殊场景，我们通过一个示例来说明：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> computed <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span> 
+
+<span class="token keyword">import</span> <span class="token punctuation">{</span> effect <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vue/reactivity'</span> 
+
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">const</span> plusOne <span class="token operator">=</span> <span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">return</span> count<span class="token punctuation">.</span>value <span class="token operator">+</span> <span class="token number">1</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token function">effect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>plusOne<span class="token punctuation">.</span>value <span class="token operator">+</span> count<span class="token punctuation">.</span>value<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">function</span> <span class="token function">plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  count<span class="token punctuation">.</span>value<span class="token operator">++</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token function">plus</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>这个示例运行后的结果输出：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token number">1</span> 
+
+<span class="token number">3</span> 
+
+<span class="token number">3</span>
+
+</code></pre></div><p>在执行 effect 函数时运行 console.log(plusOne.value + count.value)，所以第一次输出 1，此时 count.value 是 0，plusOne.value 是 1。</p> <p>后面连续输出两次 3 是因为， plusOne 和 count 的依赖都是这个 effect 函数，所以当我们执行 plus 函数修改 count 的值时，会触发并执行这个 effect 函数，因为 plusOne 的 runner 也是 count 的依赖，count 值修改也会执行 plusOne 的 runner，也就会再次执行 plusOne 的依赖即 effect 函数，因此会输出两次。</p> <p>那么为什么两次都输出 3 呢？这就跟先执行 computed runner 有关。首先，由于 plusOne 的 runner 和 effect 都是 count 的依赖，当我们修改 count 值的时候， plusOne 的 runner 和 effect 都会执行，那么此时执行顺序就很重要了。</p> <p>这里先执行 plusOne 的 runner，把 plusOne 的 dirty 设置为 true，然后通知它的依赖 effect 执行 plusOne.value + count.value。这个时候，由于 dirty 为 true，就会再次执行 plusOne 的 getter 计算新值，拿到了新值 2， 再加上 1 就得到 3。执行完 plusOne 的 runner 以及依赖更新之后，再去执行 count 的普通effect 依赖，从而去执行 plusOne.value + count.value，这个时候 plusOne dirty 为 false， 直接返回上次的计算结果 2，然后再加 1 就又得到 3。</p> <p>如果我们把 computed runner 和 effect 的执行顺序换一下会怎样呢？我来告诉你，会输出如下结果：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token number">1</span> 
+
+<span class="token number">2</span> 
+
+<span class="token number">3</span>
+
+</code></pre></div><p>第一次输出 1 很好理解，因为流程是一样的。第二次为什么会输出 2 呢？我们来分析一下，当我们执行 plus 函数修改 count 的值时，会触发 plusOne 的 runner 和 effect 的执行，这一次我们先让 effect 执行 plusOne.value + count.value，那么就会访问 plusOne.value，但由于 plusOne 的 runner 还没执行，所以此时 dirty 为 false，得到的值还是上一次的计算结果 1，然后再加 1 得到 2。</p> <p>接着再执行 plusOne 的 runner，把 plusOne 的 dirty 设置为 true，然后通知它的依赖 effect 执行 plusOne.value + count.value，这个时候由于 dirty 为 true，就会再次执行 plusOne 的 getter 计算新值，拿到了 2，然后再加上 1 就得到 3。</p> <p>知道原因后，我们再回过头看例子。因为 effect 函数依赖了 plusOne 和 count，所以 plusOne 先计算会更合理，这就是为什么我们需要让 computed runner 的执行优先于普通的 effect 函数。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>好的，到这里我们这一节的学习就结束啦，我希望通过学习，你能理解计算属性的工作机制，能搞明白计算属性嵌套场景代码的执行顺序，知道计算属性的两个特点——延时计算和缓存，也希望你能够在组件的开发中合理使用计算属性。</p> <p>最后，给你留一道思考题目，computed 函数返回的对象实际上劫持的是 value 属性的 getter 和 setter，但为什么我们在组件的模板中访问一个计算属性变量，不用手动在后面加 .value 呢？欢迎你在留言区与我分享。</p> <blockquote><p>本节课的相关代码在源代码中的位置如下：
+packages/reactivity/src/computed.ts</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" class="prev">
+        06 | 响应式：响应式内部的实现原理是怎样的？（下）
+      </a></span> <span class="next"><a href="/frame/vueCodeSource/Chapter2.0/watch.html">
+        08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.204520ae.js" defer></script><script src="/assets/js/2.70a8b724.js" defer></script><script src="/assets/js/31.c4138c5f.js" defer></script>
+  </body>
+</html>

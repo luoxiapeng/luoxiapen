@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>08 | 侦听器：侦听器的实现原理和使用场景是什么？（上） | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.5.4">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    <link rel="preload" href="/assets/css/0.styles.7d3483bf.css" as="style"><link rel="preload" href="/assets/js/app.204520ae.js" as="script"><link rel="preload" href="/assets/js/2.70a8b724.js" as="script"><link rel="preload" href="/assets/js/37.89fa8ee2.js" as="script"><link rel="prefetch" href="/assets/js/10.86d38f27.js"><link rel="prefetch" href="/assets/js/100.e56c4d80.js"><link rel="prefetch" href="/assets/js/101.dc5d2fb6.js"><link rel="prefetch" href="/assets/js/102.5cb74def.js"><link rel="prefetch" href="/assets/js/103.acf0c4de.js"><link rel="prefetch" href="/assets/js/104.d9552fcb.js"><link rel="prefetch" href="/assets/js/105.b2d00a56.js"><link rel="prefetch" href="/assets/js/106.45b0e7a0.js"><link rel="prefetch" href="/assets/js/107.550d5afc.js"><link rel="prefetch" href="/assets/js/108.75b6724b.js"><link rel="prefetch" href="/assets/js/109.2965cb13.js"><link rel="prefetch" href="/assets/js/11.7f2637f1.js"><link rel="prefetch" href="/assets/js/110.edc6b2d6.js"><link rel="prefetch" href="/assets/js/111.bc709592.js"><link rel="prefetch" href="/assets/js/112.702f04e3.js"><link rel="prefetch" href="/assets/js/113.dceba997.js"><link rel="prefetch" href="/assets/js/114.8b5a858c.js"><link rel="prefetch" href="/assets/js/115.7af93d32.js"><link rel="prefetch" href="/assets/js/116.c4ee473f.js"><link rel="prefetch" href="/assets/js/117.e3cfccf7.js"><link rel="prefetch" href="/assets/js/118.91e337f7.js"><link rel="prefetch" href="/assets/js/119.4bf514f5.js"><link rel="prefetch" href="/assets/js/12.4b23c5cb.js"><link rel="prefetch" href="/assets/js/120.0ef1e047.js"><link rel="prefetch" href="/assets/js/121.4d27a08d.js"><link rel="prefetch" href="/assets/js/122.9e7333a0.js"><link rel="prefetch" href="/assets/js/123.d598504e.js"><link rel="prefetch" href="/assets/js/124.5cc25f47.js"><link rel="prefetch" href="/assets/js/125.ada005a6.js"><link rel="prefetch" href="/assets/js/126.ff51709b.js"><link rel="prefetch" href="/assets/js/127.7c2e25a0.js"><link rel="prefetch" href="/assets/js/128.32485d49.js"><link rel="prefetch" href="/assets/js/129.ea506573.js"><link rel="prefetch" href="/assets/js/13.00f0d14c.js"><link rel="prefetch" href="/assets/js/130.a22554fc.js"><link rel="prefetch" href="/assets/js/131.c6faf53c.js"><link rel="prefetch" href="/assets/js/132.6cdbab1e.js"><link rel="prefetch" href="/assets/js/133.07eda894.js"><link rel="prefetch" href="/assets/js/134.12788773.js"><link rel="prefetch" href="/assets/js/135.149b5149.js"><link rel="prefetch" href="/assets/js/136.0dd99a21.js"><link rel="prefetch" href="/assets/js/137.d2291112.js"><link rel="prefetch" href="/assets/js/138.f1e66543.js"><link rel="prefetch" href="/assets/js/139.45c10621.js"><link rel="prefetch" href="/assets/js/14.171fc803.js"><link rel="prefetch" href="/assets/js/140.5fff5f05.js"><link rel="prefetch" href="/assets/js/141.fbd142b7.js"><link rel="prefetch" href="/assets/js/142.6e43cff1.js"><link rel="prefetch" href="/assets/js/143.4ed8f809.js"><link rel="prefetch" href="/assets/js/144.9664abbf.js"><link rel="prefetch" href="/assets/js/145.f9552cd4.js"><link rel="prefetch" href="/assets/js/146.7099aa1b.js"><link rel="prefetch" href="/assets/js/147.0255414a.js"><link rel="prefetch" href="/assets/js/148.2a51f08c.js"><link rel="prefetch" href="/assets/js/149.ef11e63f.js"><link rel="prefetch" href="/assets/js/15.b2351ec5.js"><link rel="prefetch" href="/assets/js/150.a92b6df4.js"><link rel="prefetch" href="/assets/js/151.681c04fc.js"><link rel="prefetch" href="/assets/js/16.a5945ba7.js"><link rel="prefetch" href="/assets/js/17.0aa0fc57.js"><link rel="prefetch" href="/assets/js/18.ef7278d5.js"><link rel="prefetch" href="/assets/js/19.8a1ea212.js"><link rel="prefetch" href="/assets/js/20.08c0a26b.js"><link rel="prefetch" href="/assets/js/21.4a2c6e55.js"><link rel="prefetch" href="/assets/js/22.3dac37e4.js"><link rel="prefetch" href="/assets/js/23.d587a6a5.js"><link rel="prefetch" href="/assets/js/24.fb1d5dfc.js"><link rel="prefetch" href="/assets/js/25.631d25c2.js"><link rel="prefetch" href="/assets/js/26.b87c231f.js"><link rel="prefetch" href="/assets/js/27.26fb970d.js"><link rel="prefetch" href="/assets/js/28.a0443608.js"><link rel="prefetch" href="/assets/js/29.88efd805.js"><link rel="prefetch" href="/assets/js/3.5f108ab8.js"><link rel="prefetch" href="/assets/js/30.cd33a927.js"><link rel="prefetch" href="/assets/js/31.c4138c5f.js"><link rel="prefetch" href="/assets/js/32.8d4a2086.js"><link rel="prefetch" href="/assets/js/33.ac309d50.js"><link rel="prefetch" href="/assets/js/34.09fe0060.js"><link rel="prefetch" href="/assets/js/35.32e0f288.js"><link rel="prefetch" href="/assets/js/36.53311644.js"><link rel="prefetch" href="/assets/js/38.e2ae491f.js"><link rel="prefetch" href="/assets/js/39.2dce7472.js"><link rel="prefetch" href="/assets/js/4.25ffcc4b.js"><link rel="prefetch" href="/assets/js/40.5127bb61.js"><link rel="prefetch" href="/assets/js/41.f51a9312.js"><link rel="prefetch" href="/assets/js/42.e990d21a.js"><link rel="prefetch" href="/assets/js/43.16c8e362.js"><link rel="prefetch" href="/assets/js/44.8444f2f1.js"><link rel="prefetch" href="/assets/js/45.d5c73af2.js"><link rel="prefetch" href="/assets/js/46.4408f32e.js"><link rel="prefetch" href="/assets/js/47.c92f09d2.js"><link rel="prefetch" href="/assets/js/48.54fe246c.js"><link rel="prefetch" href="/assets/js/49.cfd9ecf0.js"><link rel="prefetch" href="/assets/js/5.06ccf107.js"><link rel="prefetch" href="/assets/js/50.91d288c1.js"><link rel="prefetch" href="/assets/js/51.12665eab.js"><link rel="prefetch" href="/assets/js/52.fa4f783e.js"><link rel="prefetch" href="/assets/js/53.15da401f.js"><link rel="prefetch" href="/assets/js/54.797a88f3.js"><link rel="prefetch" href="/assets/js/55.bfbd7fa0.js"><link rel="prefetch" href="/assets/js/56.73e5553b.js"><link rel="prefetch" href="/assets/js/57.45e23046.js"><link rel="prefetch" href="/assets/js/58.5e4a34b3.js"><link rel="prefetch" href="/assets/js/59.117734f0.js"><link rel="prefetch" href="/assets/js/6.af57e81a.js"><link rel="prefetch" href="/assets/js/60.8826bb57.js"><link rel="prefetch" href="/assets/js/61.1091dbfe.js"><link rel="prefetch" href="/assets/js/62.c31c3c12.js"><link rel="prefetch" href="/assets/js/63.47e3bb53.js"><link rel="prefetch" href="/assets/js/64.8c4589c3.js"><link rel="prefetch" href="/assets/js/65.9e4d740b.js"><link rel="prefetch" href="/assets/js/66.e98dce2e.js"><link rel="prefetch" href="/assets/js/67.a9d7e014.js"><link rel="prefetch" href="/assets/js/68.12cacdce.js"><link rel="prefetch" href="/assets/js/69.e9539f94.js"><link rel="prefetch" href="/assets/js/7.0f111b5f.js"><link rel="prefetch" href="/assets/js/70.4d70c219.js"><link rel="prefetch" href="/assets/js/71.d992837b.js"><link rel="prefetch" href="/assets/js/72.7c001e27.js"><link rel="prefetch" href="/assets/js/73.92b33165.js"><link rel="prefetch" href="/assets/js/74.482ce79d.js"><link rel="prefetch" href="/assets/js/75.92280a65.js"><link rel="prefetch" href="/assets/js/76.3970e579.js"><link rel="prefetch" href="/assets/js/77.60e67658.js"><link rel="prefetch" href="/assets/js/78.76dce3c3.js"><link rel="prefetch" href="/assets/js/79.7d44ded7.js"><link rel="prefetch" href="/assets/js/8.230382ce.js"><link rel="prefetch" href="/assets/js/80.f500693a.js"><link rel="prefetch" href="/assets/js/81.ae4c91a1.js"><link rel="prefetch" href="/assets/js/82.abc45a7b.js"><link rel="prefetch" href="/assets/js/83.090e9541.js"><link rel="prefetch" href="/assets/js/84.a9922008.js"><link rel="prefetch" href="/assets/js/85.cb89d24d.js"><link rel="prefetch" href="/assets/js/86.f836fcc0.js"><link rel="prefetch" href="/assets/js/87.2bc1d83c.js"><link rel="prefetch" href="/assets/js/88.8eda12dc.js"><link rel="prefetch" href="/assets/js/89.8cece596.js"><link rel="prefetch" href="/assets/js/9.bf661022.js"><link rel="prefetch" href="/assets/js/90.30e82fd4.js"><link rel="prefetch" href="/assets/js/91.fbba73e8.js"><link rel="prefetch" href="/assets/js/92.fd0c03a9.js"><link rel="prefetch" href="/assets/js/93.52a98fda.js"><link rel="prefetch" href="/assets/js/94.526a1a5b.js"><link rel="prefetch" href="/assets/js/95.1bff8841.js"><link rel="prefetch" href="/assets/js/96.4c870afc.js"><link rel="prefetch" href="/assets/js/97.59af5659.js"><link rel="prefetch" href="/assets/js/98.5146cbc7.js"><link rel="prefetch" href="/assets/js/99.a034c567.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.7d3483bf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/vueCodeSource/" class="nav-link router-link-active">
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MyView_ui组件库" class="dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="MyView_ui组件库" class="mobile-dropdown-title"><span class="title">MyView_ui组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils工具类
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="语法" class="dropdown-title"><span class="title">语法</span> <span class="arrow down"></span></button> <button type="button" aria-label="语法" class="mobile-dropdown-title"><span class="title">语法</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/grammar/javascript/" class="nav-link">
+  javascript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/typescript/" class="nav-link">
+  Typescript
+</a></li><li class="dropdown-item"><!----> <a href="/grammar/es/" class="nav-link">
+  Es6-10
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="框架" class="dropdown-title"><span class="title">框架</span> <span class="arrow down"></span></button> <button type="button" aria-label="框架" class="mobile-dropdown-title"><span class="title">框架</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/vue/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/frame/vueCodeSource/" class="nav-link router-link-active">
+  Vue3.0
+</a></li><li class="dropdown-item"><!----> <a href="/frame/react/" class="nav-link">
+  React
+</a></li><li class="dropdown-item"><!----> <a href="/frame/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="混生App" class="dropdown-title"><span class="title">混生App</span> <span class="arrow down"></span></button> <button type="button" aria-label="混生App" class="mobile-dropdown-title"><span class="title">混生App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/App/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/App/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/App/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="多端" class="dropdown-title"><span class="title">多端</span> <span class="arrow down"></span></button> <button type="button" aria-label="多端" class="mobile-dropdown-title"><span class="title">多端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/multiterminal/javascript/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/multiterminal/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="打包" class="dropdown-title"><span class="title">打包</span> <span class="arrow down"></span></button> <button type="button" aria-label="打包" class="mobile-dropdown-title"><span class="title">打包</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="小程序" class="dropdown-title"><span class="title">小程序</span> <span class="arrow down"></span></button> <button type="button" aria-label="小程序" class="mobile-dropdown-title"><span class="title">小程序</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="单元测试" class="dropdown-title"><span class="title">单元测试</span> <span class="arrow down"></span></button> <button type="button" aria-label="单元测试" class="mobile-dropdown-title"><span class="title">单元测试</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端" class="dropdown-title"><span class="title">后端</span> <span class="arrow down"></span></button> <button type="button" aria-label="后端" class="mobile-dropdown-title"><span class="title">后端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/dba/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><span class="title">其他</span> <span class="arrow down"></span></button> <button type="button" aria-label="其他" class="mobile-dropdown-title"><span class="title">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/js/" class="nav-link">
+  javascript面试相关
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="开发问题" class="dropdown-title"><span class="title">开发问题</span> <span class="arrow down"></span></button> <button type="button" aria-label="开发问题" class="mobile-dropdown-title"><span class="title">开发问题</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/problem/" class="nav-link">
+  Html
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue3.0源码解读</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/frame/vueCodeSource/Chapter/start.html" class="sidebar-link">模块一导读 | 组件的实现：直击 Vue 核心的实现</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/start.html" class="sidebar-link">01 | 组件渲染：vnode 到真实 DOM 是如何转变的？</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/domDiff01.html" class="sidebar-link">02 | 组件更新：完整的 DOM diff 流程是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter1.0/domDiff02.html" class="sidebar-link">03 | 组件更新：完整的 DOM diff 流程是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/compositionApi.html" class="sidebar-link">模块二导读 | 逻辑复用最佳实践：Composition API</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/setup.html" class="sidebar-link">04 | Setup：组件渲染前的初始化过程是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive.html" class="sidebar-link">05 | 响应式：响应式内部的实现原理是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" class="sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/responsive01.html" class="sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/computed.html" class="sidebar-link">07 | 计算属性：计算属性比普通函数好在哪里？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/watch.html" aria-current="page" class="active sidebar-link">08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/watch.html#watch-api-的用法" class="sidebar-link">watch API 的用法</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/watch.html#watch-api-实现原理" class="sidebar-link">watch API 实现原理</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/watch.html#标准化-source" class="sidebar-link">标准化 source</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/watch.html#构造回调函数" class="sidebar-link">构造回调函数</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/watch.html#创建-scheduler" class="sidebar-link">创建 scheduler</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/watch.html#创建-effect" class="sidebar-link">创建 effect</a></li><li class="sidebar-sub-header"><a href="/frame/vueCodeSource/Chapter2.0/watch.html#返回销毁函数" class="sidebar-link">返回销毁函数</a></li></ul></li><li><a href="/frame/vueCodeSource/Chapter2.0/watch01.html" class="sidebar-link">09 | 侦听器：侦听器的实现原理和使用场景是什么？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/lifeCycle.html" class="sidebar-link">10 | 生命周期：各个生命周期的执行时机和应用场景是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter2.0/provide.html" class="sidebar-link">11 | 依赖注入：子孙组件如何共享数据？</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/start.html" class="sidebar-link">模块三导读 | 编译和优化：了解编译过程和背后的优化思想</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast.html" class="sidebar-link">12 | 模板解析：构造 AST 的完整流程是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast1.0.html" class="sidebar-link">13 | 模板解析：构造 AST 的完整流程是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast2.0.html" class="sidebar-link">14 | AST 转换：AST 节点内部做了哪些转换？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast3.0.html" class="sidebar-link">15 | AST 转换：AST 节点内部做了哪些转换？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast4.0.html" class="sidebar-link">16 | 生成代码：AST 如何生成可运行的代码？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter3.0/ast5.0.html" class="sidebar-link">17 | 生成代码：AST 如何生成可运行的代码？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/start.html" class="sidebar-link">模块四导读 | 实用特性：探索更多实用特性背后的原理</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/props.html" class="sidebar-link">18 | Props：Props 的初始化和更新流程是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/slot.html" class="sidebar-link">19 | 插槽：如何实现内容分发？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/directives.html" class="sidebar-link">20 | 指令：指令完整的生命周期是怎样的？</a></li><li><a href="/frame/vueCodeSource/Chapter4.0/v-model.html" class="sidebar-link">21 | v-model：双向绑定到底是怎么实现的？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/start.html" class="sidebar-link">模块五导读 | 内置组件：学习 Vue 内置组件的实现原理</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/teleport.html" class="sidebar-link">22 | Teleport 组件：如何脱离当前组件渲染子组件？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/keepAlive.html" class="sidebar-link">23 | KeepAlive 组件：如何让组件在内存中缓存和调度？</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/transition.html" class="sidebar-link">24 | Transition 组件：过渡动画的实现原理是怎样的？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter5.0/transition01.html" class="sidebar-link">25 | Transition 组件：过渡动画的实现原理是怎样的？（下）</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/start.html" class="sidebar-link">特别放送导读 | 研究 Vue 官方生态的实现原理</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/router.html" class="sidebar-link">26 | Vue Router：如何实现一个前端路由？（上）</a></li><li><a href="/frame/vueCodeSource/Chapter6.0/router1.0.html" class="sidebar-link">27 | Vue Router：如何实现一个前端路由？（下）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_08-侦听器-侦听器的实现原理和使用场景是什么-上"><a href="#_08-侦听器-侦听器的实现原理和使用场景是什么-上" class="header-anchor">#</a> 08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）</h1> <p>在平时的开发工作中，我们经常使用侦听器帮助我们去观察某个数据的变化然后去执行一段逻辑。</p> <p>在 Vue.js 2.x 中，你可以通过 watch 选项去初始化一个侦听器，称作 watcher：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span> 
+
+  watch<span class="token operator">:</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">a</span><span class="token punctuation">(</span><span class="token parameter">newVal<span class="token punctuation">,</span> oldVal</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'new: %s,00 old: %s'</span><span class="token punctuation">,</span> newVal<span class="token punctuation">,</span> oldVal<span class="token punctuation">)</span> 
+
+    <span class="token punctuation">}</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+</code></pre></div><p>当然你也可以通过 $watch API 去创建一个侦听器：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> unwatch <span class="token operator">=</span> vm<span class="token punctuation">.</span><span class="token function">$watch</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">newVal<span class="token punctuation">,</span> oldVal</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'new: %s, old: %s'</span><span class="token punctuation">,</span> newVal<span class="token punctuation">,</span> oldVal<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+</code></pre></div><p>与 watch 选项不同，通过 $watch API 创建的侦听器 watcher 会返回一个 unwatch 函数，你可以随时执行它来停止这个 watcher 对数据的侦听，而对于 watch 选项创建的侦听器，它会随着组件的销毁而停止对数据的侦听。</p> <p>在 Vue.js 3.0 中，虽然你仍可以使用 watch 选项，但针对 Composition API，Vue.js 3.0 提供了 watch API 来实现侦听器的效果。</p> <p>那么，接下来就随我一起来学习 watch API 吧。</p> <h2 id="watch-api-的用法"><a href="#watch-api-的用法" class="header-anchor">#</a> watch API 的用法</h2> <p>我们先来看 Vue.js 3.0 中 watch API 有哪些用法。</p> <p>1.watch API 可以侦听一个 getter 函数，但是它必须返回一个响应式对象，当该响应式对象更新后，会执行对应的回调函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span> 
+
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> count<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>count<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">count<span class="token punctuation">,</span> prevCount</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 当 state.count 更新，会触发此回调函数 </span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+</code></pre></div><p>2.watch API 也可以直接侦听一个响应式对象，当响应式对象更新后，会执行对应的回调函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span> 
+
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> 
+
+<span class="token function">watch</span><span class="token punctuation">(</span>count<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">count<span class="token punctuation">,</span> prevCount</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 当 count.value 更新，会触发此回调函数 </span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+</code></pre></div><p>3.watch API 还可以直接侦听多个响应式对象，任意一个响应式对象更新后，就会执行对应的回调函数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> ref<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span> 
+
+<span class="token keyword">const</span> count <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> 
+
+<span class="token keyword">const</span> count2 <span class="token operator">=</span> <span class="token function">ref</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> 
+
+<span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">[</span>count<span class="token punctuation">,</span> count2<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>count<span class="token punctuation">,</span> count2<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>prevCount<span class="token punctuation">,</span> prevCount2<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 当 count.value 或者 count2.value 更新，会触发此回调函数 </span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+</code></pre></div><h2 id="watch-api-实现原理"><a href="#watch-api-实现原理" class="header-anchor">#</a> watch API 实现原理</h2> <p>侦听器的言下之意就是，当侦听的对象或者函数发生了变化则自动执行某个回调函数，这和我们前面说过的副作用函数 effect 很像， 那它的内部实现是不是依赖了 effect 呢？带着这个疑问，我们来探究 watch API 的具体实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">watch</span><span class="token punctuation">(</span><span class="token parameter">source<span class="token punctuation">,</span> cb<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">isFunction</span><span class="token punctuation">(</span>cb<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">\`watch(fn, options?)\` signature has been moved to a separate API. </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span> 
+
+      <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Use \`watchEffect(fn, options?)\` instead. \`watch\` now only </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span> 
+
+      <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">supports \`watch(source, cb, options?) signature.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token keyword">return</span> <span class="token function">doWatch</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> cb<span class="token punctuation">,</span> options<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">function</span> <span class="token function">doWatch</span><span class="token punctuation">(</span><span class="token parameter">source<span class="token punctuation">,</span> cb<span class="token punctuation">,</span> <span class="token punctuation">{</span> immediate<span class="token punctuation">,</span> deep<span class="token punctuation">,</span> flush<span class="token punctuation">,</span> onTrack<span class="token punctuation">,</span> onTrigger <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token constant">EMPTY_OBJ</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 标准化 source </span>
+
+  <span class="token comment">// 构造 applyCb 回调函数 </span>
+
+  <span class="token comment">// 创建 scheduler 时序执行函数 </span>
+
+  <span class="token comment">// 创建 effect 副作用函数 </span>
+
+  <span class="token comment">// 返回侦听器销毁函数 </span>
+
+<span class="token punctuation">}</span>    
+
+</code></pre></div><p>从代码中可以看到，watch 函数内部调用了 doWatch 函数，调用前会在非生产环境下判断第二个参数 cb 是不是一个函数，如果不是则会报警告以告诉用户应该使用 watchEffect(fn, options) API，watchEffect API 也是侦听器相关的 API，稍后我们会详细介绍。</p> <p>这个 doWatch 函数很长，所以我只贴出了需要理解的部分，我用注释将这个函数的实现逻辑拆解成了几个步骤。可以看到，内部确实创建了 effect 副作用函数。接下来，就随我一步步看它具体做了哪些事情吧。</p> <h2 id="标准化-source"><a href="#标准化-source" class="header-anchor">#</a> 标准化 source</h2> <p>我们先来看watch 函数的第一个参数 source。</p> <p>通过前文知道 source 可以是 getter 函数，也可以是响应式对象甚至是响应式对象数组，所以我们需要标准化 source，这是标准化 source 的流程：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// source 不合法的时候会报警告 </span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">warnInvalidSource</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">s</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Invalid watch source: </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">A watch source can only be a getter/effect function, a ref, </span><span class="token template-punctuation string">`</span></span> <span class="token operator">+</span> 
+
+    <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">a reactive object, or an array of these types.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token comment">// 当前组件实例 </span>
+
+<span class="token keyword">const</span> instance <span class="token operator">=</span> currentInstance 
+
+<span class="token keyword">let</span> getter 
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token function-variable function">getter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> source<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span><span class="token parameter">s</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isRef</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token keyword">return</span> s<span class="token punctuation">.</span>value 
+
+    <span class="token punctuation">}</span> 
+
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isReactive</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token keyword">return</span> <span class="token function">traverse</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> 
+
+    <span class="token punctuation">}</span> 
+
+    <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isFunction</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token keyword">return</span> <span class="token function">callWithErrorHandling</span><span class="token punctuation">(</span>s<span class="token punctuation">,</span> instance<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token comment">/* WATCH_GETTER */</span><span class="token punctuation">)</span> 
+
+    <span class="token punctuation">}</span> 
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+      <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">warnInvalidSource</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span> 
+
+    <span class="token punctuation">}</span> 
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isRef</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token function-variable function">getter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> source<span class="token punctuation">.</span>value 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isReactive</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token function-variable function">getter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> source 
+
+  deep <span class="token operator">=</span> <span class="token boolean">true</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isFunction</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>cb<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// getter with cb </span>
+
+    <span class="token function-variable function">getter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">callWithErrorHandling</span><span class="token punctuation">(</span>source<span class="token punctuation">,</span> instance<span class="token punctuation">,</span> <span class="token number">2</span> <span class="token comment">/* WATCH_GETTER */</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// watchEffect 的逻辑 </span>
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+  getter <span class="token operator">=</span> <span class="token constant">NOOP</span> 
+
+  <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token function">warnInvalidSource</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>cb <span class="token operator">&amp;&amp;</span> deep<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">const</span> baseGetter <span class="token operator">=</span> getter 
+
+  <span class="token function-variable function">getter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">traverse</span><span class="token punctuation">(</span><span class="token function">baseGetter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+</code></pre></div><p>其实，source 标准化主要是根据 source 的类型，将其变成 标准成 getter 函数。具体来说：</p> <ul><li>如果 source 是 ref 对象，则创建一个访问 source.value 的 getter 函数;</li> <li>如果 source 是 reactive 对象，则创建一个访问 source 的 getter 函数，并设置 deep 为 true（deep 的作用我稍后会说）;</li> <li>如果 source 是一个函数，则会进一步判断第二个参数 cb 是否存在，对于 watch API 来说，cb 是一定存在且是一个回调函数，这种情况下，getter 就是一个简单的对 source 函数封装的函数。</li></ul> <p>如果 source 不满足上述条件，则在非生产环境下报警告，提示 source 类型不合法。</p> <p>我们来看一下最终标准化生成的 getter 函数，它会返回一个响应式对象，在后续创建 effect runner 副作用函数需要用到，每次执行 runner 就会把 getter 函数返回的响应式对象作为 watcher 求值的结果，effect runner 的创建流程我们后续会详细分析，这里不需要深入了解。</p> <p>最后我们来关注一下 deep 为 true 的情况。此时，我们会发现生成的 getter 函数会被 traverse 函数包装一层。traverse 函数的实现很简单，即通过递归的方式访问 value 的每一个子属性。那么，为什么要递归访问每一个子属性呢？</p> <p>其实 deep 属于 watcher 的一个配置选项，Vue.js 2.x 也支持，表面含义是深度侦听，实际上是通过遍历对象的每一个子属性来实现。举个例子你就明白了：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive<span class="token punctuation">,</span> watch <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span> 
+
+<span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span> 
+
+  count<span class="token operator">:</span> <span class="token punctuation">{</span> 
+
+    a<span class="token operator">:</span> <span class="token punctuation">{</span> 
+
+      b<span class="token operator">:</span> <span class="token number">1</span> 
+
+    <span class="token punctuation">}</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token function">watch</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>count<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">count<span class="token punctuation">,</span> prevCount</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>count<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+state<span class="token punctuation">.</span>count<span class="token punctuation">.</span>a<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">2</span>  
+
+</code></pre></div><p>这里，我们利用 reactive API 创建了一个嵌套层级较深的响应式对象 state，然后再调用 watch API 侦听 state.count 的变化。接下来我们修改内部属性 state.count.a.b 的值，你会发现 watcher 的回调函数执行了，为什么会执行呢？</p> <p>学过响应式章节，我们知道只有对象属性先被访问触发了依赖收集，再去修改这个属性，才可以通知对应的依赖更新。而从上述业务代码来看，我们修改 state.count.a.b 的值时并没有访问它 ，但还是触发了 watcher 的回调函数。</p> <p>根本原因是，当我们执行 watch 函数的时候，我们知道如果侦听的是一个 reactive 对象，那么内部会设置 deep 为 true，然后执行 traverse 去递归访问对象深层子属性，这个时候就会访问 state.count.a.b 触发依赖收集，这里收集的依赖是 watcher 内部创建的 effect runner。因此，当我们再去修改 state.count.a.b 的时候，就会通知这个 effect ，所以最终会执行 watcher 的回调函数。</p> <p>当我们侦听一个通过 reactive API 创建的响应式对象时，内部会执行 traverse 函数，如果这个对象非常复杂，比如嵌套层级很深，那么递归 traverse 就会有一定的性能耗时。因此如果我们需要侦听这个复杂响应式对象内部的某个具体属性，就可以想办法减少 traverse 带来的性能损耗。</p> <p>比如刚才的例子，我们就可以直接侦听 state.count.a.b 的变化：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">watch</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>count<span class="token punctuation">.</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">newVal<span class="token punctuation">,</span> oldVal</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+state<span class="token punctuation">.</span>count<span class="token punctuation">.</span>a<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">2</span> 
+
+</code></pre></div><p>这样就可以减少内部执行 traverse 的次数。你可能会问，直接侦听 state.count.a.b 可以吗？答案是不行，因为 state.count.a.b 已经是一个基础数字类型了，不符合 source 要求的参数类型，所以会在非生产环境下报警告。</p> <p>那么有没有办法优化使得 traverse 不执行呢？答案是可以的。我们可以侦听一个 getter 函数：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>count<span class="token punctuation">.</span>a<span class="token punctuation">.</span>b<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">newVal<span class="token punctuation">,</span> oldVal</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>newVal<span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+state<span class="token punctuation">.</span>count<span class="token punctuation">.</span>a<span class="token punctuation">.</span>b <span class="token operator">=</span> <span class="token number">2</span> 
+
+</code></pre></div><p>这样函数内部会访问并返回 state.count.a.b，一次 traverse 都不会执行并且依然可以侦听到它的变化从而执行 watcher 的回调函数。</p> <h2 id="构造回调函数"><a href="#构造回调函数" class="header-anchor">#</a> 构造回调函数</h2> <p>处理完 watch API 第一个参数 source 后，接下来处理第二个参数 cb。</p> <p>cb 是一个回调函数，它有三个参数：第一个 newValue 代表新值；第二个 oldValue 代表旧值。第三个参数 onInvalidate，我打算放在后面介绍。</p> <p>其实这样的 API 设计非常好理解，即侦听一个值的变化，如果值变了就执行回调函数，回调函数里可以访问到新值和旧值。</p> <p>接下来我们来看一下构造回调函数的处理逻辑：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">let</span> cleanup 
+
+<span class="token comment">// 注册无效回调函数 </span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">onInvalidate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  cleanup <span class="token operator">=</span> runner<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function-variable function">onStop</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">callWithErrorHandling</span><span class="token punctuation">(</span>fn<span class="token punctuation">,</span> instance<span class="token punctuation">,</span> <span class="token number">4</span> <span class="token comment">/* WATCH_CLEANUP */</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token comment">// 旧值初始值 </span>
+
+<span class="token keyword">let</span> oldValue <span class="token operator">=</span> <span class="token function">isArray</span><span class="token punctuation">(</span>source<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">:</span> <span class="token constant">INITIAL_WATCHER_VALUE</span> <span class="token comment">/*{}*/</span> 
+
+<span class="token comment">// 回调函数 </span>
+
+<span class="token keyword">const</span> applyCb <span class="token operator">=</span> cb 
+
+  <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// 组件销毁，则直接返回 </span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">&amp;&amp;</span> instance<span class="token punctuation">.</span>isUnmounted<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token keyword">return</span> 
+
+    <span class="token punctuation">}</span> 
+
+    <span class="token comment">// 求得新值 </span>
+
+    <span class="token keyword">const</span> newValue <span class="token operator">=</span> <span class="token function">runner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>deep <span class="token operator">||</span> <span class="token function">hasChanged</span><span class="token punctuation">(</span>newValue<span class="token punctuation">,</span> oldValue<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      <span class="token comment">// 执行清理函数 </span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>cleanup<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+        <span class="token function">cleanup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+      <span class="token punctuation">}</span> 
+
+      <span class="token function">callWithAsyncErrorHandling</span><span class="token punctuation">(</span>cb<span class="token punctuation">,</span> instance<span class="token punctuation">,</span> <span class="token number">3</span> <span class="token comment">/* WATCH_CALLBACK */</span><span class="token punctuation">,</span> <span class="token punctuation">[</span> 
+
+        newValue<span class="token punctuation">,</span> 
+
+        <span class="token comment">// 第一次更改时传递旧值为 undefined </span>
+
+        oldValue <span class="token operator">===</span> <span class="token constant">INITIAL_WATCHER_VALUE</span> <span class="token operator">?</span> <span class="token keyword">undefined</span> <span class="token operator">:</span> oldValue<span class="token punctuation">,</span> 
+
+        onInvalidate 
+
+      <span class="token punctuation">]</span><span class="token punctuation">)</span> 
+
+      <span class="token comment">// 更新旧值 </span>
+
+      oldValue <span class="token operator">=</span> newValue 
+
+    <span class="token punctuation">}</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token operator">:</span> <span class="token keyword">void</span> <span class="token number">0</span> 
+
+</code></pre></div><p>onInvalidate 函数用来注册无效回调函数 ，我们暂时不需要关注它，我们需要重点来看 applyCb。 这个函数实际上就是对 cb 做一层封装，当侦听的值发生变化时就会执行 applyCb 方法，我们来分析一下它的实现。</p> <p>首先，watch API 和组件实例相关，因为通常我们会在组件的 setup 函数中使用它，当组件销毁后，回调函数 cb 不应该被执行而是直接返回。</p> <p>接着，执行 runner 求得新值，这里实际上就是执行前面创建的 getter 函数求新值。</p> <p>最后进行判断，如果是 deep 的情况或者新旧值发生了变化，则执行回调函数 cb，传入参数 newValue 和 oldValue。注意，第一次执行的时候旧值的初始值是空数组或者 undefined。执行完回调函数 cb 后，把旧值 oldValue 再更新为 newValue，这是为了下一次的比对。</p> <h2 id="创建-scheduler"><a href="#创建-scheduler" class="header-anchor">#</a> 创建 scheduler</h2> <p>接下来我们要分析创建 scheduler 过程。</p> <p>scheduler 的作用是根据某种调度的方式去执行某种函数，在 watch API 中，主要影响到的是回调函数的执行方式。我们来看一下它的实现逻辑：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">invoke</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+<span class="token keyword">let</span> scheduler 
+<span class="token keyword">if</span> <span class="token punctuation">(</span>flush <span class="token operator">===</span> <span class="token string">'sync'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+  <span class="token comment">// 同步 </span>
+  scheduler <span class="token operator">=</span> invoke 
+<span class="token punctuation">}</span> 
+<span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>flush <span class="token operator">===</span> <span class="token string">'pre'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+  <span class="token function-variable function">scheduler</span> <span class="token operator">=</span> <span class="token parameter">job</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>instance <span class="token operator">||</span> instance<span class="token punctuation">.</span>isMounted<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+      <span class="token comment">// 进入异步队列，组件更新前执行 </span>
+      <span class="token function">queueJob</span><span class="token punctuation">(</span>job<span class="token punctuation">)</span> 
+    <span class="token punctuation">}</span> 
+    <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+      <span class="token comment">// 如果组件还没挂载，则同步执行确保在组件挂载前 </span>
+      <span class="token function">job</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+    <span class="token punctuation">}</span> 
+  <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span> 
+<span class="token keyword">else</span> <span class="token punctuation">{</span> 
+  <span class="token comment">// 进入异步队列，组件更新后执行 </span>
+  <span class="token function-variable function">scheduler</span> <span class="token operator">=</span> <span class="token parameter">job</span> <span class="token operator">=&gt;</span> <span class="token function">queuePostRenderEffect</span><span class="token punctuation">(</span>job<span class="token punctuation">,</span> instance <span class="token operator">&amp;&amp;</span> instance<span class="token punctuation">.</span>suspense<span class="token punctuation">)</span> 
+<span class="token punctuation">}</span> 
+</code></pre></div><p>Watch API 的参数除了 source 和 cb，还支持第三个参数 options，不同的配置决定了 watcher 的不同行为。前面我们也分析了 deep 为 true 的情况，除了 source 为 reactive 对象时会默认把 deep 设置为 true，你也可以主动传入第三个参数，把 deep 设置为 true。</p> <p>这里，scheduler 的创建逻辑受到了第三个参数 Options 中的 flush 属性值的影响，不同的 flush 决定了 watcher 的执行时机。</p> <p>当 flush 为 sync 的时候，表示它是一个同步 watcher，即当数据变化时同步执行回调函数。</p> <p>当 flush 为 pre 的时候，回调函数通过 queueJob 的方式在组件更新之前执行，如果组件还没挂载，则同步执行确保回调函数在组件挂载之前执行。</p> <p>如果没设置 flush，那么回调函数通过 queuePostRenderEffect 的方式在组件更新之后执行。</p> <p>queueJob 和 queuePostRenderEffect 在这里不是重点，所以我们放到后面介绍。总之，你现在要记住，watcher 的回调函数是通过一定的调度方式执行的。</p> <h2 id="创建-effect"><a href="#创建-effect" class="header-anchor">#</a> 创建 effect</h2> <p>前面的分析我们提到了 runner，它其实就是 watcher 内部创建的 effect 函数，接下来，我们来分析它逻辑：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> runner <span class="token operator">=</span> <span class="token function">effect</span><span class="token punctuation">(</span>getter<span class="token punctuation">,</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 延时执行 </span>
+
+  lazy<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> 
+
+  <span class="token comment">// computed effect 可以优先于普通的 effect 先运行，比如组件渲染的 effect </span>
+
+  computed<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> 
+
+  onTrack<span class="token punctuation">,</span> 
+
+  onTrigger<span class="token punctuation">,</span> 
+
+  scheduler<span class="token operator">:</span> applyCb <span class="token operator">?</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">scheduler</span><span class="token punctuation">(</span>applyCb<span class="token punctuation">)</span> <span class="token operator">:</span> scheduler 
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span> 
+
+<span class="token comment">// 在组件实例中记录这个 effect </span>
+
+<span class="token function">recordInstanceBoundEffect</span><span class="token punctuation">(</span>runner<span class="token punctuation">)</span> 
+
+<span class="token comment">// 初次执行 </span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>applyCb<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>immediate<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">applyCb</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// 求旧值 </span>
+
+    oldValue <span class="token operator">=</span> <span class="token function">runner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">else</span> <span class="token punctuation">{</span> 
+
+  <span class="token comment">// 没有 cb 的情况 </span>
+
+  <span class="token function">runner</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+<span class="token punctuation">}</span> 
+
+</code></pre></div><p>这块代码逻辑是整个 watcher 实现的核心部分，即通过 effect API 创建一个副作用函数 runner，我们需要关注以下几点。</p> <ul><li>runner 是一个 computed effect。因为 computed effect 可以优先于普通的 effect（比如组件渲染的 effect）先运行，这样就可以实现当配置 flush 为 pre 的时候，watcher 的执行可以优先于组件更新。</li> <li>runner 执行的方式。runner 是 lazy 的，它不会在创建后立刻执行。第一次手动执行 runner 会执行前面的 getter 函数，访问响应式数据并做依赖收集。注意，此时activeEffect 就是 runner，这样在后面更新响应式数据时，就可以触发 runner 执行 scheduler 函数，以一种调度方式来执行回调函数。</li> <li>runner 的返回结果。手动执行 runner 就相当于执行了前面标准化的 getter 函数，getter 函数的返回值就是 watcher 计算出的值，所以我们第一次执行 runner 求得的值可以作为 oldValue。</li> <li>配置了 immediate 的情况。当我们配置了 immediate ，创建完 watcher 会立刻执行 applyCb 函数，此时 oldValue 还是初始值，在 applyCb 执行时也会执行 runner 进而执行前面的 getter 函数做依赖收集，求得新值。</li></ul> <h2 id="返回销毁函数"><a href="#返回销毁函数" class="header-anchor">#</a> 返回销毁函数</h2> <p>最后，会返回侦听器销毁函数，也就是 watch API 执行后返回的函数。我们可以通过调用它来停止 watcher 对数据的侦听。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+
+  <span class="token function">stop</span><span class="token punctuation">(</span>runner<span class="token punctuation">)</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>instance<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token comment">// 移除组件 effects 对这个 runner 的引用 </span>
+
+    <span class="token function">remove</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>effects<span class="token punctuation">,</span> runner<span class="token punctuation">)</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+<span class="token keyword">function</span> <span class="token function">stop</span><span class="token punctuation">(</span><span class="token parameter">effect</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>effect<span class="token punctuation">.</span>active<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+    <span class="token function">cleanup</span><span class="token punctuation">(</span>effect<span class="token punctuation">)</span> 
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span>onStop<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+
+      effect<span class="token punctuation">.</span>options<span class="token punctuation">.</span><span class="token function">onStop</span><span class="token punctuation">(</span><span class="token punctuation">)</span> 
+
+    <span class="token punctuation">}</span> 
+
+    effect<span class="token punctuation">.</span>active <span class="token operator">=</span> <span class="token boolean">false</span> 
+
+  <span class="token punctuation">}</span> 
+
+<span class="token punctuation">}</span> 
+
+</code></pre></div><p>销毁函数内部会执行 stop 方法让 runner 失活，并清理 runner 的相关依赖，这样就可以停止对数据的侦听。并且，如果是在组件中注册的 watcher，也会移除组件 effects 对这个 runner 的引用。</p> <p>好了，到这里我们对 watch API 的分析就可以告一段落了。侦听器的内部设计很巧妙，我们可以侦听响应式数据的变化，内部创建 effect runner，首次执行 runner 做依赖收集，然后在数据发生变化后，以某种调度方式去执行回调函数。</p> <blockquote><p>本节课的相关代码在源代码中的位置如下：
+packages/runtime-core/src/apiWatch.ts</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/frame/vueCodeSource/Chapter2.0/computed.html" class="prev">
+        07 | 计算属性：计算属性比普通函数好在哪里？
+      </a></span> <span class="next"><a href="/frame/vueCodeSource/Chapter2.0/watch01.html">
+        09 | 侦听器：侦听器的实现原理和使用场景是什么？（下）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.204520ae.js" defer></script><script src="/assets/js/2.70a8b724.js" defer></script><script src="/assets/js/37.89fa8ee2.js" defer></script>
+  </body>
+</html>
