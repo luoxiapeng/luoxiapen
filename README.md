@@ -1,14 +1,25 @@
----
-home: true
-heroImage: /logo.png
-actionText: 快速上手 →
-actionLink: /guide/
-features:
-- title: 简洁至上
-  details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-- title: Vue驱动
-  details: 享受 Vue + webpack 的开发体验，在 Markdown 中使用 Vue 组件，同时可以使用 Vue 来开发自定义主题。
-- title: 高性能
-  details: VuePress 为每个页面预渲染生成静态的 HTML，同时在页面被加载的时候，将作为 SPA 运行。
-footer: MIT Licensed | Copyright © 2018-present xxxxxx
----
+# MyViewUi
+
+TypeScript 从零实现 axios 文档教材
+
+## 启动电子书
+
+首先 clone 本项目：
+
+```bash
+git clone https://git.imooc.com/coding-330/ts-axios-doc.git
+```
+
+进入 `ts-axios-doc` 目录后安装项目依赖：
+
+```bash
+npm install
+```
+
+安装依赖后运行电子书：
+
+```bash
+npm run dev
+```
+
+浏览器打开 `http://localhost:8080/ts-axios/` 即可。
