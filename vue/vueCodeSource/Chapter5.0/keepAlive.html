@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>23 | KeepAlive 组件：如何让组件在内存中缓存和调度？ | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    
+    <link rel="preload" href="/assets/css/0.styles.2e2121aa.css" as="style"><link rel="preload" href="/assets/js/app.175cb2f7.js" as="script"><link rel="preload" href="/assets/js/2.75df7a20.js" as="script"><link rel="preload" href="/assets/js/337.363c2e20.js" as="script"><link rel="prefetch" href="/assets/js/10.f03c1e06.js"><link rel="prefetch" href="/assets/js/100.c871eff4.js"><link rel="prefetch" href="/assets/js/101.65ac835d.js"><link rel="prefetch" href="/assets/js/102.046d7f9a.js"><link rel="prefetch" href="/assets/js/103.6eeb610a.js"><link rel="prefetch" href="/assets/js/104.b364b538.js"><link rel="prefetch" href="/assets/js/105.f47cfdbf.js"><link rel="prefetch" href="/assets/js/106.cbc65301.js"><link rel="prefetch" href="/assets/js/107.64d4d4c7.js"><link rel="prefetch" href="/assets/js/108.6b5a235d.js"><link rel="prefetch" href="/assets/js/109.7c0f8975.js"><link rel="prefetch" href="/assets/js/11.b84546b1.js"><link rel="prefetch" href="/assets/js/110.3b64d6b4.js"><link rel="prefetch" href="/assets/js/111.d63df36c.js"><link rel="prefetch" href="/assets/js/112.c9d94d9a.js"><link rel="prefetch" href="/assets/js/113.2d8f7066.js"><link rel="prefetch" href="/assets/js/114.53b0c6a6.js"><link rel="prefetch" href="/assets/js/115.416531bc.js"><link rel="prefetch" href="/assets/js/116.4bf66415.js"><link rel="prefetch" href="/assets/js/117.c01a46e8.js"><link rel="prefetch" href="/assets/js/118.8936b8fb.js"><link rel="prefetch" href="/assets/js/119.dd831f23.js"><link rel="prefetch" href="/assets/js/12.32ac00f9.js"><link rel="prefetch" href="/assets/js/120.45ab0ea6.js"><link rel="prefetch" href="/assets/js/121.bd3f5f6c.js"><link rel="prefetch" href="/assets/js/122.a8180120.js"><link rel="prefetch" href="/assets/js/123.a7ae8b51.js"><link rel="prefetch" href="/assets/js/124.99349765.js"><link rel="prefetch" href="/assets/js/125.52b1dbdd.js"><link rel="prefetch" href="/assets/js/126.bbad428e.js"><link rel="prefetch" href="/assets/js/127.7b9981ba.js"><link rel="prefetch" href="/assets/js/128.122b9074.js"><link rel="prefetch" href="/assets/js/129.a2185a20.js"><link rel="prefetch" href="/assets/js/13.37f30a7a.js"><link rel="prefetch" href="/assets/js/130.b78c77cf.js"><link rel="prefetch" href="/assets/js/131.9bd76d54.js"><link rel="prefetch" href="/assets/js/132.051a8db9.js"><link rel="prefetch" href="/assets/js/133.b9afc210.js"><link rel="prefetch" href="/assets/js/134.4be23ce1.js"><link rel="prefetch" href="/assets/js/135.f727416b.js"><link rel="prefetch" href="/assets/js/136.559bf91c.js"><link rel="prefetch" href="/assets/js/137.095dff91.js"><link rel="prefetch" href="/assets/js/138.dd2f6f8e.js"><link rel="prefetch" href="/assets/js/139.9224a4f3.js"><link rel="prefetch" href="/assets/js/14.dd8d1cf2.js"><link rel="prefetch" href="/assets/js/140.c0abb65b.js"><link rel="prefetch" href="/assets/js/141.ade9802b.js"><link rel="prefetch" href="/assets/js/142.d42dd0ee.js"><link rel="prefetch" href="/assets/js/143.120e25ac.js"><link rel="prefetch" href="/assets/js/144.86815a66.js"><link rel="prefetch" href="/assets/js/145.a847a89c.js"><link rel="prefetch" href="/assets/js/146.d63c89a2.js"><link rel="prefetch" href="/assets/js/147.04f11e47.js"><link rel="prefetch" href="/assets/js/148.f4c435b3.js"><link rel="prefetch" href="/assets/js/149.3ec45095.js"><link rel="prefetch" href="/assets/js/15.33ba51c7.js"><link rel="prefetch" href="/assets/js/150.21d59da1.js"><link rel="prefetch" href="/assets/js/151.a8751abe.js"><link rel="prefetch" href="/assets/js/152.1020b5cc.js"><link rel="prefetch" href="/assets/js/153.56642c96.js"><link rel="prefetch" href="/assets/js/154.9308b1c1.js"><link rel="prefetch" href="/assets/js/155.408fa629.js"><link rel="prefetch" href="/assets/js/156.91c92a23.js"><link rel="prefetch" href="/assets/js/157.0e9110da.js"><link rel="prefetch" href="/assets/js/158.f291e586.js"><link rel="prefetch" href="/assets/js/159.41009097.js"><link rel="prefetch" href="/assets/js/16.5146101f.js"><link rel="prefetch" href="/assets/js/160.7f0eac3b.js"><link rel="prefetch" href="/assets/js/161.bcc0df34.js"><link rel="prefetch" href="/assets/js/162.33053c1d.js"><link rel="prefetch" href="/assets/js/163.7078c31a.js"><link rel="prefetch" href="/assets/js/164.2a776a79.js"><link rel="prefetch" href="/assets/js/165.33e61817.js"><link rel="prefetch" href="/assets/js/166.a824efe7.js"><link rel="prefetch" href="/assets/js/167.4fa8c9e1.js"><link rel="prefetch" href="/assets/js/168.be99d7e4.js"><link rel="prefetch" href="/assets/js/169.f7cba43b.js"><link rel="prefetch" href="/assets/js/17.7134f46e.js"><link rel="prefetch" href="/assets/js/170.03baa419.js"><link rel="prefetch" href="/assets/js/171.0d9148c1.js"><link rel="prefetch" href="/assets/js/172.1d927e91.js"><link rel="prefetch" href="/assets/js/173.4e6aaf54.js"><link rel="prefetch" href="/assets/js/174.e1c9acb9.js"><link rel="prefetch" href="/assets/js/175.7e994eb5.js"><link rel="prefetch" href="/assets/js/176.3dbc154e.js"><link rel="prefetch" href="/assets/js/177.be2d7b64.js"><link rel="prefetch" href="/assets/js/178.daa5ec97.js"><link rel="prefetch" href="/assets/js/179.a440c1bd.js"><link rel="prefetch" href="/assets/js/18.1c28929a.js"><link rel="prefetch" href="/assets/js/180.c481e205.js"><link rel="prefetch" href="/assets/js/181.3aa5e2d2.js"><link rel="prefetch" href="/assets/js/182.bbc303ed.js"><link rel="prefetch" href="/assets/js/183.43a550e4.js"><link rel="prefetch" href="/assets/js/184.718e49b7.js"><link rel="prefetch" href="/assets/js/185.87615276.js"><link rel="prefetch" href="/assets/js/186.a50be4b7.js"><link rel="prefetch" href="/assets/js/187.871e36d4.js"><link rel="prefetch" href="/assets/js/188.ef0d5f71.js"><link rel="prefetch" href="/assets/js/189.62e4f4b1.js"><link rel="prefetch" href="/assets/js/19.177d1464.js"><link rel="prefetch" href="/assets/js/190.5d212aff.js"><link rel="prefetch" href="/assets/js/191.0f853a98.js"><link rel="prefetch" href="/assets/js/192.fb72038b.js"><link rel="prefetch" href="/assets/js/193.cd0fa133.js"><link rel="prefetch" href="/assets/js/194.bd429665.js"><link rel="prefetch" href="/assets/js/195.cb7d80bb.js"><link rel="prefetch" href="/assets/js/196.cc4b46e3.js"><link rel="prefetch" href="/assets/js/197.16c02b8e.js"><link rel="prefetch" href="/assets/js/198.4c1aeca2.js"><link rel="prefetch" href="/assets/js/199.bc6db526.js"><link rel="prefetch" href="/assets/js/20.f50e1150.js"><link rel="prefetch" href="/assets/js/200.b2c63089.js"><link rel="prefetch" href="/assets/js/201.25dd536e.js"><link rel="prefetch" href="/assets/js/202.f4323d5f.js"><link rel="prefetch" href="/assets/js/203.53d5b7f8.js"><link rel="prefetch" href="/assets/js/204.20be12c0.js"><link rel="prefetch" href="/assets/js/205.b5eacbcc.js"><link rel="prefetch" href="/assets/js/206.ffd72f20.js"><link rel="prefetch" href="/assets/js/207.922cb746.js"><link rel="prefetch" href="/assets/js/208.40367168.js"><link rel="prefetch" href="/assets/js/209.36b578a7.js"><link rel="prefetch" href="/assets/js/21.fe020a2d.js"><link rel="prefetch" href="/assets/js/210.d2f4adc3.js"><link rel="prefetch" href="/assets/js/211.d7df5c97.js"><link rel="prefetch" href="/assets/js/212.7d07403b.js"><link rel="prefetch" href="/assets/js/213.4a1e7785.js"><link rel="prefetch" href="/assets/js/214.b0e90c95.js"><link rel="prefetch" href="/assets/js/215.10095b82.js"><link rel="prefetch" href="/assets/js/216.3ca44e7e.js"><link rel="prefetch" href="/assets/js/217.9bcac322.js"><link rel="prefetch" href="/assets/js/218.5a0a1991.js"><link rel="prefetch" href="/assets/js/219.7933ce66.js"><link rel="prefetch" href="/assets/js/22.cf1d4e68.js"><link rel="prefetch" href="/assets/js/220.8ad32274.js"><link rel="prefetch" href="/assets/js/221.29bea866.js"><link rel="prefetch" href="/assets/js/222.905ce4eb.js"><link rel="prefetch" href="/assets/js/223.c564d0d3.js"><link rel="prefetch" href="/assets/js/224.1d7065ed.js"><link rel="prefetch" href="/assets/js/225.89615885.js"><link rel="prefetch" href="/assets/js/226.4baaa7b1.js"><link rel="prefetch" href="/assets/js/227.7d19f61e.js"><link rel="prefetch" href="/assets/js/228.8417c1a7.js"><link rel="prefetch" href="/assets/js/229.57705cac.js"><link rel="prefetch" href="/assets/js/23.c730dc93.js"><link rel="prefetch" href="/assets/js/230.e8e06120.js"><link rel="prefetch" href="/assets/js/231.58a79d56.js"><link rel="prefetch" href="/assets/js/232.691bb82a.js"><link rel="prefetch" href="/assets/js/233.f415de0a.js"><link rel="prefetch" href="/assets/js/234.1840175f.js"><link rel="prefetch" href="/assets/js/235.51edf65e.js"><link rel="prefetch" href="/assets/js/236.da79365d.js"><link rel="prefetch" href="/assets/js/237.119796ac.js"><link rel="prefetch" href="/assets/js/238.885e9bf9.js"><link rel="prefetch" href="/assets/js/239.6535c762.js"><link rel="prefetch" href="/assets/js/24.d4d806a2.js"><link rel="prefetch" href="/assets/js/240.15e360ae.js"><link rel="prefetch" href="/assets/js/241.2f8c27ff.js"><link rel="prefetch" href="/assets/js/242.2a6a3833.js"><link rel="prefetch" href="/assets/js/243.558787f3.js"><link rel="prefetch" href="/assets/js/244.9bae3843.js"><link rel="prefetch" href="/assets/js/245.6c63a032.js"><link rel="prefetch" href="/assets/js/246.2fd2daae.js"><link rel="prefetch" href="/assets/js/247.c8b81ca2.js"><link rel="prefetch" href="/assets/js/248.ff998439.js"><link rel="prefetch" href="/assets/js/249.0dade753.js"><link rel="prefetch" href="/assets/js/25.a39ce2bd.js"><link rel="prefetch" href="/assets/js/250.f842c300.js"><link rel="prefetch" href="/assets/js/251.edfcdd88.js"><link rel="prefetch" href="/assets/js/252.24b9c0e7.js"><link rel="prefetch" href="/assets/js/253.5826bc1b.js"><link rel="prefetch" href="/assets/js/254.8e198483.js"><link rel="prefetch" href="/assets/js/255.888d17cb.js"><link rel="prefetch" href="/assets/js/256.e6f82f01.js"><link rel="prefetch" href="/assets/js/257.55e7a891.js"><link rel="prefetch" href="/assets/js/258.3a9ad0a7.js"><link rel="prefetch" href="/assets/js/259.160ec69c.js"><link rel="prefetch" href="/assets/js/26.263e0f39.js"><link rel="prefetch" href="/assets/js/260.db778417.js"><link rel="prefetch" href="/assets/js/261.f19e2435.js"><link rel="prefetch" href="/assets/js/262.17cf1749.js"><link rel="prefetch" href="/assets/js/263.f738162f.js"><link rel="prefetch" href="/assets/js/264.4e6efc8f.js"><link rel="prefetch" href="/assets/js/265.0a62e1bf.js"><link rel="prefetch" href="/assets/js/266.fb56411f.js"><link rel="prefetch" href="/assets/js/267.5ead4660.js"><link rel="prefetch" href="/assets/js/268.1b470e63.js"><link rel="prefetch" href="/assets/js/269.df1cc1b2.js"><link rel="prefetch" href="/assets/js/27.9a81282b.js"><link rel="prefetch" href="/assets/js/270.3d81b92e.js"><link rel="prefetch" href="/assets/js/271.a70403ad.js"><link rel="prefetch" href="/assets/js/272.325c9023.js"><link rel="prefetch" href="/assets/js/273.c54142fd.js"><link rel="prefetch" href="/assets/js/274.1d8af67a.js"><link rel="prefetch" href="/assets/js/275.8fb2ee4e.js"><link rel="prefetch" href="/assets/js/276.6b0b1737.js"><link rel="prefetch" href="/assets/js/277.90f1ce6e.js"><link rel="prefetch" href="/assets/js/278.17a59051.js"><link rel="prefetch" href="/assets/js/279.1f9c0ef8.js"><link rel="prefetch" href="/assets/js/28.2c79f489.js"><link rel="prefetch" href="/assets/js/280.3924a8f5.js"><link rel="prefetch" href="/assets/js/281.c8466ede.js"><link rel="prefetch" href="/assets/js/282.cf029bfa.js"><link rel="prefetch" href="/assets/js/283.5364d9df.js"><link rel="prefetch" href="/assets/js/284.2a1c3288.js"><link rel="prefetch" href="/assets/js/285.239f982a.js"><link rel="prefetch" href="/assets/js/286.39be93a9.js"><link rel="prefetch" href="/assets/js/287.c5570faf.js"><link rel="prefetch" href="/assets/js/288.d4157ac2.js"><link rel="prefetch" href="/assets/js/289.eb161cf5.js"><link rel="prefetch" href="/assets/js/29.9ff4fc13.js"><link rel="prefetch" href="/assets/js/290.a098b418.js"><link rel="prefetch" href="/assets/js/291.842987e4.js"><link rel="prefetch" href="/assets/js/292.a41188a0.js"><link rel="prefetch" href="/assets/js/293.d04d5cf0.js"><link rel="prefetch" href="/assets/js/294.a140b169.js"><link rel="prefetch" href="/assets/js/295.875c5fce.js"><link rel="prefetch" href="/assets/js/296.ecb56bb0.js"><link rel="prefetch" href="/assets/js/297.f6a7b3d6.js"><link rel="prefetch" href="/assets/js/298.195fc3d5.js"><link rel="prefetch" href="/assets/js/299.476588e0.js"><link rel="prefetch" href="/assets/js/3.edfb4837.js"><link rel="prefetch" href="/assets/js/30.b2edc616.js"><link rel="prefetch" href="/assets/js/300.38e410e2.js"><link rel="prefetch" href="/assets/js/301.d68c589b.js"><link rel="prefetch" href="/assets/js/302.b29d12e7.js"><link rel="prefetch" href="/assets/js/303.1954aa50.js"><link rel="prefetch" href="/assets/js/304.6d9cb749.js"><link rel="prefetch" href="/assets/js/305.f942593b.js"><link rel="prefetch" href="/assets/js/306.b0dea771.js"><link rel="prefetch" href="/assets/js/307.2085d894.js"><link rel="prefetch" href="/assets/js/308.65914653.js"><link rel="prefetch" href="/assets/js/309.471abb33.js"><link rel="prefetch" href="/assets/js/31.4fdd0702.js"><link rel="prefetch" href="/assets/js/310.bd925b24.js"><link rel="prefetch" href="/assets/js/311.db7b01d6.js"><link rel="prefetch" href="/assets/js/312.4c0f96b6.js"><link rel="prefetch" href="/assets/js/313.af7e5c40.js"><link rel="prefetch" href="/assets/js/314.3b5a2cc0.js"><link rel="prefetch" href="/assets/js/315.37ee6c72.js"><link rel="prefetch" href="/assets/js/316.0bd5d394.js"><link rel="prefetch" href="/assets/js/317.4423df04.js"><link rel="prefetch" href="/assets/js/318.1d21234a.js"><link rel="prefetch" href="/assets/js/319.f79db02d.js"><link rel="prefetch" href="/assets/js/32.aa7bb4f0.js"><link rel="prefetch" href="/assets/js/320.79cf2539.js"><link rel="prefetch" href="/assets/js/321.c70db2a2.js"><link rel="prefetch" href="/assets/js/322.27382345.js"><link rel="prefetch" href="/assets/js/323.7a2d88b9.js"><link rel="prefetch" href="/assets/js/324.32533563.js"><link rel="prefetch" href="/assets/js/325.d2ae4bbc.js"><link rel="prefetch" href="/assets/js/326.6fad6bea.js"><link rel="prefetch" href="/assets/js/327.bcfda424.js"><link rel="prefetch" href="/assets/js/328.d0042a33.js"><link rel="prefetch" href="/assets/js/329.413b8527.js"><link rel="prefetch" href="/assets/js/33.c8735594.js"><link rel="prefetch" href="/assets/js/330.f59eeaaf.js"><link rel="prefetch" href="/assets/js/331.ffbf14da.js"><link rel="prefetch" href="/assets/js/332.2c9498c9.js"><link rel="prefetch" href="/assets/js/333.28eec745.js"><link rel="prefetch" href="/assets/js/334.0f2953d1.js"><link rel="prefetch" href="/assets/js/335.fc9fc3a2.js"><link rel="prefetch" href="/assets/js/336.dfba70c6.js"><link rel="prefetch" href="/assets/js/338.5d9fc629.js"><link rel="prefetch" href="/assets/js/339.ca962ab0.js"><link rel="prefetch" href="/assets/js/34.27da4ff5.js"><link rel="prefetch" href="/assets/js/340.e1557d03.js"><link rel="prefetch" href="/assets/js/341.9b49629b.js"><link rel="prefetch" href="/assets/js/342.6699be73.js"><link rel="prefetch" href="/assets/js/343.68260bfa.js"><link rel="prefetch" href="/assets/js/344.aab8694a.js"><link rel="prefetch" href="/assets/js/345.d13ba93b.js"><link rel="prefetch" href="/assets/js/346.41a459c2.js"><link rel="prefetch" href="/assets/js/35.29006597.js"><link rel="prefetch" href="/assets/js/36.c2b63d5e.js"><link rel="prefetch" href="/assets/js/37.1903ccce.js"><link rel="prefetch" href="/assets/js/38.4f8ad26c.js"><link rel="prefetch" href="/assets/js/39.48accac5.js"><link rel="prefetch" href="/assets/js/4.977d5e44.js"><link rel="prefetch" href="/assets/js/40.2b922978.js"><link rel="prefetch" href="/assets/js/41.f8151134.js"><link rel="prefetch" href="/assets/js/42.eafafdc7.js"><link rel="prefetch" href="/assets/js/43.5233f1ad.js"><link rel="prefetch" href="/assets/js/44.b836f472.js"><link rel="prefetch" href="/assets/js/45.7cd6e292.js"><link rel="prefetch" href="/assets/js/46.5f9e4ab2.js"><link rel="prefetch" href="/assets/js/47.b03459f5.js"><link rel="prefetch" href="/assets/js/48.c04eeade.js"><link rel="prefetch" href="/assets/js/49.54d87f26.js"><link rel="prefetch" href="/assets/js/5.f4e09838.js"><link rel="prefetch" href="/assets/js/50.f63202bb.js"><link rel="prefetch" href="/assets/js/51.16cc0699.js"><link rel="prefetch" href="/assets/js/52.7cdd6b32.js"><link rel="prefetch" href="/assets/js/53.7151f340.js"><link rel="prefetch" href="/assets/js/54.c4b05d09.js"><link rel="prefetch" href="/assets/js/55.0bf0d26d.js"><link rel="prefetch" href="/assets/js/56.87a8a715.js"><link rel="prefetch" href="/assets/js/57.d7ff1773.js"><link rel="prefetch" href="/assets/js/58.ee467b99.js"><link rel="prefetch" href="/assets/js/59.1c084438.js"><link rel="prefetch" href="/assets/js/6.102494d6.js"><link rel="prefetch" href="/assets/js/60.2dc81c6b.js"><link rel="prefetch" href="/assets/js/61.02228d5c.js"><link rel="prefetch" href="/assets/js/62.ed268d20.js"><link rel="prefetch" href="/assets/js/63.afa21a4b.js"><link rel="prefetch" href="/assets/js/64.6f9a5793.js"><link rel="prefetch" href="/assets/js/65.6f9800ca.js"><link rel="prefetch" href="/assets/js/66.c0db84b8.js"><link rel="prefetch" href="/assets/js/67.f33037b1.js"><link rel="prefetch" href="/assets/js/68.b67dadf7.js"><link rel="prefetch" href="/assets/js/69.7d7b1524.js"><link rel="prefetch" href="/assets/js/7.d1acd4cc.js"><link rel="prefetch" href="/assets/js/70.317ac1fb.js"><link rel="prefetch" href="/assets/js/71.ec502d31.js"><link rel="prefetch" href="/assets/js/72.1d12bebd.js"><link rel="prefetch" href="/assets/js/73.2a266075.js"><link rel="prefetch" href="/assets/js/74.03348a5f.js"><link rel="prefetch" href="/assets/js/75.f17ffa7e.js"><link rel="prefetch" href="/assets/js/76.5e10801e.js"><link rel="prefetch" href="/assets/js/77.f892086b.js"><link rel="prefetch" href="/assets/js/78.3b8ee7a5.js"><link rel="prefetch" href="/assets/js/79.28e1b585.js"><link rel="prefetch" href="/assets/js/8.7f080a79.js"><link rel="prefetch" href="/assets/js/80.db7fec5f.js"><link rel="prefetch" href="/assets/js/81.c11a03d4.js"><link rel="prefetch" href="/assets/js/82.1881483d.js"><link rel="prefetch" href="/assets/js/83.e6db044e.js"><link rel="prefetch" href="/assets/js/84.b9100194.js"><link rel="prefetch" href="/assets/js/85.bdf02741.js"><link rel="prefetch" href="/assets/js/86.64f0a566.js"><link rel="prefetch" href="/assets/js/87.b916e6f4.js"><link rel="prefetch" href="/assets/js/88.258d210f.js"><link rel="prefetch" href="/assets/js/89.551a4a48.js"><link rel="prefetch" href="/assets/js/9.73e2377b.js"><link rel="prefetch" href="/assets/js/90.a9d28be5.js"><link rel="prefetch" href="/assets/js/91.c618baa3.js"><link rel="prefetch" href="/assets/js/92.66de2bc1.js"><link rel="prefetch" href="/assets/js/93.f6ef290d.js"><link rel="prefetch" href="/assets/js/94.885e25cf.js"><link rel="prefetch" href="/assets/js/95.737e7aaf.js"><link rel="prefetch" href="/assets/js/96.49e2eb49.js"><link rel="prefetch" href="/assets/js/97.f34951f4.js"><link rel="prefetch" href="/assets/js/98.84e6dc23.js"><link rel="prefetch" href="/assets/js/99.aa8301ad.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.2e2121aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link router-link-active">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link router-link-active">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue3.0源码解读</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue/vueCodeSource/Chapter/start.html" class="sidebar-link">模块一导读 | 组件的实现：直击 Vue 核心的实现</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/start.html" class="sidebar-link">01 | 组件渲染：vnode 到真实 DOM 是如何转变的？</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/domDiff01.html" class="sidebar-link">02 | 组件更新：完整的 DOM diff 流程是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/domDiff02.html" class="sidebar-link">03 | 组件更新：完整的 DOM diff 流程是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/compositionApi.html" class="sidebar-link">模块二导读 | 逻辑复用最佳实践：Composition API</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/setup.html" class="sidebar-link">04 | Setup：组件渲染前的初始化过程是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/responsive.html" class="sidebar-link">05 | 响应式：响应式内部的实现原理是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/responsive01.html" class="sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/computed.html" class="sidebar-link">07 | 计算属性：计算属性比普通函数好在哪里？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/watch.html" class="sidebar-link">08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/watch01.html" class="sidebar-link">09 | 侦听器：侦听器的实现原理和使用场景是什么？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/lifeCycle.html" class="sidebar-link">10 | 生命周期：各个生命周期的执行时机和应用场景是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/provide.html" class="sidebar-link">11 | 依赖注入：子孙组件如何共享数据？</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/start.html" class="sidebar-link">模块三导读 | 编译和优化：了解编译过程和背后的优化思想</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast.html" class="sidebar-link">12 | 模板解析：构造 AST 的完整流程是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast1.0.html" class="sidebar-link">13 | 模板解析：构造 AST 的完整流程是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast2.0.html" class="sidebar-link">14 | AST 转换：AST 节点内部做了哪些转换？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast3.0.html" class="sidebar-link">15 | AST 转换：AST 节点内部做了哪些转换？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast4.0.html" class="sidebar-link">16 | 生成代码：AST 如何生成可运行的代码？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast5.0.html" class="sidebar-link">17 | 生成代码：AST 如何生成可运行的代码？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/start.html" class="sidebar-link">模块四导读 | 实用特性：探索更多实用特性背后的原理</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/props.html" class="sidebar-link">18 | Props：Props 的初始化和更新流程是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/slot.html" class="sidebar-link">19 | 插槽：如何实现内容分发？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/directives.html" class="sidebar-link">20 | 指令：指令完整的生命周期是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/v-model.html" class="sidebar-link">21 | v-model：双向绑定到底是怎么实现的？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/start.html" class="sidebar-link">模块五导读 | 内置组件：学习 Vue 内置组件的实现原理</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/teleport.html" class="sidebar-link">22 | Teleport 组件：如何脱离当前组件渲染子组件？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html" aria-current="page" class="active sidebar-link">23 | KeepAlive 组件：如何让组件在内存中缓存和调度？</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html#组件的渲染" class="sidebar-link">组件的渲染</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html#缓存的设计" class="sidebar-link">缓存的设计</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html#props-设计" class="sidebar-link">Props 设计</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html#组件的卸载" class="sidebar-link">组件的卸载</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/vue/vueCodeSource/Chapter5.0/transition.html" class="sidebar-link">24 | Transition 组件：过渡动画的实现原理是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/transition01.html" class="sidebar-link">25 | Transition 组件：过渡动画的实现原理是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/start.html" class="sidebar-link">特别放送导读 | 研究 Vue 官方生态的实现原理</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/router.html" class="sidebar-link">26 | Vue Router：如何实现一个前端路由？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/router1.0.html" class="sidebar-link">27 | Vue Router：如何实现一个前端路由？（下）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_23-keepalive-组件-如何让组件在内存中缓存和调度"><a href="#_23-keepalive-组件-如何让组件在内存中缓存和调度" class="header-anchor">#</a> 23 | KeepAlive 组件：如何让组件在内存中缓存和调度？</h1> <p>通过前面的学习，我们了解到多个平行组件条件渲染，当满足条件的时候会触发某个组件的挂载，而已渲染的组件当条件不满足的时候会触发组件的卸载，举个例子：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>comp-a</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>flag<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>comp-a</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>comp-b</span> <span class="token attr-name">v-else</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>comp-b</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>flag=!flag<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>toggle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div><p>这里，当 flag 为 true 的时候，就会触发组件 A 的渲染，然后我们点击按钮把 flag 修改为 false，又会触发组件 A 的卸载，及组件 B 的渲染。</p> <p>根据我们前面的学习，我们也知道组件的挂载和卸载都是一个递归过程，会有一定的性能损耗，对于这种可能会频繁切换的组件，我们有没有办法减少这其中的性能损耗呢？</p> <p>答案是有的，Vue.js 提供了内置组件 KeepAlive，我们可以这么使用它：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>keep-alive</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>comp-a</span> <span class="token attr-name">v-if</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>flag<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>comp-a</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>comp-b</span> <span class="token attr-name">v-else</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>comp-b</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>flag=!flag<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>toggle<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>keep-alive</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div><p>我们可以用模板导出工具看一下它编译后的 render 函数：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> resolveComponent <span class="token keyword">as</span> _resolveComponent<span class="token punctuation">,</span> createVNode <span class="token keyword">as</span> _createVNode<span class="token punctuation">,</span> createCommentVNode <span class="token keyword">as</span> _createCommentVNode<span class="token punctuation">,</span> KeepAlive <span class="token keyword">as</span> _KeepAlive<span class="token punctuation">,</span> openBlock <span class="token keyword">as</span> _openBlock<span class="token punctuation">,</span> createBlock <span class="token keyword">as</span> _createBlock <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">_ctx<span class="token punctuation">,</span> _cache<span class="token punctuation">,</span> $props<span class="token punctuation">,</span> $setup<span class="token punctuation">,</span> $data<span class="token punctuation">,</span> $options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> _component_comp_a <span class="token operator">=</span> <span class="token function">_resolveComponent</span><span class="token punctuation">(</span><span class="token string">&quot;comp-a&quot;</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> _component_comp_b <span class="token operator">=</span> <span class="token function">_resolveComponent</span><span class="token punctuation">(</span><span class="token string">&quot;comp-b&quot;</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">_openBlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">_createBlock</span><span class="token punctuation">(</span>_KeepAlive<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+
+    <span class="token punctuation">(</span>_ctx<span class="token punctuation">.</span>flag<span class="token punctuation">)</span>
+
+      <span class="token operator">?</span> <span class="token function">_createVNode</span><span class="token punctuation">(</span>_component_comp_a<span class="token punctuation">,</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+      <span class="token operator">:</span> <span class="token function">_createVNode</span><span class="token punctuation">(</span>_component_comp_b<span class="token punctuation">,</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token function">_createVNode</span><span class="token punctuation">(</span><span class="token string">&quot;button&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+
+      <span class="token function-variable function">onClick</span><span class="token operator">:</span> <span class="token parameter">$event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>_ctx<span class="token punctuation">.</span>flag<span class="token operator">=</span><span class="token operator">!</span>_ctx<span class="token punctuation">.</span>flag<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;toggle&quot;</span><span class="token punctuation">,</span> <span class="token number">8</span> <span class="token comment">/* PROPS */</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&quot;onClick&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1024</span> <span class="token comment">/* DYNAMIC_SLOTS */</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>我们使用了 KeepAlive 组件对这两个组件做了一层封装，KeepAlive 是一个抽象组件，它并不会渲染成一个真实的 DOM，只会渲染内部包裹的子节点，并且让内部的子组件在切换的时候，不会走一整套递归卸载和挂载 DOM的流程，从而优化了性能。</p> <p>那么它具体是怎么做的呢？我们再来看 KeepAlive 组件的定义：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> KeepAliveImpl <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+  name<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">KeepAlive</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span>
+
+  __isKeepAlive<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+  inheritRef<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+  props<span class="token operator">:</span> <span class="token punctuation">{</span>
+
+    include<span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> RegExp<span class="token punctuation">,</span> Array<span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    exclude<span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> RegExp<span class="token punctuation">,</span> Array<span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    max<span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> Number<span class="token punctuation">]</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  <span class="token function">setup</span><span class="token punctuation">(</span><span class="token parameter">props<span class="token punctuation">,</span> <span class="token punctuation">{</span> slots <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">const</span> cache <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> keys <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">let</span> current <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    <span class="token keyword">const</span> instance <span class="token operator">=</span> <span class="token function">getCurrentInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> parentSuspense <span class="token operator">=</span> instance<span class="token punctuation">.</span>suspense
+
+    <span class="token keyword">const</span> sharedContext <span class="token operator">=</span> instance<span class="token punctuation">.</span>ctx
+
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> renderer<span class="token operator">:</span> <span class="token punctuation">{</span> p<span class="token operator">:</span> patch<span class="token punctuation">,</span> m<span class="token operator">:</span> move<span class="token punctuation">,</span> um<span class="token operator">:</span> _unmount<span class="token punctuation">,</span> o<span class="token operator">:</span> <span class="token punctuation">{</span> createElement <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token operator">=</span> sharedContext
+
+    <span class="token keyword">const</span> storageContainer <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span>
+
+    sharedContext<span class="token punctuation">.</span><span class="token function-variable function">activate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> isSVG<span class="token punctuation">,</span> optimized</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> instance <span class="token operator">=</span> vnode<span class="token punctuation">.</span>component
+
+      <span class="token function">move</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> <span class="token number">0</span> <span class="token comment">/* ENTER */</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+      <span class="token function">patch</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>vnode<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> instance<span class="token punctuation">,</span> parentSuspense<span class="token punctuation">,</span> isSVG<span class="token punctuation">,</span> optimized<span class="token punctuation">)</span>
+
+      <span class="token function">queuePostRenderEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        instance<span class="token punctuation">.</span>isDeactivated <span class="token operator">=</span> <span class="token boolean">false</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance<span class="token punctuation">.</span>a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">invokeArrayFns</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">const</span> vnodeHook <span class="token operator">=</span> vnode<span class="token punctuation">.</span>props <span class="token operator">&amp;&amp;</span> vnode<span class="token punctuation">.</span>props<span class="token punctuation">.</span>onVnodeMounted
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>vnodeHook<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">invokeVNodeHook</span><span class="token punctuation">(</span>vnodeHook<span class="token punctuation">,</span> instance<span class="token punctuation">.</span>parent<span class="token punctuation">,</span> vnode<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    sharedContext<span class="token punctuation">.</span><span class="token function-variable function">deactivate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> instance <span class="token operator">=</span> vnode<span class="token punctuation">.</span>component
+
+      <span class="token function">move</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> storageContainer<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token comment">/* LEAVE */</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+      <span class="token function">queuePostRenderEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>instance<span class="token punctuation">.</span>da<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">invokeArrayFns</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>da<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">const</span> vnodeHook <span class="token operator">=</span> vnode<span class="token punctuation">.</span>props <span class="token operator">&amp;&amp;</span> vnode<span class="token punctuation">.</span>props<span class="token punctuation">.</span>onVnodeUnmounted
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>vnodeHook<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">invokeVNodeHook</span><span class="token punctuation">(</span>vnodeHook<span class="token punctuation">,</span> instance<span class="token punctuation">.</span>parent<span class="token punctuation">,</span> vnode<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+        instance<span class="token punctuation">.</span>isDeactivated <span class="token operator">=</span> <span class="token boolean">true</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">unmount</span><span class="token punctuation">(</span><span class="token parameter">vnode</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">resetShapeFlag</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span>
+
+      <span class="token function">_unmount</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> instance<span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">pruneCache</span><span class="token punctuation">(</span><span class="token parameter">filter</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      cache<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">vnode<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token function">getName</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>type<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>name <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">!</span>filter <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">filter</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">function</span> <span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span><span class="token parameter">key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> cached <span class="token operator">=</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>current <span class="token operator">||</span> cached<span class="token punctuation">.</span>type <span class="token operator">!==</span> current<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token function">unmount</span><span class="token punctuation">(</span>cached<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token function">resetShapeFlag</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      cache<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+      keys<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>props<span class="token punctuation">.</span>include<span class="token punctuation">,</span> props<span class="token punctuation">.</span>exclude<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>include<span class="token punctuation">,</span> exclude<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      include <span class="token operator">&amp;&amp;</span> <span class="token function">pruneCache</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token function">matches</span><span class="token punctuation">(</span>include<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+      exclude <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">pruneCache</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token function">matches</span><span class="token punctuation">(</span>exclude<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">let</span> pendingCacheKey <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    <span class="token keyword">const</span> <span class="token function-variable function">cacheSubtree</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>pendingCacheKey <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        cache<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>pendingCacheKey<span class="token punctuation">,</span> instance<span class="token punctuation">.</span>subTree<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token function">onBeforeMount</span><span class="token punctuation">(</span>cacheSubtree<span class="token punctuation">)</span>
+
+    <span class="token function">onBeforeUpdate</span><span class="token punctuation">(</span>cacheSubtree<span class="token punctuation">)</span>
+
+    <span class="token function">onBeforeUnmount</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      cache<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">cached</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">const</span> <span class="token punctuation">{</span> subTree<span class="token punctuation">,</span> suspense <span class="token punctuation">}</span> <span class="token operator">=</span> instance
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cached<span class="token punctuation">.</span>type <span class="token operator">===</span> subTree<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">resetShapeFlag</span><span class="token punctuation">(</span>subTree<span class="token punctuation">)</span>
+
+          <span class="token keyword">const</span> da <span class="token operator">=</span> subTree<span class="token punctuation">.</span>component<span class="token punctuation">.</span>da
+
+          da <span class="token operator">&amp;&amp;</span> <span class="token function">queuePostRenderEffect</span><span class="token punctuation">(</span>da<span class="token punctuation">,</span> suspense<span class="token punctuation">)</span>
+
+          <span class="token keyword">return</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token function">unmount</span><span class="token punctuation">(</span>cached<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      pendingCacheKey <span class="token operator">=</span> <span class="token keyword">null</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>slots<span class="token punctuation">.</span>default<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token keyword">null</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> children <span class="token operator">=</span> slots<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">let</span> vnode <span class="token operator">=</span> children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>children<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">KeepAlive should contain exactly one component child.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+        current <span class="token operator">=</span> <span class="token keyword">null</span>
+
+        <span class="token keyword">return</span> children
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isVNode</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span> <span class="token operator">||</span>
+
+        <span class="token operator">!</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">&amp;</span> <span class="token number">4</span> <span class="token comment">/* STATEFUL_COMPONENT */</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        current <span class="token operator">=</span> <span class="token keyword">null</span>
+
+        <span class="token keyword">return</span> vnode
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> comp <span class="token operator">=</span> vnode<span class="token punctuation">.</span>type
+
+      <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token function">getName</span><span class="token punctuation">(</span>comp<span class="token punctuation">)</span>
+
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> include<span class="token punctuation">,</span> exclude<span class="token punctuation">,</span> max <span class="token punctuation">}</span> <span class="token operator">=</span> props
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>include <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">!</span>name <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">matches</span><span class="token punctuation">(</span>include<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+
+        <span class="token punctuation">(</span>exclude <span class="token operator">&amp;&amp;</span> name <span class="token operator">&amp;&amp;</span> <span class="token function">matches</span><span class="token punctuation">(</span>exclude<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>current <span class="token operator">=</span> vnode<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">const</span> key <span class="token operator">=</span> vnode<span class="token punctuation">.</span>key <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> comp <span class="token operator">:</span> vnode<span class="token punctuation">.</span>key
+
+      <span class="token keyword">const</span> cachedVNode <span class="token operator">=</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>el<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        vnode <span class="token operator">=</span> <span class="token function">cloneVNode</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      pendingCacheKey <span class="token operator">=</span> key
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>cachedVNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        vnode<span class="token punctuation">.</span>el <span class="token operator">=</span> cachedVNode<span class="token punctuation">.</span>el
+
+        vnode<span class="token punctuation">.</span>component <span class="token operator">=</span> cachedVNode<span class="token punctuation">.</span>component
+
+        vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">|=</span> <span class="token number">512</span> <span class="token comment">/* COMPONENT_KEPT_ALIVE */</span>
+
+        keys<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+        keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+        keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&amp;&amp;</span> keys<span class="token punctuation">.</span>size <span class="token operator">&gt;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span>keys<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span>
+
+      vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">|=</span> <span class="token number">256</span> <span class="token comment">/* COMPONENT_SHOULD_KEEP_ALIVE */</span>
+
+      current <span class="token operator">=</span> vnode
+
+      <span class="token keyword">return</span> vnode
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>我把 KeepAlive 的实现拆成四个部分：组件的渲染、缓存的设计、Props 设计和组件的卸载。接下来，我们就来依次分析它们的实现。分析的过程中，我会结合前面的示例讲解，希望你也能够运行这个示例，并加入一些断点调试。</p> <h2 id="组件的渲染"><a href="#组件的渲染" class="header-anchor">#</a> 组件的渲染</h2> <p>首先，我们来看组件的渲染部分，可以看到 KeepAlive 组件使用了 Composition API 的方式去实现，我们已经学习过了，当 setup 函数返回的是一个函数，那么这个函数就是组件的渲染函数，我们来看它的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  pendingCacheKey <span class="token operator">=</span> <span class="token keyword">null</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>slots<span class="token punctuation">.</span>default<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token keyword">null</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> children <span class="token operator">=</span> slots<span class="token punctuation">.</span><span class="token function">default</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">let</span> vnode <span class="token operator">=</span> children<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>children<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">!==</span> <span class="token string">'production'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">warn</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">KeepAlive should contain exactly one component child.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    current <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    <span class="token keyword">return</span> children
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isVNode</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span> <span class="token operator">||</span>
+
+    <span class="token operator">!</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">&amp;</span> <span class="token number">4</span> <span class="token comment">/* STATEFUL_COMPONENT */</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    current <span class="token operator">=</span> <span class="token keyword">null</span>
+
+    <span class="token keyword">return</span> vnode
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> comp <span class="token operator">=</span> vnode<span class="token punctuation">.</span>type
+
+  <span class="token keyword">const</span> name <span class="token operator">=</span> <span class="token function">getName</span><span class="token punctuation">(</span>comp<span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> include<span class="token punctuation">,</span> exclude<span class="token punctuation">,</span> max <span class="token punctuation">}</span> <span class="token operator">=</span> props
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>include <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">!</span>name <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">matches</span><span class="token punctuation">(</span>include<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+
+    <span class="token punctuation">(</span>exclude <span class="token operator">&amp;&amp;</span> name <span class="token operator">&amp;&amp;</span> <span class="token function">matches</span><span class="token punctuation">(</span>exclude<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>current <span class="token operator">=</span> vnode<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> key <span class="token operator">=</span> vnode<span class="token punctuation">.</span>key <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">?</span> comp <span class="token operator">:</span> vnode<span class="token punctuation">.</span>key
+
+  <span class="token keyword">const</span> cachedVNode <span class="token operator">=</span> cache<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>el<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    vnode <span class="token operator">=</span> <span class="token function">cloneVNode</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  pendingCacheKey <span class="token operator">=</span> key
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>cachedVNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    vnode<span class="token punctuation">.</span>el <span class="token operator">=</span> cachedVNode<span class="token punctuation">.</span>el
+
+    vnode<span class="token punctuation">.</span>component <span class="token operator">=</span> cachedVNode<span class="token punctuation">.</span>component
+
+    <span class="token comment">// 避免 vnode 节点作为新节点被挂载</span>
+
+    vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">|=</span> <span class="token number">512</span> <span class="token comment">/* COMPONENT_KEPT_ALIVE */</span>
+
+    <span class="token comment">// 让这个 key 始终新鲜</span>
+
+    keys<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+    keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+    keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+    <span class="token comment">// 删除最久不用的 key，符合 LRU 思想</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&amp;&amp;</span> keys<span class="token punctuation">.</span>size <span class="token operator">&gt;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span>keys<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 避免 vnode 被卸载</span>
+
+  vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">|=</span> <span class="token number">256</span> <span class="token comment">/* COMPONENT_SHOULD_KEEP_ALIVE */</span>
+
+  current <span class="token operator">=</span> vnode
+
+  <span class="token keyword">return</span> vnode
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>函数先从 slots.default() 拿到子节点 children，它就是 KeepAlive 组件包裹的子组件，由于 KeepAlive 只能渲染单个子节点，所以当 children 长度大于 1 的时候会报警告。</p> <p>我们先不考虑缓存部分，KeepAlive 渲染的 vnode 就是子节点 children 的第一个元素，它是函数的返回值。</p> <p>因此我们说 KeepAlive 是抽象组件，它本身不渲染成实体节点，而是渲染它的第一个子节点。</p> <p>当然，没有缓存的 KeepAlive 组件是没有灵魂的，这种抽象的封装也是没有任何意义的，所以接下来我们重点来看它的缓存是如何设计的。</p> <h2 id="缓存的设计"><a href="#缓存的设计" class="header-anchor">#</a> 缓存的设计</h2> <p>我们先来思考一件事情，我们需要缓存什么？</p> <p>组件的递归 patch 过程，主要就是为了渲染 DOM，显然这个递归过程是有一定的性能耗时的，既然目标是为了渲染 DOM，那么我们是不是可以把 DOM 缓存了，这样下一次渲染我们就可以直接从缓存里获取 DOM 并渲染，就不需要每次都重新递归渲染了。</p> <p>实际上 KeepAlive 组件就是这么做的，它注入了两个钩子函数，onBeforeMount 和 onBeforeUpdate，在这两个钩子函数内部都执行了 cacheSubtree 函数来做缓存：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">cacheSubtree</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>pendingCacheKey <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    cache<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>pendingCacheKey<span class="token punctuation">,</span> instance<span class="token punctuation">.</span>subTree<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>由于 pendingCacheKey 是在 KeepAlive 的 render 函数中才会被赋值，所以 KeepAlive 首次进入 onBeforeMount 钩子函数的时候是不会缓存的。</p> <p>然后 KeepAlive 执行 render 的时候，pendingCacheKey 会被赋值为 vnode.key，我们回过头看一下示例渲染后的模板：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> resolveComponent <span class="token keyword">as</span> _resolveComponent<span class="token punctuation">,</span> createVNode <span class="token keyword">as</span> _createVNode<span class="token punctuation">,</span> createCommentVNode <span class="token keyword">as</span> _createCommentVNode<span class="token punctuation">,</span> KeepAlive <span class="token keyword">as</span> _KeepAlive<span class="token punctuation">,</span> openBlock <span class="token keyword">as</span> _openBlock<span class="token punctuation">,</span> createBlock <span class="token keyword">as</span> _createBlock <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&quot;vue&quot;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">_ctx<span class="token punctuation">,</span> _cache<span class="token punctuation">,</span> $props<span class="token punctuation">,</span> $setup<span class="token punctuation">,</span> $data<span class="token punctuation">,</span> $options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> _component_comp_a <span class="token operator">=</span> <span class="token function">_resolveComponent</span><span class="token punctuation">(</span><span class="token string">&quot;comp-a&quot;</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> _component_comp_b <span class="token operator">=</span> <span class="token function">_resolveComponent</span><span class="token punctuation">(</span><span class="token string">&quot;comp-b&quot;</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token function">_openBlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">_createBlock</span><span class="token punctuation">(</span>_KeepAlive<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+
+    <span class="token punctuation">(</span>_ctx<span class="token punctuation">.</span>flag<span class="token punctuation">)</span>
+
+      <span class="token operator">?</span> <span class="token function">_createVNode</span><span class="token punctuation">(</span>_component_comp_a<span class="token punctuation">,</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+      <span class="token operator">:</span> <span class="token function">_createVNode</span><span class="token punctuation">(</span>_component_comp_b<span class="token punctuation">,</span> <span class="token punctuation">{</span> key<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token function">_createVNode</span><span class="token punctuation">(</span><span class="token string">&quot;button&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+
+      <span class="token function-variable function">onClick</span><span class="token operator">:</span> <span class="token parameter">$event</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span>_ctx<span class="token punctuation">.</span>flag<span class="token operator">=</span><span class="token operator">!</span>_ctx<span class="token punctuation">.</span>flag<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">&quot;toggle&quot;</span><span class="token punctuation">,</span> <span class="token number">8</span> <span class="token comment">/* PROPS */</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&quot;onClick&quot;</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">1024</span> <span class="token comment">/* DYNAMIC_SLOTS */</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>我们注意到 KeepAlive 的子节点创建的时候都添加了一个 key 的 prop，它就是专门为 KeepAlive 的缓存设计的，这样每一个子节点都能有一个唯一的 key。</p> <p>页面首先渲染 A 组件，接着当我们点击按钮的时候，修改了 flag 的值，会触发当前组件的重新渲染，进而也触发了 KeepAlvie 组件的重新渲染，在组件重新渲染前，会执行 onBeforeUpdate 对应的钩子函数，也就再次执行到 cacheSubtree 函数中。</p> <p>这个时候 pendingCacheKey 对应的是 A 组件 vnode 的 key，instance.subTree 对应的也是 A 组件的渲染子树，所以 KeepAlive 每次在更新前，会缓存前一个组件的渲染子树。</p> <blockquote><p>经过前面的分析，我认为 onBeforeMount 的钩子函数注入似乎并没有必要，我在源码中删除后再跑 Vue.js 3.0 的单测也能通过，如果你有不同意见，欢迎在留言区与我分享。</p></blockquote> <p>这个时候渲染了 B 组件，当我们再次点击按钮，修改 flag 值的时候，会再次触发KeepAlvie 组件的重新渲染，当然此时执行 onBeforeUpdate 钩子函数缓存的就是 B 组件的渲染子树了。</p> <p>接着再次执行 KeepAlive 组件的 render 函数，此时就可以从缓存中根据 A 组件的 key 拿到对应的渲染子树 cachedVNode 的了，然后执行如下逻辑：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">if</span> <span class="token punctuation">(</span>cachedVNode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  vnode<span class="token punctuation">.</span>el <span class="token operator">=</span> cachedVNode<span class="token punctuation">.</span>el
+
+  vnode<span class="token punctuation">.</span>component <span class="token operator">=</span> cachedVNode<span class="token punctuation">.</span>component
+
+  <span class="token comment">// 避免 vnode 节点作为新节点被挂载</span>
+
+  vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">|=</span> <span class="token number">512</span> <span class="token comment">/* COMPONENT_KEPT_ALIVE */</span>
+
+  <span class="token comment">// 让这个 key 始终新鲜</span>
+
+  keys<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+  keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+  keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+  <span class="token comment">// 删除最久不用的 key，符合 LRU 思想</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&amp;&amp;</span> keys<span class="token punctuation">.</span>size <span class="token operator">&gt;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span>keys<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>有了缓存的渲染子树后，我们就可以直接拿到它对应的 DOM 以及组件实例 component，赋值给 KeepAlive 的 vnode，并更新 vnode.shapeFlag，以便后续 patch 阶段使用。</p> <blockquote><p>注意，这里有一个额外的缓存管理的逻辑，我们稍后讲 Props 设计的时候会详细说。</p></blockquote> <p>那么，对于 KeepAlive 组件的渲染来说，有缓存和没缓存在 patch 阶段有何区别呢，由于 KeepAlive 缓存的都是有状态的组件 vnode，我们再来回顾一下 patchComponent 函数的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">processComponent</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">n1<span class="token punctuation">,</span> n2<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> parentComponent<span class="token punctuation">,</span> parentSuspense<span class="token punctuation">,</span> isSVG<span class="token punctuation">,</span> optimized</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>n1 <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 处理 KeepAlive 组件</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n2<span class="token punctuation">.</span>shapeFlag <span class="token operator">&amp;</span> <span class="token number">512</span> <span class="token comment">/* COMPONENT_KEPT_ALIVE */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      parentComponent<span class="token punctuation">.</span>ctx<span class="token punctuation">.</span><span class="token function">activate</span><span class="token punctuation">(</span>n2<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> isSVG<span class="token punctuation">,</span> optimized<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// 挂载组件</span>
+
+      <span class="token function">mountComponent</span><span class="token punctuation">(</span>n2<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> parentComponent<span class="token punctuation">,</span> parentSuspense<span class="token punctuation">,</span> isSVG<span class="token punctuation">,</span> optimized<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 更新组件</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>KeepAlive 首次渲染某一个子节点时，和正常的组件节点渲染没有区别，但是有缓存后，由于标记了 shapeFlag，所以在执行processComponent函数时会走到处理 KeepAlive 组件的逻辑中，执行 KeepAlive 组件实例上下文中的 activate 函数，我们来看它的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code>sharedContext<span class="token punctuation">.</span><span class="token function-variable function">activate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> isSVG<span class="token punctuation">,</span> optimized</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> instance <span class="token operator">=</span> vnode<span class="token punctuation">.</span>component
+
+  <span class="token function">move</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> <span class="token number">0</span> <span class="token comment">/* ENTER */</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+  <span class="token function">patch</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>vnode<span class="token punctuation">,</span> vnode<span class="token punctuation">,</span> container<span class="token punctuation">,</span> anchor<span class="token punctuation">,</span> instance<span class="token punctuation">,</span> parentSuspense<span class="token punctuation">,</span> isSVG<span class="token punctuation">,</span> optimized<span class="token punctuation">)</span>
+
+  <span class="token function">queuePostRenderEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    instance<span class="token punctuation">.</span>isDeactivated <span class="token operator">=</span> <span class="token boolean">false</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>instance<span class="token punctuation">.</span>a<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">invokeArrayFns</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> vnodeHook <span class="token operator">=</span> vnode<span class="token punctuation">.</span>props <span class="token operator">&amp;&amp;</span> vnode<span class="token punctuation">.</span>props<span class="token punctuation">.</span>onVnodeMounted
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>vnodeHook<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">invokeVNodeHook</span><span class="token punctuation">(</span>vnodeHook<span class="token punctuation">,</span> instance<span class="token punctuation">.</span>parent<span class="token punctuation">,</span> vnode<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>可以看到，由于此时已经能从 vnode.el 中拿到缓存的 DOM 了，所以可以直接调用 move 方法挂载节点，然后执行 patch 方法更新组件，以防止 props 发生变化的情况。</p> <p>接下来，就是通过 queuePostRenderEffect 的方式，在组件渲染完毕后，执行子节点组件定义的 activated 钩子函数。</p> <p>至此，我们就了解了 KeepAlive 的缓存设计，KeepAlive 包裹的子组件在其渲染后，下一次 KeepAlive 组件更新前会被缓存，缓存后的子组件在下一次渲染的时候直接从缓存中拿到子树 vnode 以及对应的 DOM 元素，直接渲染即可。</p> <p>当然，光有缓存还不够灵活，有些时候我们想针对某些子组件缓存，某些子组件不缓存，另外，我们还想限制 KeepAlive 组件的最大缓存个数，怎么办呢？KeepAlive 设计了几个 Props，允许我们可以对上述需求做配置。</p> <h2 id="props-设计"><a href="#props-设计" class="header-anchor">#</a> Props 设计</h2> <p>KeepAlive 一共支持了三个 Props，分别是 include、exclude 和 max。</p> <div class="language-js extra-class"><pre class="language-js"><code>props<span class="token operator">:</span> <span class="token punctuation">{</span>
+
+  include<span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> RegExp<span class="token punctuation">,</span> Array<span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+  exclude<span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> RegExp<span class="token punctuation">,</span> Array<span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+  max<span class="token operator">:</span> <span class="token punctuation">[</span>String<span class="token punctuation">,</span> Number<span class="token punctuation">]</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>include 和 exclude 对应的实现逻辑如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token punctuation">{</span> include<span class="token punctuation">,</span> exclude<span class="token punctuation">,</span> max <span class="token punctuation">}</span> <span class="token operator">=</span> props
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>include <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token operator">!</span>name <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">matches</span><span class="token punctuation">(</span>include<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">||</span>
+
+  <span class="token punctuation">(</span>exclude <span class="token operator">&amp;&amp;</span> name <span class="token operator">&amp;&amp;</span> <span class="token function">matches</span><span class="token punctuation">(</span>exclude<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>current <span class="token operator">=</span> vnode<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>很好理解，如果子组件名称不匹配 include 的 vnode ，以及子组件名称匹配 exclude 的 vnode 都不应该被缓存，而应该直接返回。</p> <p>当然，由于 props 是响应式的，在 include 和 exclude props 发生变化的时候也应该有相关的处理逻辑，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">watch</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">[</span>props<span class="token punctuation">.</span>include<span class="token punctuation">,</span> props<span class="token punctuation">.</span>exclude<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">[</span>include<span class="token punctuation">,</span> exclude<span class="token punctuation">]</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  include <span class="token operator">&amp;&amp;</span> <span class="token function">pruneCache</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token function">matches</span><span class="token punctuation">(</span>include<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  exclude <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span><span class="token function">pruneCache</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token function">matches</span><span class="token punctuation">(</span>exclude<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>监听的逻辑也很简单，当 include 发生变化的时候，从缓存中删除那些 name 不匹配 include 的 vnode 节点；当 exclude 发生变化的时候，从缓存中删除那些 name 匹配 exclude 的 vnode 节点。</p> <p>除了 include 和 exclude 之外，KeepAlive 组件还支持了 max prop 来控制缓存的最大个数。</p> <p>由于缓存本身就是占用了内存，所以有些场景我们希望限制 KeepAlive 缓存的个数，这时我们可以通过 max 属性来控制，当缓存新的 vnode 的时候，会做一定程度的缓存管理，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>keys<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+<span class="token comment">// 删除最久不用的 key，符合 LRU 思想</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>max <span class="token operator">&amp;&amp;</span> keys<span class="token punctuation">.</span>size <span class="token operator">&gt;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+<span class="token function">pruneCacheEntry</span><span class="token punctuation">(</span>keys<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>由于新的缓存 key 都是在 keys 的结尾添加的，所以当缓存的个数超过 max 的时候，就从最前面开始删除，符合 LRU 最近最少使用的算法思想。</p> <h2 id="组件的卸载"><a href="#组件的卸载" class="header-anchor">#</a> 组件的卸载</h2> <p>了解完 KeepAlive 组件的渲染、缓存和 Props 设计后，我们接着来看 KeepAlive 组件的卸载过程。</p> <p>我们先来分析 KeepAlive 内部包裹的子组件的卸载过程，前面我们提到 KeepAlive 渲染的过程实际上是渲染它的第一个子组件节点，并且会给渲染的 vnode 打上如下标记：</p> <div class="language-js extra-class"><pre class="language-js"><code>vnode<span class="token punctuation">.</span>shapeFlag <span class="token operator">|=</span> <span class="token number">256</span> <span class="token comment">/* COMPONENT_SHOULD_KEEP_ALIVE */</span>
+
+</code></pre></div><p>加上这个 shapeFlag 有什么用呢，我们结合前面的示例来分析。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>keep<span class="token operator">-</span>alive<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>comp<span class="token operator">-</span>a v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">&quot;flag&quot;</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>comp<span class="token operator">-</span>a<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>comp<span class="token operator">-</span>b v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>comp<span class="token operator">-</span>b<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">&quot;flag=!flag&quot;</span><span class="token operator">&gt;</span>toggle<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>keep<span class="token operator">-</span>alive<span class="token operator">&gt;</span>
+
+</code></pre></div><p>当 flag 为 true 的时候，渲染 A 组件，然后我们点击按钮修改 flag 的值，会触发 KeepAlive 组件的重新渲染，会先执行 BeforeUpdate 钩子函数缓存 A 组件对应的渲染子树 vnode，然后再执行 patch 更新子组件。</p> <p>这个时候会执行 B 组件的渲染，以及 A 组件的卸载，我们知道组件的卸载会执行 unmount 方法，其中有一个关于 KeepAlive 组件的逻辑，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">unmount</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode<span class="token punctuation">,</span> parentComponent<span class="token punctuation">,</span> parentSuspense<span class="token punctuation">,</span> doRemove <span class="token operator">=</span> <span class="token boolean">false</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> shapeFlag  <span class="token punctuation">}</span> <span class="token operator">=</span> vnode
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>shapeFlag <span class="token operator">&amp;</span> <span class="token number">256</span> <span class="token comment">/* COMPONENT_SHOULD_KEEP_ALIVE */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    parentComponent<span class="token punctuation">.</span>ctx<span class="token punctuation">.</span><span class="token function">deactivate</span><span class="token punctuation">(</span>vnode<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">// 卸载组件</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>如果 shapeFlag 满足 KeepAlive 的条件，则执行相应的 deactivate 函数，它的定义如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>sharedContext<span class="token punctuation">.</span><span class="token function-variable function">deactivate</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">vnode</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> instance <span class="token operator">=</span> vnode<span class="token punctuation">.</span>component
+
+  <span class="token function">move</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> storageContainer<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">1</span> <span class="token comment">/* LEAVE */</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+  <span class="token function">queuePostRenderEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>instance<span class="token punctuation">.</span>da<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">invokeArrayFns</span><span class="token punctuation">(</span>instance<span class="token punctuation">.</span>da<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">const</span> vnodeHook <span class="token operator">=</span> vnode<span class="token punctuation">.</span>props <span class="token operator">&amp;&amp;</span> vnode<span class="token punctuation">.</span>props<span class="token punctuation">.</span>onVnodeUnmounted
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>vnodeHook<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">invokeVNodeHook</span><span class="token punctuation">(</span>vnodeHook<span class="token punctuation">,</span> instance<span class="token punctuation">.</span>parent<span class="token punctuation">,</span> vnode<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    instance<span class="token punctuation">.</span>isDeactivated <span class="token operator">=</span> <span class="token boolean">true</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> parentSuspense<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>函数首先通过 move 方法从 DOM 树中移除该节点，接着通过 queuePostRenderEffect 的方式执行定义的 deactivated 钩子函数。</p> <p>注意，这里我们只是移除了 DOM，并没有真正意义上的执行子组件的整套卸载流程。</p> <p>那么除了点击按钮引起子组件的卸载之外，当 KeepAlive 所在的组件卸载时，由于卸载的递归特性，也会触发 KeepAlive 组件的卸载，在卸载的过程中会执行 onBeforeUnmount 钩子函数，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">onBeforeUnmount</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  cache<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">cached</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">const</span> <span class="token punctuation">{</span> subTree<span class="token punctuation">,</span> suspense <span class="token punctuation">}</span> <span class="token operator">=</span> instance
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cached<span class="token punctuation">.</span>type <span class="token operator">===</span> subTree<span class="token punctuation">.</span>type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">resetShapeFlag</span><span class="token punctuation">(</span>subTree<span class="token punctuation">)</span>
+
+      <span class="token keyword">const</span> da <span class="token operator">=</span> subTree<span class="token punctuation">.</span>component<span class="token punctuation">.</span>da
+
+      da <span class="token operator">&amp;&amp;</span> <span class="token function">queuePostRenderEffect</span><span class="token punctuation">(</span>da<span class="token punctuation">,</span> suspense<span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token function">unmount</span><span class="token punctuation">(</span>cached<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>  
+
+</code></pre></div><p>它会遍历所有缓存的 vnode，并且比对缓存的 vnode 是不是当前 KeepAlive 组件渲染的 vnode。</p> <p>如果是的话，则执行 resetShapeFlag 方法，它的作用是修改 vnode 的 shapeFlag，不让它再被当作一个 KeepAlive 的 vnode 了，这样就可以走正常的卸载逻辑。接着通过 queuePostRenderEffect 的方式执行子组件的 deactivated 钩子函数。</p> <p>如果不是，则执行 unmount 方法重置 shapeFlag 以及执行缓存 vnode 的整套卸载流程。</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>好的，到这里我们这一节的学习也要结束啦，通过这节课的学习，你应该明白 KeepAlive 实际上是一个抽象节点，渲染的是它的第一个子节点，并了解它的缓存设计、Props 设计和卸载过程。</p> <p>最后，给你留一道思考题，我们是如何给组件注册 activated 和 deactivated 钩子函数的，它们的执行和其他钩子函数比，有什么不同？欢迎你在留言区与我分享。</p> <blockquote><p>本节课的相关代码在源代码中的位置如下：
+packages/runtime-core/src/components/KeepAlive.ts
+packages/runtime-core/src/renderer.ts</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue/vueCodeSource/Chapter5.0/teleport.html" class="prev">
+        22 | Teleport 组件：如何脱离当前组件渲染子组件？
+      </a></span> <span class="next"><a href="/vue/vueCodeSource/Chapter5.0/transition.html">
+        24 | Transition 组件：过渡动画的实现原理是怎样的？（上）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.175cb2f7.js" defer></script><script src="/assets/js/2.75df7a20.js" defer></script><script src="/assets/js/337.363c2e20.js" defer></script>
+  </body>
+</html>

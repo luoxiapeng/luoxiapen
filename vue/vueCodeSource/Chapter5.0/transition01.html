@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>25 | Transition 组件：过渡动画的实现原理是怎样的？（下） | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    
+    <link rel="preload" href="/assets/css/0.styles.2e2121aa.css" as="style"><link rel="preload" href="/assets/js/app.175cb2f7.js" as="script"><link rel="preload" href="/assets/js/2.75df7a20.js" as="script"><link rel="preload" href="/assets/js/341.9b49629b.js" as="script"><link rel="prefetch" href="/assets/js/10.f03c1e06.js"><link rel="prefetch" href="/assets/js/100.c871eff4.js"><link rel="prefetch" href="/assets/js/101.65ac835d.js"><link rel="prefetch" href="/assets/js/102.046d7f9a.js"><link rel="prefetch" href="/assets/js/103.6eeb610a.js"><link rel="prefetch" href="/assets/js/104.b364b538.js"><link rel="prefetch" href="/assets/js/105.f47cfdbf.js"><link rel="prefetch" href="/assets/js/106.cbc65301.js"><link rel="prefetch" href="/assets/js/107.64d4d4c7.js"><link rel="prefetch" href="/assets/js/108.6b5a235d.js"><link rel="prefetch" href="/assets/js/109.7c0f8975.js"><link rel="prefetch" href="/assets/js/11.b84546b1.js"><link rel="prefetch" href="/assets/js/110.3b64d6b4.js"><link rel="prefetch" href="/assets/js/111.d63df36c.js"><link rel="prefetch" href="/assets/js/112.c9d94d9a.js"><link rel="prefetch" href="/assets/js/113.2d8f7066.js"><link rel="prefetch" href="/assets/js/114.53b0c6a6.js"><link rel="prefetch" href="/assets/js/115.416531bc.js"><link rel="prefetch" href="/assets/js/116.4bf66415.js"><link rel="prefetch" href="/assets/js/117.c01a46e8.js"><link rel="prefetch" href="/assets/js/118.8936b8fb.js"><link rel="prefetch" href="/assets/js/119.dd831f23.js"><link rel="prefetch" href="/assets/js/12.32ac00f9.js"><link rel="prefetch" href="/assets/js/120.45ab0ea6.js"><link rel="prefetch" href="/assets/js/121.bd3f5f6c.js"><link rel="prefetch" href="/assets/js/122.a8180120.js"><link rel="prefetch" href="/assets/js/123.a7ae8b51.js"><link rel="prefetch" href="/assets/js/124.99349765.js"><link rel="prefetch" href="/assets/js/125.52b1dbdd.js"><link rel="prefetch" href="/assets/js/126.bbad428e.js"><link rel="prefetch" href="/assets/js/127.7b9981ba.js"><link rel="prefetch" href="/assets/js/128.122b9074.js"><link rel="prefetch" href="/assets/js/129.a2185a20.js"><link rel="prefetch" href="/assets/js/13.37f30a7a.js"><link rel="prefetch" href="/assets/js/130.b78c77cf.js"><link rel="prefetch" href="/assets/js/131.9bd76d54.js"><link rel="prefetch" href="/assets/js/132.051a8db9.js"><link rel="prefetch" href="/assets/js/133.b9afc210.js"><link rel="prefetch" href="/assets/js/134.4be23ce1.js"><link rel="prefetch" href="/assets/js/135.f727416b.js"><link rel="prefetch" href="/assets/js/136.559bf91c.js"><link rel="prefetch" href="/assets/js/137.095dff91.js"><link rel="prefetch" href="/assets/js/138.dd2f6f8e.js"><link rel="prefetch" href="/assets/js/139.9224a4f3.js"><link rel="prefetch" href="/assets/js/14.dd8d1cf2.js"><link rel="prefetch" href="/assets/js/140.c0abb65b.js"><link rel="prefetch" href="/assets/js/141.ade9802b.js"><link rel="prefetch" href="/assets/js/142.d42dd0ee.js"><link rel="prefetch" href="/assets/js/143.120e25ac.js"><link rel="prefetch" href="/assets/js/144.86815a66.js"><link rel="prefetch" href="/assets/js/145.a847a89c.js"><link rel="prefetch" href="/assets/js/146.d63c89a2.js"><link rel="prefetch" href="/assets/js/147.04f11e47.js"><link rel="prefetch" href="/assets/js/148.f4c435b3.js"><link rel="prefetch" href="/assets/js/149.3ec45095.js"><link rel="prefetch" href="/assets/js/15.33ba51c7.js"><link rel="prefetch" href="/assets/js/150.21d59da1.js"><link rel="prefetch" href="/assets/js/151.a8751abe.js"><link rel="prefetch" href="/assets/js/152.1020b5cc.js"><link rel="prefetch" href="/assets/js/153.56642c96.js"><link rel="prefetch" href="/assets/js/154.9308b1c1.js"><link rel="prefetch" href="/assets/js/155.408fa629.js"><link rel="prefetch" href="/assets/js/156.91c92a23.js"><link rel="prefetch" href="/assets/js/157.0e9110da.js"><link rel="prefetch" href="/assets/js/158.f291e586.js"><link rel="prefetch" href="/assets/js/159.41009097.js"><link rel="prefetch" href="/assets/js/16.5146101f.js"><link rel="prefetch" href="/assets/js/160.7f0eac3b.js"><link rel="prefetch" href="/assets/js/161.bcc0df34.js"><link rel="prefetch" href="/assets/js/162.33053c1d.js"><link rel="prefetch" href="/assets/js/163.7078c31a.js"><link rel="prefetch" href="/assets/js/164.2a776a79.js"><link rel="prefetch" href="/assets/js/165.33e61817.js"><link rel="prefetch" href="/assets/js/166.a824efe7.js"><link rel="prefetch" href="/assets/js/167.4fa8c9e1.js"><link rel="prefetch" href="/assets/js/168.be99d7e4.js"><link rel="prefetch" href="/assets/js/169.f7cba43b.js"><link rel="prefetch" href="/assets/js/17.7134f46e.js"><link rel="prefetch" href="/assets/js/170.03baa419.js"><link rel="prefetch" href="/assets/js/171.0d9148c1.js"><link rel="prefetch" href="/assets/js/172.1d927e91.js"><link rel="prefetch" href="/assets/js/173.4e6aaf54.js"><link rel="prefetch" href="/assets/js/174.e1c9acb9.js"><link rel="prefetch" href="/assets/js/175.7e994eb5.js"><link rel="prefetch" href="/assets/js/176.3dbc154e.js"><link rel="prefetch" href="/assets/js/177.be2d7b64.js"><link rel="prefetch" href="/assets/js/178.daa5ec97.js"><link rel="prefetch" href="/assets/js/179.a440c1bd.js"><link rel="prefetch" href="/assets/js/18.1c28929a.js"><link rel="prefetch" href="/assets/js/180.c481e205.js"><link rel="prefetch" href="/assets/js/181.3aa5e2d2.js"><link rel="prefetch" href="/assets/js/182.bbc303ed.js"><link rel="prefetch" href="/assets/js/183.43a550e4.js"><link rel="prefetch" href="/assets/js/184.718e49b7.js"><link rel="prefetch" href="/assets/js/185.87615276.js"><link rel="prefetch" href="/assets/js/186.a50be4b7.js"><link rel="prefetch" href="/assets/js/187.871e36d4.js"><link rel="prefetch" href="/assets/js/188.ef0d5f71.js"><link rel="prefetch" href="/assets/js/189.62e4f4b1.js"><link rel="prefetch" href="/assets/js/19.177d1464.js"><link rel="prefetch" href="/assets/js/190.5d212aff.js"><link rel="prefetch" href="/assets/js/191.0f853a98.js"><link rel="prefetch" href="/assets/js/192.fb72038b.js"><link rel="prefetch" href="/assets/js/193.cd0fa133.js"><link rel="prefetch" href="/assets/js/194.bd429665.js"><link rel="prefetch" href="/assets/js/195.cb7d80bb.js"><link rel="prefetch" href="/assets/js/196.cc4b46e3.js"><link rel="prefetch" href="/assets/js/197.16c02b8e.js"><link rel="prefetch" href="/assets/js/198.4c1aeca2.js"><link rel="prefetch" href="/assets/js/199.bc6db526.js"><link rel="prefetch" href="/assets/js/20.f50e1150.js"><link rel="prefetch" href="/assets/js/200.b2c63089.js"><link rel="prefetch" href="/assets/js/201.25dd536e.js"><link rel="prefetch" href="/assets/js/202.f4323d5f.js"><link rel="prefetch" href="/assets/js/203.53d5b7f8.js"><link rel="prefetch" href="/assets/js/204.20be12c0.js"><link rel="prefetch" href="/assets/js/205.b5eacbcc.js"><link rel="prefetch" href="/assets/js/206.ffd72f20.js"><link rel="prefetch" href="/assets/js/207.922cb746.js"><link rel="prefetch" href="/assets/js/208.40367168.js"><link rel="prefetch" href="/assets/js/209.36b578a7.js"><link rel="prefetch" href="/assets/js/21.fe020a2d.js"><link rel="prefetch" href="/assets/js/210.d2f4adc3.js"><link rel="prefetch" href="/assets/js/211.d7df5c97.js"><link rel="prefetch" href="/assets/js/212.7d07403b.js"><link rel="prefetch" href="/assets/js/213.4a1e7785.js"><link rel="prefetch" href="/assets/js/214.b0e90c95.js"><link rel="prefetch" href="/assets/js/215.10095b82.js"><link rel="prefetch" href="/assets/js/216.3ca44e7e.js"><link rel="prefetch" href="/assets/js/217.9bcac322.js"><link rel="prefetch" href="/assets/js/218.5a0a1991.js"><link rel="prefetch" href="/assets/js/219.7933ce66.js"><link rel="prefetch" href="/assets/js/22.cf1d4e68.js"><link rel="prefetch" href="/assets/js/220.8ad32274.js"><link rel="prefetch" href="/assets/js/221.29bea866.js"><link rel="prefetch" href="/assets/js/222.905ce4eb.js"><link rel="prefetch" href="/assets/js/223.c564d0d3.js"><link rel="prefetch" href="/assets/js/224.1d7065ed.js"><link rel="prefetch" href="/assets/js/225.89615885.js"><link rel="prefetch" href="/assets/js/226.4baaa7b1.js"><link rel="prefetch" href="/assets/js/227.7d19f61e.js"><link rel="prefetch" href="/assets/js/228.8417c1a7.js"><link rel="prefetch" href="/assets/js/229.57705cac.js"><link rel="prefetch" href="/assets/js/23.c730dc93.js"><link rel="prefetch" href="/assets/js/230.e8e06120.js"><link rel="prefetch" href="/assets/js/231.58a79d56.js"><link rel="prefetch" href="/assets/js/232.691bb82a.js"><link rel="prefetch" href="/assets/js/233.f415de0a.js"><link rel="prefetch" href="/assets/js/234.1840175f.js"><link rel="prefetch" href="/assets/js/235.51edf65e.js"><link rel="prefetch" href="/assets/js/236.da79365d.js"><link rel="prefetch" href="/assets/js/237.119796ac.js"><link rel="prefetch" href="/assets/js/238.885e9bf9.js"><link rel="prefetch" href="/assets/js/239.6535c762.js"><link rel="prefetch" href="/assets/js/24.d4d806a2.js"><link rel="prefetch" href="/assets/js/240.15e360ae.js"><link rel="prefetch" href="/assets/js/241.2f8c27ff.js"><link rel="prefetch" href="/assets/js/242.2a6a3833.js"><link rel="prefetch" href="/assets/js/243.558787f3.js"><link rel="prefetch" href="/assets/js/244.9bae3843.js"><link rel="prefetch" href="/assets/js/245.6c63a032.js"><link rel="prefetch" href="/assets/js/246.2fd2daae.js"><link rel="prefetch" href="/assets/js/247.c8b81ca2.js"><link rel="prefetch" href="/assets/js/248.ff998439.js"><link rel="prefetch" href="/assets/js/249.0dade753.js"><link rel="prefetch" href="/assets/js/25.a39ce2bd.js"><link rel="prefetch" href="/assets/js/250.f842c300.js"><link rel="prefetch" href="/assets/js/251.edfcdd88.js"><link rel="prefetch" href="/assets/js/252.24b9c0e7.js"><link rel="prefetch" href="/assets/js/253.5826bc1b.js"><link rel="prefetch" href="/assets/js/254.8e198483.js"><link rel="prefetch" href="/assets/js/255.888d17cb.js"><link rel="prefetch" href="/assets/js/256.e6f82f01.js"><link rel="prefetch" href="/assets/js/257.55e7a891.js"><link rel="prefetch" href="/assets/js/258.3a9ad0a7.js"><link rel="prefetch" href="/assets/js/259.160ec69c.js"><link rel="prefetch" href="/assets/js/26.263e0f39.js"><link rel="prefetch" href="/assets/js/260.db778417.js"><link rel="prefetch" href="/assets/js/261.f19e2435.js"><link rel="prefetch" href="/assets/js/262.17cf1749.js"><link rel="prefetch" href="/assets/js/263.f738162f.js"><link rel="prefetch" href="/assets/js/264.4e6efc8f.js"><link rel="prefetch" href="/assets/js/265.0a62e1bf.js"><link rel="prefetch" href="/assets/js/266.fb56411f.js"><link rel="prefetch" href="/assets/js/267.5ead4660.js"><link rel="prefetch" href="/assets/js/268.1b470e63.js"><link rel="prefetch" href="/assets/js/269.df1cc1b2.js"><link rel="prefetch" href="/assets/js/27.9a81282b.js"><link rel="prefetch" href="/assets/js/270.3d81b92e.js"><link rel="prefetch" href="/assets/js/271.a70403ad.js"><link rel="prefetch" href="/assets/js/272.325c9023.js"><link rel="prefetch" href="/assets/js/273.c54142fd.js"><link rel="prefetch" href="/assets/js/274.1d8af67a.js"><link rel="prefetch" href="/assets/js/275.8fb2ee4e.js"><link rel="prefetch" href="/assets/js/276.6b0b1737.js"><link rel="prefetch" href="/assets/js/277.90f1ce6e.js"><link rel="prefetch" href="/assets/js/278.17a59051.js"><link rel="prefetch" href="/assets/js/279.1f9c0ef8.js"><link rel="prefetch" href="/assets/js/28.2c79f489.js"><link rel="prefetch" href="/assets/js/280.3924a8f5.js"><link rel="prefetch" href="/assets/js/281.c8466ede.js"><link rel="prefetch" href="/assets/js/282.cf029bfa.js"><link rel="prefetch" href="/assets/js/283.5364d9df.js"><link rel="prefetch" href="/assets/js/284.2a1c3288.js"><link rel="prefetch" href="/assets/js/285.239f982a.js"><link rel="prefetch" href="/assets/js/286.39be93a9.js"><link rel="prefetch" href="/assets/js/287.c5570faf.js"><link rel="prefetch" href="/assets/js/288.d4157ac2.js"><link rel="prefetch" href="/assets/js/289.eb161cf5.js"><link rel="prefetch" href="/assets/js/29.9ff4fc13.js"><link rel="prefetch" href="/assets/js/290.a098b418.js"><link rel="prefetch" href="/assets/js/291.842987e4.js"><link rel="prefetch" href="/assets/js/292.a41188a0.js"><link rel="prefetch" href="/assets/js/293.d04d5cf0.js"><link rel="prefetch" href="/assets/js/294.a140b169.js"><link rel="prefetch" href="/assets/js/295.875c5fce.js"><link rel="prefetch" href="/assets/js/296.ecb56bb0.js"><link rel="prefetch" href="/assets/js/297.f6a7b3d6.js"><link rel="prefetch" href="/assets/js/298.195fc3d5.js"><link rel="prefetch" href="/assets/js/299.476588e0.js"><link rel="prefetch" href="/assets/js/3.edfb4837.js"><link rel="prefetch" href="/assets/js/30.b2edc616.js"><link rel="prefetch" href="/assets/js/300.38e410e2.js"><link rel="prefetch" href="/assets/js/301.d68c589b.js"><link rel="prefetch" href="/assets/js/302.b29d12e7.js"><link rel="prefetch" href="/assets/js/303.1954aa50.js"><link rel="prefetch" href="/assets/js/304.6d9cb749.js"><link rel="prefetch" href="/assets/js/305.f942593b.js"><link rel="prefetch" href="/assets/js/306.b0dea771.js"><link rel="prefetch" href="/assets/js/307.2085d894.js"><link rel="prefetch" href="/assets/js/308.65914653.js"><link rel="prefetch" href="/assets/js/309.471abb33.js"><link rel="prefetch" href="/assets/js/31.4fdd0702.js"><link rel="prefetch" href="/assets/js/310.bd925b24.js"><link rel="prefetch" href="/assets/js/311.db7b01d6.js"><link rel="prefetch" href="/assets/js/312.4c0f96b6.js"><link rel="prefetch" href="/assets/js/313.af7e5c40.js"><link rel="prefetch" href="/assets/js/314.3b5a2cc0.js"><link rel="prefetch" href="/assets/js/315.37ee6c72.js"><link rel="prefetch" href="/assets/js/316.0bd5d394.js"><link rel="prefetch" href="/assets/js/317.4423df04.js"><link rel="prefetch" href="/assets/js/318.1d21234a.js"><link rel="prefetch" href="/assets/js/319.f79db02d.js"><link rel="prefetch" href="/assets/js/32.aa7bb4f0.js"><link rel="prefetch" href="/assets/js/320.79cf2539.js"><link rel="prefetch" href="/assets/js/321.c70db2a2.js"><link rel="prefetch" href="/assets/js/322.27382345.js"><link rel="prefetch" href="/assets/js/323.7a2d88b9.js"><link rel="prefetch" href="/assets/js/324.32533563.js"><link rel="prefetch" href="/assets/js/325.d2ae4bbc.js"><link rel="prefetch" href="/assets/js/326.6fad6bea.js"><link rel="prefetch" href="/assets/js/327.bcfda424.js"><link rel="prefetch" href="/assets/js/328.d0042a33.js"><link rel="prefetch" href="/assets/js/329.413b8527.js"><link rel="prefetch" href="/assets/js/33.c8735594.js"><link rel="prefetch" href="/assets/js/330.f59eeaaf.js"><link rel="prefetch" href="/assets/js/331.ffbf14da.js"><link rel="prefetch" href="/assets/js/332.2c9498c9.js"><link rel="prefetch" href="/assets/js/333.28eec745.js"><link rel="prefetch" href="/assets/js/334.0f2953d1.js"><link rel="prefetch" href="/assets/js/335.fc9fc3a2.js"><link rel="prefetch" href="/assets/js/336.dfba70c6.js"><link rel="prefetch" href="/assets/js/337.363c2e20.js"><link rel="prefetch" href="/assets/js/338.5d9fc629.js"><link rel="prefetch" href="/assets/js/339.ca962ab0.js"><link rel="prefetch" href="/assets/js/34.27da4ff5.js"><link rel="prefetch" href="/assets/js/340.e1557d03.js"><link rel="prefetch" href="/assets/js/342.6699be73.js"><link rel="prefetch" href="/assets/js/343.68260bfa.js"><link rel="prefetch" href="/assets/js/344.aab8694a.js"><link rel="prefetch" href="/assets/js/345.d13ba93b.js"><link rel="prefetch" href="/assets/js/346.41a459c2.js"><link rel="prefetch" href="/assets/js/35.29006597.js"><link rel="prefetch" href="/assets/js/36.c2b63d5e.js"><link rel="prefetch" href="/assets/js/37.1903ccce.js"><link rel="prefetch" href="/assets/js/38.4f8ad26c.js"><link rel="prefetch" href="/assets/js/39.48accac5.js"><link rel="prefetch" href="/assets/js/4.977d5e44.js"><link rel="prefetch" href="/assets/js/40.2b922978.js"><link rel="prefetch" href="/assets/js/41.f8151134.js"><link rel="prefetch" href="/assets/js/42.eafafdc7.js"><link rel="prefetch" href="/assets/js/43.5233f1ad.js"><link rel="prefetch" href="/assets/js/44.b836f472.js"><link rel="prefetch" href="/assets/js/45.7cd6e292.js"><link rel="prefetch" href="/assets/js/46.5f9e4ab2.js"><link rel="prefetch" href="/assets/js/47.b03459f5.js"><link rel="prefetch" href="/assets/js/48.c04eeade.js"><link rel="prefetch" href="/assets/js/49.54d87f26.js"><link rel="prefetch" href="/assets/js/5.f4e09838.js"><link rel="prefetch" href="/assets/js/50.f63202bb.js"><link rel="prefetch" href="/assets/js/51.16cc0699.js"><link rel="prefetch" href="/assets/js/52.7cdd6b32.js"><link rel="prefetch" href="/assets/js/53.7151f340.js"><link rel="prefetch" href="/assets/js/54.c4b05d09.js"><link rel="prefetch" href="/assets/js/55.0bf0d26d.js"><link rel="prefetch" href="/assets/js/56.87a8a715.js"><link rel="prefetch" href="/assets/js/57.d7ff1773.js"><link rel="prefetch" href="/assets/js/58.ee467b99.js"><link rel="prefetch" href="/assets/js/59.1c084438.js"><link rel="prefetch" href="/assets/js/6.102494d6.js"><link rel="prefetch" href="/assets/js/60.2dc81c6b.js"><link rel="prefetch" href="/assets/js/61.02228d5c.js"><link rel="prefetch" href="/assets/js/62.ed268d20.js"><link rel="prefetch" href="/assets/js/63.afa21a4b.js"><link rel="prefetch" href="/assets/js/64.6f9a5793.js"><link rel="prefetch" href="/assets/js/65.6f9800ca.js"><link rel="prefetch" href="/assets/js/66.c0db84b8.js"><link rel="prefetch" href="/assets/js/67.f33037b1.js"><link rel="prefetch" href="/assets/js/68.b67dadf7.js"><link rel="prefetch" href="/assets/js/69.7d7b1524.js"><link rel="prefetch" href="/assets/js/7.d1acd4cc.js"><link rel="prefetch" href="/assets/js/70.317ac1fb.js"><link rel="prefetch" href="/assets/js/71.ec502d31.js"><link rel="prefetch" href="/assets/js/72.1d12bebd.js"><link rel="prefetch" href="/assets/js/73.2a266075.js"><link rel="prefetch" href="/assets/js/74.03348a5f.js"><link rel="prefetch" href="/assets/js/75.f17ffa7e.js"><link rel="prefetch" href="/assets/js/76.5e10801e.js"><link rel="prefetch" href="/assets/js/77.f892086b.js"><link rel="prefetch" href="/assets/js/78.3b8ee7a5.js"><link rel="prefetch" href="/assets/js/79.28e1b585.js"><link rel="prefetch" href="/assets/js/8.7f080a79.js"><link rel="prefetch" href="/assets/js/80.db7fec5f.js"><link rel="prefetch" href="/assets/js/81.c11a03d4.js"><link rel="prefetch" href="/assets/js/82.1881483d.js"><link rel="prefetch" href="/assets/js/83.e6db044e.js"><link rel="prefetch" href="/assets/js/84.b9100194.js"><link rel="prefetch" href="/assets/js/85.bdf02741.js"><link rel="prefetch" href="/assets/js/86.64f0a566.js"><link rel="prefetch" href="/assets/js/87.b916e6f4.js"><link rel="prefetch" href="/assets/js/88.258d210f.js"><link rel="prefetch" href="/assets/js/89.551a4a48.js"><link rel="prefetch" href="/assets/js/9.73e2377b.js"><link rel="prefetch" href="/assets/js/90.a9d28be5.js"><link rel="prefetch" href="/assets/js/91.c618baa3.js"><link rel="prefetch" href="/assets/js/92.66de2bc1.js"><link rel="prefetch" href="/assets/js/93.f6ef290d.js"><link rel="prefetch" href="/assets/js/94.885e25cf.js"><link rel="prefetch" href="/assets/js/95.737e7aaf.js"><link rel="prefetch" href="/assets/js/96.49e2eb49.js"><link rel="prefetch" href="/assets/js/97.f34951f4.js"><link rel="prefetch" href="/assets/js/98.84e6dc23.js"><link rel="prefetch" href="/assets/js/99.aa8301ad.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.2e2121aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link router-link-active">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link router-link-active">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue3.0源码解读</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue/vueCodeSource/Chapter/start.html" class="sidebar-link">模块一导读 | 组件的实现：直击 Vue 核心的实现</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/start.html" class="sidebar-link">01 | 组件渲染：vnode 到真实 DOM 是如何转变的？</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/domDiff01.html" class="sidebar-link">02 | 组件更新：完整的 DOM diff 流程是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/domDiff02.html" class="sidebar-link">03 | 组件更新：完整的 DOM diff 流程是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/compositionApi.html" class="sidebar-link">模块二导读 | 逻辑复用最佳实践：Composition API</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/setup.html" class="sidebar-link">04 | Setup：组件渲染前的初始化过程是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/responsive.html" class="sidebar-link">05 | 响应式：响应式内部的实现原理是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/responsive01.html" class="sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/computed.html" class="sidebar-link">07 | 计算属性：计算属性比普通函数好在哪里？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/watch.html" class="sidebar-link">08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/watch01.html" class="sidebar-link">09 | 侦听器：侦听器的实现原理和使用场景是什么？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/lifeCycle.html" class="sidebar-link">10 | 生命周期：各个生命周期的执行时机和应用场景是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/provide.html" class="sidebar-link">11 | 依赖注入：子孙组件如何共享数据？</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/start.html" class="sidebar-link">模块三导读 | 编译和优化：了解编译过程和背后的优化思想</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast.html" class="sidebar-link">12 | 模板解析：构造 AST 的完整流程是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast1.0.html" class="sidebar-link">13 | 模板解析：构造 AST 的完整流程是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast2.0.html" class="sidebar-link">14 | AST 转换：AST 节点内部做了哪些转换？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast3.0.html" class="sidebar-link">15 | AST 转换：AST 节点内部做了哪些转换？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast4.0.html" class="sidebar-link">16 | 生成代码：AST 如何生成可运行的代码？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast5.0.html" class="sidebar-link">17 | 生成代码：AST 如何生成可运行的代码？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/start.html" class="sidebar-link">模块四导读 | 实用特性：探索更多实用特性背后的原理</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/props.html" class="sidebar-link">18 | Props：Props 的初始化和更新流程是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/slot.html" class="sidebar-link">19 | 插槽：如何实现内容分发？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/directives.html" class="sidebar-link">20 | 指令：指令完整的生命周期是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/v-model.html" class="sidebar-link">21 | v-model：双向绑定到底是怎么实现的？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/start.html" class="sidebar-link">模块五导读 | 内置组件：学习 Vue 内置组件的实现原理</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/teleport.html" class="sidebar-link">22 | Teleport 组件：如何脱离当前组件渲染子组件？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html" class="sidebar-link">23 | KeepAlive 组件：如何让组件在内存中缓存和调度？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/transition.html" class="sidebar-link">24 | Transition 组件：过渡动画的实现原理是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/transition01.html" aria-current="page" class="active sidebar-link">25 | Transition 组件：过渡动画的实现原理是怎样的？（下）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/transition01.html#钩子函数的执行" class="sidebar-link">钩子函数的执行</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/transition01.html#模式的应用" class="sidebar-link">模式的应用</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter5.0/transition01.html#总结" class="sidebar-link">总结</a></li></ul></li><li><a href="/vue/vueCodeSource/Chapter6.0/start.html" class="sidebar-link">特别放送导读 | 研究 Vue 官方生态的实现原理</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/router.html" class="sidebar-link">26 | Vue Router：如何实现一个前端路由？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/router1.0.html" class="sidebar-link">27 | Vue Router：如何实现一个前端路由？（下）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_25-transition-组件-过渡动画的实现原理是怎样的-下"><a href="#_25-transition-组件-过渡动画的实现原理是怎样的-下" class="header-anchor">#</a> 25 | Transition 组件：过渡动画的实现原理是怎样的？（下）</h1> <p>上节课，我们已经知道了，Vue.js 提供了内置的 Transition 组件帮我们实现动画过渡效果。在之前的分析中我把 Transition 组件的实现分成了三个部分：组件的渲染、钩子函数的执行、模式的应用。这节课我们从钩子函数的执行继续探究 Transition 组件的实现原理。</p> <h2 id="钩子函数的执行"><a href="#钩子函数的执行" class="header-anchor">#</a> 钩子函数的执行</h2> <p>这个部分我们先来看 beforeEnter 钩子函数。</p> <p>在 patch 阶段的 mountElement 函数中，在插入元素节点前且存在过渡的条件下会执行 vnode.transition 中的 beforeEnter 函数，我们来看它的定义：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">beforeEnter</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">let</span> hook <span class="token operator">=</span> onBeforeEnter
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>state<span class="token punctuation">.</span>isMounted<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>appear<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      hook <span class="token operator">=</span> onBeforeAppear <span class="token operator">||</span> onBeforeEnter
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">return</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>el<span class="token punctuation">.</span>_leaveCb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    el<span class="token punctuation">.</span><span class="token function">_leaveCb</span><span class="token punctuation">(</span><span class="token boolean">true</span> <span class="token comment">/* cancelled */</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> leavingVNode <span class="token operator">=</span> leavingVNodesCache<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>leavingVNode <span class="token operator">&amp;&amp;</span>
+
+    <span class="token function">isSameVNodeType</span><span class="token punctuation">(</span>vnode<span class="token punctuation">,</span> leavingVNode<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+
+    leavingVNode<span class="token punctuation">.</span>el<span class="token punctuation">.</span>_leaveCb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    leavingVNode<span class="token punctuation">.</span>el<span class="token punctuation">.</span><span class="token function">_leaveCb</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token function">callHook</span><span class="token punctuation">(</span>hook<span class="token punctuation">,</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>beforeEnter 钩子函数主要做的事情就是根据 appear 的值和 DOM 是否挂载，来执行 onBeforeEnter 函数或者是 onBeforeAppear 函数，其他的逻辑我们暂时先不看。</p> <p>appear、onBeforeEnter、onBeforeAppear 这些变量都是从 props 中获取的，那么这些 props 是怎么初始化的呢？回到 Transition 组件的定义：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">Transition</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">props<span class="token punctuation">,</span> <span class="token punctuation">{</span> slots <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">h</span><span class="token punctuation">(</span>BaseTransition<span class="token punctuation">,</span> <span class="token function">resolveTransitionProps</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">,</span> slots<span class="token punctuation">)</span>
+
+</code></pre></div><p>可以看到，传递的 props 经过了 resolveTransitionProps 函数的封装，我们来看它的定义：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">resolveTransitionProps</span><span class="token punctuation">(</span><span class="token parameter">rawProps</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">let</span> <span class="token punctuation">{</span> name <span class="token operator">=</span> <span class="token string">'v'</span><span class="token punctuation">,</span> type<span class="token punctuation">,</span> css <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">,</span> duration<span class="token punctuation">,</span> enterFromClass <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-enter-from</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> enterActiveClass <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-enter-active</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> enterToClass <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-enter-to</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> appearFromClass <span class="token operator">=</span> enterFromClass<span class="token punctuation">,</span> appearActiveClass <span class="token operator">=</span> enterActiveClass<span class="token punctuation">,</span> appearToClass <span class="token operator">=</span> enterToClass<span class="token punctuation">,</span> leaveFromClass <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-leave-from</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> leaveActiveClass <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-leave-active</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> leaveToClass <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">-leave-to</span><span class="token template-punctuation string">`</span></span> <span class="token punctuation">}</span> <span class="token operator">=</span> rawProps
+
+  <span class="token keyword">const</span> baseProps <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> key <span class="token keyword">in</span> rawProps<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>key <span class="token keyword">in</span> DOMTransitionPropsValidators<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      baseProps<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> rawProps<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>css<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> baseProps
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> durations <span class="token operator">=</span> <span class="token function">normalizeDuration</span><span class="token punctuation">(</span>duration<span class="token punctuation">)</span>
+
+  <span class="token keyword">const</span> enterDuration <span class="token operator">=</span> durations <span class="token operator">&amp;&amp;</span> durations<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+
+  <span class="token keyword">const</span> leaveDuration <span class="token operator">=</span> durations <span class="token operator">&amp;&amp;</span> durations<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+  <span class="token keyword">const</span> <span class="token punctuation">{</span> onBeforeEnter<span class="token punctuation">,</span> onEnter<span class="token punctuation">,</span> onEnterCancelled<span class="token punctuation">,</span> onLeave<span class="token punctuation">,</span> onLeaveCancelled<span class="token punctuation">,</span> onBeforeAppear <span class="token operator">=</span> onBeforeEnter<span class="token punctuation">,</span> onAppear <span class="token operator">=</span> onEnter<span class="token punctuation">,</span> onAppearCancelled <span class="token operator">=</span> onEnterCancelled <span class="token punctuation">}</span> <span class="token operator">=</span> baseProps
+
+  <span class="token keyword">const</span> <span class="token function-variable function">finishEnter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> isAppear<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearToClass <span class="token operator">:</span> enterToClass<span class="token punctuation">)</span>
+
+    <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearActiveClass <span class="token operator">:</span> enterActiveClass<span class="token punctuation">)</span>
+
+    done <span class="token operator">&amp;&amp;</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">finishLeave</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveToClass<span class="token punctuation">)</span>
+
+    <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveActiveClass<span class="token punctuation">)</span>
+
+    done <span class="token operator">&amp;&amp;</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">makeEnterHook</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">isAppear</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> hook <span class="token operator">=</span> isAppear <span class="token operator">?</span> onAppear <span class="token operator">:</span> onEnter
+
+      <span class="token keyword">const</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">finishEnter</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear<span class="token punctuation">,</span> done<span class="token punctuation">)</span>
+
+      hook <span class="token operator">&amp;&amp;</span> <span class="token function">hook</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+      <span class="token function">nextFrame</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearFromClass <span class="token operator">:</span> enterFromClass<span class="token punctuation">)</span>
+
+        <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearToClass <span class="token operator">:</span> enterToClass<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>hook <span class="token operator">&amp;&amp;</span> hook<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>enterDuration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> enterDuration<span class="token punctuation">)</span>
+
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+            <span class="token function">whenTransitionEnds</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> type<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+          <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token function">extend</span><span class="token punctuation">(</span>baseProps<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+
+    <span class="token function">onBeforeEnter</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      onBeforeEnter <span class="token operator">&amp;&amp;</span> <span class="token function">onBeforeEnter</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+
+      <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> enterActiveClass<span class="token punctuation">)</span>
+
+      <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> enterFromClass<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token function">onBeforeAppear</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      onBeforeAppear <span class="token operator">&amp;&amp;</span> <span class="token function">onBeforeAppear</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+
+      <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> appearActiveClass<span class="token punctuation">)</span>
+
+      <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> appearFromClass<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    onEnter<span class="token operator">:</span> <span class="token function">makeEnterHook</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    onAppear<span class="token operator">:</span> <span class="token function">makeEnterHook</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token function">onLeave</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">finishLeave</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> done<span class="token punctuation">)</span>
+
+      <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveActiveClass<span class="token punctuation">)</span>
+
+      <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveFromClass<span class="token punctuation">)</span>
+
+      <span class="token function">nextFrame</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+        <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveFromClass<span class="token punctuation">)</span>
+
+        <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveToClass<span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>onLeave <span class="token operator">&amp;&amp;</span> onLeave<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>leaveDuration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+            <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> leaveDuration<span class="token punctuation">)</span>
+
+          <span class="token punctuation">}</span>
+
+          <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+            <span class="token function">whenTransitionEnds</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> type<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+          <span class="token punctuation">}</span>
+
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+      onLeave <span class="token operator">&amp;&amp;</span> <span class="token function">onLeave</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token function">onEnterCancelled</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">finishEnter</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+
+      onEnterCancelled <span class="token operator">&amp;&amp;</span> <span class="token function">onEnterCancelled</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token function">onAppearCancelled</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">finishEnter</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+
+      onAppearCancelled <span class="token operator">&amp;&amp;</span> <span class="token function">onAppearCancelled</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token function">onLeaveCancelled</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">finishLeave</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+
+      onLeaveCancelled <span class="token operator">&amp;&amp;</span> <span class="token function">onLeaveCancelled</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>resolveTransitionProps 函数主要作用是，在我们给 Transition 传递的 Props 基础上做一层封装，然后返回一个新的 Props 对象，由于它包含了所有的 Props 处理，你不需要一下子了解所有的实现，按需分析即可。</p> <p>我们来看 onBeforeEnter 函数，它的内部执行了基础 props 传入的 onBeforeEnter 钩子函数，并且给 DOM 元素 el 添加了 enterActiveClass 和 enterFromClass 样式。</p> <p>其中，props 传入的 onBeforeEnter 函数就是我们写 Transition 组件时添加的 beforeEnter 钩子函数。enterActiveClass 默认值是 v-enter-active，enterFromClass 默认值是 v-enter-from，如果给 Transition 组件传入了 name 的 prop，比如 fade，那么 enterActiveClass 的值就是 fade-enter-active，enterFromClass 的值就是 fade-enter-from。</p> <p>原来这就是在 DOM 元素对象在创建后，插入到页面前做的事情：执行 beforeEnter 钩子函数，以及给元素添加相应的 CSS 样式。</p> <p>onBeforeAppear 和 onBeforeEnter 的逻辑类似，就不赘述了，它是在我们给 Transition 组件传入 appear 的 Prop，且首次挂载的时候执行的。</p> <p>执行完 beforeEnter 钩子函数，接着插入元素到页面，然后会执行 vnode.transition 中的enter 钩子函数，我们来看它的定义：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">enter</span><span class="token punctuation">(</span><span class="token parameter">el</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">let</span> hook <span class="token operator">=</span> onEnter
+
+  <span class="token keyword">let</span> afterHook <span class="token operator">=</span> onAfterEnter
+
+  <span class="token keyword">let</span> cancelHook <span class="token operator">=</span> onEnterCancelled
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>state<span class="token punctuation">.</span>isMounted<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>appear<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      hook <span class="token operator">=</span> onAppear <span class="token operator">||</span> onEnter
+
+      afterHook <span class="token operator">=</span> onAfterAppear <span class="token operator">||</span> onAfterEnter
+
+      cancelHook <span class="token operator">=</span> onAppearCancelled <span class="token operator">||</span> onEnterCancelled
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">return</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> called <span class="token operator">=</span> <span class="token boolean">false</span>
+
+  <span class="token keyword">const</span> done <span class="token operator">=</span> <span class="token punctuation">(</span>el<span class="token punctuation">.</span><span class="token function-variable function">_enterCb</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">cancelled</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>called<span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span>
+
+    called <span class="token operator">=</span> <span class="token boolean">true</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cancelled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">callHook</span><span class="token punctuation">(</span>cancelHook<span class="token punctuation">,</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+      <span class="token function">callHook</span><span class="token punctuation">(</span>afterHook<span class="token punctuation">,</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hooks<span class="token punctuation">.</span>delayedLeave<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      hooks<span class="token punctuation">.</span><span class="token function">delayedLeave</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    el<span class="token punctuation">.</span>_enterCb <span class="token operator">=</span> <span class="token keyword">undefined</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>hook<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token function">hook</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> done<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hook<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+    <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>enter 钩子函数主要做的事情就是根据 appear 的值和 DOM 是否挂载，执行 onEnter 函数或者是 onAppear 函数，并且这个函数的第二个参数是一个 done 函数，表示过渡动画完成后执行的回调函数，它是异步执行的。</p> <blockquote><p>注意，当 onEnter 或者 onAppear 函数的参数长度小于等于 1 的时候，done 函数在执行完 hook 函数后同步执行。</p></blockquote> <p>在 done 函数的内部，我们会执行 onAfterEnter 函数或者是 onEnterCancelled 函数，其它的逻辑我们也暂时先不看。</p> <p>同理，onEnter、onAppear、onAfterEnter 和 onEnterCancelled 函数也是从 Props 传入的，我们重点看 onEnter 的实现，它是 makeEnterHook(false) 函数执行后的返回值，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">makeEnterHook</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">isAppear</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">const</span> hook <span class="token operator">=</span> isAppear <span class="token operator">?</span> onAppear <span class="token operator">:</span> onEnter
+
+    <span class="token keyword">const</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">finishEnter</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear<span class="token punctuation">,</span> done<span class="token punctuation">)</span>
+
+    hook <span class="token operator">&amp;&amp;</span> <span class="token function">hook</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+    <span class="token function">nextFrame</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+      <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearFromClass <span class="token operator">:</span> enterFromClass<span class="token punctuation">)</span>
+
+      <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearToClass <span class="token operator">:</span> enterToClass<span class="token punctuation">)</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>hook <span class="token operator">&amp;&amp;</span> hook<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>enterDuration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+          <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> enterDuration<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+          <span class="token function">whenTransitionEnds</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> type<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+        <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>在函数内部，首先执行基础 props 传入的 onEnter 钩子函数，然后在下一帧给 DOM 元素 el 移除了 enterFromClass，同时添加了 enterToClass 样式。</p> <p>其中，props 传入的 onEnter 函数就是我们写 Transition 组件时添加的 enter 钩子函数，enterFromClass 是我们在 beforeEnter 阶段添加的，会在当前阶段移除，新增的 enterToClass 值默认是 v-enter-to，如果给 Transition 组件传入了 name 的 prop，比如 fade，那么 enterToClass 的值就是 fade-enter-to。</p> <p>注意，当我们添加了 enterToClass 后，这个时候浏览器就开始根据我们编写的 CSS 进入过渡动画了，那么动画何时结束呢？</p> <p>Transition 组件允许我们传入 enterDuration 这个 prop，它会指定进入过渡的动画时长，当然如果你不指定，Vue.js 内部会监听动画结束事件，然后在动画结束后，执行 finishEnter 函数，来看它的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">finishEnter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> isAppear<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearToClass <span class="token operator">:</span> enterToClass<span class="token punctuation">)</span>
+
+  <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> isAppear <span class="token operator">?</span> appearActiveClass <span class="token operator">:</span> enterActiveClass<span class="token punctuation">)</span>
+
+  done <span class="token operator">&amp;&amp;</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>其实就是给 DOM 元素移除 enterToClass 以及 enterActiveClass，同时执行 done 函数，进而执行 onAfterEnter 钩子函数。</p> <p>至此，元素进入的过渡动画逻辑就分析完了，接下来我们来分析元素离开的过渡动画逻辑。</p> <p>当元素被删除的时候，会执行 remove 方法，在真正从 DOM 移除元素前且存在过渡的情况下，会执行 vnode.transition 中的 leave 钩子函数，并且把移动 DOM 的方法作为第二个参数传入，我们来看它的定义：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">leave</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> remove</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> key <span class="token operator">=</span> <span class="token function">String</span><span class="token punctuation">(</span>vnode<span class="token punctuation">.</span>key<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>el<span class="token punctuation">.</span>_enterCb<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    el<span class="token punctuation">.</span><span class="token function">_enterCb</span><span class="token punctuation">(</span><span class="token boolean">true</span> <span class="token comment">/* cancelled */</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>state<span class="token punctuation">.</span>isUnmounting<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span> <span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token function">callHook</span><span class="token punctuation">(</span>onBeforeLeave<span class="token punctuation">,</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">let</span> called <span class="token operator">=</span> <span class="token boolean">false</span>
+
+  <span class="token keyword">const</span> done <span class="token operator">=</span> <span class="token punctuation">(</span>el<span class="token punctuation">.</span><span class="token function-variable function">_leaveCb</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">cancelled</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>called<span class="token punctuation">)</span>
+
+      <span class="token keyword">return</span>
+
+    called <span class="token operator">=</span> <span class="token boolean">true</span>
+
+    <span class="token function">remove</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>cancelled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">callHook</span><span class="token punctuation">(</span>onLeaveCancelled<span class="token punctuation">,</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+      <span class="token function">callHook</span><span class="token punctuation">(</span>onAfterLeave<span class="token punctuation">,</span> <span class="token punctuation">[</span>el<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    el<span class="token punctuation">.</span>_leaveCb <span class="token operator">=</span> <span class="token keyword">undefined</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>leavingVNodesCache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> vnode<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">delete</span> leavingVNodesCache<span class="token punctuation">[</span>key<span class="token punctuation">]</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  leavingVNodesCache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> vnode
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>onLeave<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token function">onLeave</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> done<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>onLeave<span class="token punctuation">.</span>length <span class="token operator">&lt;=</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+    <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>leave 钩子函数主要做的事情就是执行 props 传入的 onBeforeLeave 钩子函数和 onLeave 函数，onLeave 函数的第二个参数是一个 done 函数，它表示离开过渡动画结束后执行的回调函数。</p> <p>done 函数内部主要做的事情就是执行 remove 方法移除 DOM，然后执行 onAfterLeave 钩子函数或者是 onLeaveCancelled 函数，其它的逻辑我们也先不看。</p> <p>接下来，我们重点看一下 onLeave 函数的实现，看看离开过渡动画是如何执行的。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">onLeave</span><span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">resolve</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token function">finishLeave</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> done<span class="token punctuation">)</span>
+
+  <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveActiveClass<span class="token punctuation">)</span>
+
+  <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveFromClass<span class="token punctuation">)</span>
+
+  <span class="token function">nextFrame</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveFromClass<span class="token punctuation">)</span>
+
+    <span class="token function">addTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveToClass<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span>onLeave <span class="token operator">&amp;&amp;</span> onLeave<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">if</span> <span class="token punctuation">(</span>leaveDuration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span>resolve<span class="token punctuation">,</span> leaveDuration<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+        <span class="token function">whenTransitionEnds</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> type<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  onLeave <span class="token operator">&amp;&amp;</span> <span class="token function">onLeave</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> resolve<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>onLeave 函数首先给 DOM 元素添加 leaveActiveClass 和 leaveFromClass，并执行基础 props 传入的 onLeave 钩子函数，然后在下一帧移除 leaveFromClass，并添加 leaveToClass。</p> <p>其中，leaveActiveClass 的默认值是 v-leave-active，leaveFromClass 的默认值是 v-leave-from，leaveToClass 的默认值是 v-leave-to。如果给 Transition 组件传入了 name 的 prop，比如 fade，那么 leaveActiveClass 的值就是 fade-leave-active，leaveFromClass 的值就是 fade-leave-from，leaveToClass 的值就是 fade-leave-to。</p> <p>注意，当我们添加 leaveToClass 时，浏览器就开始根据我们编写的 CSS 执行离开过渡动画了，那么动画何时结束呢？</p> <p>和进入动画类似，Transition 组件允许我们传入 leaveDuration 这个 prop，指定过渡的动画时长，当然如果你不指定，Vue.js 内部会监听动画结束事件，然后在动画结束后，执行 resolve 函数，它是执行 finishLeave 函数的返回值，来看它的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">finishLeave</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">el<span class="token punctuation">,</span> done</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveToClass<span class="token punctuation">)</span>
+
+  <span class="token function">removeTransitionClass</span><span class="token punctuation">(</span>el<span class="token punctuation">,</span> leaveActiveClass<span class="token punctuation">)</span>
+
+  done <span class="token operator">&amp;&amp;</span> <span class="token function">done</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>其实就是给 DOM 元素移除 leaveToClass 以及 leaveActiveClass，同时执行 done 函数，进而执行 onAfterLeave 钩子函数。</p> <p>至此，元素离开的过渡动画逻辑就分析完了，可以看出离开过渡动画和进入过渡动画是的思路差不多，本质上都是在添加和移除一些 CSS 去执行动画，并且在过程中执行用户传入的钩子函数。</p> <h2 id="模式的应用"><a href="#模式的应用" class="header-anchor">#</a> 模式的应用</h2> <p>前面我们在介绍 Transition 的渲染过程中提到过模式的应用，模式有什么用呢，我们还是通过示例说明，把前面的例子稍加修改：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>template<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>div <span class="token keyword">class</span><span class="token operator">=</span><span class="token string">&quot;app&quot;</span><span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span>button @click<span class="token operator">=</span><span class="token string">&quot;show = !show&quot;</span><span class="token operator">&gt;</span>
+
+      Toggle render
+
+    <span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span>transition name<span class="token operator">=</span><span class="token string">&quot;fade&quot;</span><span class="token operator">&gt;</span>
+
+      <span class="token operator">&lt;</span>p v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">&quot;show&quot;</span><span class="token operator">&gt;</span>hello<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+
+      <span class="token operator">&lt;</span>p v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">&gt;</span>hi<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+
+    <span class="token operator">&lt;</span><span class="token operator">/</span>transition<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+
+        show<span class="token operator">:</span> <span class="token boolean">true</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span>style<span class="token operator">&gt;</span>
+
+  <span class="token punctuation">.</span>fade<span class="token operator">-</span>enter<span class="token operator">-</span>active<span class="token punctuation">,</span>
+
+  <span class="token punctuation">.</span>fade<span class="token operator">-</span>leave<span class="token operator">-</span>active <span class="token punctuation">{</span>
+
+    transition<span class="token operator">:</span> opacity <span class="token number">0.5</span>s ease<span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token punctuation">.</span>fade<span class="token operator">-</span>enter<span class="token operator">-</span><span class="token keyword">from</span><span class="token punctuation">,</span>
+
+  <span class="token punctuation">.</span>fade<span class="token operator">-</span>leave<span class="token operator">-</span>to <span class="token punctuation">{</span>
+
+    opacity<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>style<span class="token operator">&gt;</span>
+
+</code></pre></div><p>我们在 show 条件为 false 的情况下，显示字符串 hi，你可以运行这个示例，然后会发现这个过渡效果有点生硬，并不理想。</p> <p>然后，我们给这个 Transition 组件加一个 out-in 的 mode：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>transition mode<span class="token operator">=</span><span class="token string">&quot;out-in&quot;</span> name<span class="token operator">=</span><span class="token string">&quot;fade&quot;</span><span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>p v<span class="token operator">-</span><span class="token keyword">if</span><span class="token operator">=</span><span class="token string">&quot;show&quot;</span><span class="token operator">&gt;</span>hello<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+
+  <span class="token operator">&lt;</span>p v<span class="token operator">-</span><span class="token keyword">else</span><span class="token operator">&gt;</span>hi<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+
+<span class="token operator">&lt;</span><span class="token operator">/</span>transition<span class="token operator">&gt;</span>
+
+</code></pre></div><p>我们会发现这个过渡效果好多了，hello 文本先完成离开的过渡后，hi 文本开始进入过渡动画。</p> <p>模式非常适合这种两个元素切换的场景，Vue.js 给 Transition 组件提供了两种模式， in-out 和 out-in ，它们有什么区别呢？</p> <ul><li>在 in-out 模式下，新元素先进行过渡，完成之后当前元素过渡离开。</li> <li>在 out-in 模式下，当前元素先进行过渡，完成之后新元素过渡进入。</li></ul> <p>在实际工作中，你大部分情况都是在使用 out-in 模式，而 in-out 模式很少用到，所以接下来我们就来分析 out-in 模式的实现原理。</p> <p>我们先不妨思考一下，为什么在不加模式的情况下，会出现示例那样的过渡效果。</p> <p>当我们点击按钮，show 变量由 true 变成 false，会触发当前元素 hello 文本的离开动画，也会同时触发新元素 hi 文本的进入动画。由于动画是同时进行的，而且在离开动画结束之前，当前元素 hello 是没有被移除 DOM 的，所以它还会占位，就把新元素 hi 文本挤到下面去了。当 hello 文本的离开动画执行完毕从 DOM 中删除后，hi 文本才能回到之前的位置。</p> <p>那么，我们怎么做才能做到当前元素过渡动画执行完毕后，再执行新元素的过渡呢？</p> <p>我们来看一下 out-in 模式的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> leavingHooks <span class="token operator">=</span> <span class="token function">resolveTransitionHooks</span><span class="token punctuation">(</span>oldInnerChild<span class="token punctuation">,</span> rawProps<span class="token punctuation">,</span> state<span class="token punctuation">,</span> instance<span class="token punctuation">)</span>
+
+<span class="token function">setTransitionHooks</span><span class="token punctuation">(</span>oldInnerChild<span class="token punctuation">,</span> leavingHooks<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>mode <span class="token operator">===</span> <span class="token string">'out-in'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  state<span class="token punctuation">.</span>isLeaving <span class="token operator">=</span> <span class="token boolean">true</span>
+
+  leavingHooks<span class="token punctuation">.</span><span class="token function-variable function">afterLeave</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+    state<span class="token punctuation">.</span>isLeaving <span class="token operator">=</span> <span class="token boolean">false</span>
+
+    instance<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token function">emptyPlaceholder</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>当模式为 out-in 的时候，会标记 state.isLeaving 为 true，然后返回一个空的注释节点，同时更新当前元素的钩子函数中的 afterLeave 函数，内部执行 instance.update 重新渲染组件。</p> <p>这样做就保证了在当前元素执行离开过渡的时候，新元素只渲染成一个注释节点，这样页面上看上去还是只执行当前元素的离开过渡动画。</p> <p>然后当离开动画执行完毕后，触发了 Transition 组件的重新渲染，这个时候就可以如期渲染新元素并执行进入过渡动画了，是不是很巧妙呢？</p> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>好的，到这里我们这一节的学习就结束啦，通过这节课的学习，你应该了解了 Transition 组件是如何渲染的，如何执行过渡动画和相应的钩子函数的，以及当两个视图切换时，模式的工作原理是怎样的。</p> <p>最后，给你留一道思考题，Transition 组件在 beforeEnter 钩子函数里会判断 el._leaveCb 是否存在，存在则执行，在 leave 钩子函数里会判断 el._enterCb 是否存在，存在则执行，这么做的原因是什么？欢迎你在留言区与我分享。</p> <blockquote><p>本节课的相关代码在源代码中的位置如下：
+packages/runtime-core/src/components/BasetTransition.ts
+packages/runtime-core/src/renderer.ts
+packages/runtime-dom/src/components/Transition.ts</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue/vueCodeSource/Chapter5.0/transition.html" class="prev">
+        24 | Transition 组件：过渡动画的实现原理是怎样的？（上）
+      </a></span> <span class="next"><a href="/vue/vueCodeSource/Chapter6.0/start.html">
+        特别放送导读 | 研究 Vue 官方生态的实现原理
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.175cb2f7.js" defer></script><script src="/assets/js/2.75df7a20.js" defer></script><script src="/assets/js/341.9b49629b.js" defer></script>
+  </body>
+</html>

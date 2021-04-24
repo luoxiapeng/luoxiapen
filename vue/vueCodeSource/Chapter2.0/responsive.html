@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>05 | 响应式：响应式内部的实现原理是怎样的？（上） | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    
+    <link rel="preload" href="/assets/css/0.styles.2e2121aa.css" as="style"><link rel="preload" href="/assets/js/app.175cb2f7.js" as="script"><link rel="preload" href="/assets/js/2.75df7a20.js" as="script"><link rel="preload" href="/assets/js/320.79cf2539.js" as="script"><link rel="prefetch" href="/assets/js/10.f03c1e06.js"><link rel="prefetch" href="/assets/js/100.c871eff4.js"><link rel="prefetch" href="/assets/js/101.65ac835d.js"><link rel="prefetch" href="/assets/js/102.046d7f9a.js"><link rel="prefetch" href="/assets/js/103.6eeb610a.js"><link rel="prefetch" href="/assets/js/104.b364b538.js"><link rel="prefetch" href="/assets/js/105.f47cfdbf.js"><link rel="prefetch" href="/assets/js/106.cbc65301.js"><link rel="prefetch" href="/assets/js/107.64d4d4c7.js"><link rel="prefetch" href="/assets/js/108.6b5a235d.js"><link rel="prefetch" href="/assets/js/109.7c0f8975.js"><link rel="prefetch" href="/assets/js/11.b84546b1.js"><link rel="prefetch" href="/assets/js/110.3b64d6b4.js"><link rel="prefetch" href="/assets/js/111.d63df36c.js"><link rel="prefetch" href="/assets/js/112.c9d94d9a.js"><link rel="prefetch" href="/assets/js/113.2d8f7066.js"><link rel="prefetch" href="/assets/js/114.53b0c6a6.js"><link rel="prefetch" href="/assets/js/115.416531bc.js"><link rel="prefetch" href="/assets/js/116.4bf66415.js"><link rel="prefetch" href="/assets/js/117.c01a46e8.js"><link rel="prefetch" href="/assets/js/118.8936b8fb.js"><link rel="prefetch" href="/assets/js/119.dd831f23.js"><link rel="prefetch" href="/assets/js/12.32ac00f9.js"><link rel="prefetch" href="/assets/js/120.45ab0ea6.js"><link rel="prefetch" href="/assets/js/121.bd3f5f6c.js"><link rel="prefetch" href="/assets/js/122.a8180120.js"><link rel="prefetch" href="/assets/js/123.a7ae8b51.js"><link rel="prefetch" href="/assets/js/124.99349765.js"><link rel="prefetch" href="/assets/js/125.52b1dbdd.js"><link rel="prefetch" href="/assets/js/126.bbad428e.js"><link rel="prefetch" href="/assets/js/127.7b9981ba.js"><link rel="prefetch" href="/assets/js/128.122b9074.js"><link rel="prefetch" href="/assets/js/129.a2185a20.js"><link rel="prefetch" href="/assets/js/13.37f30a7a.js"><link rel="prefetch" href="/assets/js/130.b78c77cf.js"><link rel="prefetch" href="/assets/js/131.9bd76d54.js"><link rel="prefetch" href="/assets/js/132.051a8db9.js"><link rel="prefetch" href="/assets/js/133.b9afc210.js"><link rel="prefetch" href="/assets/js/134.4be23ce1.js"><link rel="prefetch" href="/assets/js/135.f727416b.js"><link rel="prefetch" href="/assets/js/136.559bf91c.js"><link rel="prefetch" href="/assets/js/137.095dff91.js"><link rel="prefetch" href="/assets/js/138.dd2f6f8e.js"><link rel="prefetch" href="/assets/js/139.9224a4f3.js"><link rel="prefetch" href="/assets/js/14.dd8d1cf2.js"><link rel="prefetch" href="/assets/js/140.c0abb65b.js"><link rel="prefetch" href="/assets/js/141.ade9802b.js"><link rel="prefetch" href="/assets/js/142.d42dd0ee.js"><link rel="prefetch" href="/assets/js/143.120e25ac.js"><link rel="prefetch" href="/assets/js/144.86815a66.js"><link rel="prefetch" href="/assets/js/145.a847a89c.js"><link rel="prefetch" href="/assets/js/146.d63c89a2.js"><link rel="prefetch" href="/assets/js/147.04f11e47.js"><link rel="prefetch" href="/assets/js/148.f4c435b3.js"><link rel="prefetch" href="/assets/js/149.3ec45095.js"><link rel="prefetch" href="/assets/js/15.33ba51c7.js"><link rel="prefetch" href="/assets/js/150.21d59da1.js"><link rel="prefetch" href="/assets/js/151.a8751abe.js"><link rel="prefetch" href="/assets/js/152.1020b5cc.js"><link rel="prefetch" href="/assets/js/153.56642c96.js"><link rel="prefetch" href="/assets/js/154.9308b1c1.js"><link rel="prefetch" href="/assets/js/155.408fa629.js"><link rel="prefetch" href="/assets/js/156.91c92a23.js"><link rel="prefetch" href="/assets/js/157.0e9110da.js"><link rel="prefetch" href="/assets/js/158.f291e586.js"><link rel="prefetch" href="/assets/js/159.41009097.js"><link rel="prefetch" href="/assets/js/16.5146101f.js"><link rel="prefetch" href="/assets/js/160.7f0eac3b.js"><link rel="prefetch" href="/assets/js/161.bcc0df34.js"><link rel="prefetch" href="/assets/js/162.33053c1d.js"><link rel="prefetch" href="/assets/js/163.7078c31a.js"><link rel="prefetch" href="/assets/js/164.2a776a79.js"><link rel="prefetch" href="/assets/js/165.33e61817.js"><link rel="prefetch" href="/assets/js/166.a824efe7.js"><link rel="prefetch" href="/assets/js/167.4fa8c9e1.js"><link rel="prefetch" href="/assets/js/168.be99d7e4.js"><link rel="prefetch" href="/assets/js/169.f7cba43b.js"><link rel="prefetch" href="/assets/js/17.7134f46e.js"><link rel="prefetch" href="/assets/js/170.03baa419.js"><link rel="prefetch" href="/assets/js/171.0d9148c1.js"><link rel="prefetch" href="/assets/js/172.1d927e91.js"><link rel="prefetch" href="/assets/js/173.4e6aaf54.js"><link rel="prefetch" href="/assets/js/174.e1c9acb9.js"><link rel="prefetch" href="/assets/js/175.7e994eb5.js"><link rel="prefetch" href="/assets/js/176.3dbc154e.js"><link rel="prefetch" href="/assets/js/177.be2d7b64.js"><link rel="prefetch" href="/assets/js/178.daa5ec97.js"><link rel="prefetch" href="/assets/js/179.a440c1bd.js"><link rel="prefetch" href="/assets/js/18.1c28929a.js"><link rel="prefetch" href="/assets/js/180.c481e205.js"><link rel="prefetch" href="/assets/js/181.3aa5e2d2.js"><link rel="prefetch" href="/assets/js/182.bbc303ed.js"><link rel="prefetch" href="/assets/js/183.43a550e4.js"><link rel="prefetch" href="/assets/js/184.718e49b7.js"><link rel="prefetch" href="/assets/js/185.87615276.js"><link rel="prefetch" href="/assets/js/186.a50be4b7.js"><link rel="prefetch" href="/assets/js/187.871e36d4.js"><link rel="prefetch" href="/assets/js/188.ef0d5f71.js"><link rel="prefetch" href="/assets/js/189.62e4f4b1.js"><link rel="prefetch" href="/assets/js/19.177d1464.js"><link rel="prefetch" href="/assets/js/190.5d212aff.js"><link rel="prefetch" href="/assets/js/191.0f853a98.js"><link rel="prefetch" href="/assets/js/192.fb72038b.js"><link rel="prefetch" href="/assets/js/193.cd0fa133.js"><link rel="prefetch" href="/assets/js/194.bd429665.js"><link rel="prefetch" href="/assets/js/195.cb7d80bb.js"><link rel="prefetch" href="/assets/js/196.cc4b46e3.js"><link rel="prefetch" href="/assets/js/197.16c02b8e.js"><link rel="prefetch" href="/assets/js/198.4c1aeca2.js"><link rel="prefetch" href="/assets/js/199.bc6db526.js"><link rel="prefetch" href="/assets/js/20.f50e1150.js"><link rel="prefetch" href="/assets/js/200.b2c63089.js"><link rel="prefetch" href="/assets/js/201.25dd536e.js"><link rel="prefetch" href="/assets/js/202.f4323d5f.js"><link rel="prefetch" href="/assets/js/203.53d5b7f8.js"><link rel="prefetch" href="/assets/js/204.20be12c0.js"><link rel="prefetch" href="/assets/js/205.b5eacbcc.js"><link rel="prefetch" href="/assets/js/206.ffd72f20.js"><link rel="prefetch" href="/assets/js/207.922cb746.js"><link rel="prefetch" href="/assets/js/208.40367168.js"><link rel="prefetch" href="/assets/js/209.36b578a7.js"><link rel="prefetch" href="/assets/js/21.fe020a2d.js"><link rel="prefetch" href="/assets/js/210.d2f4adc3.js"><link rel="prefetch" href="/assets/js/211.d7df5c97.js"><link rel="prefetch" href="/assets/js/212.7d07403b.js"><link rel="prefetch" href="/assets/js/213.4a1e7785.js"><link rel="prefetch" href="/assets/js/214.b0e90c95.js"><link rel="prefetch" href="/assets/js/215.10095b82.js"><link rel="prefetch" href="/assets/js/216.3ca44e7e.js"><link rel="prefetch" href="/assets/js/217.9bcac322.js"><link rel="prefetch" href="/assets/js/218.5a0a1991.js"><link rel="prefetch" href="/assets/js/219.7933ce66.js"><link rel="prefetch" href="/assets/js/22.cf1d4e68.js"><link rel="prefetch" href="/assets/js/220.8ad32274.js"><link rel="prefetch" href="/assets/js/221.29bea866.js"><link rel="prefetch" href="/assets/js/222.905ce4eb.js"><link rel="prefetch" href="/assets/js/223.c564d0d3.js"><link rel="prefetch" href="/assets/js/224.1d7065ed.js"><link rel="prefetch" href="/assets/js/225.89615885.js"><link rel="prefetch" href="/assets/js/226.4baaa7b1.js"><link rel="prefetch" href="/assets/js/227.7d19f61e.js"><link rel="prefetch" href="/assets/js/228.8417c1a7.js"><link rel="prefetch" href="/assets/js/229.57705cac.js"><link rel="prefetch" href="/assets/js/23.c730dc93.js"><link rel="prefetch" href="/assets/js/230.e8e06120.js"><link rel="prefetch" href="/assets/js/231.58a79d56.js"><link rel="prefetch" href="/assets/js/232.691bb82a.js"><link rel="prefetch" href="/assets/js/233.f415de0a.js"><link rel="prefetch" href="/assets/js/234.1840175f.js"><link rel="prefetch" href="/assets/js/235.51edf65e.js"><link rel="prefetch" href="/assets/js/236.da79365d.js"><link rel="prefetch" href="/assets/js/237.119796ac.js"><link rel="prefetch" href="/assets/js/238.885e9bf9.js"><link rel="prefetch" href="/assets/js/239.6535c762.js"><link rel="prefetch" href="/assets/js/24.d4d806a2.js"><link rel="prefetch" href="/assets/js/240.15e360ae.js"><link rel="prefetch" href="/assets/js/241.2f8c27ff.js"><link rel="prefetch" href="/assets/js/242.2a6a3833.js"><link rel="prefetch" href="/assets/js/243.558787f3.js"><link rel="prefetch" href="/assets/js/244.9bae3843.js"><link rel="prefetch" href="/assets/js/245.6c63a032.js"><link rel="prefetch" href="/assets/js/246.2fd2daae.js"><link rel="prefetch" href="/assets/js/247.c8b81ca2.js"><link rel="prefetch" href="/assets/js/248.ff998439.js"><link rel="prefetch" href="/assets/js/249.0dade753.js"><link rel="prefetch" href="/assets/js/25.a39ce2bd.js"><link rel="prefetch" href="/assets/js/250.f842c300.js"><link rel="prefetch" href="/assets/js/251.edfcdd88.js"><link rel="prefetch" href="/assets/js/252.24b9c0e7.js"><link rel="prefetch" href="/assets/js/253.5826bc1b.js"><link rel="prefetch" href="/assets/js/254.8e198483.js"><link rel="prefetch" href="/assets/js/255.888d17cb.js"><link rel="prefetch" href="/assets/js/256.e6f82f01.js"><link rel="prefetch" href="/assets/js/257.55e7a891.js"><link rel="prefetch" href="/assets/js/258.3a9ad0a7.js"><link rel="prefetch" href="/assets/js/259.160ec69c.js"><link rel="prefetch" href="/assets/js/26.263e0f39.js"><link rel="prefetch" href="/assets/js/260.db778417.js"><link rel="prefetch" href="/assets/js/261.f19e2435.js"><link rel="prefetch" href="/assets/js/262.17cf1749.js"><link rel="prefetch" href="/assets/js/263.f738162f.js"><link rel="prefetch" href="/assets/js/264.4e6efc8f.js"><link rel="prefetch" href="/assets/js/265.0a62e1bf.js"><link rel="prefetch" href="/assets/js/266.fb56411f.js"><link rel="prefetch" href="/assets/js/267.5ead4660.js"><link rel="prefetch" href="/assets/js/268.1b470e63.js"><link rel="prefetch" href="/assets/js/269.df1cc1b2.js"><link rel="prefetch" href="/assets/js/27.9a81282b.js"><link rel="prefetch" href="/assets/js/270.3d81b92e.js"><link rel="prefetch" href="/assets/js/271.a70403ad.js"><link rel="prefetch" href="/assets/js/272.325c9023.js"><link rel="prefetch" href="/assets/js/273.c54142fd.js"><link rel="prefetch" href="/assets/js/274.1d8af67a.js"><link rel="prefetch" href="/assets/js/275.8fb2ee4e.js"><link rel="prefetch" href="/assets/js/276.6b0b1737.js"><link rel="prefetch" href="/assets/js/277.90f1ce6e.js"><link rel="prefetch" href="/assets/js/278.17a59051.js"><link rel="prefetch" href="/assets/js/279.1f9c0ef8.js"><link rel="prefetch" href="/assets/js/28.2c79f489.js"><link rel="prefetch" href="/assets/js/280.3924a8f5.js"><link rel="prefetch" href="/assets/js/281.c8466ede.js"><link rel="prefetch" href="/assets/js/282.cf029bfa.js"><link rel="prefetch" href="/assets/js/283.5364d9df.js"><link rel="prefetch" href="/assets/js/284.2a1c3288.js"><link rel="prefetch" href="/assets/js/285.239f982a.js"><link rel="prefetch" href="/assets/js/286.39be93a9.js"><link rel="prefetch" href="/assets/js/287.c5570faf.js"><link rel="prefetch" href="/assets/js/288.d4157ac2.js"><link rel="prefetch" href="/assets/js/289.eb161cf5.js"><link rel="prefetch" href="/assets/js/29.9ff4fc13.js"><link rel="prefetch" href="/assets/js/290.a098b418.js"><link rel="prefetch" href="/assets/js/291.842987e4.js"><link rel="prefetch" href="/assets/js/292.a41188a0.js"><link rel="prefetch" href="/assets/js/293.d04d5cf0.js"><link rel="prefetch" href="/assets/js/294.a140b169.js"><link rel="prefetch" href="/assets/js/295.875c5fce.js"><link rel="prefetch" href="/assets/js/296.ecb56bb0.js"><link rel="prefetch" href="/assets/js/297.f6a7b3d6.js"><link rel="prefetch" href="/assets/js/298.195fc3d5.js"><link rel="prefetch" href="/assets/js/299.476588e0.js"><link rel="prefetch" href="/assets/js/3.edfb4837.js"><link rel="prefetch" href="/assets/js/30.b2edc616.js"><link rel="prefetch" href="/assets/js/300.38e410e2.js"><link rel="prefetch" href="/assets/js/301.d68c589b.js"><link rel="prefetch" href="/assets/js/302.b29d12e7.js"><link rel="prefetch" href="/assets/js/303.1954aa50.js"><link rel="prefetch" href="/assets/js/304.6d9cb749.js"><link rel="prefetch" href="/assets/js/305.f942593b.js"><link rel="prefetch" href="/assets/js/306.b0dea771.js"><link rel="prefetch" href="/assets/js/307.2085d894.js"><link rel="prefetch" href="/assets/js/308.65914653.js"><link rel="prefetch" href="/assets/js/309.471abb33.js"><link rel="prefetch" href="/assets/js/31.4fdd0702.js"><link rel="prefetch" href="/assets/js/310.bd925b24.js"><link rel="prefetch" href="/assets/js/311.db7b01d6.js"><link rel="prefetch" href="/assets/js/312.4c0f96b6.js"><link rel="prefetch" href="/assets/js/313.af7e5c40.js"><link rel="prefetch" href="/assets/js/314.3b5a2cc0.js"><link rel="prefetch" href="/assets/js/315.37ee6c72.js"><link rel="prefetch" href="/assets/js/316.0bd5d394.js"><link rel="prefetch" href="/assets/js/317.4423df04.js"><link rel="prefetch" href="/assets/js/318.1d21234a.js"><link rel="prefetch" href="/assets/js/319.f79db02d.js"><link rel="prefetch" href="/assets/js/32.aa7bb4f0.js"><link rel="prefetch" href="/assets/js/321.c70db2a2.js"><link rel="prefetch" href="/assets/js/322.27382345.js"><link rel="prefetch" href="/assets/js/323.7a2d88b9.js"><link rel="prefetch" href="/assets/js/324.32533563.js"><link rel="prefetch" href="/assets/js/325.d2ae4bbc.js"><link rel="prefetch" href="/assets/js/326.6fad6bea.js"><link rel="prefetch" href="/assets/js/327.bcfda424.js"><link rel="prefetch" href="/assets/js/328.d0042a33.js"><link rel="prefetch" href="/assets/js/329.413b8527.js"><link rel="prefetch" href="/assets/js/33.c8735594.js"><link rel="prefetch" href="/assets/js/330.f59eeaaf.js"><link rel="prefetch" href="/assets/js/331.ffbf14da.js"><link rel="prefetch" href="/assets/js/332.2c9498c9.js"><link rel="prefetch" href="/assets/js/333.28eec745.js"><link rel="prefetch" href="/assets/js/334.0f2953d1.js"><link rel="prefetch" href="/assets/js/335.fc9fc3a2.js"><link rel="prefetch" href="/assets/js/336.dfba70c6.js"><link rel="prefetch" href="/assets/js/337.363c2e20.js"><link rel="prefetch" href="/assets/js/338.5d9fc629.js"><link rel="prefetch" href="/assets/js/339.ca962ab0.js"><link rel="prefetch" href="/assets/js/34.27da4ff5.js"><link rel="prefetch" href="/assets/js/340.e1557d03.js"><link rel="prefetch" href="/assets/js/341.9b49629b.js"><link rel="prefetch" href="/assets/js/342.6699be73.js"><link rel="prefetch" href="/assets/js/343.68260bfa.js"><link rel="prefetch" href="/assets/js/344.aab8694a.js"><link rel="prefetch" href="/assets/js/345.d13ba93b.js"><link rel="prefetch" href="/assets/js/346.41a459c2.js"><link rel="prefetch" href="/assets/js/35.29006597.js"><link rel="prefetch" href="/assets/js/36.c2b63d5e.js"><link rel="prefetch" href="/assets/js/37.1903ccce.js"><link rel="prefetch" href="/assets/js/38.4f8ad26c.js"><link rel="prefetch" href="/assets/js/39.48accac5.js"><link rel="prefetch" href="/assets/js/4.977d5e44.js"><link rel="prefetch" href="/assets/js/40.2b922978.js"><link rel="prefetch" href="/assets/js/41.f8151134.js"><link rel="prefetch" href="/assets/js/42.eafafdc7.js"><link rel="prefetch" href="/assets/js/43.5233f1ad.js"><link rel="prefetch" href="/assets/js/44.b836f472.js"><link rel="prefetch" href="/assets/js/45.7cd6e292.js"><link rel="prefetch" href="/assets/js/46.5f9e4ab2.js"><link rel="prefetch" href="/assets/js/47.b03459f5.js"><link rel="prefetch" href="/assets/js/48.c04eeade.js"><link rel="prefetch" href="/assets/js/49.54d87f26.js"><link rel="prefetch" href="/assets/js/5.f4e09838.js"><link rel="prefetch" href="/assets/js/50.f63202bb.js"><link rel="prefetch" href="/assets/js/51.16cc0699.js"><link rel="prefetch" href="/assets/js/52.7cdd6b32.js"><link rel="prefetch" href="/assets/js/53.7151f340.js"><link rel="prefetch" href="/assets/js/54.c4b05d09.js"><link rel="prefetch" href="/assets/js/55.0bf0d26d.js"><link rel="prefetch" href="/assets/js/56.87a8a715.js"><link rel="prefetch" href="/assets/js/57.d7ff1773.js"><link rel="prefetch" href="/assets/js/58.ee467b99.js"><link rel="prefetch" href="/assets/js/59.1c084438.js"><link rel="prefetch" href="/assets/js/6.102494d6.js"><link rel="prefetch" href="/assets/js/60.2dc81c6b.js"><link rel="prefetch" href="/assets/js/61.02228d5c.js"><link rel="prefetch" href="/assets/js/62.ed268d20.js"><link rel="prefetch" href="/assets/js/63.afa21a4b.js"><link rel="prefetch" href="/assets/js/64.6f9a5793.js"><link rel="prefetch" href="/assets/js/65.6f9800ca.js"><link rel="prefetch" href="/assets/js/66.c0db84b8.js"><link rel="prefetch" href="/assets/js/67.f33037b1.js"><link rel="prefetch" href="/assets/js/68.b67dadf7.js"><link rel="prefetch" href="/assets/js/69.7d7b1524.js"><link rel="prefetch" href="/assets/js/7.d1acd4cc.js"><link rel="prefetch" href="/assets/js/70.317ac1fb.js"><link rel="prefetch" href="/assets/js/71.ec502d31.js"><link rel="prefetch" href="/assets/js/72.1d12bebd.js"><link rel="prefetch" href="/assets/js/73.2a266075.js"><link rel="prefetch" href="/assets/js/74.03348a5f.js"><link rel="prefetch" href="/assets/js/75.f17ffa7e.js"><link rel="prefetch" href="/assets/js/76.5e10801e.js"><link rel="prefetch" href="/assets/js/77.f892086b.js"><link rel="prefetch" href="/assets/js/78.3b8ee7a5.js"><link rel="prefetch" href="/assets/js/79.28e1b585.js"><link rel="prefetch" href="/assets/js/8.7f080a79.js"><link rel="prefetch" href="/assets/js/80.db7fec5f.js"><link rel="prefetch" href="/assets/js/81.c11a03d4.js"><link rel="prefetch" href="/assets/js/82.1881483d.js"><link rel="prefetch" href="/assets/js/83.e6db044e.js"><link rel="prefetch" href="/assets/js/84.b9100194.js"><link rel="prefetch" href="/assets/js/85.bdf02741.js"><link rel="prefetch" href="/assets/js/86.64f0a566.js"><link rel="prefetch" href="/assets/js/87.b916e6f4.js"><link rel="prefetch" href="/assets/js/88.258d210f.js"><link rel="prefetch" href="/assets/js/89.551a4a48.js"><link rel="prefetch" href="/assets/js/9.73e2377b.js"><link rel="prefetch" href="/assets/js/90.a9d28be5.js"><link rel="prefetch" href="/assets/js/91.c618baa3.js"><link rel="prefetch" href="/assets/js/92.66de2bc1.js"><link rel="prefetch" href="/assets/js/93.f6ef290d.js"><link rel="prefetch" href="/assets/js/94.885e25cf.js"><link rel="prefetch" href="/assets/js/95.737e7aaf.js"><link rel="prefetch" href="/assets/js/96.49e2eb49.js"><link rel="prefetch" href="/assets/js/97.f34951f4.js"><link rel="prefetch" href="/assets/js/98.84e6dc23.js"><link rel="prefetch" href="/assets/js/99.aa8301ad.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.2e2121aa.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link router-link-active">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link router-link-active">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/micro_font_end/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vue3.0源码解读</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue/vueCodeSource/Chapter/start.html" class="sidebar-link">模块一导读 | 组件的实现：直击 Vue 核心的实现</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/start.html" class="sidebar-link">01 | 组件渲染：vnode 到真实 DOM 是如何转变的？</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/domDiff01.html" class="sidebar-link">02 | 组件更新：完整的 DOM diff 流程是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter1.0/domDiff02.html" class="sidebar-link">03 | 组件更新：完整的 DOM diff 流程是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/compositionApi.html" class="sidebar-link">模块二导读 | 逻辑复用最佳实践：Composition API</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/setup.html" class="sidebar-link">04 | Setup：组件渲染前的初始化过程是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/responsive.html" aria-current="page" class="active sidebar-link">05 | 响应式：响应式内部的实现原理是怎样的？（上）</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter2.0/responsive.html#响应式对象的实现差异" class="sidebar-link">响应式对象的实现差异</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter2.0/responsive.html#reactive-api" class="sidebar-link">Reactive API</a></li><li class="sidebar-sub-header"><a href="/vue/vueCodeSource/Chapter2.0/responsive.html#依赖收集-get-函数" class="sidebar-link">依赖收集：get 函数</a></li></ul></li><li><a href="/vue/vueCodeSource/Chapter2.0/responsive01.html" class="sidebar-link">06 | 响应式：响应式内部的实现原理是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/computed.html" class="sidebar-link">07 | 计算属性：计算属性比普通函数好在哪里？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/watch.html" class="sidebar-link">08 | 侦听器：侦听器的实现原理和使用场景是什么？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/watch01.html" class="sidebar-link">09 | 侦听器：侦听器的实现原理和使用场景是什么？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/lifeCycle.html" class="sidebar-link">10 | 生命周期：各个生命周期的执行时机和应用场景是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter2.0/provide.html" class="sidebar-link">11 | 依赖注入：子孙组件如何共享数据？</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/start.html" class="sidebar-link">模块三导读 | 编译和优化：了解编译过程和背后的优化思想</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast.html" class="sidebar-link">12 | 模板解析：构造 AST 的完整流程是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast1.0.html" class="sidebar-link">13 | 模板解析：构造 AST 的完整流程是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast2.0.html" class="sidebar-link">14 | AST 转换：AST 节点内部做了哪些转换？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast3.0.html" class="sidebar-link">15 | AST 转换：AST 节点内部做了哪些转换？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast4.0.html" class="sidebar-link">16 | 生成代码：AST 如何生成可运行的代码？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter3.0/ast5.0.html" class="sidebar-link">17 | 生成代码：AST 如何生成可运行的代码？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/start.html" class="sidebar-link">模块四导读 | 实用特性：探索更多实用特性背后的原理</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/props.html" class="sidebar-link">18 | Props：Props 的初始化和更新流程是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/slot.html" class="sidebar-link">19 | 插槽：如何实现内容分发？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/directives.html" class="sidebar-link">20 | 指令：指令完整的生命周期是怎样的？</a></li><li><a href="/vue/vueCodeSource/Chapter4.0/v-model.html" class="sidebar-link">21 | v-model：双向绑定到底是怎么实现的？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/start.html" class="sidebar-link">模块五导读 | 内置组件：学习 Vue 内置组件的实现原理</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/teleport.html" class="sidebar-link">22 | Teleport 组件：如何脱离当前组件渲染子组件？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/keepAlive.html" class="sidebar-link">23 | KeepAlive 组件：如何让组件在内存中缓存和调度？</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/transition.html" class="sidebar-link">24 | Transition 组件：过渡动画的实现原理是怎样的？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter5.0/transition01.html" class="sidebar-link">25 | Transition 组件：过渡动画的实现原理是怎样的？（下）</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/start.html" class="sidebar-link">特别放送导读 | 研究 Vue 官方生态的实现原理</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/router.html" class="sidebar-link">26 | Vue Router：如何实现一个前端路由？（上）</a></li><li><a href="/vue/vueCodeSource/Chapter6.0/router1.0.html" class="sidebar-link">27 | Vue Router：如何实现一个前端路由？（下）</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="_05-响应式-响应式内部的实现原理是怎样的-上"><a href="#_05-响应式-响应式内部的实现原理是怎样的-上" class="header-anchor">#</a> 05 | 响应式：响应式内部的实现原理是怎样的？（上）</h1> <p>除了组件化，Vue.js 另一个核心设计思想就是响应式。它的本质是当数据变化后会自动执行某个函数，映射到组件的实现就是，当数据变化后，会自动触发组件的重新渲染。响应式是 Vue.js 组件化更新渲染的一个核心机制。</p> <p>在介绍 Vue.js 3.0 响应式实现之前，我们先来回顾一下 Vue.js 2.x 响应式实现的部分： 它在内部通过 Object.defineProperty API 劫持数据的变化，在数据被访问的时候收集依赖，然后在数据被修改的时候通知依赖更新。我们用一张图可以直观地看清这个流程。</p> <img src="https://s0.lgstatic.com/i/image/M00/36/C0/CgqCHl8YAPSAYotsAAG17TKWHiQ421.png"> <p>在 Vue.js 2.x 中，Watcher 就是依赖，有专门针对组件渲染的 render watcher。注意这里有两个流程，首先是依赖收集流程，组件在 render 的时候会访问模板中的数据，触发 getter 把 render watcher 作为依赖收集，并和数据建立联系；然后是派发通知流程，当我对这些数据修改的时候，会触发 setter，通知 render watcher 更新，进而触发了组件的重新渲染。</p> <p>在导读章节，我们提到了 Object.defineProperty API 的一些缺点：不能监听对象属性新增和删除；初始化阶段递归执行 Object.defineProperty 带来的性能负担。</p> <p>Vue.js 3.0 为了解决 Object.defineProperty 的这些缺陷，使用 Proxy API 重写了响应式部分，并独立维护和发布整个 reactivity 库，下面我们就一起来深入学习 Vue.js 3.0 响应式部分的实现原理。</p> <h2 id="响应式对象的实现差异"><a href="#响应式对象的实现差异" class="header-anchor">#</a> 响应式对象的实现差异</h2> <p>在 Vue.js 2.x 中构建组件时，只要我们在 data、props、computed 中定义数据，那么它就是响应式的，举个例子：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>{{ msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>random<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Random msg<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+
+    <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+
+        msg<span class="token operator">:</span> <span class="token string">'msg reactive'</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+
+      <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+
+</code></pre></div><p>上述组件初次渲染会显示“msg reactive”，当我们点击按钮的时候，会执行 random 函数，random 函数会修改 this.msg，就会发现组件重新渲染了。</p> <p>我们对这个例子做一些改动，模板部分不变，我们把 msg 数据的定义放到created 钩子中：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+
+  <span class="token function">created</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> <span class="token string">'msg not reactive'</span>
+
+  <span class="token punctuation">}</span><span class="token punctuation">,</span> 
+
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+
+    <span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">this</span><span class="token punctuation">.</span>msg <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>此时，组件初次渲染显示“msg not reactive”，但是我们再次点击按钮就会发现组件并没有重新渲染。</p> <p>这个问题相信你可能遇到过，其中的根本原因是我们在 created 中定义的 this.msg 并不是响应式对象，所以 Vue.js 内部不会对它做额外的处理。而 data 中定义的数据，Vue.js 内部在组件初始化的过程中会把它变成响应式，这是一个相对黑盒的过程，用户通常不会感知到。</p> <p>你可能会好奇，为什么我在 created 钩子函数中定义数据而不在 data 中去定义？其实在 data 中定义数据最终也是挂载到组件实例 this 上，这和我直接在 created 钩子函数通过 this.xxx 定义的数据唯一区别就是，在 data 中定义的数据是响应式的。</p> <p>在一些场景下，如果我们仅仅想在组件上下文中共享某个变量，而不必去监测它的这个数据变化，这时就特别适合在 created 钩子函数中去定义这个变量，因为创建响应式的过程是有性能代价的，这相当于一种 Vue.js 应用的性能优化小技巧，你掌握了这一点就可以在合适的场景中应用了。</p> <p>到了 Vue.js 3.0 构建组件时，你可以不依赖于 Options API，而使用 Composition API 去编写。对于刚才的例子，我们可以用 Composition API 这样改写：</p> <div class="language-html extra-class"><pre class="language-html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>{{ state.msg }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">@click</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>random<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>Random msg<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script"><span class="token language-javascript">
+
+  <span class="token keyword">import</span> <span class="token punctuation">{</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+  <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+
+    <span class="token function">setup</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+        msg<span class="token operator">:</span> <span class="token string">'msg reactive'</span>
+
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+      <span class="token keyword">const</span> <span class="token function-variable function">random</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        state<span class="token punctuation">.</span>msg <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+      <span class="token punctuation">}</span>
+
+      <span class="token keyword">return</span> <span class="token punctuation">{</span>
+
+        random<span class="token punctuation">,</span>
+
+        state
+
+      <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+</code></pre></div><p>可以看到，我们通过 setup 函数实现和前面示例同样的功能。请注意，这里我们引入了 reactive API，它可以把一个对象数据变成响应式。 可以看出来 Composition API 更推荐用户主动定义响应式对象，而非内部的黑盒处理。这样用户可以更加明确哪些数据是响应式的，如果你不想让数据变成响应式，就定义成它的原始数据类型即可。</p> <p>也就是在 Vue.js 3.0 中，我们用 reactive 这个有魔力的函数，把数据变成了响应式，那么它内部到底是怎么实现的呢？我们接下来一探究竟。</p> <h2 id="reactive-api"><a href="#reactive-api" class="header-anchor">#</a> Reactive API</h2> <p>我们先来看一下 reactive 函数的具体实现过程：</p> <div class="language-html extra-class"><pre class="language-html"><code>function reactive (target) {
+
+   // 如果尝试把一个 readonly proxy 变成响应式，直接返回这个 readonly proxy
+
+  if (target &amp;&amp; target.__v_isReadonly) {
+
+     return target
+
+  } 
+
+  return createReactiveObject(target, false, mutableHandlers, mutableCollectionHandlers)
+
+}
+
+function createReactiveObject(target, isReadonly, baseHandlers, collectionHandlers) {
+
+  if (!isObject(target)) {
+
+    // 目标必须是对象或数组类型
+
+    if ((process.env.NODE_ENV !== 'production')) {
+
+      console.warn(`value cannot be made reactive: ${String(target)}`)
+
+    }
+
+    return target
+
+  }
+
+  if (target.__v_raw &amp;&amp; !(isReadonly &amp;&amp; target.__v_isReactive)) {
+
+    // target 已经是 Proxy 对象，直接返回
+
+    // 有个例外，如果是 readonly 作用于一个响应式对象，则继续
+
+    return target
+
+  }
+
+  if (hasOwn(target, isReadonly ? &quot;__v_readonly&quot; /* readonly */ : &quot;__v_reactive&quot; /* reactive */)) {
+
+    // target 已经有对应的 Proxy 了
+
+    return isReadonly ? target.__v_readonly : target.__v_reactive
+
+  }
+
+  // 只有在白名单里的数据类型才能变成响应式
+
+  if (!canObserve(target)) {
+
+    return target
+
+  }
+
+  // 利用 Proxy 创建响应式
+
+  const observed = new Proxy(target, collectionTypes.has(target.constructor) ? collectionHandlers : baseHandlers)
+
+  // 给原始数据打个标识，说明它已经变成响应式，并且有对应的 Proxy 了
+
+  def(target, isReadonly ? &quot;__v_readonly&quot; /* readonly */ : &quot;__v_reactive&quot; /* reactive */, observed)
+
+  return observed
+
+}
+
+</code></pre></div><p>可以看到，reactive 内部通过 createReactiveObject 函数把 target 变成了一个响应式对象。</p> <p>在这个过程中，createReactiveObject 函数主要做了以下几件事情。</p> <p>1.函数首先判断 target 是不是数组或者对象类型，如果不是则直接返回。所以原始数据 target 必须是对象或者数组。</p> <p>2.如果对一个已经是响应式的对象再次执行 reactive，还应该返回这个响应式对象，举个例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> original <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> observed <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span>original<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> observed2 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span>observed<span class="token punctuation">)</span>
+
+observed <span class="token operator">===</span> observed2
+
+</code></pre></div><p>可以看到 observed 已经是响应式结果了，如果对它再去执行 reactive，返回的值 observed2 和 observed 还是同一个对象引用。</p> <p>因为这里 reactive 函数会通过 target.__v_raw 属性来判断 target 是否已经是一个响应式对象（因为响应式对象的 __v_raw 属性会指向它自身，后面会提到），如果是的话则直接返回响应式对象。</p> <p>3.如果对同一个原始数据多次执行 reactive ，那么会返回相同的响应式对象，举个例子：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> reactive <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vue'</span>
+
+<span class="token keyword">const</span> original <span class="token operator">=</span> <span class="token punctuation">{</span> foo<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> observed <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span>original<span class="token punctuation">)</span>
+
+<span class="token keyword">const</span> observed2 <span class="token operator">=</span> <span class="token function">reactive</span><span class="token punctuation">(</span>original<span class="token punctuation">)</span>
+
+observed <span class="token operator">===</span> observed2
+
+</code></pre></div><p>可以看到，原始数据 original 被反复执行 reactive，但是响应式结果 observed 和 observed2 是同一个对象。</p> <p>所以这里 reactive 函数会通过 target.__v_reactive 判断 target 是否已经有对应的响应式对象（因为创建完响应式对象后，会给原始对象打上 __v_reactive 标识，后面会提到），如果有则返回这个响应式对象。</p> <p>4.使用 canObserve 函数对 target 对象做一进步限制：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> <span class="token function-variable function">canObserve</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">!</span>value<span class="token punctuation">.</span>__v_skip <span class="token operator">&amp;&amp;</span>
+
+   <span class="token function">isObservableType</span><span class="token punctuation">(</span><span class="token function">toRawType</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span>
+
+   <span class="token operator">!</span>Object<span class="token punctuation">.</span><span class="token function">isFrozen</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> isObservableType <span class="token operator">=</span> <span class="token comment">/*#__PURE__*/</span> <span class="token function">makeMap</span><span class="token punctuation">(</span><span class="token string">'Object,Array,Map,Set,WeakMap,WeakSet'</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>比如，带有 __v_skip 属性的对象、被冻结的对象，以及不在白名单内的对象如 Date 类型的对象实例是不能变成响应式的。</p> <p>5.通过 Proxy API 劫持 target 对象，把它变成响应式。我们把 Proxy 函数返回的结果称作响应式对象，这里 Proxy 对应的处理器对象会根据数据类型的不同而不同，我们稍后会重点分析基本数据类型的 Proxy 处理器对象，reactive 函数传入的 baseHandlers 值是 mutableHandlers。</p> <p>6.给原始数据打个标识，如下：</p> <div class="language-js extra-class"><pre class="language-js"><code>target<span class="token punctuation">.</span>__v_reactive <span class="token operator">=</span> observed
+</code></pre></div><p>这就是前面“对同一个原始数据多次执行 reactive ，那么会返回相同的响应式对象”逻辑的判断依据。</p> <p>仔细想想看，响应式的实现方式无非就是劫持数据，Vue.js 3.0 的 reactive API 就是通过 Proxy 劫持数据，而且由于 Proxy 劫持的是整个对象，所以我们可以检测到任何对对象的修改，弥补了 Object.defineProperty API 的不足。</p> <p>接下来，我们继续看 Proxy 处理器对象 mutableHandlers 的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> mutableHandlers <span class="token operator">=</span> <span class="token punctuation">{</span>
+
+  get<span class="token punctuation">,</span>
+
+  set<span class="token punctuation">,</span>
+
+  deleteProperty<span class="token punctuation">,</span>
+
+  has<span class="token punctuation">,</span>
+
+  ownKeys
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>它其实就是劫持了我们对 observed 对象的一些操作，比如：</p> <ul><li>访问对象属性会触发 get 函数；</li> <li>设置对象属性会触发 set 函数；</li> <li>删除对象属性会触发 deleteProperty 函数</li> <li>in 操作符会触发 has 函数；</li> <li>通过 Object.getOwnPropertyNames 访问对象属性名会触发 ownKeys 函数。</li></ul> <p>因为无论命中哪个处理器函数，它都会做依赖收集和派发通知这两件事其中的一个，所以这里我只要分析常用的 get 和 set 函数就可以了。</p> <h2 id="依赖收集-get-函数"><a href="#依赖收集-get-函数" class="header-anchor">#</a> 依赖收集：get 函数</h2> <p>依赖收集发生在数据访问的阶段，由于我们用 Proxy API 劫持了数据对象，所以当这个响应式对象属性被访问的时候就会执行 get 函数，我们来看一下 get 函数的实现，其实它是执行 createGetter 函数的返回值，为了分析主要流程，这里省略了 get 函数中的一些分支逻辑，isReadonly 也默认为 false：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">createGetter</span><span class="token punctuation">(</span><span class="token parameter">isReadonly <span class="token operator">=</span> <span class="token boolean">false</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+ <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> receiver</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">===</span> <span class="token string">&quot;__v_isReactive&quot;</span> <span class="token comment">/* isReactive */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token comment">// 代理 observed.__v_isReactive</span>
+
+     <span class="token keyword">return</span> <span class="token operator">!</span>isReadonly
+
+   <span class="token punctuation">}</span>
+
+   <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">===</span> <span class="token string">&quot;__v_isReadonly&quot;</span> <span class="token comment">/* isReadonly */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token comment">// 代理 observed.__v_isReadonly</span>
+
+     <span class="token keyword">return</span> isReadonly<span class="token punctuation">;</span>
+
+   <span class="token punctuation">}</span>
+
+   <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>key <span class="token operator">===</span> <span class="token string">&quot;__v_raw&quot;</span> <span class="token comment">/* raw */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token comment">// 代理 observed.__v_raw</span>
+
+     <span class="token keyword">return</span> target
+
+   <span class="token punctuation">}</span>
+
+   <span class="token keyword">const</span> targetIsArray <span class="token operator">=</span> <span class="token function">isArray</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+
+   <span class="token comment">// arrayInstrumentations 包含对数组一些方法修改的函数</span>
+
+   <span class="token keyword">if</span> <span class="token punctuation">(</span>targetIsArray <span class="token operator">&amp;&amp;</span> <span class="token function">hasOwn</span><span class="token punctuation">(</span>arrayInstrumentations<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token keyword">return</span> Reflect<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>arrayInstrumentations<span class="token punctuation">,</span> key<span class="token punctuation">,</span> receiver<span class="token punctuation">)</span>
+
+   <span class="token punctuation">}</span>
+
+   <span class="token comment">// 求值</span>
+
+   <span class="token keyword">const</span> res <span class="token operator">=</span> Reflect<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> key<span class="token punctuation">,</span> receiver<span class="token punctuation">)</span>
+
+   <span class="token comment">// 内置 Symbol key 不需要依赖收集</span>
+
+   <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isSymbol</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> builtInSymbols<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">||</span> key <span class="token operator">===</span> <span class="token string">'__proto__'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+     <span class="token keyword">return</span> res
+
+   <span class="token punctuation">}</span>
+
+   <span class="token comment">// 依赖收集</span>
+
+   <span class="token operator">!</span>isReadonly <span class="token operator">&amp;&amp;</span> <span class="token function">track</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token string">&quot;get&quot;</span> <span class="token comment">/* GET */</span><span class="token punctuation">,</span> key<span class="token punctuation">)</span>
+
+   <span class="token keyword">return</span> <span class="token function">isObject</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+
+     <span class="token operator">?</span> isReadonly
+
+       <span class="token operator">?</span>
+
+       <span class="token function">readonly</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+
+       <span class="token comment">// 如果 res 是个对象或者数组类型，则递归执行 reactive 函数把 res 变成响应式</span>
+
+       <span class="token operator">:</span> <span class="token function">reactive</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
+
+     <span class="token operator">:</span> res
+
+ <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>结合上述代码来看，get 函数主要做了四件事情，首先对特殊的 key 做了代理，这就是为什么我们在 createReactiveObject 函数中判断响应式对象是否存在 __v_raw 属性，如果存在就返回这个响应式对象本身。</p> <p>接着通过 Reflect.get 方法求值，如果 target 是数组且 key 命中了 arrayInstrumentations，则执行对应的函数，我们可以大概看一下 arrayInstrumentations 的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> arrayInstrumentations <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token punctuation">[</span><span class="token string">'includes'</span><span class="token punctuation">,</span> <span class="token string">'indexOf'</span><span class="token punctuation">,</span> <span class="token string">'lastIndexOf'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">key</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+
+  arrayInstrumentations<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// toRaw 可以把响应式对象转成原始数据</span>
+
+    <span class="token keyword">const</span> arr <span class="token operator">=</span> <span class="token function">toRaw</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> l <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// 依赖收集</span>
+
+      <span class="token function">track</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token string">&quot;get&quot;</span> <span class="token comment">/* GET */</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token string">''</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 先尝试用参数本身，可能是响应式数据</span>
+
+    <span class="token keyword">const</span> res <span class="token operator">=</span> arr<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>res <span class="token operator">===</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> res <span class="token operator">===</span> <span class="token boolean">false</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+      <span class="token comment">// 如果失败，再尝试把参数转成原始数据</span>
+
+      <span class="token keyword">return</span> arr<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token operator">...</span>args<span class="token punctuation">.</span><span class="token function">map</span><span class="token punctuation">(</span>toRaw<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">else</span> <span class="token punctuation">{</span>
+
+      <span class="token keyword">return</span> res
+
+    <span class="token punctuation">}</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+</code></pre></div><p>也就是说，当 target 是一个数组的时候，我们去访问 target.includes、target.indexOf 或者 target.lastIndexOf 就会执行 arrayInstrumentations 代理的函数，除了调用数组本身的方法求值外，还对数组每个元素做了依赖收集。因为一旦数组的元素被修改，数组的这几个 API 的返回结果都可能发生变化，所以我们需要跟踪数组每个元素的变化。</p> <p>回到 get 函数，第三步就是通过 Reflect.get 求值，然后会执行 track 函数收集依赖，我们稍后重点分析这个过程。</p> <p>函数最后会对计算的值 res 进行判断，如果它也是数组或对象，则递归执行 reactive 把 res 变成响应式对象。这么做是因为 Proxy 劫持的是对象本身，并不能劫持子对象的变化，这点和 Object.defineProperty API 一致。但是 Object.defineProperty 是在初始化阶段，即定义劫持对象的时候就已经递归执行了，而 Proxy 是在对象属性被访问的时候才递归执行下一步 reactive，这其实是一种延时定义子对象响应式的实现，在性能上会有较大的提升。</p> <p>整个 get 函数最核心的部分其实是执行 track 函数收集依赖，下面我们重点分析这个过程。</p> <p>我们先来看一下 track 函数的实现：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 是否应该收集依赖</span>
+
+<span class="token keyword">let</span> shouldTrack <span class="token operator">=</span> <span class="token boolean">true</span>
+
+<span class="token comment">// 当前激活的 effect</span>
+
+<span class="token keyword">let</span> activeEffect
+
+<span class="token comment">// 原始数据对象 map</span>
+
+<span class="token keyword">const</span> targetMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">function</span> <span class="token function">track</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> type<span class="token punctuation">,</span> key</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>shouldTrack <span class="token operator">||</span> activeEffect <span class="token operator">===</span> <span class="token keyword">undefined</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">return</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> depsMap <span class="token operator">=</span> targetMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>target<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>depsMap<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 每个 target 对应一个 depsMap</span>
+
+    targetMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> <span class="token punctuation">(</span>depsMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">let</span> dep <span class="token operator">=</span> depsMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dep<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 每个 key 对应一个 dep 集合</span>
+
+    depsMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>key<span class="token punctuation">,</span> <span class="token punctuation">(</span>dep <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>dep<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span>activeEffect<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token comment">// 收集当前激活的 effect 作为依赖</span>
+
+    dep<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>activeEffect<span class="token punctuation">)</span>
+
+   <span class="token comment">// 当前激活的 effect 收集 dep 集合作为依赖</span>
+
+    activeEffect<span class="token punctuation">.</span>deps<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>dep<span class="token punctuation">)</span>
+
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div><p>分析这个函数的实现前，我们先想一下要收集的依赖是什么，我们的目的是实现响应式，就是当数据变化的时候可以自动做一些事情，比如执行某些函数，所以我们收集的依赖就是数据变化后执行的副作用函数。</p> <p>再来看实现，我们把 target 作为原始的数据，key 作为访问的属性。我们创建了全局的 targetMap 作为原始数据对象的 Map，它的键是 target，值是 depsMap，作为依赖的 Map；这个 depsMap 的键是 target 的 key，值是 dep 集合，dep 集合中存储的是依赖的副作用函数。为了方便理解，可以通过下图表示它们之间的关系：</p> <p>&lt;img src=&quot;&quot;https://s0.lgstatic.com/i/image/M00/36/B5/Ciqc1F8YAL6Afvr-AAEj_nQbDuE332.png&quot; /&gt;</p> <p>所以每次 track ，就是把当前激活的副作用函数 activeEffect 作为依赖，然后收集到 target 相关的 depsMap 对应 key 下的依赖集合 dep 中。</p> <p>了解完依赖收集的过程，下节课我们来分析派发通知的过程。</p> <blockquote><p>本节课的相关代码在源代码中的位置如下：
+packages/reactivity/src/baseHandlers.ts
+packages/reactivity/src/effect.ts
+packages/reactivity/src/reactive.ts</p></blockquote></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue/vueCodeSource/Chapter2.0/setup.html" class="prev">
+        04 | Setup：组件渲染前的初始化过程是怎样的？
+      </a></span> <span class="next"><a href="/vue/vueCodeSource/Chapter2.0/responsive01.html">
+        06 | 响应式：响应式内部的实现原理是怎样的？（下）
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.175cb2f7.js" defer></script><script src="/assets/js/2.75df7a20.js" defer></script><script src="/assets/js/320.79cf2539.js" defer></script>
+  </body>
+</html>
