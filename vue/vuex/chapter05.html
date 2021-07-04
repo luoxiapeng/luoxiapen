@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Module | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    
+    <link rel="preload" href="/assets/css/0.styles.f58bed44.css" as="style"><link rel="preload" href="/assets/js/app.159f7e56.js" as="script"><link rel="preload" href="/assets/js/2.75df7a20.js" as="script"><link rel="preload" href="/assets/js/389.9cd39ca7.js" as="script"><link rel="prefetch" href="/assets/js/10.f03c1e06.js"><link rel="prefetch" href="/assets/js/100.c871eff4.js"><link rel="prefetch" href="/assets/js/101.3b02dbc3.js"><link rel="prefetch" href="/assets/js/102.657f1018.js"><link rel="prefetch" href="/assets/js/103.4c3fb73f.js"><link rel="prefetch" href="/assets/js/104.b364b538.js"><link rel="prefetch" href="/assets/js/105.f47cfdbf.js"><link rel="prefetch" href="/assets/js/106.f5c9b7c1.js"><link rel="prefetch" href="/assets/js/107.4b017cf3.js"><link rel="prefetch" href="/assets/js/108.6b5a235d.js"><link rel="prefetch" href="/assets/js/109.7c0f8975.js"><link rel="prefetch" href="/assets/js/11.98370f56.js"><link rel="prefetch" href="/assets/js/110.3b64d6b4.js"><link rel="prefetch" href="/assets/js/111.d63df36c.js"><link rel="prefetch" href="/assets/js/112.c9d94d9a.js"><link rel="prefetch" href="/assets/js/113.2d8f7066.js"><link rel="prefetch" href="/assets/js/114.53b0c6a6.js"><link rel="prefetch" href="/assets/js/115.416531bc.js"><link rel="prefetch" href="/assets/js/116.4bf66415.js"><link rel="prefetch" href="/assets/js/117.c01a46e8.js"><link rel="prefetch" href="/assets/js/118.8936b8fb.js"><link rel="prefetch" href="/assets/js/119.dd831f23.js"><link rel="prefetch" href="/assets/js/12.9fb60114.js"><link rel="prefetch" href="/assets/js/120.45ab0ea6.js"><link rel="prefetch" href="/assets/js/121.bd3f5f6c.js"><link rel="prefetch" href="/assets/js/122.a8180120.js"><link rel="prefetch" href="/assets/js/123.a7ae8b51.js"><link rel="prefetch" href="/assets/js/124.99349765.js"><link rel="prefetch" href="/assets/js/125.52b1dbdd.js"><link rel="prefetch" href="/assets/js/126.bbad428e.js"><link rel="prefetch" href="/assets/js/127.7b9981ba.js"><link rel="prefetch" href="/assets/js/128.122b9074.js"><link rel="prefetch" href="/assets/js/129.a2185a20.js"><link rel="prefetch" href="/assets/js/13.37f30a7a.js"><link rel="prefetch" href="/assets/js/130.b78c77cf.js"><link rel="prefetch" href="/assets/js/131.9bd76d54.js"><link rel="prefetch" href="/assets/js/132.051a8db9.js"><link rel="prefetch" href="/assets/js/133.b9afc210.js"><link rel="prefetch" href="/assets/js/134.ee4d7d69.js"><link rel="prefetch" href="/assets/js/135.a816e534.js"><link rel="prefetch" href="/assets/js/136.559bf91c.js"><link rel="prefetch" href="/assets/js/137.095dff91.js"><link rel="prefetch" href="/assets/js/138.fb50bc1d.js"><link rel="prefetch" href="/assets/js/139.f90820d9.js"><link rel="prefetch" href="/assets/js/14.dd8d1cf2.js"><link rel="prefetch" href="/assets/js/140.70d1a1db.js"><link rel="prefetch" href="/assets/js/141.72301753.js"><link rel="prefetch" href="/assets/js/142.f7865115.js"><link rel="prefetch" href="/assets/js/143.c12fb834.js"><link rel="prefetch" href="/assets/js/144.b4010efd.js"><link rel="prefetch" href="/assets/js/145.5e5bd0a6.js"><link rel="prefetch" href="/assets/js/146.df594d04.js"><link rel="prefetch" href="/assets/js/147.228e5dc1.js"><link rel="prefetch" href="/assets/js/148.cfd18a68.js"><link rel="prefetch" href="/assets/js/149.b7cc4118.js"><link rel="prefetch" href="/assets/js/15.33ba51c7.js"><link rel="prefetch" href="/assets/js/150.0327ee37.js"><link rel="prefetch" href="/assets/js/151.ce299bb4.js"><link rel="prefetch" href="/assets/js/152.6225a7b8.js"><link rel="prefetch" href="/assets/js/153.236c6f4c.js"><link rel="prefetch" href="/assets/js/154.9b02b695.js"><link rel="prefetch" href="/assets/js/155.d11f67c8.js"><link rel="prefetch" href="/assets/js/156.95a7652b.js"><link rel="prefetch" href="/assets/js/157.e9685915.js"><link rel="prefetch" href="/assets/js/158.66e5cdad.js"><link rel="prefetch" href="/assets/js/159.38396b22.js"><link rel="prefetch" href="/assets/js/16.5146101f.js"><link rel="prefetch" href="/assets/js/160.08171335.js"><link rel="prefetch" href="/assets/js/161.56f8b52a.js"><link rel="prefetch" href="/assets/js/162.cb1d6958.js"><link rel="prefetch" href="/assets/js/163.67cb1d3a.js"><link rel="prefetch" href="/assets/js/164.78e72e54.js"><link rel="prefetch" href="/assets/js/165.d2384903.js"><link rel="prefetch" href="/assets/js/166.dafe7f36.js"><link rel="prefetch" href="/assets/js/167.8d85626f.js"><link rel="prefetch" href="/assets/js/168.b6460680.js"><link rel="prefetch" href="/assets/js/169.773fd6ca.js"><link rel="prefetch" href="/assets/js/17.7134f46e.js"><link rel="prefetch" href="/assets/js/170.8793bf72.js"><link rel="prefetch" href="/assets/js/171.b154a782.js"><link rel="prefetch" href="/assets/js/172.b59842d8.js"><link rel="prefetch" href="/assets/js/173.e4dff270.js"><link rel="prefetch" href="/assets/js/174.c38ddcae.js"><link rel="prefetch" href="/assets/js/175.88aee728.js"><link rel="prefetch" href="/assets/js/176.a3fd208b.js"><link rel="prefetch" href="/assets/js/177.ac84954a.js"><link rel="prefetch" href="/assets/js/178.79ad0a3c.js"><link rel="prefetch" href="/assets/js/179.d52807bb.js"><link rel="prefetch" href="/assets/js/18.4af34341.js"><link rel="prefetch" href="/assets/js/180.5dd05a95.js"><link rel="prefetch" href="/assets/js/181.2ae067bb.js"><link rel="prefetch" href="/assets/js/182.d064b23c.js"><link rel="prefetch" href="/assets/js/183.28044c64.js"><link rel="prefetch" href="/assets/js/184.3e8d3835.js"><link rel="prefetch" href="/assets/js/185.823195f4.js"><link rel="prefetch" href="/assets/js/186.75c28df3.js"><link rel="prefetch" href="/assets/js/187.755ccb6c.js"><link rel="prefetch" href="/assets/js/188.873397f2.js"><link rel="prefetch" href="/assets/js/189.4f99e7ed.js"><link rel="prefetch" href="/assets/js/19.5f22c4a0.js"><link rel="prefetch" href="/assets/js/190.48462e90.js"><link rel="prefetch" href="/assets/js/191.c2b74db5.js"><link rel="prefetch" href="/assets/js/192.d3d06024.js"><link rel="prefetch" href="/assets/js/193.664f3f3f.js"><link rel="prefetch" href="/assets/js/194.81c2404e.js"><link rel="prefetch" href="/assets/js/195.0cef0d29.js"><link rel="prefetch" href="/assets/js/196.57f56d1c.js"><link rel="prefetch" href="/assets/js/197.8758d1a9.js"><link rel="prefetch" href="/assets/js/198.6d3bc148.js"><link rel="prefetch" href="/assets/js/199.ff7e5777.js"><link rel="prefetch" href="/assets/js/20.f50e1150.js"><link rel="prefetch" href="/assets/js/200.dbe97614.js"><link rel="prefetch" href="/assets/js/201.93f6c2c8.js"><link rel="prefetch" href="/assets/js/202.cb77161f.js"><link rel="prefetch" href="/assets/js/203.cda1944b.js"><link rel="prefetch" href="/assets/js/204.edc29d7a.js"><link rel="prefetch" href="/assets/js/205.be6ebfa4.js"><link rel="prefetch" href="/assets/js/206.793084e7.js"><link rel="prefetch" href="/assets/js/207.58f46d8e.js"><link rel="prefetch" href="/assets/js/208.6eebf5ea.js"><link rel="prefetch" href="/assets/js/209.140ccf6d.js"><link rel="prefetch" href="/assets/js/21.fe020a2d.js"><link rel="prefetch" href="/assets/js/210.b9819a53.js"><link rel="prefetch" href="/assets/js/211.a32601a2.js"><link rel="prefetch" href="/assets/js/212.39dec661.js"><link rel="prefetch" href="/assets/js/213.48c76968.js"><link rel="prefetch" href="/assets/js/214.69fb7f48.js"><link rel="prefetch" href="/assets/js/215.a3c3e10a.js"><link rel="prefetch" href="/assets/js/216.e3038256.js"><link rel="prefetch" href="/assets/js/217.b97ac3e3.js"><link rel="prefetch" href="/assets/js/218.a06f3a80.js"><link rel="prefetch" href="/assets/js/219.065d361e.js"><link rel="prefetch" href="/assets/js/22.cf1d4e68.js"><link rel="prefetch" href="/assets/js/220.78b4cdee.js"><link rel="prefetch" href="/assets/js/221.717ba67c.js"><link rel="prefetch" href="/assets/js/222.dc40320a.js"><link rel="prefetch" href="/assets/js/223.39bf095d.js"><link rel="prefetch" href="/assets/js/224.64fd816a.js"><link rel="prefetch" href="/assets/js/225.874f23ee.js"><link rel="prefetch" href="/assets/js/226.62d93901.js"><link rel="prefetch" href="/assets/js/227.0f43ef71.js"><link rel="prefetch" href="/assets/js/228.43e5883e.js"><link rel="prefetch" href="/assets/js/229.abdc313e.js"><link rel="prefetch" href="/assets/js/23.c730dc93.js"><link rel="prefetch" href="/assets/js/230.1eca81d5.js"><link rel="prefetch" href="/assets/js/231.87c26fba.js"><link rel="prefetch" href="/assets/js/232.ea233191.js"><link rel="prefetch" href="/assets/js/233.60f3ce67.js"><link rel="prefetch" href="/assets/js/234.408c4515.js"><link rel="prefetch" href="/assets/js/235.81468d47.js"><link rel="prefetch" href="/assets/js/236.85ebbcb1.js"><link rel="prefetch" href="/assets/js/237.805a9bde.js"><link rel="prefetch" href="/assets/js/238.d48e44ab.js"><link rel="prefetch" href="/assets/js/239.54c5d7da.js"><link rel="prefetch" href="/assets/js/24.d4d806a2.js"><link rel="prefetch" href="/assets/js/240.eee43c80.js"><link rel="prefetch" href="/assets/js/241.15c487a1.js"><link rel="prefetch" href="/assets/js/242.40595d00.js"><link rel="prefetch" href="/assets/js/243.deb09b35.js"><link rel="prefetch" href="/assets/js/244.a6547bfa.js"><link rel="prefetch" href="/assets/js/245.edef1694.js"><link rel="prefetch" href="/assets/js/246.de063dda.js"><link rel="prefetch" href="/assets/js/247.706da647.js"><link rel="prefetch" href="/assets/js/248.3f9e6662.js"><link rel="prefetch" href="/assets/js/249.80a16d27.js"><link rel="prefetch" href="/assets/js/25.a39ce2bd.js"><link rel="prefetch" href="/assets/js/250.55950a61.js"><link rel="prefetch" href="/assets/js/251.803886c8.js"><link rel="prefetch" href="/assets/js/252.c7fdcfbc.js"><link rel="prefetch" href="/assets/js/253.bc2248f3.js"><link rel="prefetch" href="/assets/js/254.8994d339.js"><link rel="prefetch" href="/assets/js/255.5a1d6adc.js"><link rel="prefetch" href="/assets/js/256.b442a650.js"><link rel="prefetch" href="/assets/js/257.aeed992a.js"><link rel="prefetch" href="/assets/js/258.fda51af9.js"><link rel="prefetch" href="/assets/js/259.6f48908a.js"><link rel="prefetch" href="/assets/js/26.263e0f39.js"><link rel="prefetch" href="/assets/js/260.44661c6e.js"><link rel="prefetch" href="/assets/js/261.3d33da9a.js"><link rel="prefetch" href="/assets/js/262.1078e97f.js"><link rel="prefetch" href="/assets/js/263.3cc6e67a.js"><link rel="prefetch" href="/assets/js/264.925cce3e.js"><link rel="prefetch" href="/assets/js/265.f533d362.js"><link rel="prefetch" href="/assets/js/266.40e105ca.js"><link rel="prefetch" href="/assets/js/267.4ef9426f.js"><link rel="prefetch" href="/assets/js/268.f33f4078.js"><link rel="prefetch" href="/assets/js/269.388bf521.js"><link rel="prefetch" href="/assets/js/27.9a81282b.js"><link rel="prefetch" href="/assets/js/270.e89d5bfa.js"><link rel="prefetch" href="/assets/js/271.38e15939.js"><link rel="prefetch" href="/assets/js/272.0934b873.js"><link rel="prefetch" href="/assets/js/273.32c33175.js"><link rel="prefetch" href="/assets/js/274.f2b9b281.js"><link rel="prefetch" href="/assets/js/275.7d815674.js"><link rel="prefetch" href="/assets/js/276.1ff8d736.js"><link rel="prefetch" href="/assets/js/277.0f0fddee.js"><link rel="prefetch" href="/assets/js/278.ef97dbd4.js"><link rel="prefetch" href="/assets/js/279.ee0a0d20.js"><link rel="prefetch" href="/assets/js/28.2c79f489.js"><link rel="prefetch" href="/assets/js/280.cc0b4ea1.js"><link rel="prefetch" href="/assets/js/281.cf308109.js"><link rel="prefetch" href="/assets/js/282.c7d1268a.js"><link rel="prefetch" href="/assets/js/283.ad801bbb.js"><link rel="prefetch" href="/assets/js/284.9cc73f1e.js"><link rel="prefetch" href="/assets/js/285.b77d593f.js"><link rel="prefetch" href="/assets/js/286.024ec553.js"><link rel="prefetch" href="/assets/js/287.1f240199.js"><link rel="prefetch" href="/assets/js/288.2f9f7f55.js"><link rel="prefetch" href="/assets/js/289.5a08dc6a.js"><link rel="prefetch" href="/assets/js/29.9ff4fc13.js"><link rel="prefetch" href="/assets/js/290.a525386b.js"><link rel="prefetch" href="/assets/js/291.58b0e766.js"><link rel="prefetch" href="/assets/js/292.833b2189.js"><link rel="prefetch" href="/assets/js/293.146fd769.js"><link rel="prefetch" href="/assets/js/294.2c64d8e3.js"><link rel="prefetch" href="/assets/js/295.7ac7c125.js"><link rel="prefetch" href="/assets/js/296.2c42120f.js"><link rel="prefetch" href="/assets/js/297.41433707.js"><link rel="prefetch" href="/assets/js/298.1424f8c0.js"><link rel="prefetch" href="/assets/js/299.66ff0c5d.js"><link rel="prefetch" href="/assets/js/3.75653a37.js"><link rel="prefetch" href="/assets/js/30.b2edc616.js"><link rel="prefetch" href="/assets/js/300.aadefd25.js"><link rel="prefetch" href="/assets/js/301.9673c3f3.js"><link rel="prefetch" href="/assets/js/302.60b3e510.js"><link rel="prefetch" href="/assets/js/303.f7148781.js"><link rel="prefetch" href="/assets/js/304.0754a839.js"><link rel="prefetch" href="/assets/js/305.4cab7db7.js"><link rel="prefetch" href="/assets/js/306.c0b1551b.js"><link rel="prefetch" href="/assets/js/307.4072e269.js"><link rel="prefetch" href="/assets/js/308.a2b47cab.js"><link rel="prefetch" href="/assets/js/309.d652adbe.js"><link rel="prefetch" href="/assets/js/31.4fdd0702.js"><link rel="prefetch" href="/assets/js/310.73a908d3.js"><link rel="prefetch" href="/assets/js/311.2f478646.js"><link rel="prefetch" href="/assets/js/312.95da6fc3.js"><link rel="prefetch" href="/assets/js/313.e23b2433.js"><link rel="prefetch" href="/assets/js/314.37a52f6e.js"><link rel="prefetch" href="/assets/js/315.d44b9e46.js"><link rel="prefetch" href="/assets/js/316.a3d2f7cc.js"><link rel="prefetch" href="/assets/js/317.efc732ff.js"><link rel="prefetch" href="/assets/js/318.cc9b0a0f.js"><link rel="prefetch" href="/assets/js/319.651d8376.js"><link rel="prefetch" href="/assets/js/32.aa7bb4f0.js"><link rel="prefetch" href="/assets/js/320.167b8073.js"><link rel="prefetch" href="/assets/js/321.536a3c35.js"><link rel="prefetch" href="/assets/js/322.d8bb2082.js"><link rel="prefetch" href="/assets/js/323.2d2e546c.js"><link rel="prefetch" href="/assets/js/324.86b57e51.js"><link rel="prefetch" href="/assets/js/325.948659b4.js"><link rel="prefetch" href="/assets/js/326.806b52fb.js"><link rel="prefetch" href="/assets/js/327.d583033f.js"><link rel="prefetch" href="/assets/js/328.13054ce3.js"><link rel="prefetch" href="/assets/js/329.09b43ddc.js"><link rel="prefetch" href="/assets/js/33.c8735594.js"><link rel="prefetch" href="/assets/js/330.b3732dc0.js"><link rel="prefetch" href="/assets/js/331.a86151d1.js"><link rel="prefetch" href="/assets/js/332.49456e89.js"><link rel="prefetch" href="/assets/js/333.abaef58f.js"><link rel="prefetch" href="/assets/js/334.1c5560e2.js"><link rel="prefetch" href="/assets/js/335.5c782b5a.js"><link rel="prefetch" href="/assets/js/336.b8f0f6f9.js"><link rel="prefetch" href="/assets/js/337.1aacaaf6.js"><link rel="prefetch" href="/assets/js/338.b4da172e.js"><link rel="prefetch" href="/assets/js/339.9ffa9b32.js"><link rel="prefetch" href="/assets/js/34.27da4ff5.js"><link rel="prefetch" href="/assets/js/340.9ec5a7f6.js"><link rel="prefetch" href="/assets/js/341.39665e4d.js"><link rel="prefetch" href="/assets/js/342.ec8b2260.js"><link rel="prefetch" href="/assets/js/343.38a3bc66.js"><link rel="prefetch" href="/assets/js/344.efa24292.js"><link rel="prefetch" href="/assets/js/345.97ceabef.js"><link rel="prefetch" href="/assets/js/346.6cba21c5.js"><link rel="prefetch" href="/assets/js/347.3836af68.js"><link rel="prefetch" href="/assets/js/348.2ab9fe9d.js"><link rel="prefetch" href="/assets/js/349.812583ca.js"><link rel="prefetch" href="/assets/js/35.29006597.js"><link rel="prefetch" href="/assets/js/350.da8c5f44.js"><link rel="prefetch" href="/assets/js/351.54b28178.js"><link rel="prefetch" href="/assets/js/352.6802a278.js"><link rel="prefetch" href="/assets/js/353.ff4fdec0.js"><link rel="prefetch" href="/assets/js/354.d07fbdc7.js"><link rel="prefetch" href="/assets/js/355.4e801ce3.js"><link rel="prefetch" href="/assets/js/356.235dd487.js"><link rel="prefetch" href="/assets/js/357.82575910.js"><link rel="prefetch" href="/assets/js/358.1e7d94cd.js"><link rel="prefetch" href="/assets/js/359.8fb2be79.js"><link rel="prefetch" href="/assets/js/36.c2b63d5e.js"><link rel="prefetch" href="/assets/js/360.60d761a2.js"><link rel="prefetch" href="/assets/js/361.a5378e24.js"><link rel="prefetch" href="/assets/js/362.ca8464ab.js"><link rel="prefetch" href="/assets/js/363.d557cb5a.js"><link rel="prefetch" href="/assets/js/364.ec669047.js"><link rel="prefetch" href="/assets/js/365.a232fa69.js"><link rel="prefetch" href="/assets/js/366.6ad97bfa.js"><link rel="prefetch" href="/assets/js/367.c93e8f66.js"><link rel="prefetch" href="/assets/js/368.16226244.js"><link rel="prefetch" href="/assets/js/369.b4d2c03b.js"><link rel="prefetch" href="/assets/js/37.1903ccce.js"><link rel="prefetch" href="/assets/js/370.351629ef.js"><link rel="prefetch" href="/assets/js/371.176a8e89.js"><link rel="prefetch" href="/assets/js/372.0393e353.js"><link rel="prefetch" href="/assets/js/373.d86abf49.js"><link rel="prefetch" href="/assets/js/374.2412d145.js"><link rel="prefetch" href="/assets/js/375.554d0e05.js"><link rel="prefetch" href="/assets/js/376.b3a30ece.js"><link rel="prefetch" href="/assets/js/377.6a75e175.js"><link rel="prefetch" href="/assets/js/378.242436a8.js"><link rel="prefetch" href="/assets/js/379.cc552ff9.js"><link rel="prefetch" href="/assets/js/38.afc4ae9b.js"><link rel="prefetch" href="/assets/js/380.a920721d.js"><link rel="prefetch" href="/assets/js/381.0f4c0d16.js"><link rel="prefetch" href="/assets/js/382.45d94fed.js"><link rel="prefetch" href="/assets/js/383.e9b856be.js"><link rel="prefetch" href="/assets/js/384.c3c6a861.js"><link rel="prefetch" href="/assets/js/385.ca4801a8.js"><link rel="prefetch" href="/assets/js/386.a9f6b97a.js"><link rel="prefetch" href="/assets/js/387.30cef48c.js"><link rel="prefetch" href="/assets/js/388.3e517a0c.js"><link rel="prefetch" href="/assets/js/39.3f401dcb.js"><link rel="prefetch" href="/assets/js/390.b4db91a7.js"><link rel="prefetch" href="/assets/js/391.469d837f.js"><link rel="prefetch" href="/assets/js/392.962ffbcf.js"><link rel="prefetch" href="/assets/js/393.bec62c13.js"><link rel="prefetch" href="/assets/js/394.8dc6c286.js"><link rel="prefetch" href="/assets/js/395.283e5c6a.js"><link rel="prefetch" href="/assets/js/4.32801e52.js"><link rel="prefetch" href="/assets/js/40.2b922978.js"><link rel="prefetch" href="/assets/js/41.f8151134.js"><link rel="prefetch" href="/assets/js/42.19264938.js"><link rel="prefetch" href="/assets/js/43.5233f1ad.js"><link rel="prefetch" href="/assets/js/44.860f3865.js"><link rel="prefetch" href="/assets/js/45.5258705e.js"><link rel="prefetch" href="/assets/js/46.5f9e4ab2.js"><link rel="prefetch" href="/assets/js/47.b03459f5.js"><link rel="prefetch" href="/assets/js/48.c04eeade.js"><link rel="prefetch" href="/assets/js/49.1fa154be.js"><link rel="prefetch" href="/assets/js/5.f4e09838.js"><link rel="prefetch" href="/assets/js/50.f63202bb.js"><link rel="prefetch" href="/assets/js/51.16cc0699.js"><link rel="prefetch" href="/assets/js/52.7cdd6b32.js"><link rel="prefetch" href="/assets/js/53.7151f340.js"><link rel="prefetch" href="/assets/js/54.c4b05d09.js"><link rel="prefetch" href="/assets/js/55.e82db8e1.js"><link rel="prefetch" href="/assets/js/56.3b8bbc63.js"><link rel="prefetch" href="/assets/js/57.d7ff1773.js"><link rel="prefetch" href="/assets/js/58.ee467b99.js"><link rel="prefetch" href="/assets/js/59.1c084438.js"><link rel="prefetch" href="/assets/js/6.102494d6.js"><link rel="prefetch" href="/assets/js/60.2dc81c6b.js"><link rel="prefetch" href="/assets/js/61.3f32b5eb.js"><link rel="prefetch" href="/assets/js/62.ed268d20.js"><link rel="prefetch" href="/assets/js/63.afa21a4b.js"><link rel="prefetch" href="/assets/js/64.6f9a5793.js"><link rel="prefetch" href="/assets/js/65.6f9800ca.js"><link rel="prefetch" href="/assets/js/66.c0db84b8.js"><link rel="prefetch" href="/assets/js/67.f33037b1.js"><link rel="prefetch" href="/assets/js/68.b67dadf7.js"><link rel="prefetch" href="/assets/js/69.7d7b1524.js"><link rel="prefetch" href="/assets/js/7.34feac5f.js"><link rel="prefetch" href="/assets/js/70.317ac1fb.js"><link rel="prefetch" href="/assets/js/71.ec502d31.js"><link rel="prefetch" href="/assets/js/72.1d12bebd.js"><link rel="prefetch" href="/assets/js/73.2a266075.js"><link rel="prefetch" href="/assets/js/74.03348a5f.js"><link rel="prefetch" href="/assets/js/75.f17ffa7e.js"><link rel="prefetch" href="/assets/js/76.5e10801e.js"><link rel="prefetch" href="/assets/js/77.f892086b.js"><link rel="prefetch" href="/assets/js/78.3b8ee7a5.js"><link rel="prefetch" href="/assets/js/79.28e1b585.js"><link rel="prefetch" href="/assets/js/8.2218afe7.js"><link rel="prefetch" href="/assets/js/80.db7fec5f.js"><link rel="prefetch" href="/assets/js/81.c11a03d4.js"><link rel="prefetch" href="/assets/js/82.1881483d.js"><link rel="prefetch" href="/assets/js/83.e6db044e.js"><link rel="prefetch" href="/assets/js/84.b9100194.js"><link rel="prefetch" href="/assets/js/85.bdf02741.js"><link rel="prefetch" href="/assets/js/86.64f0a566.js"><link rel="prefetch" href="/assets/js/87.b916e6f4.js"><link rel="prefetch" href="/assets/js/88.258d210f.js"><link rel="prefetch" href="/assets/js/89.551a4a48.js"><link rel="prefetch" href="/assets/js/9.73e2377b.js"><link rel="prefetch" href="/assets/js/90.a9d28be5.js"><link rel="prefetch" href="/assets/js/91.c618baa3.js"><link rel="prefetch" href="/assets/js/92.66de2bc1.js"><link rel="prefetch" href="/assets/js/93.f6ef290d.js"><link rel="prefetch" href="/assets/js/94.885e25cf.js"><link rel="prefetch" href="/assets/js/95.737e7aaf.js"><link rel="prefetch" href="/assets/js/96.49e2eb49.js"><link rel="prefetch" href="/assets/js/97.f34951f4.js"><link rel="prefetch" href="/assets/js/98.84e6dc23.js"><link rel="prefetch" href="/assets/js/99.aa8301ad.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.f58bed44.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue2/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vuex/" class="nav-link router-link-active">
+  VueX
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/qiankun/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li><li class="dropdown-item"><!----> <a href="/pack/lerna/" class="nav-link">
+  lerna
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/sass/" class="nav-link">
+  sass
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/less/" class="nav-link">
+  less
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/animation/" class="nav-link">
+  animation
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/guide/" class="nav-link">
+  指南
+</a></div><div class="nav-item"><a href="/parameter/" class="nav-link">
+  配置参数
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/" class="nav-link">
+  Javascript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue2/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vuex/" class="nav-link router-link-active">
+  VueX
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link">
+  Vue3源码
+</a></li><li class="dropdown-item"><!----> <a href="/vue/uniApp/" class="nav-link">
+  Ui-app
+</a></li><li class="dropdown-item"><!----> <a href="/vue/qiankun/" class="nav-link">
+  微前端
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/reactHook/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li><li class="dropdown-item"><!----> <a href="/pack/lerna/" class="nav-link">
+  lerna
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/sass/" class="nav-link">
+  sass
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/less/" class="nav-link">
+  less
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/animation/" class="nav-link">
+  animation
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>vuex</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/vue/vuex/chapter.html" class="sidebar-link">开始</a></li><li><a href="/vue/vuex/chapter01.html" class="sidebar-link">State</a></li><li><a href="/vue/vuex/chapter02.html" class="sidebar-link">Getter</a></li><li><a href="/vue/vuex/chapter03.html" class="sidebar-link">Mutation</a></li><li><a href="/vue/vuex/chapter04.html" class="sidebar-link">Action</a></li><li><a href="/vue/vuex/chapter05.html" aria-current="page" class="active sidebar-link">Module</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#模块的局部状态" class="sidebar-link">模块的局部状态</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#命名空间" class="sidebar-link">命名空间</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#在带命名空间的模块内访问全局内容-global-assets" class="sidebar-link">在带命名空间的模块内访问全局内容（Global Assets）</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#在带命名空间的模块注册全局-action" class="sidebar-link">在带命名空间的模块注册全局 action</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#带命名空间的绑定函数" class="sidebar-link">带命名空间的绑定函数</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#给插件开发者的注意事项" class="sidebar-link">给插件开发者的注意事项</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#模块动态注册" class="sidebar-link">模块动态注册</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#保留-state" class="sidebar-link">保留 state</a></li><li class="sidebar-sub-header"><a href="/vue/vuex/chapter05.html#模块重用" class="sidebar-link">模块重用</a></li></ul></li><li><a href="/vue/vuex/chapter06.html" class="sidebar-link">项目结构</a></li><li><a href="/vue/vuex/chapter07.html" class="sidebar-link">插件</a></li><li><a href="/vue/vuex/chapter08.html" class="sidebar-link">严格模式</a></li><li><a href="/vue/vuex/chapter09.html" class="sidebar-link">表单处理</a></li><li><a href="/vue/vuex/chapter10.html" class="sidebar-link">测试</a></li><li><a href="/vue/vuex/chapter11.html" class="sidebar-link">热重载</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="module"><a href="#module" class="header-anchor">#</a> Module</h1> <p>由于使用单一状态树，应用的所有状态会集中到一个比较大的对象。当应用变得非常复杂时，store 对象就有可能变得相当臃肿。</p> <p>为了解决以上问题，Vuex 允许我们将 store 分割成模块（module）。每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> moduleA <span class="token operator">=</span> <span class="token punctuation">{</span>
+  state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  mutations<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  actions<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  getters<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> moduleB <span class="token operator">=</span> <span class="token punctuation">{</span>
+  state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  mutations<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  actions<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  modules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    a<span class="token operator">:</span> moduleA<span class="token punctuation">,</span>
+    b<span class="token operator">:</span> moduleB
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>a <span class="token comment">// -&gt; moduleA 的状态</span>
+store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>b <span class="token comment">// -&gt; moduleB 的状态</span>
+</code></pre></div><h2 id="模块的局部状态"><a href="#模块的局部状态" class="header-anchor">#</a> 模块的局部状态</h2> <p>对于模块内部的 mutation 和 getter，接收的第一个参数是模块的局部状态对象。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> moduleA <span class="token operator">=</span> <span class="token punctuation">{</span>
+  state<span class="token operator">:</span> <span class="token punctuation">{</span> count<span class="token operator">:</span> <span class="token number">0</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">increment</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 这里的 `state` 对象是模块的局部状态</span>
+      state<span class="token punctuation">.</span>count<span class="token operator">++</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+  getters<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">doubleCount</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">.</span>count <span class="token operator">*</span> <span class="token number">2</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>同样，对于模块内部的 action，局部状态通过 context.state 暴露出来，根节点状态则为 context.rootState：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> moduleA <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">incrementIfOddOnRootSum</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> state<span class="token punctuation">,</span> commit<span class="token punctuation">,</span> rootState <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token punctuation">.</span>count <span class="token operator">+</span> rootState<span class="token punctuation">.</span>count<span class="token punctuation">)</span> <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'increment'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>对于模块内部的 getter，根节点状态会作为第三个参数暴露出来：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> moduleA <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+  getters<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">sumWithRootCount</span><span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> getters<span class="token punctuation">,</span> rootState</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> state<span class="token punctuation">.</span>count <span class="token operator">+</span> rootState<span class="token punctuation">.</span>count
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="命名空间"><a href="#命名空间" class="header-anchor">#</a> 命名空间</h2> <p>默认情况下，模块内部的 action、mutation 和 getter 是注册在全局命名空间的——这样使得多个模块能够对同一 mutation 或 action 作出响应。</p> <p>如果希望你的模块具有更高的封装度和复用性，你可以通过添加 namespaced: true 的方式使其成为带命名空间的模块。当模块被注册后，它的所有 getter、action 及 mutation 都会自动根据模块注册的路径调整命名。例如：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> store <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span class="token punctuation">.</span>Store</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  modules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    account<span class="token operator">:</span> <span class="token punctuation">{</span>
+      namespaced<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 模块内容（module assets）</span>
+      state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token comment">// 模块内的状态已经是嵌套的了，使用 `namespaced` 属性不会对其产生影响</span>
+      getters<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token function">isAdmin</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; getters['account/isAdmin']</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token function">login</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; dispatch('account/login')</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      mutations<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token function">login</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; commit('account/login')</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+      <span class="token comment">// 嵌套模块</span>
+      modules<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 继承父模块的命名空间</span>
+        myPage<span class="token operator">:</span> <span class="token punctuation">{</span>
+          state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          getters<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token function">profile</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; getters['account/profile']</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+        <span class="token comment">// 进一步嵌套命名空间</span>
+        posts<span class="token operator">:</span> <span class="token punctuation">{</span>
+          namespaced<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+          state<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+          getters<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token function">popular</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; getters['account/posts/popular']</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>启用了命名空间的 getter 和 action 会收到局部化的 getter，dispatch 和 commit。换言之，你在使用模块内容（module assets）时不需要在同一模块内额外添加空间名前缀。更改 namespaced 属性后不需要修改模块内的代码。</p> <h2 id="在带命名空间的模块内访问全局内容-global-assets"><a href="#在带命名空间的模块内访问全局内容-global-assets" class="header-anchor">#</a> 在带命名空间的模块内访问全局内容（Global Assets）</h2> <p>如果你希望使用全局 state 和 getter，rootState 和 rootGetters 会作为第三和第四参数传入 getter，也会通过 context 对象的属性传入 action。</p> <p>若需要在全局命名空间内分发 action 或提交 mutation，将 { root: true } 作为第三参数传给 dispatch 或 commit 即可。</p> <div class="language-js extra-class"><pre class="language-js"><code>modules<span class="token operator">:</span> <span class="token punctuation">{</span>
+  foo<span class="token operator">:</span> <span class="token punctuation">{</span>
+    namespaced<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+    getters<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 在这个模块的 getter 中，`getters` 被局部化了</span>
+      <span class="token comment">// 你可以使用 getter 的第四个参数来调用 `rootGetters`</span>
+      <span class="token function">someGetter</span> <span class="token punctuation">(</span><span class="token parameter">state<span class="token punctuation">,</span> getters<span class="token punctuation">,</span> rootState<span class="token punctuation">,</span> rootGetters</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        getters<span class="token punctuation">.</span>someOtherGetter <span class="token comment">// -&gt; 'foo/someOtherGetter'</span>
+        rootGetters<span class="token punctuation">.</span>someOtherGetter <span class="token comment">// -&gt; 'someOtherGetter'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function-variable function">someOtherGetter</span><span class="token operator">:</span> <span class="token parameter">state</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+      <span class="token comment">// 在这个模块中， dispatch 和 commit 也被局部化了</span>
+      <span class="token comment">// 他们可以接受 `root` 属性以访问根 dispatch 或 commit</span>
+      <span class="token function">someAction</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> dispatch<span class="token punctuation">,</span> commit<span class="token punctuation">,</span> getters<span class="token punctuation">,</span> rootGetters <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        getters<span class="token punctuation">.</span>someGetter <span class="token comment">// -&gt; 'foo/someGetter'</span>
+        rootGetters<span class="token punctuation">.</span>someGetter <span class="token comment">// -&gt; 'someGetter'</span>
+
+        <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'someOtherAction'</span><span class="token punctuation">)</span> <span class="token comment">// -&gt; 'foo/someOtherAction'</span>
+        <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'someOtherAction'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> root<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// -&gt; 'someOtherAction'</span>
+
+        <span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'someMutation'</span><span class="token punctuation">)</span> <span class="token comment">// -&gt; 'foo/someMutation'</span>
+        <span class="token function">commit</span><span class="token punctuation">(</span><span class="token string">'someMutation'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> root<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token comment">// -&gt; 'someMutation'</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token function">someOtherAction</span> <span class="token punctuation">(</span><span class="token parameter">ctx<span class="token punctuation">,</span> payload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="在带命名空间的模块注册全局-action"><a href="#在带命名空间的模块注册全局-action" class="header-anchor">#</a> 在带命名空间的模块注册全局 action</h2> <p>若需要在带命名空间的模块注册全局 action，你可添加 root: true，并将这个 action 的定义放在函数 handler 中。例如：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+  actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">someOtherAction</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>dispatch<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token string">'someAction'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  modules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    foo<span class="token operator">:</span> <span class="token punctuation">{</span>
+      namespaced<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+
+      actions<span class="token operator">:</span> <span class="token punctuation">{</span>
+        someAction<span class="token operator">:</span> <span class="token punctuation">{</span>
+          root<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+          <span class="token function">handler</span> <span class="token punctuation">(</span><span class="token parameter">namespacedContext<span class="token punctuation">,</span> payload</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token operator">...</span> <span class="token punctuation">}</span> <span class="token comment">// -&gt; 'someAction'</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="带命名空间的绑定函数"><a href="#带命名空间的绑定函数" class="header-anchor">#</a> 带命名空间的绑定函数</h2> <p>当使用 mapState, mapGetters, mapActions 和 mapMutations 这些函数来绑定带命名空间的模块时，写起来可能比较繁琐：</p> <div class="language-js extra-class"><pre class="language-js"><code>computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token function-variable function">a</span><span class="token operator">:</span> <span class="token parameter">state</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>some<span class="token punctuation">.</span>nested<span class="token punctuation">.</span>module<span class="token punctuation">.</span>a<span class="token punctuation">,</span>
+    <span class="token function-variable function">b</span><span class="token operator">:</span> <span class="token parameter">state</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>some<span class="token punctuation">.</span>nested<span class="token punctuation">.</span>module<span class="token punctuation">.</span>b
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token punctuation">[</span>
+    <span class="token string">'some/nested/module/foo'</span><span class="token punctuation">,</span> <span class="token comment">// -&gt; this['some/nested/module/foo']()</span>
+    <span class="token string">'some/nested/module/bar'</span> <span class="token comment">// -&gt; this['some/nested/module/bar']()</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>对于这种情况，你可以将模块的空间名称字符串作为第一个参数传递给上述函数，这样所有绑定都会自动将该模块作为上下文。于是上面的例子可以简化为：</p> <div class="language-js extra-class"><pre class="language-js"><code>computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token string">'some/nested/module'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    <span class="token function-variable function">a</span><span class="token operator">:</span> <span class="token parameter">state</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>a<span class="token punctuation">,</span>
+    <span class="token function-variable function">b</span><span class="token operator">:</span> <span class="token parameter">state</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>b
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+  <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token string">'some/nested/module'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>
+    <span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token comment">// -&gt; this.foo()</span>
+    <span class="token string">'bar'</span> <span class="token comment">// -&gt; this.bar()</span>
+  <span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>而且，你可以通过使用 createNamespacedHelpers 创建基于某个命名空间辅助函数。它返回一个对象，对象里有新的绑定在给定命名空间值上的组件绑定辅助函数：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> createNamespacedHelpers <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+
+<span class="token keyword">const</span> <span class="token punctuation">{</span> mapState<span class="token punctuation">,</span> mapActions <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">createNamespacedHelpers</span><span class="token punctuation">(</span><span class="token string">'some/nested/module'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  computed<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在 `some/nested/module` 中查找</span>
+    <span class="token operator">...</span><span class="token function">mapState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      <span class="token function-variable function">a</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>a<span class="token punctuation">,</span>
+      <span class="token function-variable function">b</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> state<span class="token punctuation">.</span>b<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  methods<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 在 `some/nested/module` 中查找</span>
+    <span class="token operator">...</span><span class="token function">mapActions</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'foo'</span><span class="token punctuation">,</span> <span class="token string">'bar'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="给插件开发者的注意事项"><a href="#给插件开发者的注意事项" class="header-anchor">#</a> 给插件开发者的注意事项</h2> <p>如果你开发的插件（Plugin）提供了模块并允许用户将其添加到 Vuex store，可能需要考虑模块的空间名称问题。对于这种情况，你可以通过插件的参数对象来允许用户指定空间名称：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 通过插件的参数对象得到空间名称</span>
+<span class="token comment">// 然后返回 Vuex 插件函数</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">createPlugin</span><span class="token punctuation">(</span><span class="token parameter">options <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">store</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 把空间名字添加到插件模块的类型（type）中去</span>
+    <span class="token keyword">const</span> namespace <span class="token operator">=</span> options<span class="token punctuation">.</span>namespace <span class="token operator">||</span> <span class="token string">''</span>
+    store<span class="token punctuation">.</span><span class="token function">dispatch</span><span class="token punctuation">(</span>namespace <span class="token operator">+</span> <span class="token string">'pluginAction'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="模块动态注册"><a href="#模块动态注册" class="header-anchor">#</a> 模块动态注册</h2> <p>在 store 创建之后，你可以使用 store.registerModule 方法注册模块：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 注册模块 `myModule`</span>
+store<span class="token punctuation">.</span><span class="token function">registerModule</span><span class="token punctuation">(</span><span class="token string">'myModule'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token comment">// 注册嵌套模块 `nested/myModule`</span>
+store<span class="token punctuation">.</span><span class="token function">registerModule</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'nested'</span><span class="token punctuation">,</span> <span class="token string">'myModule'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>之后就可以通过 store.state.myModule 和 store.state.nested.myModule 访问模块的状态。</p> <p>模块动态注册功能使得其他 Vue 插件可以通过在 store 中附加新模块的方式来使用 Vuex 管理状态。例如，vuex-router-sync 插件就是通过动态注册模块将 vue-router 和 vuex 结合在一起，实现应用的路由状态管理。</p> <p>你也可以使用 store.unregisterModule(moduleName) 来动态卸载模块。注意，你不能使用此方法卸载静态模块（即创建 store 时声明的模块）。</p> <h2 id="保留-state"><a href="#保留-state" class="header-anchor">#</a> 保留 state</h2> <p>在注册一个新 module 时，你很有可能想保留过去的 state，例如从一个服务端渲染的应用保留 state。你可以通过 preserveState 选项将其归档：store.registerModule('a', module, { preserveState: true })。</p> <p>当你设置 preserveState: true 时，该模块会被注册，action、mutation 和 getter 会被添加到 store 中，但是 state 不会。这里假设 store 的 state 已经包含了这个 module 的 state 并且你不希望将其覆写</p> <h2 id="模块重用"><a href="#模块重用" class="header-anchor">#</a> 模块重用</h2> <p>有时我们可能需要创建一个模块的多个实例，例如：</p> <ul><li><p>创建多个 store，他们公用同一个模块 (例如当 runInNewContext 选项是 false 或 'once' 时，为了在服务端渲染中避免有状态的单例)</p></li> <li><p>在一个 store 中多次注册同一个模块</p></li></ul> <p>如果我们使用一个纯对象来声明模块的状态，那么这个状态对象会通过引用被共享，导致状态对象被修改时 store 或模块间数据互相污染的问题。</p> <p>实际上这和 Vue 组件内的 data 是同样的问题。因此解决办法也是相同的——使用一个函数来声明模块状态（仅 2.3.0+ 支持）：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> MyReusableModule <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token function">state</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+      foo<span class="token operator">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token comment">// mutation, action 和 getter 等等...</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/vue/vuex/chapter04.html" class="prev">
+        Action
+      </a></span> <span class="next"><a href="/vue/vuex/chapter06.html">
+        项目结构
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.159f7e56.js" defer></script><script src="/assets/js/2.75df7a20.js" defer></script><script src="/assets/js/389.9cd39ca7.js" defer></script>
+  </body>
+</html>
