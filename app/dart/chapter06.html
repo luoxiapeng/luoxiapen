@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>函数和内置方法 | MyView_ui</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/logo.png">
+    <meta name="description" content="Hello,MyView_ui">
+    
+    <link rel="preload" href="/assets/css/0.styles.e970689f.css" as="style"><link rel="preload" href="/assets/js/app.cdb839b0.js" as="script"><link rel="preload" href="/assets/js/7.53f5c181.js" as="script"><link rel="preload" href="/assets/js/40.2e38f667.js" as="script"><link rel="prefetch" href="/assets/js/10.80c0bc79.js"><link rel="prefetch" href="/assets/js/100.d34e930f.js"><link rel="prefetch" href="/assets/js/101.7e650709.js"><link rel="prefetch" href="/assets/js/102.6037ab8a.js"><link rel="prefetch" href="/assets/js/103.4b022c4f.js"><link rel="prefetch" href="/assets/js/104.e276e880.js"><link rel="prefetch" href="/assets/js/105.1d76951c.js"><link rel="prefetch" href="/assets/js/106.e647b996.js"><link rel="prefetch" href="/assets/js/107.053e8771.js"><link rel="prefetch" href="/assets/js/108.2144cdb7.js"><link rel="prefetch" href="/assets/js/109.249e0b45.js"><link rel="prefetch" href="/assets/js/11.b7138c64.js"><link rel="prefetch" href="/assets/js/110.a07137bc.js"><link rel="prefetch" href="/assets/js/111.c36ded4f.js"><link rel="prefetch" href="/assets/js/112.31d4af5a.js"><link rel="prefetch" href="/assets/js/113.8c231fa8.js"><link rel="prefetch" href="/assets/js/114.d38d6e01.js"><link rel="prefetch" href="/assets/js/115.49fc777c.js"><link rel="prefetch" href="/assets/js/116.671b4582.js"><link rel="prefetch" href="/assets/js/117.767b4763.js"><link rel="prefetch" href="/assets/js/118.5f91ad01.js"><link rel="prefetch" href="/assets/js/119.701a0a6c.js"><link rel="prefetch" href="/assets/js/12.1c487448.js"><link rel="prefetch" href="/assets/js/120.3dd77d0a.js"><link rel="prefetch" href="/assets/js/121.b82c04db.js"><link rel="prefetch" href="/assets/js/122.f882add4.js"><link rel="prefetch" href="/assets/js/123.309b5f5f.js"><link rel="prefetch" href="/assets/js/124.f4f2a602.js"><link rel="prefetch" href="/assets/js/125.7239d11a.js"><link rel="prefetch" href="/assets/js/126.70edf300.js"><link rel="prefetch" href="/assets/js/127.6e147b7b.js"><link rel="prefetch" href="/assets/js/128.7333c1ac.js"><link rel="prefetch" href="/assets/js/129.b20b0120.js"><link rel="prefetch" href="/assets/js/13.1a6a3d20.js"><link rel="prefetch" href="/assets/js/130.863fb59b.js"><link rel="prefetch" href="/assets/js/131.2b06d40c.js"><link rel="prefetch" href="/assets/js/132.5ed99456.js"><link rel="prefetch" href="/assets/js/133.f9b5d310.js"><link rel="prefetch" href="/assets/js/134.e704aa97.js"><link rel="prefetch" href="/assets/js/135.2a5726ae.js"><link rel="prefetch" href="/assets/js/136.4a35f41f.js"><link rel="prefetch" href="/assets/js/137.f0598726.js"><link rel="prefetch" href="/assets/js/138.56fe075a.js"><link rel="prefetch" href="/assets/js/139.58d1cd6e.js"><link rel="prefetch" href="/assets/js/14.a36ba49a.js"><link rel="prefetch" href="/assets/js/140.bf3aec4e.js"><link rel="prefetch" href="/assets/js/141.8d3c2dbf.js"><link rel="prefetch" href="/assets/js/142.3244d402.js"><link rel="prefetch" href="/assets/js/143.7f79e483.js"><link rel="prefetch" href="/assets/js/144.fe3ad522.js"><link rel="prefetch" href="/assets/js/145.03cfc9c6.js"><link rel="prefetch" href="/assets/js/146.3882fff3.js"><link rel="prefetch" href="/assets/js/147.9d4cc4af.js"><link rel="prefetch" href="/assets/js/148.30ba793b.js"><link rel="prefetch" href="/assets/js/149.291f54fd.js"><link rel="prefetch" href="/assets/js/15.56e61edd.js"><link rel="prefetch" href="/assets/js/150.c7eb36d0.js"><link rel="prefetch" href="/assets/js/151.3456adf6.js"><link rel="prefetch" href="/assets/js/152.6bb3ce3d.js"><link rel="prefetch" href="/assets/js/153.d1f3a2af.js"><link rel="prefetch" href="/assets/js/154.97c2c55e.js"><link rel="prefetch" href="/assets/js/155.5c18df6c.js"><link rel="prefetch" href="/assets/js/156.7cceeb94.js"><link rel="prefetch" href="/assets/js/157.0236706d.js"><link rel="prefetch" href="/assets/js/158.63bdd2d0.js"><link rel="prefetch" href="/assets/js/159.92b0022c.js"><link rel="prefetch" href="/assets/js/16.3cf8ee56.js"><link rel="prefetch" href="/assets/js/160.de6bc841.js"><link rel="prefetch" href="/assets/js/161.a85a7901.js"><link rel="prefetch" href="/assets/js/162.1bfc30e6.js"><link rel="prefetch" href="/assets/js/163.f6686004.js"><link rel="prefetch" href="/assets/js/164.499f3827.js"><link rel="prefetch" href="/assets/js/165.e0862ea5.js"><link rel="prefetch" href="/assets/js/166.af591eca.js"><link rel="prefetch" href="/assets/js/167.ba69fc8c.js"><link rel="prefetch" href="/assets/js/168.8f526730.js"><link rel="prefetch" href="/assets/js/169.0a1804d6.js"><link rel="prefetch" href="/assets/js/17.55ed53cf.js"><link rel="prefetch" href="/assets/js/170.8e42334a.js"><link rel="prefetch" href="/assets/js/171.5da821ce.js"><link rel="prefetch" href="/assets/js/172.395dcf14.js"><link rel="prefetch" href="/assets/js/173.8dc462e8.js"><link rel="prefetch" href="/assets/js/174.83ac1dc6.js"><link rel="prefetch" href="/assets/js/175.8d745082.js"><link rel="prefetch" href="/assets/js/176.7d0b76c8.js"><link rel="prefetch" href="/assets/js/177.b8adc907.js"><link rel="prefetch" href="/assets/js/178.f9e4d74a.js"><link rel="prefetch" href="/assets/js/179.9e2a1a86.js"><link rel="prefetch" href="/assets/js/18.543d7acc.js"><link rel="prefetch" href="/assets/js/180.3ce0d544.js"><link rel="prefetch" href="/assets/js/181.b5d74946.js"><link rel="prefetch" href="/assets/js/182.d8965358.js"><link rel="prefetch" href="/assets/js/183.40f8e45f.js"><link rel="prefetch" href="/assets/js/184.a346df1f.js"><link rel="prefetch" href="/assets/js/185.302aa80b.js"><link rel="prefetch" href="/assets/js/186.a04cd06d.js"><link rel="prefetch" href="/assets/js/187.898ddb47.js"><link rel="prefetch" href="/assets/js/188.eb9417e2.js"><link rel="prefetch" href="/assets/js/189.fcfb2e1a.js"><link rel="prefetch" href="/assets/js/19.b845b532.js"><link rel="prefetch" href="/assets/js/190.c0d839d9.js"><link rel="prefetch" href="/assets/js/191.bbc6d4f2.js"><link rel="prefetch" href="/assets/js/192.04546b81.js"><link rel="prefetch" href="/assets/js/193.dcacd0c6.js"><link rel="prefetch" href="/assets/js/194.b2f66514.js"><link rel="prefetch" href="/assets/js/195.52e39557.js"><link rel="prefetch" href="/assets/js/196.b33d865f.js"><link rel="prefetch" href="/assets/js/197.11ff0038.js"><link rel="prefetch" href="/assets/js/198.b7b24569.js"><link rel="prefetch" href="/assets/js/199.f6e1a674.js"><link rel="prefetch" href="/assets/js/2.169b9962.js"><link rel="prefetch" href="/assets/js/20.7891986e.js"><link rel="prefetch" href="/assets/js/200.5d392c54.js"><link rel="prefetch" href="/assets/js/201.f76a1e35.js"><link rel="prefetch" href="/assets/js/202.25b6f221.js"><link rel="prefetch" href="/assets/js/203.b29e6de4.js"><link rel="prefetch" href="/assets/js/204.e412ddbc.js"><link rel="prefetch" href="/assets/js/205.a54436a0.js"><link rel="prefetch" href="/assets/js/206.427855cb.js"><link rel="prefetch" href="/assets/js/207.5c5112b6.js"><link rel="prefetch" href="/assets/js/208.74312649.js"><link rel="prefetch" href="/assets/js/209.1e977d95.js"><link rel="prefetch" href="/assets/js/21.5e6fa9e7.js"><link rel="prefetch" href="/assets/js/210.e137dc09.js"><link rel="prefetch" href="/assets/js/211.669607f1.js"><link rel="prefetch" href="/assets/js/212.a994b2e3.js"><link rel="prefetch" href="/assets/js/213.5b171775.js"><link rel="prefetch" href="/assets/js/214.c0fec3e0.js"><link rel="prefetch" href="/assets/js/215.f012bd08.js"><link rel="prefetch" href="/assets/js/216.6de794f9.js"><link rel="prefetch" href="/assets/js/217.1bd651ab.js"><link rel="prefetch" href="/assets/js/218.d46ed56e.js"><link rel="prefetch" href="/assets/js/219.d8fd9eb0.js"><link rel="prefetch" href="/assets/js/22.4a23653e.js"><link rel="prefetch" href="/assets/js/220.0902d7bb.js"><link rel="prefetch" href="/assets/js/221.2e84d7e0.js"><link rel="prefetch" href="/assets/js/222.20838bb3.js"><link rel="prefetch" href="/assets/js/223.3cb984fd.js"><link rel="prefetch" href="/assets/js/224.b0dc6b7c.js"><link rel="prefetch" href="/assets/js/225.b70f9df7.js"><link rel="prefetch" href="/assets/js/226.a060281f.js"><link rel="prefetch" href="/assets/js/227.94af5b0c.js"><link rel="prefetch" href="/assets/js/228.3ff9c3c9.js"><link rel="prefetch" href="/assets/js/229.5d56002e.js"><link rel="prefetch" href="/assets/js/23.fec3bc0a.js"><link rel="prefetch" href="/assets/js/230.56e291f0.js"><link rel="prefetch" href="/assets/js/231.8415c704.js"><link rel="prefetch" href="/assets/js/232.8e683d4e.js"><link rel="prefetch" href="/assets/js/233.897424f7.js"><link rel="prefetch" href="/assets/js/234.081d915c.js"><link rel="prefetch" href="/assets/js/235.40c9bca7.js"><link rel="prefetch" href="/assets/js/236.bc5258f6.js"><link rel="prefetch" href="/assets/js/237.32949393.js"><link rel="prefetch" href="/assets/js/238.b2d6b78e.js"><link rel="prefetch" href="/assets/js/239.d53191fc.js"><link rel="prefetch" href="/assets/js/24.ff80b26d.js"><link rel="prefetch" href="/assets/js/240.b43b164f.js"><link rel="prefetch" href="/assets/js/241.a30ca557.js"><link rel="prefetch" href="/assets/js/242.21f9e937.js"><link rel="prefetch" href="/assets/js/243.5c0455a9.js"><link rel="prefetch" href="/assets/js/244.d369ee6f.js"><link rel="prefetch" href="/assets/js/245.07fda076.js"><link rel="prefetch" href="/assets/js/246.1c52c9ec.js"><link rel="prefetch" href="/assets/js/247.8b39d94f.js"><link rel="prefetch" href="/assets/js/248.8234d748.js"><link rel="prefetch" href="/assets/js/249.7a7cb6e0.js"><link rel="prefetch" href="/assets/js/25.3b849a94.js"><link rel="prefetch" href="/assets/js/250.3c73e3f9.js"><link rel="prefetch" href="/assets/js/251.4f73f9ee.js"><link rel="prefetch" href="/assets/js/252.c528a177.js"><link rel="prefetch" href="/assets/js/253.da594a48.js"><link rel="prefetch" href="/assets/js/254.7f6bc337.js"><link rel="prefetch" href="/assets/js/255.14001fd5.js"><link rel="prefetch" href="/assets/js/256.c3482fb5.js"><link rel="prefetch" href="/assets/js/257.f9bc02af.js"><link rel="prefetch" href="/assets/js/258.87102206.js"><link rel="prefetch" href="/assets/js/259.5617ab6d.js"><link rel="prefetch" href="/assets/js/26.a4d39ae2.js"><link rel="prefetch" href="/assets/js/260.9ddc5642.js"><link rel="prefetch" href="/assets/js/261.eab4217d.js"><link rel="prefetch" href="/assets/js/262.e79423dc.js"><link rel="prefetch" href="/assets/js/263.47604660.js"><link rel="prefetch" href="/assets/js/264.fcb3a10c.js"><link rel="prefetch" href="/assets/js/265.074e422a.js"><link rel="prefetch" href="/assets/js/266.bf7414b9.js"><link rel="prefetch" href="/assets/js/267.3de7215a.js"><link rel="prefetch" href="/assets/js/268.bb21d7c3.js"><link rel="prefetch" href="/assets/js/269.99041516.js"><link rel="prefetch" href="/assets/js/27.a59cf289.js"><link rel="prefetch" href="/assets/js/270.b634530e.js"><link rel="prefetch" href="/assets/js/271.ad7c4376.js"><link rel="prefetch" href="/assets/js/272.d7a082db.js"><link rel="prefetch" href="/assets/js/273.84f1f1a4.js"><link rel="prefetch" href="/assets/js/274.aa494606.js"><link rel="prefetch" href="/assets/js/275.4ba830b5.js"><link rel="prefetch" href="/assets/js/276.ddcdc5fd.js"><link rel="prefetch" href="/assets/js/277.72dbac32.js"><link rel="prefetch" href="/assets/js/278.27544650.js"><link rel="prefetch" href="/assets/js/279.ae56a55c.js"><link rel="prefetch" href="/assets/js/28.44ecef76.js"><link rel="prefetch" href="/assets/js/280.acf63694.js"><link rel="prefetch" href="/assets/js/281.0d8837cb.js"><link rel="prefetch" href="/assets/js/282.a0d2eb9d.js"><link rel="prefetch" href="/assets/js/283.b424f2f1.js"><link rel="prefetch" href="/assets/js/284.955a1d2d.js"><link rel="prefetch" href="/assets/js/285.a9b35f92.js"><link rel="prefetch" href="/assets/js/286.af737eb6.js"><link rel="prefetch" href="/assets/js/287.f69c6865.js"><link rel="prefetch" href="/assets/js/288.a06a6020.js"><link rel="prefetch" href="/assets/js/289.95fb9f67.js"><link rel="prefetch" href="/assets/js/29.05b82f31.js"><link rel="prefetch" href="/assets/js/290.2aeffb46.js"><link rel="prefetch" href="/assets/js/291.4abd12b3.js"><link rel="prefetch" href="/assets/js/292.f77ef0e9.js"><link rel="prefetch" href="/assets/js/293.28e69795.js"><link rel="prefetch" href="/assets/js/294.50ec93fa.js"><link rel="prefetch" href="/assets/js/295.29de24a1.js"><link rel="prefetch" href="/assets/js/296.05c78325.js"><link rel="prefetch" href="/assets/js/297.2961cd7f.js"><link rel="prefetch" href="/assets/js/298.3bbf9498.js"><link rel="prefetch" href="/assets/js/299.15ad137e.js"><link rel="prefetch" href="/assets/js/3.8bdfb108.js"><link rel="prefetch" href="/assets/js/30.fded217b.js"><link rel="prefetch" href="/assets/js/300.6059d667.js"><link rel="prefetch" href="/assets/js/301.e00aefdd.js"><link rel="prefetch" href="/assets/js/302.ce2b68b0.js"><link rel="prefetch" href="/assets/js/303.4c850c7e.js"><link rel="prefetch" href="/assets/js/304.d7c4d2b9.js"><link rel="prefetch" href="/assets/js/305.db6604b6.js"><link rel="prefetch" href="/assets/js/306.afc2d80f.js"><link rel="prefetch" href="/assets/js/307.97846f5f.js"><link rel="prefetch" href="/assets/js/308.bc60aa85.js"><link rel="prefetch" href="/assets/js/309.9207d617.js"><link rel="prefetch" href="/assets/js/31.2eb55bda.js"><link rel="prefetch" href="/assets/js/310.211f179e.js"><link rel="prefetch" href="/assets/js/311.f59e4b38.js"><link rel="prefetch" href="/assets/js/312.1b52e818.js"><link rel="prefetch" href="/assets/js/313.45cd4272.js"><link rel="prefetch" href="/assets/js/314.1cc37b9a.js"><link rel="prefetch" href="/assets/js/315.68fb35c6.js"><link rel="prefetch" href="/assets/js/316.d8a99b39.js"><link rel="prefetch" href="/assets/js/317.6ad5cb80.js"><link rel="prefetch" href="/assets/js/318.86184f0d.js"><link rel="prefetch" href="/assets/js/319.5b2319b5.js"><link rel="prefetch" href="/assets/js/32.f644e7a8.js"><link rel="prefetch" href="/assets/js/320.11710cbf.js"><link rel="prefetch" href="/assets/js/321.2c149999.js"><link rel="prefetch" href="/assets/js/322.9c601e3c.js"><link rel="prefetch" href="/assets/js/323.e059c3ab.js"><link rel="prefetch" href="/assets/js/324.294f1153.js"><link rel="prefetch" href="/assets/js/325.6a277648.js"><link rel="prefetch" href="/assets/js/326.9bafa547.js"><link rel="prefetch" href="/assets/js/327.c027127f.js"><link rel="prefetch" href="/assets/js/328.116e397b.js"><link rel="prefetch" href="/assets/js/329.50bac955.js"><link rel="prefetch" href="/assets/js/33.68fb14c1.js"><link rel="prefetch" href="/assets/js/330.fbf269d8.js"><link rel="prefetch" href="/assets/js/331.72d2c1fd.js"><link rel="prefetch" href="/assets/js/332.236fd65c.js"><link rel="prefetch" href="/assets/js/333.830626a4.js"><link rel="prefetch" href="/assets/js/334.48553b1d.js"><link rel="prefetch" href="/assets/js/335.2c3de5d1.js"><link rel="prefetch" href="/assets/js/336.13bbdc93.js"><link rel="prefetch" href="/assets/js/337.29c0717b.js"><link rel="prefetch" href="/assets/js/338.b06bf62f.js"><link rel="prefetch" href="/assets/js/339.a5e15ca1.js"><link rel="prefetch" href="/assets/js/34.bff797a1.js"><link rel="prefetch" href="/assets/js/340.c94b2546.js"><link rel="prefetch" href="/assets/js/341.ee4b1422.js"><link rel="prefetch" href="/assets/js/342.c978a2b2.js"><link rel="prefetch" href="/assets/js/343.82a5a643.js"><link rel="prefetch" href="/assets/js/344.18cd54ed.js"><link rel="prefetch" href="/assets/js/345.5bb2feba.js"><link rel="prefetch" href="/assets/js/346.0dc3b8be.js"><link rel="prefetch" href="/assets/js/347.935a143e.js"><link rel="prefetch" href="/assets/js/348.4951e332.js"><link rel="prefetch" href="/assets/js/349.ffd85993.js"><link rel="prefetch" href="/assets/js/35.9a9ca796.js"><link rel="prefetch" href="/assets/js/350.2e7da46e.js"><link rel="prefetch" href="/assets/js/351.3b7d741c.js"><link rel="prefetch" href="/assets/js/352.b486e8ee.js"><link rel="prefetch" href="/assets/js/353.fdfa269e.js"><link rel="prefetch" href="/assets/js/354.a93b2afe.js"><link rel="prefetch" href="/assets/js/355.9418c4cf.js"><link rel="prefetch" href="/assets/js/356.b5c05adc.js"><link rel="prefetch" href="/assets/js/357.af1caaa8.js"><link rel="prefetch" href="/assets/js/358.32ab1fa9.js"><link rel="prefetch" href="/assets/js/359.a50be794.js"><link rel="prefetch" href="/assets/js/36.9a40387a.js"><link rel="prefetch" href="/assets/js/360.1c603434.js"><link rel="prefetch" href="/assets/js/361.0d2b5387.js"><link rel="prefetch" href="/assets/js/362.c7404028.js"><link rel="prefetch" href="/assets/js/363.bd6999cc.js"><link rel="prefetch" href="/assets/js/364.4b6f3d18.js"><link rel="prefetch" href="/assets/js/365.f9658382.js"><link rel="prefetch" href="/assets/js/366.918659b7.js"><link rel="prefetch" href="/assets/js/367.adbe8958.js"><link rel="prefetch" href="/assets/js/368.8eb60f1e.js"><link rel="prefetch" href="/assets/js/369.034f2a03.js"><link rel="prefetch" href="/assets/js/37.ed915295.js"><link rel="prefetch" href="/assets/js/370.cf0786db.js"><link rel="prefetch" href="/assets/js/371.97f5995c.js"><link rel="prefetch" href="/assets/js/372.cf7b91bb.js"><link rel="prefetch" href="/assets/js/373.dfe2f076.js"><link rel="prefetch" href="/assets/js/374.3cb27f17.js"><link rel="prefetch" href="/assets/js/375.2a7f78d1.js"><link rel="prefetch" href="/assets/js/376.e8fce1db.js"><link rel="prefetch" href="/assets/js/377.7a010035.js"><link rel="prefetch" href="/assets/js/378.61348d99.js"><link rel="prefetch" href="/assets/js/379.540dc4e4.js"><link rel="prefetch" href="/assets/js/38.c4d1970c.js"><link rel="prefetch" href="/assets/js/380.f6efe03c.js"><link rel="prefetch" href="/assets/js/381.ff2c3fdd.js"><link rel="prefetch" href="/assets/js/382.45696d9e.js"><link rel="prefetch" href="/assets/js/383.2c8c528d.js"><link rel="prefetch" href="/assets/js/384.9ec716fe.js"><link rel="prefetch" href="/assets/js/385.215b4308.js"><link rel="prefetch" href="/assets/js/386.ec0828ae.js"><link rel="prefetch" href="/assets/js/387.2c3760d8.js"><link rel="prefetch" href="/assets/js/388.c7d78a8b.js"><link rel="prefetch" href="/assets/js/389.63e767ba.js"><link rel="prefetch" href="/assets/js/39.7b280df4.js"><link rel="prefetch" href="/assets/js/390.164c6dcc.js"><link rel="prefetch" href="/assets/js/391.d646ff6d.js"><link rel="prefetch" href="/assets/js/392.ffed3459.js"><link rel="prefetch" href="/assets/js/393.3b773629.js"><link rel="prefetch" href="/assets/js/394.15f9d598.js"><link rel="prefetch" href="/assets/js/395.22ca33bc.js"><link rel="prefetch" href="/assets/js/396.9dd53556.js"><link rel="prefetch" href="/assets/js/397.ef45084e.js"><link rel="prefetch" href="/assets/js/398.17e2132b.js"><link rel="prefetch" href="/assets/js/399.a4367674.js"><link rel="prefetch" href="/assets/js/4.267c3512.js"><link rel="prefetch" href="/assets/js/400.e661db87.js"><link rel="prefetch" href="/assets/js/401.a8669898.js"><link rel="prefetch" href="/assets/js/402.60f006b6.js"><link rel="prefetch" href="/assets/js/403.116f24d5.js"><link rel="prefetch" href="/assets/js/404.d284e78d.js"><link rel="prefetch" href="/assets/js/405.c90c7721.js"><link rel="prefetch" href="/assets/js/406.2d1cdb8e.js"><link rel="prefetch" href="/assets/js/407.6119cafb.js"><link rel="prefetch" href="/assets/js/408.6bd2ea44.js"><link rel="prefetch" href="/assets/js/409.9d3183fd.js"><link rel="prefetch" href="/assets/js/41.71b16c0e.js"><link rel="prefetch" href="/assets/js/410.12de76a9.js"><link rel="prefetch" href="/assets/js/411.a6405d72.js"><link rel="prefetch" href="/assets/js/412.7db2e304.js"><link rel="prefetch" href="/assets/js/413.90cc2641.js"><link rel="prefetch" href="/assets/js/414.c00da6b9.js"><link rel="prefetch" href="/assets/js/415.87d7afaa.js"><link rel="prefetch" href="/assets/js/416.0bc39df0.js"><link rel="prefetch" href="/assets/js/417.f7809824.js"><link rel="prefetch" href="/assets/js/418.bc90878b.js"><link rel="prefetch" href="/assets/js/419.acceac2a.js"><link rel="prefetch" href="/assets/js/42.db94c5eb.js"><link rel="prefetch" href="/assets/js/420.9df3eada.js"><link rel="prefetch" href="/assets/js/421.ab569f84.js"><link rel="prefetch" href="/assets/js/422.1259dc71.js"><link rel="prefetch" href="/assets/js/423.a39b554d.js"><link rel="prefetch" href="/assets/js/424.f4b971c8.js"><link rel="prefetch" href="/assets/js/425.21cd9922.js"><link rel="prefetch" href="/assets/js/426.deeab763.js"><link rel="prefetch" href="/assets/js/427.143cac3a.js"><link rel="prefetch" href="/assets/js/428.4a36961d.js"><link rel="prefetch" href="/assets/js/429.782695ff.js"><link rel="prefetch" href="/assets/js/43.1e9eed72.js"><link rel="prefetch" href="/assets/js/430.049fbf09.js"><link rel="prefetch" href="/assets/js/431.3e976bae.js"><link rel="prefetch" href="/assets/js/432.16d67403.js"><link rel="prefetch" href="/assets/js/433.c050e937.js"><link rel="prefetch" href="/assets/js/434.fde66216.js"><link rel="prefetch" href="/assets/js/435.b41c042e.js"><link rel="prefetch" href="/assets/js/436.d76386e4.js"><link rel="prefetch" href="/assets/js/437.335c7389.js"><link rel="prefetch" href="/assets/js/438.cc6fd627.js"><link rel="prefetch" href="/assets/js/439.88e5007a.js"><link rel="prefetch" href="/assets/js/44.c81734e6.js"><link rel="prefetch" href="/assets/js/440.0ee22199.js"><link rel="prefetch" href="/assets/js/441.7d34c535.js"><link rel="prefetch" href="/assets/js/442.a9666066.js"><link rel="prefetch" href="/assets/js/443.ea8cebff.js"><link rel="prefetch" href="/assets/js/444.953a0b59.js"><link rel="prefetch" href="/assets/js/445.5d7ae87c.js"><link rel="prefetch" href="/assets/js/446.a52a4f38.js"><link rel="prefetch" href="/assets/js/447.14dab513.js"><link rel="prefetch" href="/assets/js/448.14d59b92.js"><link rel="prefetch" href="/assets/js/449.2b394055.js"><link rel="prefetch" href="/assets/js/45.ddf1829e.js"><link rel="prefetch" href="/assets/js/450.7d28ad9c.js"><link rel="prefetch" href="/assets/js/451.5de3e200.js"><link rel="prefetch" href="/assets/js/452.19aed083.js"><link rel="prefetch" href="/assets/js/453.c9ddb25e.js"><link rel="prefetch" href="/assets/js/454.165170cf.js"><link rel="prefetch" href="/assets/js/455.2009e31f.js"><link rel="prefetch" href="/assets/js/456.dd900d14.js"><link rel="prefetch" href="/assets/js/457.c383fb3a.js"><link rel="prefetch" href="/assets/js/458.c5894253.js"><link rel="prefetch" href="/assets/js/459.b83d0b5d.js"><link rel="prefetch" href="/assets/js/46.53c1350b.js"><link rel="prefetch" href="/assets/js/460.6d6befec.js"><link rel="prefetch" href="/assets/js/461.5add9cd0.js"><link rel="prefetch" href="/assets/js/462.82bf6d1e.js"><link rel="prefetch" href="/assets/js/463.412d988a.js"><link rel="prefetch" href="/assets/js/464.46be7d36.js"><link rel="prefetch" href="/assets/js/465.ea52322a.js"><link rel="prefetch" href="/assets/js/466.92f8e279.js"><link rel="prefetch" href="/assets/js/467.c4cd0248.js"><link rel="prefetch" href="/assets/js/468.a76a1f85.js"><link rel="prefetch" href="/assets/js/469.4803f685.js"><link rel="prefetch" href="/assets/js/47.69193d8d.js"><link rel="prefetch" href="/assets/js/470.0b2dd96c.js"><link rel="prefetch" href="/assets/js/471.7808f29d.js"><link rel="prefetch" href="/assets/js/472.f5a26fdd.js"><link rel="prefetch" href="/assets/js/473.f081e3a1.js"><link rel="prefetch" href="/assets/js/474.f51e29af.js"><link rel="prefetch" href="/assets/js/475.b8a0a598.js"><link rel="prefetch" href="/assets/js/476.9690735d.js"><link rel="prefetch" href="/assets/js/477.f481d1b9.js"><link rel="prefetch" href="/assets/js/478.c244baaf.js"><link rel="prefetch" href="/assets/js/479.d55714a7.js"><link rel="prefetch" href="/assets/js/48.8ebbe17e.js"><link rel="prefetch" href="/assets/js/480.8e36612e.js"><link rel="prefetch" href="/assets/js/481.17a8a2e0.js"><link rel="prefetch" href="/assets/js/482.2d675c27.js"><link rel="prefetch" href="/assets/js/483.82adcaee.js"><link rel="prefetch" href="/assets/js/484.9d1da746.js"><link rel="prefetch" href="/assets/js/485.ceae9f9a.js"><link rel="prefetch" href="/assets/js/486.b1a04f8e.js"><link rel="prefetch" href="/assets/js/487.46db3e25.js"><link rel="prefetch" href="/assets/js/488.476fe4a6.js"><link rel="prefetch" href="/assets/js/489.82b9bbc1.js"><link rel="prefetch" href="/assets/js/49.4f50ae85.js"><link rel="prefetch" href="/assets/js/490.c0f6e02a.js"><link rel="prefetch" href="/assets/js/491.209417c0.js"><link rel="prefetch" href="/assets/js/492.a1798bbd.js"><link rel="prefetch" href="/assets/js/493.e34d000b.js"><link rel="prefetch" href="/assets/js/494.a4e5b537.js"><link rel="prefetch" href="/assets/js/495.417b4aff.js"><link rel="prefetch" href="/assets/js/496.40e9293e.js"><link rel="prefetch" href="/assets/js/497.ed3a7182.js"><link rel="prefetch" href="/assets/js/498.8a169c43.js"><link rel="prefetch" href="/assets/js/499.57105314.js"><link rel="prefetch" href="/assets/js/5.9ec142fe.js"><link rel="prefetch" href="/assets/js/50.56e18dab.js"><link rel="prefetch" href="/assets/js/500.a8689438.js"><link rel="prefetch" href="/assets/js/501.971ae7ef.js"><link rel="prefetch" href="/assets/js/502.66042258.js"><link rel="prefetch" href="/assets/js/503.682ec082.js"><link rel="prefetch" href="/assets/js/504.7c6ff0d7.js"><link rel="prefetch" href="/assets/js/505.42f712c4.js"><link rel="prefetch" href="/assets/js/506.ae6a8e5f.js"><link rel="prefetch" href="/assets/js/507.a13ff3fa.js"><link rel="prefetch" href="/assets/js/508.09328f79.js"><link rel="prefetch" href="/assets/js/509.6b1aa550.js"><link rel="prefetch" href="/assets/js/51.4a77450d.js"><link rel="prefetch" href="/assets/js/510.34563f15.js"><link rel="prefetch" href="/assets/js/511.dec821e4.js"><link rel="prefetch" href="/assets/js/512.06cfbb3f.js"><link rel="prefetch" href="/assets/js/513.0f3f3aad.js"><link rel="prefetch" href="/assets/js/514.6db3cbe9.js"><link rel="prefetch" href="/assets/js/515.ae497d8a.js"><link rel="prefetch" href="/assets/js/516.d1fafe3a.js"><link rel="prefetch" href="/assets/js/517.fe67a346.js"><link rel="prefetch" href="/assets/js/518.53bc038e.js"><link rel="prefetch" href="/assets/js/519.8709239e.js"><link rel="prefetch" href="/assets/js/52.4f7ff8da.js"><link rel="prefetch" href="/assets/js/520.bd2892aa.js"><link rel="prefetch" href="/assets/js/521.20d52c0b.js"><link rel="prefetch" href="/assets/js/522.ab548ed1.js"><link rel="prefetch" href="/assets/js/523.3ae4775e.js"><link rel="prefetch" href="/assets/js/524.a856d9a3.js"><link rel="prefetch" href="/assets/js/525.d57c0f55.js"><link rel="prefetch" href="/assets/js/526.812145fc.js"><link rel="prefetch" href="/assets/js/527.d954659b.js"><link rel="prefetch" href="/assets/js/528.265c2a7f.js"><link rel="prefetch" href="/assets/js/529.bee9379b.js"><link rel="prefetch" href="/assets/js/53.0f4063e1.js"><link rel="prefetch" href="/assets/js/530.0c5bd94d.js"><link rel="prefetch" href="/assets/js/531.f477e017.js"><link rel="prefetch" href="/assets/js/532.dd099644.js"><link rel="prefetch" href="/assets/js/533.74f0feb6.js"><link rel="prefetch" href="/assets/js/534.dceadbfc.js"><link rel="prefetch" href="/assets/js/535.f44fe162.js"><link rel="prefetch" href="/assets/js/536.ff7de91a.js"><link rel="prefetch" href="/assets/js/537.8179b183.js"><link rel="prefetch" href="/assets/js/538.b1916bc7.js"><link rel="prefetch" href="/assets/js/539.c8ca7bb2.js"><link rel="prefetch" href="/assets/js/54.cfbea6d1.js"><link rel="prefetch" href="/assets/js/540.7b6cd5b5.js"><link rel="prefetch" href="/assets/js/541.3b374265.js"><link rel="prefetch" href="/assets/js/542.b82bfe82.js"><link rel="prefetch" href="/assets/js/543.4ce5a7d7.js"><link rel="prefetch" href="/assets/js/544.94c41d5f.js"><link rel="prefetch" href="/assets/js/545.91a02500.js"><link rel="prefetch" href="/assets/js/546.1300613a.js"><link rel="prefetch" href="/assets/js/547.3b2246de.js"><link rel="prefetch" href="/assets/js/548.d7bc42e5.js"><link rel="prefetch" href="/assets/js/549.dcb96720.js"><link rel="prefetch" href="/assets/js/55.5dfe4749.js"><link rel="prefetch" href="/assets/js/550.1fcdceaa.js"><link rel="prefetch" href="/assets/js/551.c82cccf0.js"><link rel="prefetch" href="/assets/js/552.b4f7e3e7.js"><link rel="prefetch" href="/assets/js/553.7d6c4833.js"><link rel="prefetch" href="/assets/js/554.8cf6398e.js"><link rel="prefetch" href="/assets/js/555.46b632bc.js"><link rel="prefetch" href="/assets/js/556.746f204b.js"><link rel="prefetch" href="/assets/js/557.c45ba3f4.js"><link rel="prefetch" href="/assets/js/558.fdcf636e.js"><link rel="prefetch" href="/assets/js/559.0ca30d09.js"><link rel="prefetch" href="/assets/js/56.bb3f376d.js"><link rel="prefetch" href="/assets/js/560.291c78c3.js"><link rel="prefetch" href="/assets/js/561.0dc13c2d.js"><link rel="prefetch" href="/assets/js/562.7ca06dd9.js"><link rel="prefetch" href="/assets/js/563.ea0f3523.js"><link rel="prefetch" href="/assets/js/564.3ecb04b9.js"><link rel="prefetch" href="/assets/js/565.9ad0e549.js"><link rel="prefetch" href="/assets/js/566.1eaa381b.js"><link rel="prefetch" href="/assets/js/567.442b5feb.js"><link rel="prefetch" href="/assets/js/568.47a8cb32.js"><link rel="prefetch" href="/assets/js/569.ac99dacd.js"><link rel="prefetch" href="/assets/js/57.b8262ca2.js"><link rel="prefetch" href="/assets/js/570.4bf899bf.js"><link rel="prefetch" href="/assets/js/571.eab6aaf6.js"><link rel="prefetch" href="/assets/js/572.b09d95b2.js"><link rel="prefetch" href="/assets/js/573.fe091e98.js"><link rel="prefetch" href="/assets/js/574.5112fdc2.js"><link rel="prefetch" href="/assets/js/575.6a851eff.js"><link rel="prefetch" href="/assets/js/576.c808451a.js"><link rel="prefetch" href="/assets/js/577.f40644bb.js"><link rel="prefetch" href="/assets/js/578.63a09919.js"><link rel="prefetch" href="/assets/js/579.5830cbf0.js"><link rel="prefetch" href="/assets/js/58.e0371727.js"><link rel="prefetch" href="/assets/js/580.502238b2.js"><link rel="prefetch" href="/assets/js/581.a7f097fa.js"><link rel="prefetch" href="/assets/js/582.69b474f6.js"><link rel="prefetch" href="/assets/js/583.6d020008.js"><link rel="prefetch" href="/assets/js/584.a370fcf4.js"><link rel="prefetch" href="/assets/js/585.ec579dca.js"><link rel="prefetch" href="/assets/js/586.b45a2ee8.js"><link rel="prefetch" href="/assets/js/587.f472ed55.js"><link rel="prefetch" href="/assets/js/59.5aec2183.js"><link rel="prefetch" href="/assets/js/6.6823acfa.js"><link rel="prefetch" href="/assets/js/60.ad2c765e.js"><link rel="prefetch" href="/assets/js/61.9f5510e6.js"><link rel="prefetch" href="/assets/js/62.c9927469.js"><link rel="prefetch" href="/assets/js/63.3a086bcf.js"><link rel="prefetch" href="/assets/js/64.c0507fde.js"><link rel="prefetch" href="/assets/js/65.38473f37.js"><link rel="prefetch" href="/assets/js/66.f8241e76.js"><link rel="prefetch" href="/assets/js/67.e365aade.js"><link rel="prefetch" href="/assets/js/68.87c6bdca.js"><link rel="prefetch" href="/assets/js/69.f115a671.js"><link rel="prefetch" href="/assets/js/70.de6b339d.js"><link rel="prefetch" href="/assets/js/71.371a29b7.js"><link rel="prefetch" href="/assets/js/72.5e6bf242.js"><link rel="prefetch" href="/assets/js/73.9086cc8b.js"><link rel="prefetch" href="/assets/js/74.588c6808.js"><link rel="prefetch" href="/assets/js/75.ac32803e.js"><link rel="prefetch" href="/assets/js/76.d7ee7589.js"><link rel="prefetch" href="/assets/js/77.ecb56296.js"><link rel="prefetch" href="/assets/js/78.8cc71fbd.js"><link rel="prefetch" href="/assets/js/79.a84b1cc2.js"><link rel="prefetch" href="/assets/js/8.efb10ca5.js"><link rel="prefetch" href="/assets/js/80.0a7ce5cb.js"><link rel="prefetch" href="/assets/js/81.b4d94cfd.js"><link rel="prefetch" href="/assets/js/82.93b889e1.js"><link rel="prefetch" href="/assets/js/83.901b2690.js"><link rel="prefetch" href="/assets/js/84.890547bc.js"><link rel="prefetch" href="/assets/js/85.ba475518.js"><link rel="prefetch" href="/assets/js/86.1fcb00de.js"><link rel="prefetch" href="/assets/js/87.12735c09.js"><link rel="prefetch" href="/assets/js/88.b8621cbd.js"><link rel="prefetch" href="/assets/js/89.b1e976e0.js"><link rel="prefetch" href="/assets/js/9.12ebf681.js"><link rel="prefetch" href="/assets/js/90.ab4744e9.js"><link rel="prefetch" href="/assets/js/91.5c4d2ea6.js"><link rel="prefetch" href="/assets/js/92.cbf4318a.js"><link rel="prefetch" href="/assets/js/93.d282a5d1.js"><link rel="prefetch" href="/assets/js/94.aad1c22b.js"><link rel="prefetch" href="/assets/js/95.7085582d.js"><link rel="prefetch" href="/assets/js/96.473ff8cc.js"><link rel="prefetch" href="/assets/js/97.772f04cf.js"><link rel="prefetch" href="/assets/js/98.f12d5bd6.js"><link rel="prefetch" href="/assets/js/99.7a27bcd2.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.e970689f.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="global-layout" class="theme-container"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">MyView_ui</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setting/guide/" class="nav-link">
+  指南
+</a></li><li class="dropdown-item"><!----> <a href="/setting/parameter/" class="nav-link">
+  配置参数
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微前端" class="dropdown-title"><span class="title">微前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="微前端" class="mobile-dropdown-title"><span class="title">微前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/single-spa/" class="nav-link">
+  single-spa
+</a></li><li class="dropdown-item"><!----> <a href="/frame/qiankun/" class="nav-link">
+  qianku
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/base/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/designMoudle/" class="nav-link">
+  Javascript设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/other/" class="nav-link">
+  Javascript面试题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6-Es10基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue2/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/vue/nuxt/" class="nav-link">
+  nuxt
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vuex/" class="nav-link">
+  VueX
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link">
+  Vue3源码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/hooks/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/dart/" class="nav-link router-link-active">
+  Dart
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li><li class="dropdown-item"><!----> <a href="/pack/lerna/" class="nav-link">
+  lerna
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/koa/" class="nav-link">
+  koa
+</a></li><li class="dropdown-item"><!----> <a href="/server/express/" class="nav-link">
+  express
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/sass/" class="nav-link">
+  sass
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/less/" class="nav-link">
+  less
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/animation/" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/canvas/" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/webGl/" class="nav-link">
+  webGL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/performance/" class="nav-link">
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/other/git/" class="nav-link">
+  git命令
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="配置" class="dropdown-title"><span class="title">配置</span> <span class="arrow down"></span></button> <button type="button" aria-label="配置" class="mobile-dropdown-title"><span class="title">配置</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/setting/guide/" class="nav-link">
+  指南
+</a></li><li class="dropdown-item"><!----> <a href="/setting/parameter/" class="nav-link">
+  配置参数
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="组件库" class="dropdown-title"><span class="title">组件库</span> <span class="arrow down"></span></button> <button type="button" aria-label="组件库" class="mobile-dropdown-title"><span class="title">组件库</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/commponent/mobile/" class="nav-link">
+  Mobile
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/pc/" class="nav-link">
+  Pc
+</a></li><li class="dropdown-item"><!----> <a href="/commponent/ui/" class="nav-link">
+  封装Ui组件库
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="微前端" class="dropdown-title"><span class="title">微前端</span> <span class="arrow down"></span></button> <button type="button" aria-label="微前端" class="mobile-dropdown-title"><span class="title">微前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/frame/single-spa/" class="nav-link">
+  single-spa
+</a></li><li class="dropdown-item"><!----> <a href="/frame/qiankun/" class="nav-link">
+  qianku
+</a></li></ul></div></div><div class="nav-item"><a href="/utils/" class="nav-link">
+  Utils
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Javascript" class="dropdown-title"><span class="title">Javascript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Javascript" class="mobile-dropdown-title"><span class="title">Javascript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/javascript/base/" class="nav-link">
+  Javascript
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/designMoudle/" class="nav-link">
+  Javascript设计模式
+</a></li><li class="dropdown-item"><!----> <a href="/javascript/other/" class="nav-link">
+  Javascript面试题
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="ECMAScript " class="dropdown-title"><span class="title">ECMAScript </span> <span class="arrow down"></span></button> <button type="button" aria-label="ECMAScript " class="mobile-dropdown-title"><span class="title">ECMAScript </span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/ECMAScript/base/" class="nav-link">
+  Es6-Es10基础
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Typescript" class="dropdown-title"><span class="title">Typescript</span> <span class="arrow down"></span></button> <button type="button" aria-label="Typescript" class="mobile-dropdown-title"><span class="title">Typescript</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/typescript/" class="nav-link">
+  Typescript
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Vue" class="dropdown-title"><span class="title">Vue</span> <span class="arrow down"></span></button> <button type="button" aria-label="Vue" class="mobile-dropdown-title"><span class="title">Vue</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/vue/vue2/" class="nav-link">
+  Vue
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vue3/" class="nav-link">
+  Vue3
+</a></li><li class="dropdown-item"><!----> <a href="/vue/nuxt/" class="nav-link">
+  nuxt
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vuex/" class="nav-link">
+  VueX
+</a></li><li class="dropdown-item"><!----> <a href="/vue/vueCodeSource/" class="nav-link">
+  Vue3源码
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="React" class="dropdown-title"><span class="title">React</span> <span class="arrow down"></span></button> <button type="button" aria-label="React" class="mobile-dropdown-title"><span class="title">React</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/react/base/" class="nav-link">
+  React基础
+</a></li><li class="dropdown-item"><!----> <a href="/react/redux/" class="nav-link">
+  Redex
+</a></li><li class="dropdown-item"><!----> <a href="/react/hooks/" class="nav-link">
+  ReactHook
+</a></li><li class="dropdown-item"><!----> <a href="/react/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="App" class="dropdown-title"><span class="title">App</span> <span class="arrow down"></span></button> <button type="button" aria-label="App" class="mobile-dropdown-title"><span class="title">App</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/app/flutter/" class="nav-link">
+  Flutter
+</a></li><li class="dropdown-item"><!----> <a href="/app/dart/" class="nav-link router-link-active">
+  Dart
+</a></li><li class="dropdown-item"><!----> <a href="/app/reactNative/" class="nav-link">
+  ReactNative
+</a></li><li class="dropdown-item"><!----> <a href="/app/jsBridge/" class="nav-link">
+  JsBridge
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Pack" class="dropdown-title"><span class="title">Pack</span> <span class="arrow down"></span></button> <button type="button" aria-label="Pack" class="mobile-dropdown-title"><span class="title">Pack</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/pack/webpack/" class="nav-link">
+  Webpack
+</a></li><li class="dropdown-item"><!----> <a href="/pack/vite/" class="nav-link">
+  Vite
+</a></li><li class="dropdown-item"><!----> <a href="/pack/lerna/" class="nav-link">
+  lerna
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="MiniProgram" class="dropdown-title"><span class="title">MiniProgram</span> <span class="arrow down"></span></button> <button type="button" aria-label="MiniProgram" class="mobile-dropdown-title"><span class="title">MiniProgram</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/applets/primordial/" class="nav-link">
+  原生
+</a></li><li class="dropdown-item"><!----> <a href="/applets/wepy/" class="nav-link">
+  wepy
+</a></li><li class="dropdown-item"><!----> <a href="/applets/uniApp/" class="nav-link">
+  Uni-app
+</a></li><li class="dropdown-item"><!----> <a href="/applets/taro/" class="nav-link">
+  Taro
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Test" class="dropdown-title"><span class="title">Test</span> <span class="arrow down"></span></button> <button type="button" aria-label="Test" class="mobile-dropdown-title"><span class="title">Test</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/test/jest/" class="nav-link">
+  Jest
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Server" class="dropdown-title"><span class="title">Server</span> <span class="arrow down"></span></button> <button type="button" aria-label="Server" class="mobile-dropdown-title"><span class="title">Server</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/server/node/" class="nav-link">
+  Node
+</a></li><li class="dropdown-item"><!----> <a href="/server/egg/" class="nav-link">
+  Egg
+</a></li><li class="dropdown-item"><!----> <a href="/server/koa/" class="nav-link">
+  koa
+</a></li><li class="dropdown-item"><!----> <a href="/server/express/" class="nav-link">
+  express
+</a></li><li class="dropdown-item"><!----> <a href="/server/java/" class="nav-link">
+  Java
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="DBA" class="dropdown-title"><span class="title">DBA</span> <span class="arrow down"></span></button> <button type="button" aria-label="DBA" class="mobile-dropdown-title"><span class="title">DBA</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/dba/mySql/" class="nav-link">
+  MySql
+</a></li><li class="dropdown-item"><!----> <a href="/dba/mongDb/" class="nav-link">
+  MongDb
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="HTML&amp;Css" class="dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow down"></span></button> <button type="button" aria-label="HTML&amp;Css" class="mobile-dropdown-title"><span class="title">HTML&amp;Css</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/htmlCss/html/" class="nav-link">
+  Html
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/css/" class="nav-link">
+  Css
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/sass/" class="nav-link">
+  sass
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/less/" class="nav-link">
+  less
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/animation/" class="nav-link">
+  animation
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/canvas/" class="nav-link">
+  canvas
+</a></li><li class="dropdown-item"><!----> <a href="/htmlCss/webGl/" class="nav-link">
+  webGL
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Design" class="dropdown-title"><span class="title">Design</span> <span class="arrow down"></span></button> <button type="button" aria-label="Design" class="mobile-dropdown-title"><span class="title">Design</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/design/product/" class="nav-link">
+  产品设计
+</a></li><li class="dropdown-item"><!----> <a href="/design/ui/" class="nav-link">
+  UI设计
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Other" class="dropdown-title"><span class="title">Other</span> <span class="arrow down"></span></button> <button type="button" aria-label="Other" class="mobile-dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/other/plugin/" class="nav-link">
+  插件
+</a></li><li class="dropdown-item"><!----> <a href="/other/compatibility/" class="nav-link">
+  兼容性
+</a></li><li class="dropdown-item"><!----> <a href="/other/http/" class="nav-link">
+  协议
+</a></li><li class="dropdown-item"><!----> <a href="/other/performance/" class="nav-link">
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/other/git/" class="nav-link">
+  git命令
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>dart</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/app/dart/chapter01.html" class="sidebar-link">语法</a></li><li><a href="/app/dart/chapter02.html" class="sidebar-link">Dart 运算符</a></li><li><a href="/app/dart/chapter03.html" class="sidebar-link">循环</a></li><li><a href="/app/dart/chapter04.html" class="sidebar-link">数组</a></li><li><a href="/app/dart/chapter05.html" class="sidebar-link">映射(Maps)是无序的键值对</a></li><li><a href="/app/dart/chapter06.html" aria-current="page" class="active sidebar-link">函数和内置方法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#传参" class="sidebar-link">传参</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#箭头函数" class="sidebar-link">箭头函数</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#匿名方法-自执行函数-方法递归" class="sidebar-link">匿名方法，自执行函数，方法递归</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#闭包" class="sidebar-link">闭包</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#特征" class="sidebar-link">特征</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#创建类使用类" class="sidebar-link">创建类使用类</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#自定义类和构造函数" class="sidebar-link">自定义类和构造函数</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#自定义命名构造函数" class="sidebar-link">自定义命名构造函数</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#将类抽离出去" class="sidebar-link">将类抽离出去</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#person" class="sidebar-link">Person</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#私有属性和私有方法" class="sidebar-link">私有属性和私有方法</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#animal" class="sidebar-link">Animal</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#类中的-getter-setter-方法" class="sidebar-link">类中的 getter，setter 方法</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#初始化实例变量" class="sidebar-link">初始化实例变量</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#dart-中的静态成员" class="sidebar-link">Dart 中的静态成员</a></li><li class="sidebar-sub-header"><a href="/app/dart/chapter06.html#dart-中的对象操作符" class="sidebar-link">Dart 中的对象操作符</a></li></ul></li><li><a href="/app/dart/chapter07.html" class="sidebar-link">面向对象的三大特性</a></li><li><a href="/app/dart/chapter08.html" class="sidebar-link">泛型</a></li><li><a href="/app/dart/chapter09.html" class="sidebar-link">Dart 的库引用</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="函数和内置方法"><a href="#函数和内置方法" class="header-anchor">#</a> 函数和内置方法</h1> <p>内置方法/函数：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">print</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre></div><p>自定义方法：
+自定义方法的基本格式：</p> <div class="language-js extra-class"><pre class="language-js"><code>      返回类型  方法名称（参数<span class="token number">1</span>，参数<span class="token number">2</span><span class="token punctuation">,</span><span class="token operator">...</span>）<span class="token punctuation">{</span>
+        方法体
+        <span class="token keyword">return</span> 返回值<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'我是一个自定义方法'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+int <span class="token function">getNum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">var</span> myNum<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> myNum<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+String <span class="token function">printUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token string">'this is str'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+List <span class="token function">getList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'111'</span><span class="token punctuation">,</span><span class="token string">'2222'</span><span class="token punctuation">,</span><span class="token string">'333'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token comment">// print('调用系统内置的方法');</span>
+
+  <span class="token comment">// printInfo();</span>
+  <span class="token comment">// var n=getNum();</span>
+  <span class="token comment">// print(n);</span>
+
+
+  <span class="token comment">// print(printUserInfo());</span>
+
+
+  <span class="token comment">// print(getList());</span>
+
+  <span class="token comment">// print(getList());</span>
+
+
+<span class="token comment">//演示方法的作用域</span>
+  <span class="token keyword">void</span> <span class="token function">xxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token function">aaa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token function">print</span><span class="token punctuation">(</span><span class="token function">getList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'aaa'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token function">aaa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">// aaa();  错误写法</span>
+  <span class="token function">xxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//调用方法</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="传参"><a href="#传参" class="header-anchor">#</a> 传参</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+
+<span class="token comment">//1、定义一个方法 求1到这个数的所有数的和      60    1+2+3+。。。+60</span>
+
+
+ <span class="token comment">/*
+    int sumNum(int n){
+      var sum=0;
+      for(var i=1;i&lt;=n;i++)
+      {
+        sum+=i;
+      }
+      return sum;
+    }
+
+    var n1=sumNum(5);
+    print(n1);
+    var n2=sumNum(100);
+    print(n2);
+
+ */</span>
+
+
+
+<span class="token comment">//2、定义一个方法然后打印用户信息</span>
+
+
+    <span class="token comment">// String printUserInfo(String username,int age){  //行参</span>
+    <span class="token comment">//     return &quot;姓名:$username---年龄:$age&quot;;</span>
+    <span class="token comment">// }</span>
+
+    <span class="token comment">// print(printUserInfo('张三',20)); //实参</span>
+
+
+<span class="token comment">//3、定义一个带可选参数的方法</span>
+
+    <span class="token comment">// String printUserInfo(String username,[int age]){  //行参</span>
+
+    <span class="token comment">//   if(age!=null){</span>
+    <span class="token comment">//     return &quot;姓名:$username---年龄:$age&quot;;</span>
+    <span class="token comment">//   }</span>
+    <span class="token comment">//   return &quot;姓名:$username---年龄保密&quot;;</span>
+
+    <span class="token comment">// }</span>
+
+    <span class="token comment">// // print(printUserInfo('张三',21)); //实参</span>
+
+    <span class="token comment">// print(printUserInfo('张三'));</span>
+
+
+<span class="token comment">//4、定义一个带默认参数的方法</span>
+
+
+    <span class="token comment">// String printUserInfo(String username,[String sex='男',int age]){  //行参</span>
+
+    <span class="token comment">//   if(age!=null){</span>
+    <span class="token comment">//     return &quot;姓名:$username---性别:$sex--年龄:$age&quot;;</span>
+    <span class="token comment">//   }</span>
+    <span class="token comment">//   return &quot;姓名:$username---性别:$sex--年龄保密&quot;;</span>
+
+    <span class="token comment">// }</span>
+
+  <span class="token comment">// print(printUserInfo('张三'));</span>
+
+  <span class="token comment">// print(printUserInfo('小李','女'));</span>
+
+  <span class="token comment">//  print(printUserInfo('小李','女',30));</span>
+
+
+<span class="token comment">//5、定义一个命名参数的方法</span>
+
+  <span class="token comment">// String printUserInfo(String username,{int age,String sex='男'}){  //行参</span>
+
+  <span class="token comment">//     if(age!=null){</span>
+  <span class="token comment">//       return &quot;姓名:$username---性别:$sex--年龄:$age&quot;;</span>
+  <span class="token comment">//     }</span>
+  <span class="token comment">//     return &quot;姓名:$username---性别:$sex--年龄保密&quot;;</span>
+
+  <span class="token comment">// }</span>
+
+  <span class="token comment">// print(printUserInfo('张三',age:20,sex:'未知'));</span>
+
+
+<span class="token comment">//6、实现一个 把方法当做参数的方法</span>
+
+  <span class="token comment">// var fn=(){</span>
+
+  <span class="token comment">//   print('我是一个匿名方法');</span>
+  <span class="token comment">// };</span>
+  <span class="token comment">// fn();</span>
+
+
+  <span class="token comment">//方法</span>
+  <span class="token function">fn1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'fn1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token comment">//方法</span>
+  <span class="token function">fn2</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token comment">//调用fn2这个方法 把fn1这个方法当做参数传入</span>
+  <span class="token function">fn2</span><span class="token punctuation">(</span>fn1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="箭头函数"><a href="#箭头函数" class="header-anchor">#</a> 箭头函数</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/*需求：使用forEach打印下面List里面的数据*/</span>
+
+    <span class="token comment">// List list=['苹果','香蕉','西瓜'];</span>
+
+    <span class="token comment">// list.forEach((value){</span>
+    <span class="token comment">//   print(value);</span>
+    <span class="token comment">// });</span>
+
+    <span class="token comment">// list.forEach((value)=&gt;print(value));</span>
+
+
+    <span class="token comment">// list.forEach((value)=&gt;{</span>
+    <span class="token comment">//   print(value)</span>
+    <span class="token comment">// });</span>
+
+
+<span class="token comment">/*需求：修改下面List里面的数据，让数组中大于2的值乘以2*/</span>
+
+    List list<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// var newList=list.map((value){</span>
+
+    <span class="token comment">//     if(value&gt;2){</span>
+    <span class="token comment">//       return value*2;</span>
+    <span class="token comment">//     }</span>
+    <span class="token comment">//     return value;</span>
+
+    <span class="token comment">// });</span>
+    <span class="token comment">// print(newList.toList());</span>
+
+  <span class="token comment">//  var newList=list.map((value)=&gt;value&gt;2?value*2:value);</span>
+
+  <span class="token comment">//  print(newList.toList());</span>
+
+
+<span class="token comment">/*
+需求：    1、定义一个方法isEvenNumber来判断一个数是否是偶数
+         2、定义一个方法打印1-n以内的所有偶数
+*/</span>
+
+<span class="token comment">//定义一个方法isEvenNumber来判断一个数是否是偶数</span>
+    bool <span class="token function">isEvenNumber</span><span class="token punctuation">(</span><span class="token parameter">int n</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">printNum</span><span class="token punctuation">(</span><span class="token parameter">int n</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">var</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>n<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isEvenNumber</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">printNum</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="匿名方法-自执行函数-方法递归"><a href="#匿名方法-自执行函数-方法递归" class="header-anchor">#</a> 匿名方法，自执行函数，方法递归</h2> <div class="language-js extra-class"><pre class="language-js"><code>int <span class="token function">getNum</span><span class="token punctuation">(</span><span class="token parameter">int n</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token keyword">return</span> n<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token comment">// print(getNum(12));</span>
+
+
+  <span class="token comment">//匿名方法</span>
+
+  <span class="token comment">// var printNum=(){</span>
+
+  <span class="token comment">//   print(123);</span>
+  <span class="token comment">// };</span>
+
+  <span class="token comment">// printNum();</span>
+
+
+  <span class="token comment">// var printNum=(int n){</span>
+
+  <span class="token comment">//   print(n+2);</span>
+  <span class="token comment">// };</span>
+
+  <span class="token comment">// printNum(12);</span>
+
+<span class="token comment">//自执行方法</span>
+
+    <span class="token comment">// ((int n){</span>
+    <span class="token comment">//   print(n);</span>
+    <span class="token comment">//   print('我是自执行方法');</span>
+    <span class="token comment">// })(12);</span>
+
+<span class="token comment">//方法的递归</span>
+      <span class="token comment">// var sum=1;</span>
+      <span class="token comment">// fn(n){</span>
+      <span class="token comment">//     sum*=n;</span>
+      <span class="token comment">//     if(n==1){</span>
+      <span class="token comment">//       return ;</span>
+      <span class="token comment">//     }</span>
+      <span class="token comment">//     fn(n-1);</span>
+
+      <span class="token comment">// }</span>
+
+      <span class="token comment">// fn(5);</span>
+      <span class="token comment">// print(sum);</span>
+
+<span class="token comment">//通过方法的递归 求1-100的和</span>
+
+    <span class="token keyword">var</span> sum<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token parameter">int n</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+        sum<span class="token operator">+=</span>n<span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span><span class="token punctuation">(</span>n<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">fn</span><span class="token punctuation">(</span>n<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">fn</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="闭包"><a href="#闭包" class="header-anchor">#</a> 闭包</h2> <p>特点</p> <ul><li>1.全局变量特点: 全局变量常驻内存、全局变量污染全局</li> <li>2.局部变量的特点： 不常驻内存会被垃圾机制回收、不会污染全局</li></ul> <p>想实现的功能</p> <p>1.常驻内存 2.不污染全局</p> <p>产生了闭包,闭包可以解决这个问题.....</p> <p>闭包: 函数嵌套函数, 内部函数会调用外部函数的变量或参数, 变量或参数不会被系统回收(不会释放内存)</p> <p>闭包的写法： 函数嵌套函数，并 return 里面的函数，这样就形成了闭包。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/*全局变量*/</span>
+<span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// print(a);</span>
+    <span class="token comment">// fn(){</span>
+    <span class="token comment">//   a++;</span>
+    <span class="token comment">//   print(a);</span>
+    <span class="token comment">// }</span>
+    <span class="token comment">// fn();</span>
+    <span class="token comment">// fn();</span>
+    <span class="token comment">// fn();</span>
+
+
+<span class="token comment">//局部变量</span>
+    <span class="token comment">// printInfo(){</span>
+    <span class="token comment">//   var myNum=123;</span>
+    <span class="token comment">//   myNum++;</span>
+    <span class="token comment">//   print(myNum);</span>
+    <span class="token comment">// }</span>
+    <span class="token comment">// printInfo();</span>
+
+    <span class="token comment">// printInfo();</span>
+    <span class="token comment">// printInfo();</span>
+
+
+<span class="token comment">//闭包</span>
+
+   <span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">var</span> a<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">;</span>  <span class="token comment">/*不会污染全局   常驻内存*/</span>
+        <span class="token keyword">return</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          a<span class="token operator">++</span><span class="token punctuation">;</span>
+          <span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token keyword">var</span> b<span class="token operator">=</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">b</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="特征"><a href="#特征" class="header-anchor">#</a> 特征</h2> <p>面向对象编程(OOP)的三个基本特征是：封装、继承、多态</p> <p>封装：封装是对象和类概念的主要特性。封装，把客观事物封装成抽象的类，并且把自己的部分属性和方法提供给其他对象调用, 而一部分属性和方法则隐藏。</p> <p>继承：面向对象编程 (OOP) 语言的一个主要功能就是“继承”。继承是指这样一种能力：它可以使用现有类的功能，并在无需重新编写原来的类的情况下对这些功能进行扩展。</p> <p>多态：允许将子类类型的指针赋值给父类类型的指针, 同一个函数调用会有不同的执行效果 。</p> <p>Dart 所有的东西都是对象，所有的对象都继承自 Object 类。</p> <p>Dart 是一门使用类和单继承的面向对象语言，所有的对象都是类的实例，并且所有的类都是 Object 的子类</p> <p>一个类通常由属性和方法组成。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+    List list<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">List</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    list<span class="token punctuation">.</span>isEmpty<span class="token punctuation">;</span>
+    list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'香蕉'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">'香蕉1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    Map m<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    m<span class="token punctuation">[</span><span class="token string">&quot;username&quot;</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">;</span>
+    m<span class="token punctuation">.</span><span class="token function">addAll</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">&quot;age&quot;</span><span class="token operator">:</span><span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    m<span class="token punctuation">.</span>isEmpty<span class="token punctuation">;</span>
+
+    Object a<span class="token operator">=</span><span class="token number">123</span><span class="token punctuation">;</span>
+    Object v<span class="token operator">=</span><span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="创建类使用类"><a href="#创建类使用类" class="header-anchor">#</a> 创建类使用类</h2> <p>Dart 是一门使用类和单继承的面向对象语言，所有的对象都是类的实例，并且所有的类都是 Object 的子类</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
+  String name<span class="token operator">=</span><span class="token string">&quot;张三&quot;</span><span class="token punctuation">;</span>
+  int age<span class="token operator">=</span><span class="token number">23</span><span class="token punctuation">;</span>
+  <span class="token keyword">void</span> <span class="token function">getInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token comment">// print(&quot;$name----$age&quot;);</span>
+      <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;${this.name}----${this.age}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">void</span> <span class="token function">setInfo</span><span class="token punctuation">(</span><span class="token parameter">int age</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token comment">//实例化</span>
+  <span class="token comment">// var p1=new Person();</span>
+  <span class="token comment">// print(p1.name);</span>
+  <span class="token comment">// p1.getInfo();</span>
+
+  Person p1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// print(p1.name);</span>
+
+  p1<span class="token punctuation">.</span><span class="token function">setInfo</span><span class="token punctuation">(</span><span class="token number">28</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  p1<span class="token punctuation">.</span><span class="token function">getInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="自定义类和构造函数"><a href="#自定义类和构造函数" class="header-anchor">#</a> 自定义类和构造函数</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// class Person{</span>
+<span class="token comment">//   String name='张三';</span>
+<span class="token comment">//   int age=20;</span>
+<span class="token comment">//   //默认构造函数</span>
+<span class="token comment">//   Person(){</span>
+<span class="token comment">//     print('这是构造函数里面的内容  这个方法在实例化的时候触发');</span>
+<span class="token comment">//   }</span>
+<span class="token comment">//   void printInfo(){</span>
+<span class="token comment">//     print(&quot;${this.name}----${this.age}&quot;);</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">//张三  李四  王五</span>
+
+<span class="token comment">// class Person{</span>
+<span class="token comment">//   String name;</span>
+<span class="token comment">//   int age;</span>
+<span class="token comment">//   //默认构造函数</span>
+<span class="token comment">//   Person(String name,int age){</span>
+<span class="token comment">//       this.name=name;</span>
+<span class="token comment">//       this.age=age;</span>
+<span class="token comment">//   }</span>
+<span class="token comment">//   void printInfo(){</span>
+<span class="token comment">//     print(&quot;${this.name}----${this.age}&quot;);</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
+  String name<span class="token punctuation">;</span>
+  int age<span class="token punctuation">;</span>
+  <span class="token comment">//默认构造函数的简写</span>
+  <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;${this.name}----${this.age}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  Person p1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'张三'</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  p1<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  Person p2<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'李四'</span><span class="token punctuation">,</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  p2<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="自定义命名构造函数"><a href="#自定义命名构造函数" class="header-anchor">#</a> 自定义命名构造函数</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/*
+dart里面构造函数可以写多个
+*/</span>
+<span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
+  String name<span class="token punctuation">;</span>
+  int age<span class="token punctuation">;</span>
+  <span class="token comment">//默认构造函数的简写</span>
+  <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  Person<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'我是命名构造函数'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  Person<span class="token punctuation">.</span><span class="token function">setInfo</span><span class="token punctuation">(</span><span class="token parameter">String name<span class="token punctuation">,</span>int age</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;${this.name}----${this.age}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token comment">// var d=new DateTime.now();   //实例化DateTime调用它的命名构造函数</span>
+  <span class="token comment">// print(d);</span>
+
+  <span class="token comment">//Person p1=new Person('张三', 20);   //默认实例化类的时候调用的是 默认构造函数</span>
+
+  <span class="token comment">//Person p1=new Person.now();   //命名构造函数</span>
+
+  Person p1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person<span class="token punctuation">.</span>setInfo</span><span class="token punctuation">(</span><span class="token string">'李四'</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  p1<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="将类抽离出去"><a href="#将类抽离出去" class="header-anchor">#</a> 将类抽离出去</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token string">'lib/Person.dart'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  Person p1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person<span class="token punctuation">.</span>setInfo</span><span class="token punctuation">(</span><span class="token string">'李四1'</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  p1<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="person"><a href="#person" class="header-anchor">#</a> Person</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Person</span><span class="token punctuation">{</span>
+  String name<span class="token punctuation">;</span>
+  int age<span class="token punctuation">;</span>
+  <span class="token comment">//默认构造函数的简写</span>
+  <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  Person<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'我是命名构造函数'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  Person<span class="token punctuation">.</span><span class="token function">setInfo</span><span class="token punctuation">(</span><span class="token parameter">String name<span class="token punctuation">,</span>int age</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token operator">=</span>name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">=</span>age<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;${this.name}----${this.age}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><h2 id="私有属性和私有方法"><a href="#私有属性和私有方法" class="header-anchor">#</a> 私有属性和私有方法</h2> <p>Dart 和其他面向对象语言不一样，Data 中没有 public private protected 这些访问修饰符合</p> <p>但是我们可以使用_把一个属性或者方法定义成私有。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token string">'lib/Animal.dart'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+ Animal a<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Animal</span><span class="token punctuation">(</span><span class="token string">'小狗'</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token comment">//不能直接调用私有属性和方法，只能通过间接的方式来调用</span>
+
+ <span class="token function">print</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  a<span class="token punctuation">.</span><span class="token function">execRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//间接的调用私有方法</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="animal"><a href="#animal" class="header-anchor">#</a> Animal</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Animal</span><span class="token punctuation">{</span>
+  String _name<span class="token punctuation">;</span>   <span class="token comment">//私有属性</span>
+  int age<span class="token punctuation">;</span>
+  <span class="token comment">//默认构造函数的简写</span>
+  <span class="token function">Animal</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>_name<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;${this._name}----${this.age}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  String <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>_name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">void</span> <span class="token function">_run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'这是一个私有方法'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">execRun</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">_run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">//类里面方法的相互调用</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="类中的-getter-setter-方法"><a href="#类中的-getter-setter-方法" class="header-anchor">#</a> 类中的 getter，setter 方法</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// class Rect{</span>
+
+<span class="token comment">//   int height;</span>
+<span class="token comment">//   int width;</span>
+
+<span class="token comment">//   getArea(){</span>
+<span class="token comment">//     return this.height*this.width;</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+
+<span class="token comment">// class Rect{</span>
+<span class="token comment">//   num height;</span>
+<span class="token comment">//   num width;</span>
+
+<span class="token comment">//   Rect(this.height,this.width);</span>
+<span class="token comment">//   area(){</span>
+<span class="token comment">//     return this.height*this.width;</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">// void main(){</span>
+<span class="token comment">//   Rect r=new Rect(10,4);</span>
+<span class="token comment">//   print(&quot;面积:${r.area()}&quot;);</span>
+<span class="token comment">// }</span>
+
+
+
+<span class="token comment">// class Rect{</span>
+<span class="token comment">//   num height;</span>
+<span class="token comment">//   num width;</span>
+<span class="token comment">//   Rect(this.height,this.width);</span>
+<span class="token comment">//   get area{</span>
+<span class="token comment">//     return this.height*this.width;</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">// void main(){</span>
+<span class="token comment">//   Rect r=new Rect(10,2);</span>
+<span class="token comment">//   print(&quot;面积:${r.area}&quot;);      //注意调用直接通过访问属性的方式访问area</span>
+<span class="token comment">// }</span>
+
+
+
+<span class="token keyword">class</span> <span class="token class-name">Rect</span><span class="token punctuation">{</span>
+  num height<span class="token punctuation">;</span>
+  num width<span class="token punctuation">;</span>
+
+  <span class="token function">Rect</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>height<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>width<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">get</span> area<span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>height<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">set</span> <span class="token function">areaHeight</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>height<span class="token operator">=</span>value<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  Rect r<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// print(&quot;面积:${r.area()}&quot;);</span>
+  r<span class="token punctuation">.</span>areaHeight<span class="token operator">=</span><span class="token number">6</span><span class="token punctuation">;</span>
+
+  <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>area<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="初始化实例变量"><a href="#初始化实例变量" class="header-anchor">#</a> 初始化实例变量</h2> <p>Dart 中我们也可以在构造函数体运行之前初始化实例变量</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Rect</span><span class="token punctuation">{</span>
+
+  int height<span class="token punctuation">;</span>
+  int width<span class="token punctuation">;</span>
+  <span class="token comment">//默认初始化值</span>
+  <span class="token function">Rect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>height<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>width<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">{</span>
+
+    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;${this.height}---${this.width}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>height<span class="token operator">*</span><span class="token keyword">this</span><span class="token punctuation">.</span>width<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  Rect r<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Rect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span><span class="token function">getArea</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="dart-中的静态成员"><a href="#dart-中的静态成员" class="header-anchor">#</a> Dart 中的静态成员</h2> <p>1、使用 static 关键字来实现类级别的变量和函数</p> <p>2、静态方法不能访问非静态成员，非静态方法可以访问静态成员</p> <p>3.静态方法可以直接通过类名.方法名称访问</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">*</span><span class="token operator">/</span>
+
+<span class="token comment">// class Person {</span>
+<span class="token comment">//   static String name = '张三';</span>
+<span class="token comment">//   static void show() {</span>
+<span class="token comment">//     print(name);</span>
+<span class="token comment">//   }</span>
+<span class="token comment">// }</span>
+
+<span class="token comment">// main(){</span>
+<span class="token comment">//   print(Person.name);</span>
+<span class="token comment">//   Person.show();</span>
+<span class="token comment">// }</span>
+
+
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+ <span class="token keyword">static</span> String name <span class="token operator">=</span> <span class="token string">'张三'</span><span class="token punctuation">;</span>
+ int age<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token comment">/*非静态方法可以访问静态成员以及非静态成员*/</span>
+
+     <span class="token comment">// print(name);  //访问静态属性</span>
+     <span class="token comment">// print(this.age);  //访问非静态属性</span>
+
+     <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//调用静态方法</span>
+ <span class="token punctuation">}</span>
+ <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">printUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token comment">//静态方法</span>
+
+       <span class="token function">print</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//静态属性</span>
+       <span class="token function">show</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">//静态方法</span>
+
+       <span class="token comment">//print(this.age);     //静态方法没法访问非静态的属性</span>
+
+       <span class="token comment">// this.printInfo();   //静态方法没法访问非静态的方法</span>
+       <span class="token comment">// printInfo();</span>
+
+ <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+ <span class="token comment">// print(Person.name);</span>
+ <span class="token comment">// Person.show();</span>
+
+ <span class="token comment">// Person p=new Person();</span>
+ <span class="token comment">// p.printInfo();</span>
+
+ Person<span class="token punctuation">.</span><span class="token function">printUserInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="dart-中的对象操作符"><a href="#dart-中的对象操作符" class="header-anchor">#</a> Dart 中的对象操作符</h2> <ul><li>? 条件运算符 （了解）</li> <li>as 类型转换</li> <li>is 类型判断</li> <li>.. 级联操作 （连缀） (记住)</li></ul> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
+ String name<span class="token punctuation">;</span>
+ num age<span class="token punctuation">;</span>
+ <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token keyword">void</span> <span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">&quot;${this.name}---${this.age}&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+
+<span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+ <span class="token comment">// Person p;</span>
+ <span class="token comment">// p?.printInfo();</span>
+
+ <span class="token comment">//  Person p=new Person('张三', 20);</span>
+ <span class="token comment">//  p?.printInfo();</span>
+
+   <span class="token comment">// Person p=new Person('张三', 20);</span>
+   <span class="token comment">// if(p is Person){</span>
+   <span class="token comment">//     p.name=&quot;李四&quot;;</span>
+   <span class="token comment">// }</span>
+   <span class="token comment">// p.printInfo();</span>
+   <span class="token comment">// print(p is Object);</span>
+
+   <span class="token comment">// var p1;</span>
+   <span class="token comment">// p1='';</span>
+   <span class="token comment">// p1=new Person('张三1', 20);</span>
+   <span class="token comment">// // p1.printInfo();</span>
+   <span class="token comment">// (p1 as Person).printInfo();</span>
+
+
+ <span class="token comment">//  Person p1=new Person('张三1', 20);</span>
+ <span class="token comment">//  p1.printInfo();</span>
+ <span class="token comment">//  p1.name='张三222';</span>
+ <span class="token comment">//  p1.age=40;</span>
+ <span class="token comment">//  p1.printInfo();</span>
+
+  Person p1<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'张三1'</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  p1<span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  p1<span class="token punctuation">.</span><span class="token punctuation">.</span>name<span class="token operator">=</span><span class="token string">&quot;李四&quot;</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span>age<span class="token operator">=</span><span class="token number">30</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token function">printInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">}</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/app/dart/chapter05.html" class="prev">
+        映射(Maps)是无序的键值对
+      </a></span> <span class="next"><a href="/app/dart/chapter07.html">
+        面向对象的三大特性
+      </a>
+      →
+    </span></p></div> </main></div></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.cdb839b0.js" defer></script><script src="/assets/js/7.53f5c181.js" defer></script><script src="/assets/js/40.2e38f667.js" defer></script>
+  </body>
+</html>
